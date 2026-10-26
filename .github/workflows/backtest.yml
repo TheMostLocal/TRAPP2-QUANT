@@ -1,0 +1,71 @@
+# ============================================================
+#  >>> DESTINATION: TheMostLocal/TRAPP2-QUANT
+#  >>> FILE PATH:   .github/workflows/backtest.yml
+#  The quality gate, every weekday at 1840 ET: rebuild the universe, replay the last 10 sessions of real 1-minute
+#  bars through the engine, and write data/quant/gate.json - only strategies that pass trade live tomorrow.
+# ============================================================
+name: Quant backtest (quality gate)
+
+on:
+  schedule:
+    - cron: '40 22 * * 1-5'    # 1840 EDT
+    - cron: '40 23 * * 1-5'    # 1840 EST
+  workflow_dispatch:
+    inputs:
+      days:
+        description: 'Sessions to replay'
+        required: false
+        default: '10'
+
+concurrency:
+  group: quant-backtest
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  gate:
+    runs-on: ubuntu-latest
+    outputs:
+      run: ${{ steps.g.outputs.run }}
+    steps:
+      - id: g
+        run: |
+          if [ "${{ github.event_name }}" != "schedule" ]; then echo "run=true" >> "$GITHUB_OUTPUT"; exit 0; fi
+          S="${{ github.event.schedule }}"; OFF=$(TZ=America/New_York date +%z); OFFH=$((10#${OFF:1:2}))
+          UM=$(echo "$S" | awk '{print $1}'); UH=$(echo "$S" | awk '{print $2}')
+          ETH=$(( (10#$UH - OFFH + 24) % 24 )); ETM=$(printf '%02d' "$UM")
+          if [ "${ETH}:${ETM}" = "18:40" ]; then RUN=true; else RUN=false; fi
+          echo "schedule '$S' = ${ETH}:${ETM} ET -> run=${RUN}"; echo "run=${RUN}" >> "$GITHUB_OUTPUT"
+
+  backtest:
+    needs: gate
+    if: needs.gate.outputs.run == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install -r requirements.txt
+      - name: Universe
+        run: python -m quant.universe
+      - name: Replay and gate
+        env:
+          ALPACA_KEY_ID: ${{ secrets.ALPACA_KEY_ID }}
+          ALPACA_SECRET_KEY: ${{ secrets.ALPACA_SECRET_KEY }}
+          QUANT_BT_DAYS: ${{ github.event.inputs.days || '10' }}
+        run: python -m quant.backtest
+      - name: Commit
+        run: |
+          git config user.name "valuatio-quant"; git config user.email "actions@github.com"
+          for p in data/quant/universe.json data/quant/gate.json data/quant/backtest; do [ -e "$p" ] && git add -A "$p"; done
+          git diff --staged --quiet && echo "No changes" && exit 0
+          git commit -q -m "quant gate: $(TZ=America/New_York date +%Y-%m-%d) [skip ci]"
+          for k in 1 2 3 4 5; do
+            if git push -q origin HEAD:main; then exit 0; fi
+            git fetch -q origin main; git merge -X ours origin/main --no-edit -q || true; sleep $((k * 3))
+          done
+          echo "::warning::push failed after 5 attempts"
