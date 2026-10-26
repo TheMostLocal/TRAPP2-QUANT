@@ -1,0 +1,87 @@
+# ============================================================
+#  >>> DESTINATION: TheMostLocal/TRAPP2-QUANT
+#  >>> FILE PATH:   .github/workflows/engine.yml
+#  The intraday engine, 0920 ET to the close. A job may run 6 h, so the engine stops after 345 minutes and this
+#  workflow queues the next job while the session is open (open positions are handed over in data/quant/open.json).
+#  The day's trades are committed at the end of every job. Started by GitHub's schedule (twin crons, ET-gated)
+#  and by the Supabase heartbeat; a start while one is running queues behind it.
+#  Secrets: ALPACA_KEY_ID / ALPACA_SECRET_KEY (the paper account - market data AND paper orders), SUPABASE_URL /
+#  SUPABASE_SERVICE_ROLE (the Bot project), FINNHUB_KEY (optional third data source).
+#  Variables: QUANT_FEED ("sip" once you subscribe to Alpaca Algo Trader Plus, else "iex"), QUANT_STREAM_LIMIT.
+# ============================================================
+name: Quant engine (intraday book)
+
+on:
+  schedule:
+    - cron: '20 13 * * 1-5'    # 0920 EDT
+    - cron: '20 14 * * 1-5'    # 0920 EST
+  workflow_dispatch:
+
+concurrency:
+  group: quant-engine
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  actions: write
+
+jobs:
+  gate:
+    runs-on: ubuntu-latest
+    outputs:
+      run: ${{ steps.g.outputs.run }}
+    steps:
+      - id: g
+        run: |
+          if [ "${{ github.event_name }}" != "schedule" ]; then echo "run=true" >> "$GITHUB_OUTPUT"; exit 0; fi
+          S="${{ github.event.schedule }}"; OFF=$(TZ=America/New_York date +%z); OFFH=$((10#${OFF:1:2}))
+          UM=$(echo "$S" | awk '{print $1}'); UH=$(echo "$S" | awk '{print $2}')
+          ETH=$(( (10#$UH - OFFH + 24) % 24 )); ETM=$(printf '%02d' "$UM")
+          if [ "${ETH}:${ETM}" = "9:20" ]; then RUN=true; else RUN=false; fi
+          echo "schedule '$S' = ${ETH}:${ETM} ET -> run=${RUN}"; echo "run=${RUN}" >> "$GITHUB_OUTPUT"
+
+  engine:
+    needs: gate
+    if: needs.gate.outputs.run == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install -r requirements.txt
+      - name: Engine (one job, up to 345 min)
+        env:
+          ALPACA_KEY_ID: ${{ secrets.ALPACA_KEY_ID }}
+          ALPACA_SECRET_KEY: ${{ secrets.ALPACA_SECRET_KEY }}
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE: ${{ secrets.SUPABASE_SERVICE_ROLE }}
+          FINNHUB_KEY: ${{ secrets.FINNHUB_KEY }}
+          QUANT_FEED: ${{ vars.QUANT_FEED || 'iex' }}
+          QUANT_STREAM_LIMIT: ${{ vars.QUANT_STREAM_LIMIT || '30' }}
+          QUANT_BUDGET_MIN: '345'
+        run: python -m quant.run
+      - name: Commit the day's trades (always, even after a failure)
+        if: always()
+        run: |
+          git config user.name "valuatio-quant"; git config user.email "actions@github.com"
+          [ -e data/quant ] && git add -A data/quant
+          git diff --staged --quiet && echo "No changes" && exit 0
+          git commit -q -m "quant: $(TZ=America/New_York date +%Y-%m-%d\ %H%M) ET [skip ci]"
+          for k in 1 2 3 4 5; do
+            if git push -q origin HEAD:main; then echo "pushed (attempt $k)"; exit 0; fi
+            git fetch -q origin main; git merge -X ours origin/main --no-edit -q || true; sleep $((k * 3))
+          done
+          echo "::warning::push failed after 5 attempts"
+      - name: Queue the next job while the session is open
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          OPEN=$(python -c "from quant import market_hours as m; s = m.session_now(); print(1 if s['open'] and (s['minutesToClose'] or 0) > 3 else 0)")
+          if [ "$OPEN" = "1" ]; then
+            gh workflow run engine.yml --ref "${GITHUB_REF_NAME}" -R "$GITHUB_REPOSITORY" && echo "chained: the next engine job is queued"
+          else
+            echo "session over - not chaining"
+          fi
