@@ -1,0 +1,24 @@
+# z163 - systemd timer pair for a VPS: starts the engine at 0920 ET on weekdays (it exits by itself after the close
+# and on non-trading days). Copy to /etc/systemd/system/, put the secrets in /etc/trapp2-quant.env, then
+# systemctl enable --now quant.timer. A daily `git pull` + commit of data/quant is up to you (or use Supabase only).
+[Unit]
+Description=TRAPP2 quant engine
+After=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/TRAPP2-QUANT
+EnvironmentFile=/etc/trapp2-quant.env
+Environment=QUANT_BUDGET_MIN=480
+ExecStart=/usr/bin/python3 -m quant.run
+Restart=on-failure
+RestartSec=30
+
+# --- quant.timer ---
+# [Unit]
+# Description=Start the quant engine before the open
+# [Timer]
+# OnCalendar=Mon..Fri 09:20 America/New_York
+# Persistent=true
+# [Install]
+# WantedBy=timers.target
