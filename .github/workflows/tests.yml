@@ -1,0 +1,28 @@
+# ============================================================
+#  >>> DESTINATION: TheMostLocal/TRAPP2-QUANT
+#  >>> FILE PATH:   .github/workflows/tests.yml
+#  Every push: the whole test suite (statistics, book, strategies, risk, broker, feeds, a simulated session, a job
+#  hand-off, the backtest gate). A red run means don't let the engine trade this commit.
+# ============================================================
+name: Tests
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install -r requirements.txt
+      - name: Unit + simulation tests
+        run: python -m unittest discover -s tests -v
