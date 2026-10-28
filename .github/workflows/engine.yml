@@ -6,7 +6,7 @@
 #  The day's trades are committed at the end of every job. Started by GitHub's schedule (twin crons, ET-gated)
 #  and by the Supabase heartbeat; a start while one is running queues behind it.
 #  Secrets: ALPACA_KEY_ID / ALPACA_SECRET_KEY (the paper account - market data AND paper orders), SUPABASE_URL /
-#  SUPABASE_SERVICE_ROLE (the Bot project), FINNHUB_KEY (optional third data source).
+#  SUPABASE_SERVICE_ROLE (the PORT+ANALYTICS project - where quant_trades / quant_state live; z166), FINNHUB_KEY (optional).
 #  Variables: QUANT_FEED ("sip" once you subscribe to Alpaca Algo Trader Plus, else "iex"), QUANT_STREAM_LIMIT.
 # ============================================================
 name: Quant engine (intraday book)
