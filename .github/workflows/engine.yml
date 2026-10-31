@@ -1,9 +1,10 @@
 # ============================================================
 #  >>> DESTINATION: TheMostLocal/TRAPP2-QUANT
 #  >>> FILE PATH:   .github/workflows/engine.yml
-#  The intraday engine, 0920 ET to the close. A job may run 6 h, so the engine stops after 345 minutes and this
-#  workflow queues the next job while the session is open (open positions are handed over in data/quant/open.json).
-#  The day's trades are committed at the end of every job. Started by GitHub's schedule (twin crons, ET-gated)
+#  The intraday engine, 0920 ET to the close. A job may run 6 h, so the engine stops after 345 minutes and
+#  quant/engine_job.sh queues the next job while the session is open - and, z169, Monday-Thursday nights too (the
+#  next job waits for 0920 ET), so the week no longer depends on GitHub starting the 0920 schedule. Open positions
+#  are handed over in data/quant/open.json; data/quant is committed every 15 minutes while it trades. Started by GitHub's schedule (twin crons, ET-gated)
 #  and by the Supabase heartbeat; a start while one is running queues behind it.
 #  Secrets: ALPACA_KEY_ID / ALPACA_SECRET_KEY (the paper account - market data AND paper orders), SUPABASE_URL /
 #  SUPABASE_SERVICE_ROLE (the PORT+ANALYTICS project - where quant_trades / quant_state live; z166), FINNHUB_KEY (optional).
@@ -51,7 +52,7 @@ jobs:
         with:
           python-version: '3.12'
       - run: pip install -r requirements.txt
-      - name: Engine (one job, up to 345 min)
+      - name: Engine - commits as it trades, then queues the next job (z169)
         env:
           ALPACA_KEY_ID: ${{ secrets.ALPACA_KEY_ID }}
           ALPACA_SECRET_KEY: ${{ secrets.ALPACA_SECRET_KEY }}
@@ -61,27 +62,5 @@ jobs:
           QUANT_FEED: ${{ vars.QUANT_FEED || 'iex' }}
           QUANT_STREAM_LIMIT: ${{ vars.QUANT_STREAM_LIMIT || '30' }}
           QUANT_BUDGET_MIN: '345'
-        run: python -m quant.run
-      - name: Commit the day's trades (always, even after a failure)
-        if: always()
-        run: |
-          git config user.name "valuatio-quant"; git config user.email "actions@github.com"
-          [ -e data/quant ] && git add -A data/quant
-          git diff --staged --quiet && echo "No changes" && exit 0
-          git commit -q -m "quant: $(TZ=America/New_York date +%Y-%m-%d\ %H%M) ET [skip ci]"
-          for k in 1 2 3 4 5; do
-            if git push -q origin HEAD:main; then echo "pushed (attempt $k)"; exit 0; fi
-            git fetch -q origin main; git merge -X ours origin/main --no-edit -q || true; sleep $((k * 3))
-          done
-          echo "::warning::push failed after 5 attempts"
-      - name: Queue the next job while the session is open
-        if: always()
-        env:
           GH_TOKEN: ${{ github.token }}
-        run: |
-          OPEN=$(python -c "from quant import market_hours as m; s = m.session_now(); print(1 if s['open'] and (s['minutesToClose'] or 0) > 3 else 0)")
-          if [ "$OPEN" = "1" ]; then
-            gh workflow run engine.yml --ref "${GITHUB_REF_NAME}" -R "$GITHUB_REPOSITORY" && echo "chained: the next engine job is queued"
-          else
-            echo "session over - not chaining"
-          fi
+        run: bash quant/engine_job.sh
