@@ -29,6 +29,10 @@ class Config:
     max_positions: int = int(_f("QUANT_MAX_POSITIONS", 25))
     daily_loss_halt_pct: float = _f("QUANT_DAILY_HALT_PCT", 0.015)  # no new entries after -1.5 % on the day
     max_spread_bps: float = _f("QUANT_MAX_SPREAD_BPS", 8)
+    # z174: the universe takes EVERY US stock / ETF in the books (no top-120 cap) - liquidity decides what trades
+    max_symbols: int = int(_f("QUANT_MAX_SYMBOLS", 5000))
+    min_dollar_volume: float = _f("QUANT_MIN_DV", 5e6)              # no new entry below $5M traded a day
+    momentum_min_dollar_volume: float = _f("QUANT_MOMENTUM_MIN_DV", 2e7)   # opening-range breakouts: $20M a day
     min_price: float = _f("QUANT_MIN_PRICE", 5)
     # ---- session, ET minutes from midnight ---------------------------------------------------------
     no_entry_before: int = 9 * 60 + 40          # let the opening auction settle
