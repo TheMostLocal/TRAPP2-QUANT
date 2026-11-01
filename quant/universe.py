@@ -31,6 +31,15 @@ SSGA = "https://www.ssga.com/us/en/intermediary/library-content/products/fund-da
 UA = {"User-Agent": "Mozilla/5.0 (valuatio quant)"}
 
 
+# z172: a US stock / ETF symbol as Alpaca knows it - 1-5 letters, an optional class suffix (BRK-B). Anything else in a
+# holdings file (cash lines, futures like ESZ6, internal codes, blanks) made Alpaca answer 400 to the whole request.
+SYMBOL_RE = re.compile(r"[A-Z]{1,5}(-[A-Z]{1,2})?")
+
+
+def us_symbol(t):
+    return bool(t) and bool(SYMBOL_RE.fullmatch(t))
+
+
 def log(*a):
     print("[universe]", *a, flush=True)
 
@@ -80,7 +89,7 @@ def holdings(etf, top=25):
             w = float(r[wi]) / 100
         except ValueError:
             continue
-        if t and t not in ("-", "CASH_USD", "NAN") and w > 0:
+        if us_symbol(t) and w > 0:
             out.append([t, round(w, 6)])
     out.sort(key=lambda x: -x[1])
     return out[:top]
@@ -98,7 +107,7 @@ def build(n_stocks=120, n_stream=30):
             data = json.loads(get(f"{RAW}/{b}/main/data/master.json").decode())
             for r in (data if isinstance(data, list) else data.get("rows") or []):
                 t = str(r.get("ticker") or "").upper()
-                if not t or t.startswith("^") or t.endswith(("=X", "=F", "-USD")) or "." in t:
+                if not us_symbol(t):
                     continue
                 try:
                     px, vol = float(r.get("price") or 0), float(r.get("volume") or 0)
@@ -118,7 +127,7 @@ def build(n_stocks=120, n_stream=30):
             if prev.get("etf_weights", {}).get(etf):
                 weights[etf] = prev["etf_weights"][etf]
     members = sorted({t for w in weights.values() for t, _ in w})
-    symbols = list(dict.fromkeys(ETFS + INDEX_ETFS + stocks + members))
+    symbols = [t for t in dict.fromkeys(ETFS + INDEX_ETFS + stocks + members) if us_symbol(t)]
     stream = list(dict.fromkeys(INDEX_ETFS + ETFS + stocks))[:n_stream]
     doc = {"asOf": datetime.now(timezone.utc).isoformat(timespec="seconds"), "symbols": symbols, "stream": stream,
            "sector_etf": {t: rows[t]["etf"] for t in stocks}, "etf_weights": weights, "momentum": stocks[:80],
