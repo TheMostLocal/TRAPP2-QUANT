@@ -131,6 +131,14 @@ def fetch_day(symbols, d, close_min, key, secret, bad=None, chunk=100):
     return out
 
 
+def half_spread_bps(dollar_volume, base=2.0):
+    """z174: the modelled half spread grows as a name gets thinner - ~2 bps at $200M traded a day, ~4 at $50M, ~9 at $10M,
+    15 at most, 1 at least - so a universe that now includes every US name in the books isn't flattered by large-cap costs."""
+    if not dollar_volume:
+        return base
+    return max(1.0, min(15.0, base * (2e8 / max(float(dollar_volume), 1e6)) ** 0.5))
+
+
 def replay_day(cfg, uni, bars, d, close_min, log_fn=lambda *a: None):
     """Run one session through the engine minute by minute; returns its closed trades."""
     tmp = tempfile.mkdtemp()
@@ -145,9 +153,11 @@ def replay_day(cfg, uni, bars, d, close_min, log_fn=lambda *a: None):
         for (t, o, h, l, c, v) in rows:
             by_min.setdefault(t, []).append((s, o, h, l, c, v))
     flatten_at = min(cfg.flatten_at, close_min - 5)
+    liq = uni.get("liquidity") or {}
+    hs_of = {s: half_spread_bps(liq.get(s), cfg.backtest_half_spread_bps) for s in bars}
     for t in sorted(by_min):
         for (s, o, h, l, c, v) in by_min[t]:
-            eng.book.on_bar(s, t, o, h, l, c, v, cfg.backtest_half_spread_bps)
+            eng.book.on_bar(s, t, o, h, l, c, v, hs_of.get(s, cfg.backtest_half_spread_bps))
         clock["t"] = t + 59
         m = eng.minute(clock["t"])
         if m >= flatten_at:
