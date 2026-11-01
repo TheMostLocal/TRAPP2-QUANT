@@ -78,6 +78,10 @@ class Engine:
     # ---- entries / exits ---------------------------------------------------------------------------
     def enter(self, sig, now):
         st = self.book.s.get(sig.symbol)
+        liq = (self.uni.get("liquidity") or {})
+        if liq and sig.symbol in liq and liq[sig.symbol] < self.cfg.min_dollar_volume:      # z174: every symbol is watched, not every one is traded
+            self.counts["skip:illiquid"] += 1
+            return None
         day_pnl = self.ledger.pnl
         ok, q = self.risk.check(sig, st, self.minute(now), now, self.positions, day_pnl)
         if not ok:
