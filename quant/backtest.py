@@ -45,37 +45,89 @@ def sessions(n, today=None):
     return list(reversed(out))
 
 
-def fetch_day(symbols, d, close_min, key, secret):
-    """{symbol: [(epoch, o, h, l, c, v)]} for the regular session of day d."""
+def _get(url, key, secret, tries=4):
+    """GET JSON; retries 429 / 5xx; returns (json, None) or (None, (code, message))."""
+    req = urllib.request.Request(url, headers={"APCA-API-KEY-ID": key, "APCA-API-SECRET-KEY": secret})
+    for k in range(tries):
+        try:
+            with urllib.request.urlopen(req, timeout=60) as r:
+                return json.loads(r.read().decode()), None
+        except urllib.error.HTTPError as e:
+            body = ""
+            try:
+                body = e.read().decode("utf-8", "replace")[:300]
+            except Exception:
+                pass
+            if (e.code == 429 or e.code >= 500) and k < tries - 1:
+                time.sleep(3 + 4 * k)
+                continue
+            try:
+                msg = json.loads(body).get("message") or body
+            except Exception:
+                msg = body
+            return None, (e.code, msg)
+        except Exception as e:
+            if k < tries - 1:
+                time.sleep(2 + 2 * k)
+                continue
+            return None, (0, str(e))
+    return None, (0, "no answer")
+
+
+def _bars_chunk(syms, start, end, key, secret, feed, out, bad):
+    """Fetch one chunk of symbols (all pages) into out. A 400 means Alpaca refused something in the request - usually
+    one symbol it doesn't recognise as one (z172): drop the symbol it names, or split the chunk in half until the
+    culprit is alone, and carry on without it. Returns the feed used, or None if Alpaca refused the feed itself."""
+    token = None
+    while True:
+        q = {"symbols": ",".join(s.replace("-", ".") for s in syms), "timeframe": "1Min", "feed": feed, "adjustment": "raw",
+             "start": start, "end": end, "limit": 10000, "sort": "asc"}
+        if token:
+            q["page_token"] = token
+        j, err = _get(f"{BARS}?{urllib.parse.urlencode(q)}", key, secret)
+        if err:
+            code, msg = err
+            if code == 403 and feed == "sip":
+                log(f"SIP refused ({msg}) - using IEX bars for this request")
+                return _bars_chunk(syms, start, end, key, secret, "iex", out, bad)
+            if code in (400, 422):
+                named = [s for s in syms if s.replace("-", ".").upper() in str(msg).upper().replace(",", " ").split()]
+                if len(syms) == 1 or named:
+                    for s in (named or syms):
+                        bad[s] = str(msg)[:120]
+                    rest = [s for s in syms if s not in bad]
+                    return _bars_chunk(rest, start, end, key, secret, feed, out, bad) if rest else feed
+                h = len(syms) // 2
+                _bars_chunk(syms[:h], start, end, key, secret, feed, out, bad)
+                _bars_chunk(syms[h:], start, end, key, secret, feed, out, bad)
+                return feed
+            log(f"bars request failed: HTTP {code} {str(msg)[:160]} - {len(syms)} symbols skipped for this day")
+            return feed
+        for s, rows in (j.get("bars") or {}).items():
+            out.setdefault(s.replace(".", "-"), []).extend(
+                (int(datetime.fromisoformat(b["t"].replace("Z", "+00:00")).timestamp()), b["o"], b["h"], b["l"], b["c"], b.get("v", 0)) for b in rows)
+        token = j.get("next_page_token")
+        if not token:
+            return feed
+
+
+def fetch_day(symbols, d, close_min, key, secret, bad=None, chunk=100):
+    """{symbol: [(epoch, o, h, l, c, v)]} for the regular session of day d. Symbols Alpaca refuses are collected in
+    `bad` (symbol -> its message) and left out; the rest of the day still loads."""
     et0 = mh.et_now(datetime(d.year, d.month, d.day, 15, tzinfo=timezone.utc))
-    start = et0.replace(hour=9, minute=30, second=0, microsecond=0)
-    end = et0.replace(hour=close_min // 60, minute=close_min % 60, second=0, microsecond=0)
+    start = et0.replace(hour=9, minute=30, second=0, microsecond=0).astimezone(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+    end = et0.replace(hour=close_min // 60, minute=close_min % 60, second=0, microsecond=0).astimezone(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+    bad = {} if bad is None else bad
+    syms = [s for s in symbols if s not in bad]
     out = {}
-    for i in range(0, len(symbols), 200):
-        token = None
-        while True:
-            q = {"symbols": ",".join(s.replace("-", ".") for s in symbols[i:i + 200]), "timeframe": "1Min", "feed": "sip", "adjustment": "raw",
-                 "start": start.astimezone(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"), "end": end.astimezone(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
-                 "limit": 10000, "sort": "asc"}
-            if token:
-                q["page_token"] = token
-            req = urllib.request.Request(f"{BARS}?{urllib.parse.urlencode(q)}", headers={"APCA-API-KEY-ID": key, "APCA-API-SECRET-KEY": secret})
-            for k in range(4):
-                try:
-                    with urllib.request.urlopen(req, timeout=60) as r:
-                        j = json.loads(r.read().decode())
-                    break
-                except urllib.error.HTTPError as e:
-                    if e.code == 429 and k < 3:
-                        time.sleep(3 + 4 * k)
-                        continue
-                    raise
-            for s, rows in (j.get("bars") or {}).items():
-                out.setdefault(s.replace(".", "-"), []).extend(
-                    (int(datetime.fromisoformat(b["t"].replace("Z", "+00:00")).timestamp()), b["o"], b["h"], b["l"], b["c"], b.get("v", 0)) for b in rows)
-            token = j.get("next_page_token")
-            if not token:
-                break
+    # one request for SPY first: if Alpaca refuses even that, the problem isn't a symbol - say so once and stop
+    probe = {}
+    _bars_chunk(["SPY"], start, end, key, secret, "sip", probe, bad)
+    if "SPY" in bad:
+        log(f"Alpaca refuses even SPY for {d}: {bad.pop('SPY')} - not a symbol problem; day skipped")
+        return {}
+    for i in range(0, len(syms), chunk):
+        _bars_chunk(syms[i:i + chunk], start, end, key, secret, "sip", out, bad)
     return out
 
 
@@ -128,12 +180,21 @@ def main(n_days=None):
         return 1
     uni = load()
     days = sessions(int(n_days or os.environ.get("QUANT_BT_DAYS", "10")))
-    trades = []
+    trades, bad, loaded = [], {}, 0
     for d, close in days:
-        bars = fetch_day(uni["symbols"], d, close, key, secret)
+        bars = fetch_day(uni["symbols"], d, close, key, secret, bad)
+        if not bars:
+            log(f"{d}: no bars came back - day skipped")
+            continue
+        loaded += 1
         tr = replay_day(cfg, uni, bars, d, close)
         trades += tr
         log(f"{d}: {sum(len(v) for v in bars.values())} bars, {len(bars)} symbols · {len(tr)} trades")
+    if bad:
+        log(f"Alpaca refused {len(bad)} symbol(s), left out: " + ", ".join(f"{k} ({v})" for k, v in list(bad.items())[:12]))
+    if not loaded:
+        log("no session's bars could be loaded - check the Alpaca keys and the messages above")
+        return 1
     g = gate(trades, cfg)
     DATA.mkdir(parents=True, exist_ok=True)
     (DATA / "backtest").mkdir(exist_ok=True)
