@@ -95,29 +95,57 @@ def holdings(etf, top=25):
     return out[:top]
 
 
-def build(n_stocks=120, n_stream=30):
+def _kind(t):
+    if t.startswith("^"):
+        return "index"
+    if t.endswith("=X"):
+        return "fx"
+    if t.endswith("=F"):
+        return "future"
+    if t.endswith("-USD"):
+        return "crypto"
+    if "." in t:
+        return "foreign listing"
+    return "us" if us_symbol(t) else "other"
+
+
+def build(n_stream=None, max_symbols=None, momentum_min_dv=None):
+    """z174: EVERY US-listed stock and ETF in the four books (739 of 906 on 10-31; new imports join automatically the
+    next morning), plus the sector / index ETFs and the sector ETFs' holdings. Nothing is cut by size any more: the
+    engine's liquidity floors (price, spread, dollar volume) decide what may trade. What Alpaca's stock API can't
+    trade (indices, FX, futures, crypto, foreign listings) is counted, not silently dropped."""
+    from .config import CFG
+    n_stream = n_stream or CFG.stream_limit
+    max_symbols = max_symbols or CFG.max_symbols
+    momentum_min_dv = momentum_min_dv if momentum_min_dv is not None else CFG.momentum_min_dollar_volume
     prev = {}
     try:
         prev = json.loads(OUT.read_text())
     except Exception:
         pass
-    rows = {}
+    rows, skipped, seen = {}, {}, set()
     for b in BOOKS:
         try:
             data = json.loads(get(f"{RAW}/{b}/main/data/master.json").decode())
             for r in (data if isinstance(data, list) else data.get("rows") or []):
                 t = str(r.get("ticker") or "").upper()
-                if not us_symbol(t):
+                if not t or t in seen:
+                    continue
+                seen.add(t)
+                k = _kind(t)
+                if k != "us":
+                    skipped[k] = skipped.get(k, 0) + 1
                     continue
                 try:
-                    px, vol = float(r.get("price") or 0), float(r.get("volume") or 0)
+                    px = float(r.get("price") or r.get("closeyest") or 0)
+                    vol = float(r.get("volume") or 0)
                 except ValueError:
-                    continue
+                    px, vol = 0.0, 0.0
                 etf = SECTOR_ETF.get(str(r.get("sector") or "").strip().lower())
-                rows.setdefault(t, {"price": px, "dv": px * vol, "etf": etf})
+                rows[t] = {"price": px, "dv": px * vol, "etf": etf, "book": b}
         except Exception as e:
             log(f"{b}: {e}")
-    stocks = sorted((t for t, v in rows.items() if v["etf"] and v["price"] >= 5 and t not in ETFS + INDEX_ETFS), key=lambda t: -rows[t]["dv"])[:n_stocks]
+    stocks = sorted((t for t in rows if t not in ETFS + INDEX_ETFS), key=lambda t: -rows[t]["dv"])
     weights = {}
     for etf in ETFS:
         try:
@@ -127,14 +155,21 @@ def build(n_stocks=120, n_stream=30):
             if prev.get("etf_weights", {}).get(etf):
                 weights[etf] = prev["etf_weights"][etf]
     members = sorted({t for w in weights.values() for t, _ in w})
-    symbols = [t for t in dict.fromkeys(ETFS + INDEX_ETFS + stocks + members) if us_symbol(t)]
+    symbols = [t for t in dict.fromkeys(ETFS + INDEX_ETFS + stocks + members) if us_symbol(t)][:max_symbols]
     stream = list(dict.fromkeys(INDEX_ETFS + ETFS + stocks))[:n_stream]
+    sector_etf = {t: rows[t]["etf"] for t in stocks if rows[t]["etf"]}
+    momentum = [t for t in stocks if rows[t]["dv"] >= momentum_min_dv and rows[t]["price"] >= 5]
+    liquidity = {t: round(rows[t]["dv"]) for t in rows}
     doc = {"asOf": datetime.now(timezone.utc).isoformat(timespec="seconds"), "symbols": symbols, "stream": stream,
-           "sector_etf": {t: rows[t]["etf"] for t in stocks}, "etf_weights": weights, "momentum": stocks[:80],
-           "counts": {"symbols": len(symbols), "stocks": len(stocks), "etfsWithHoldings": len(weights), "stream": len(stream)}}
+           "sector_etf": sector_etf, "etf_weights": weights, "momentum": momentum, "liquidity": liquidity,
+           "counts": {"bookTickers": len(seen), "usTradable": len(rows), "symbols": len(symbols), "stocks": len(stocks),
+                      "withSector": len(sector_etf), "momentum": len(momentum), "etfsWithHoldings": len(weights),
+                      "stream": len(stream), "notOnAlpacaStocks": skipped}}
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text(json.dumps(doc, indent=1))
-    log(f"{len(symbols)} symbols · {len(stocks)} stocks · {len(weights)} ETFs with holdings · {len(stream)} streamed")
+    log(f"{len(seen)} book tickers: {len(rows)} US stocks / ETFs (all kept) · not tradable through Alpaca's stock API: "
+        + (", ".join(f"{v} {k}" for k, v in sorted(skipped.items(), key=lambda x: -x[1])) or "none")
+        + f" · {len(symbols)} symbols with the ETF holdings · {len(sector_etf)} with a sector ETF · {len(momentum)} momentum-liquid · {len(stream)} streamed")
     return doc
 
 
