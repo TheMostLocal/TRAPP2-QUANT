@@ -14,6 +14,7 @@ import asyncio
 import json
 import os
 import time
+import urllib.error
 import urllib.parse
 import urllib.request
 from datetime import datetime
@@ -93,6 +94,7 @@ class SnapshotPoller:
         self.key, self.secret = key, secret
         self.extra = []               # streamed names added back while the stream is down
         self.polls, self.errors, self.last_ok = 0, 0, 0.0
+        self.refused = {}             # z172: symbols Alpaca answered 400 for - dropped, with its message
 
     def fetch(self, syms):
         q = urllib.parse.urlencode({"symbols": ",".join(s.replace("-", ".") for s in syms), "feed": self.feed})
@@ -111,12 +113,36 @@ class SnapshotPoller:
             if t:
                 st.on_trade(t.get("p"), t.get("s"), ts_of(t.get("t")))
 
+    def fetch_safe(self, syms):
+        """z172: one refused symbol made Alpaca answer 400 for the whole chunk (the backtest died on it) - split the chunk
+        until the culprit is alone, drop it for good (logged once), and keep the rest flowing."""
+        syms = [s for s in syms if s not in self.refused]
+        if not syms:
+            return {}
+        try:
+            return self.fetch(syms)
+        except urllib.error.HTTPError as e:
+            if e.code not in (400, 422):
+                raise
+            try:
+                msg = json.loads(e.read().decode("utf-8", "replace")).get("message", "")
+            except Exception:
+                msg = ""
+            if len(syms) == 1:
+                self.refused[syms[0]] = msg or f"HTTP {e.code}"
+                print(f"[feed] Alpaca refuses {syms[0]} ({self.refused[syms[0]]}) - dropped from the poll", flush=True)
+                return {}
+            h = len(syms) // 2
+            out = dict(self.fetch_safe(syms[:h]))
+            out.update(self.fetch_safe(syms[h:]))
+            return out
+
     async def run(self, stop):
         while not stop.is_set():
-            syms = list(dict.fromkeys(self.symbols + self.extra))
+            syms = [s for s in dict.fromkeys(self.symbols + self.extra) if s not in self.refused]
             for i in range(0, len(syms), 200):
                 try:
-                    self.apply(await asyncio.to_thread(self.fetch, syms[i:i + 200]))
+                    self.apply(await asyncio.to_thread(self.fetch_safe, syms[i:i + 200]))
                     self.last_ok = time.time()
                 except Exception as e:
                     self.errors += 1
