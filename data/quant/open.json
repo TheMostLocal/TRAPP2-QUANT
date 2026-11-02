@@ -135,23 +135,6 @@
  },
  "positions": [
   {
-   "id": "2026-11-02-ope-7b087861",
-   "strategy": "opening_range",
-   "symbol": "VFC",
-   "side": "long",
-   "qty": 264,
-   "entry_px": 18.891889,
-   "entry_mid": 18.884999999999998,
-   "entry_spread_bps": 5.2952078369084274,
-   "entry_ts": 1793630760.3248944,
-   "stop_bps": 123.11,
-   "target_bps": 246.23,
-   "max_hold_min": 369,
-   "mode": "shadow",
-   "reason": "broke the opening range 18.45-18.85 (212 bps wide)",
-   "meta": {}
-  },
-  {
    "id": "2026-11-02-ope-2d1f4319",
    "strategy": "opening_range",
    "symbol": "EWJ",
@@ -203,23 +186,6 @@
    "meta": {}
   },
   {
-   "id": "2026-11-02-ope-f845ae86",
-   "strategy": "opening_range",
-   "symbol": "EWZ",
-   "side": "long",
-   "qty": 153,
-   "entry_px": 32.553255,
-   "entry_mid": 32.545,
-   "entry_spread_bps": 3.07266861268951,
-   "entry_ts": 1793630760.3248944,
-   "stop_bps": 62.99,
-   "target_bps": 125.98,
-   "max_hold_min": 369,
-   "mode": "shadow",
-   "reason": "broke the opening range 32.16-32.52 (108 bps wide)",
-   "meta": {}
-  },
-  {
    "id": "2026-11-02-ope-42fb66b2",
    "strategy": "opening_range",
    "symbol": "KWEB",
@@ -268,23 +234,6 @@
    "max_hold_min": 369,
    "mode": "shadow",
    "reason": "broke the opening range 33.11-33.28 (54 bps wide)",
-   "meta": {}
-  },
-  {
-   "id": "2026-11-02-ope-820efc69",
-   "strategy": "opening_range",
-   "symbol": "MCHI",
-   "side": "long",
-   "qty": 100,
-   "entry_px": 49.814981,
-   "entry_mid": 49.8,
-   "entry_spread_bps": 4.016064257028741,
-   "entry_ts": 1793630760.3248944,
-   "stop_bps": 35.64,
-   "target_bps": 71.29,
-   "max_hold_min": 369,
-   "mode": "shadow",
-   "reason": "broke the opening range 49.49-49.75 (53 bps wide)",
    "meta": {}
   },
   {
@@ -407,23 +356,6 @@
    "meta": {}
   },
   {
-   "id": "2026-11-02-ope-8564fb5c",
-   "strategy": "opening_range",
-   "symbol": "DOW",
-   "side": "long",
-   "qty": 145,
-   "entry_px": 34.273427,
-   "entry_mid": 34.265,
-   "entry_spread_bps": 2.9184298847235124,
-   "entry_ts": 1793631780.571512,
-   "stop_bps": 98.5,
-   "target_bps": 196.99,
-   "max_hold_min": 352,
-   "mode": "shadow",
-   "reason": "broke the opening range 33.66-34.19 (155 bps wide)",
-   "meta": {}
-  },
-  {
    "id": "2026-11-02-ope-5cbf270e",
    "strategy": "opening_range",
    "symbol": "UBER",
@@ -509,26 +441,6 @@
    "meta": {}
   },
   {
-   "id": "2026-11-02-sec-c6249e42",
-   "strategy": "sector_reversion",
-   "symbol": "SHEL",
-   "side": "short",
-   "qty": 47,
-   "entry_px": 105.109488,
-   "entry_mid": 105.125,
-   "entry_spread_bps": 0.9512485136733322,
-   "entry_ts": 1793646120.7726657,
-   "stop_bps": 14.53,
-   "target_bps": 11.32,
-   "max_hold_min": 30,
-   "mode": "shadow",
-   "reason": "residual z +2.60 vs XLE (beta 0.50)",
-   "meta": {
-    "etf": "XLE",
-    "z": 2.596
-   }
-  },
-  {
    "id": "2026-11-02-sec-000e35e2",
    "strategy": "sector_reversion",
    "symbol": "CRK",
@@ -549,98 +461,41 @@
    }
   },
   {
-   "id": "2026-11-02-etf-a0513f71",
+   "id": "2026-11-02-etf-de91055c",
    "strategy": "etf_arb",
-   "symbol": "XLU",
-   "side": "long",
+   "symbol": "XLRE",
+   "side": "short",
    "qty": 114,
-   "entry_px": 43.734373,
-   "entry_mid": 43.724999999999994,
-   "entry_spread_bps": 2.2870211549452284,
-   "entry_ts": 1793646780.1215544,
-   "stop_bps": 15.7,
-   "target_bps": 7.85,
+   "entry_px": 43.59564,
+   "entry_mid": 43.605000000000004,
+   "entry_spread_bps": 2.2933149868129825,
+   "entry_ts": 1793647800.3350096,
+   "stop_bps": 79.48,
+   "target_bps": 39.74,
    "max_hold_min": 10,
    "mode": "shadow",
-   "reason": "basket +13.1 bps vs XLU over 5 min (92% of the fund priced)",
+   "reason": "basket -66.2 bps vs XLRE over 5 min (95% of the fund priced)",
    "meta": {
-    "gap": 13.09
+    "gap": -66.23
    }
   },
   {
-   "id": "2026-11-02-etf-69e10bf0",
+   "id": "2026-11-02-etf-3d592e54",
    "strategy": "etf_arb",
-   "symbol": "XLI",
+   "symbol": "XLV",
    "side": "short",
-   "qty": 29,
-   "entry_px": 169.863012,
-   "entry_mid": 169.89,
-   "entry_spread_bps": 1.1772323268002964,
-   "entry_ts": 1793646840.2111597,
-   "stop_bps": 53.65,
-   "target_bps": 26.83,
+   "qty": 27,
+   "entry_px": 184.551543,
+   "entry_mid": 184.57999999999998,
+   "entry_spread_bps": 1.0835410120278597,
+   "entry_ts": 1793647800.3350096,
+   "stop_bps": 15.0,
+   "target_bps": 7.5,
    "max_hold_min": 10,
    "mode": "shadow",
-   "reason": "basket -44.7 bps vs XLI over 5 min (62% of the fund priced)",
+   "reason": "basket -12.5 bps vs XLV over 5 min (85% of the fund priced)",
    "meta": {
-    "gap": -44.71
-   }
-  },
-  {
-   "id": "2026-11-02-etf-b7c9a108",
-   "strategy": "etf_arb",
-   "symbol": "XLB",
-   "side": "long",
-   "qty": 93,
-   "entry_px": 53.765376,
-   "entry_mid": 53.754999999999995,
-   "entry_spread_bps": 1.8602920658539692,
-   "entry_ts": 1793646840.2111597,
-   "stop_bps": 48.61,
-   "target_bps": 24.31,
-   "max_hold_min": 10,
-   "mode": "shadow",
-   "reason": "basket +40.5 bps vs XLB over 5 min (100% of the fund priced)",
-   "meta": {
-    "gap": 40.51
-   }
-  },
-  {
-   "id": "2026-11-02-etf-75c49d1f",
-   "strategy": "etf_arb",
-   "symbol": "XLE",
-   "side": "short",
-   "qty": 73,
-   "entry_px": 67.623237,
-   "entry_mid": 67.64,
-   "entry_spread_bps": 2.956830277943559,
-   "entry_ts": 1793646900.3033493,
-   "stop_bps": 58.49,
-   "target_bps": 29.25,
-   "max_hold_min": 10,
-   "mode": "shadow",
-   "reason": "basket -48.7 bps vs XLE over 5 min (100% of the fund priced)",
-   "meta": {
-    "gap": -48.74
-   }
-  },
-  {
-   "id": "2026-11-02-etf-1f1d6ea1",
-   "strategy": "etf_arb",
-   "symbol": "XLY",
-   "side": "long",
-   "qty": 42,
-   "entry_px": 118.491848,
-   "entry_mid": 118.475,
-   "entry_spread_bps": 0.8440599282553379,
-   "entry_ts": 1793646900.3033493,
-   "stop_bps": 24.24,
-   "target_bps": 12.12,
-   "max_hold_min": 10,
-   "mode": "shadow",
-   "reason": "basket +20.2 bps vs XLY over 5 min (90% of the fund priced)",
-   "meta": {
-    "gap": 20.2
+    "gap": -12.5
    }
   }
  ]
