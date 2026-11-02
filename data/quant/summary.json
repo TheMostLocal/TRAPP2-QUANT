@@ -1,0 +1,13 @@
+{
+ "asOf": "2026-11-02T14:35:05+00:00",
+ "benchmarkWinRate": 0.5075,
+ "live": {
+  "n": 0
+ },
+ "shadow": {
+  "n": 0
+ },
+ "byStrategy": {},
+ "byDay": {},
+ "trades": 0
+}
