@@ -1,5 +1,5 @@
 {
- "asOf": "2026-11-01T15:53:21+00:00",
+ "asOf": "2026-11-02T14:20:03+00:00",
  "symbols": [
   "XLB",
   "XLC",
@@ -27,17 +27,25 @@
   "GOOGL",
   "TSLA",
   "SPCX",
+  "SOXL",
   "META",
   "GOOG",
   "AVGO",
   "TSM",
+  "SOXX",
   "MRVL",
   "LLY",
+  "VOO",
+  "GLD",
   "ORCL",
+  "IBIT",
   "PLTR",
+  "HYG",
+  "IVV",
+  "MSTR",
   "LRCX",
   "DELL",
-  "MSTR",
+  "LQD",
   "XOM",
   "AMAT",
   "QCOM",
@@ -47,7 +55,9 @@
   "WMT",
   "KLAC",
   "COST",
+  "EWY",
   "ASML",
+  "TLT",
   "CAT",
   "ADI",
   "NFLX",
@@ -55,31 +65,39 @@
   "COIN",
   "V",
   "MA",
+  "CSCO",
+  "SQQQ",
   "PANW",
   "PEP",
   "ACN",
   "JPM",
   "REGN",
   "CVX",
-  "CSCO",
-  "JNJ",
   "SNOW",
+  "QQQM",
+  "JNJ",
+  "GE",
   "HOOD",
   "NXPI",
-  "ARM",
   "BAC",
+  "ARM",
+  "IEF",
   "ABBV",
   "MRNA",
   "NEE",
   "GILD",
   "GS",
   "SPOT",
-  "SYK",
   "PG",
+  "SYK",
   "MRK",
+  "SLV",
   "CRM",
+  "AGG",
   "TMUS",
   "VRT",
+  "EWZ",
+  "VTI",
   "UNH",
   "KO",
   "VRTX",
@@ -90,9 +108,8 @@
   "GPN",
   "LIN",
   "MO",
-  "GE",
-  "MCHP",
   "AMGN",
+  "MCHP",
   "BA",
   "DASH",
   "IBM",
@@ -101,6 +118,8 @@
   "TMO",
   "ADBE",
   "LNG",
+  "BIL",
+  "XBI",
   "NET",
   "ANET",
   "PFE",
@@ -115,12 +134,13 @@
   "VZ",
   "LMT",
   "ON",
-  "FTNT",
   "AAOI",
+  "FTNT",
   "UBER",
   "ALNY",
   "CVNA",
   "PH",
+  "VTV",
   "CMCSA",
   "T",
   "FCX",
@@ -136,97 +156,624 @@
   "WFC",
   "SCHW",
   "CIEN",
-  "ABNB",
+  "MDLZ",
+  "EL",
+  "PM",
+  "NEM",
+  "GD",
+  "COF",
+  "CSX",
+  "MPC",
+  "PWR",
   "ABT",
+  "LOW",
+  "SPGI",
+  "PYPL",
+  "DHR",
+  "ICE",
+  "USO",
+  "EXC",
+  "HPQ",
+  "MELI",
+  "DE",
+  "CEG",
+  "UNP",
+  "CL",
+  "NOK",
+  "WELL",
+  "BABA",
+  "FDX",
+  "CBOE",
+  "AXP",
+  "TGT",
+  "TEAM",
+  "AEM",
+  "MAR",
+  "MCO",
+  "RMD",
+  "BMY",
+  "CMG",
+  "RIVN",
+  "MCK",
+  "TEM",
+  "AAL",
+  "IBB",
+  "DLR",
+  "BLK",
+  "CVS",
+  "SHW",
+  "CCJ",
+  "FXI",
+  "VST",
+  "DXCM",
+  "LHX",
+  "DIS",
+  "VXUS",
+  "RKT",
+  "EWJ",
+  "EMB",
+  "SLB",
+  "TTWO",
+  "EBAY",
+  "HON",
+  "PINS",
+  "EQIX",
+  "TJX",
+  "EMR",
+  "VWO",
+  "ABNB",
+  "ETHA",
+  "STM",
+  "IDXX",
+  "SHEL",
+  "BND",
+  "DUK",
+  "WAT",
+  "ROKU",
+  "BX",
+  "APO",
+  "NVO",
+  "WM",
+  "FSLR",
+  "XEL",
+  "AEP",
+  "CB",
+  "CME",
+  "UPS",
+  "AON",
+  "AMT",
+  "OXY",
+  "HLT",
+  "O",
+  "URI",
+  "MDB",
+  "SO",
+  "WMB",
+  "ASTS",
+  "F",
+  "TRV",
+  "EW",
+  "CI",
+  "PLD",
+  "NOC",
+  "FISV",
+  "ICLR",
+  "CRH",
+  "ZS",
+  "CHRW",
+  "ELV",
+  "CRL",
+  "VALE",
+  "ADT",
+  "HCA",
+  "FIS",
+  "ECL",
+  "NDAQ",
+  "UAL",
+  "BKR",
+  "IAU",
+  "EXPE",
+  "SFM",
+  "NVS",
+  "MLM",
+  "RBRK",
+  "KMI",
+  "RVTY",
+  "BP",
+  "DVN",
+  "EQT",
+  "WDAY",
+  "AKAM",
+  "CAH",
+  "WPM",
+  "A",
+  "ROST",
+  "ITW",
+  "VRSN",
+  "STZ",
+  "SE",
+  "PCAR",
+  "TSLL",
+  "TDG",
+  "SWKS",
+  "ODFL",
+  "PGR",
+  "COR",
+  "IBKR",
+  "XYZ",
+  "USB",
+  "DHI",
+  "PDD",
+  "RIO",
+  "XRT",
+  "EOG",
+  "VMC",
+  "LULU",
+  "FANG",
+  "UVXY",
+  "U",
+  "SPXS",
+  "APD",
+  "UMC",
+  "MET",
+  "NUE",
+  "SH",
+  "JNK",
+  "SCCO",
+  "ALL",
+  "OKE",
+  "BBY",
+  "DOW",
+  "TFC",
+  "CHKP",
+  "NVDL",
+  "HSY",
+  "KR",
+  "SHY",
+  "TROW",
+  "HUM",
+  "SPG",
+  "ED",
+  "CCI",
+  "MOH",
+  "CTVA",
+  "CRS",
+  "B",
+  "ULTA",
+  "DAL",
+  "D",
+  "PNC",
+  "KHC",
+  "INCY",
+  "KWEB",
+  "TW",
+  "YUM",
+  "BIIB",
+  "DVA",
+  "ALB",
+  "PNR",
+  "ZTS",
+  "TPR",
+  "LYB",
+  "CP",
   "ADM",
+  "KKR",
+  "PSA",
+  "TNA",
+  "EXPD",
+  "IQV",
+  "PEG",
+  "ETSY",
+  "DLTR",
+  "AWK",
+  "HIMS",
+  "XYL",
+  "ATI",
+  "INDA",
+  "LEN",
+  "MGM",
+  "VICI",
+  "CSGP",
+  "VCSH",
+  "CIBR",
+  "OMC",
+  "JBHT",
+  "HAL",
+  "UVIX",
+  "GIS",
+  "GOVT",
+  "PCG",
+  "MBB",
+  "ROK",
+  "AFL",
+  "FND",
+  "SNAP",
+  "PATH",
+  "KGC",
+  "WY",
+  "EXR",
+  "BHP",
+  "SYY",
+  "AIG",
+  "W",
+  "SRE",
+  "S",
+  "NVR",
+  "TIP",
+  "PPG",
+  "PHM",
+  "PRU",
+  "HII",
+  "BNDX",
+  "GSK",
+  "DPZ",
+  "HRL",
+  "MTCH",
+  "CHTR",
+  "TXT",
+  "AR",
+  "BWA",
+  "GME",
+  "ALLY",
+  "AN",
+  "STT",
+  "GFS",
+  "SJM",
+  "NSC",
+  "RACE",
+  "RGLD",
+  "NRG",
+  "CLF",
+  "FIG",
+  "SIRI",
+  "NTRS",
+  "CF",
+  "STLD",
+  "TSN",
+  "TENB",
+  "TTD",
+  "BUG",
+  "JHX",
+  "BIDU",
+  "PHYS",
+  "TOL",
+  "EXE",
+  "UNG",
+  "BG",
+  "ENPH",
+  "OVV",
+  "MSTU",
+  "CPRI",
+  "SONY",
+  "ZSL",
+  "SCHP",
+  "QLYS",
+  "SBAC",
+  "GTLB",
+  "LUV",
+  "SIVR",
+  "WYNN",
+  "ZM",
+  "ET",
+  "MOS",
+  "IVZ",
+  "VFC",
+  "NEU",
+  "FNF",
+  "MKTX",
+  "POOL",
+  "CHWY",
+  "JD",
+  "DD",
+  "KMX",
+  "ESTC",
+  "JKHY",
+  "FRO",
+  "JEF",
+  "KTOS",
+  "AA",
+  "FSLY",
+  "FNV",
+  "AES",
+  "CPB",
+  "OPCH",
+  "M",
+  "BMRN",
+  "AMZU",
+  "LYFT",
+  "STNG",
+  "ANF",
+  "STLA",
+  "MCHI",
+  "RYAAY",
+  "BEN",
+  "VRNS",
+  "REAL",
+  "EWC",
+  "HEI",
+  "BB",
+  "FNDA",
+  "Z",
+  "OSCR",
+  "BRKR",
+  "PICK",
+  "NTES",
+  "FOUR",
+  "HP",
+  "ACI",
+  "SYM",
+  "KSS",
+  "DUOL",
+  "WTRG",
+  "XLG",
+  "WOLF",
+  "ICLN",
+  "LEA",
+  "RH",
+  "UPST",
+  "APTV",
+  "NTR",
+  "MGA",
+  "LPX",
+  "JETS",
+  "AGCO",
+  "UCO",
+  "SCO",
+  "EWW",
+  "DEO",
+  "PAG",
+  "MTH",
+  "SPHR",
+  "DB",
+  "BYD",
+  "NFG",
+  "OSIS",
+  "BTDR",
+  "SIG",
+  "KNSL",
+  "SQM",
+  "IBRX",
+  "RUN",
+  "AMC",
+  "AM",
+  "CRUS",
+  "TM",
+  "TDOC",
+  "NWL",
+  "FAF",
+  "BIO",
+  "GRNY",
+  "SLM",
+  "WMG",
+  "EXP",
+  "MT",
+  "SNK",
+  "DAN",
+  "ZIM",
+  "CRSP",
+  "LMND",
+  "AAP",
+  "PENN",
+  "JBLU",
+  "BWET",
+  "LUNR",
+  "BNTX",
+  "GPI",
+  "CNK",
+  "AI",
+  "EADSY",
+  "REMX",
+  "SEDG",
+  "YINN",
+  "UUP",
+  "NTLA",
+  "HACK",
+  "ABR",
+  "AMLP",
+  "BIRK",
+  "MSFD",
+  "NXST",
+  "WTM",
+  "PLUG",
+  "FTDR",
+  "TARS",
+  "IYT",
+  "LCID",
+  "KBH",
+  "DNTH",
+  "BEAM",
+  "SAM",
+  "EOSE",
+  "PPC",
+  "PACB",
+  "ABCB",
+  "TAN",
+  "IPAR",
+  "PRME",
+  "HTZ",
+  "SPYU",
+  "SHLS",
+  "DJT",
+  "YANG",
+  "IMAX",
+  "CRK",
+  "HMC",
+  "SPB",
+  "RYCEY",
+  "AGO",
+  "ENVX",
+  "EWG",
+  "ULCC",
+  "BCC",
+  "NMR",
+  "OPY",
+  "PCT",
+  "EWQ",
+  "WGMI",
+  "VITL",
+  "LI",
+  "GOLD",
+  "RUM",
+  "BAESY",
+  "BEP",
+  "BATRK",
+  "CPER",
+  "CSIQ",
+  "NAVI",
+  "AGL",
+  "UWMC",
+  "GRPN",
+  "LAC",
+  "SBLK",
+  "HIMX",
+  "NTDOY",
+  "UAMY",
+  "ARRY",
+  "LIT",
+  "ECVT",
+  "BLOK",
+  "SPCE",
+  "MCHB",
+  "SLYV",
+  "BOOM",
+  "ADYEY",
+  "LAZR",
+  "GSL",
+  "IDT",
+  "EWI",
+  "PKX",
+  "HPP",
+  "TRUP",
+  "UROY",
+  "JKS",
+  "WOOF",
+  "IEP",
+  "PHAT",
+  "VELO",
+  "WPP",
+  "CHPT",
+  "GNK",
+  "ETHW",
+  "GOOS",
+  "EDIT",
+  "PUBM",
+  "ALT",
+  "BYND",
+  "WEAT",
+  "LAES",
+  "JACK",
+  "NVDD",
+  "MGPI",
+  "SPRY",
+  "BBBY",
+  "SANA",
+  "DRUG",
+  "SB",
+  "RILY",
+  "CRTO",
+  "LOVE",
+  "PHO",
+  "FOSL",
+  "MTRX",
+  "LPL",
+  "PALI",
+  "OPK",
+  "VWAGY",
+  "ACIC",
+  "LILA",
+  "NRGU",
+  "EVGO",
+  "MAGN",
+  "GOGO",
+  "XTN",
+  "QQQU",
+  "CENN",
+  "EU",
+  "LZAGY",
+  "CHRS",
+  "NUWE",
+  "ADV",
+  "DASTY",
+  "BOE",
+  "OILD",
+  "VIVO",
+  "CHGG",
+  "CCU",
+  "RGC",
+  "CRVO",
+  "OKUR",
+  "BMEA",
+  "STEM",
+  "ALXO",
+  "INDO",
+  "BDRY",
+  "PLCE",
+  "CHSN",
+  "PARA",
+  "BLNK",
+  "BZFD",
+  "CTM",
+  "SOYB",
+  "TWG",
+  "NRDY",
+  "UPLD",
+  "HAIN",
+  "PCRFF",
+  "NIVF",
+  "XPON",
+  "BABO",
+  "KOSS",
+  "PEMX",
+  "USBC",
+  "NAAS",
+  "COHN",
+  "JTAI",
+  "SOS",
+  "FAMI",
+  "LNVGY",
+  "PUBGY",
+  "TCEHY",
+  "ADDYY",
+  "FMCC",
+  "FNMA",
+  "BIGGQ",
+  "SSNLF",
+  "BCAB",
+  "MAPS",
   "ADP",
   "AEE",
-  "AEP",
-  "ALB",
   "AMCR",
-  "AMT",
   "APA",
-  "APD",
   "APH",
   "APP",
   "ATO",
   "AVY",
-  "AWK",
-  "AXP",
   "AZO",
   "BALL",
-  "BKR",
-  "BLK",
-  "BMY",
   "BNY",
   "BRK-B",
   "BSX",
-  "BX",
   "CASY",
-  "CB",
   "CBRE",
-  "CCI",
-  "CEG",
-  "CF",
   "CHD",
-  "CHTR",
-  "CI",
-  "CL",
-  "CME",
-  "CMG",
   "CMS",
   "CNP",
-  "COF",
-  "COR",
-  "CRH",
-  "CSGP",
-  "CSX",
-  "CVS",
-  "D",
-  "DE",
+  "CTAS",
   "DG",
-  "DHI",
-  "DHR",
-  "DIS",
-  "DLR",
-  "DLTR",
   "DOC",
-  "DOW",
   "DTE",
-  "DUK",
-  "DVN",
-  "EBAY",
   "ECHO",
-  "ECL",
-  "ED",
   "EIX",
-  "EL",
-  "ELV",
-  "EMR",
-  "EOG",
-  "EQIX",
-  "EQT",
   "ES",
   "ESS",
   "ETR",
-  "EXC",
-  "EXE",
-  "EXR",
-  "F",
-  "FANG",
   "FE",
   "FOX",
   "FOXA",
-  "GD",
   "GEV",
   "GRMN",
-  "HAL",
-  "HCA",
-  "HLT",
   "HST",
-  "HSY",
   "HWM",
-  "ICE",
   "IFF",
   "INVH",
   "IP",
@@ -234,87 +781,32 @@
   "ISRG",
   "JCI",
   "KDP",
-  "KHC",
   "KIM",
-  "KMI",
-  "KR",
   "KVUE",
-  "LOW",
-  "LYB",
   "LYV",
   "MAA",
-  "MAR",
-  "MCK",
-  "MCO",
-  "MDLZ",
   "MDT",
-  "MLM",
   "MMM",
   "MNST",
-  "MOS",
-  "MPC",
   "MRSH",
-  "NEM",
-  "NOC",
-  "NSC",
-  "NUE",
   "NWS",
   "NWSA",
-  "O",
-  "OKE",
-  "OMC",
   "ORLY",
-  "OXY",
-  "PCG",
-  "PEG",
-  "PGR",
   "PKG",
-  "PLD",
-  "PM",
-  "PNC",
-  "PPG",
   "PPL",
-  "PSA",
-  "PWR",
   "RCL",
   "RDDT",
   "REG",
-  "ROST",
-  "SBAC",
-  "SHW",
   "SKYD",
-  "SLB",
-  "SO",
-  "SPG",
-  "SPGI",
-  "SRE",
-  "STLD",
   "SW",
-  "SYY",
-  "TGT",
-  "TJX",
   "TKO",
   "TPL",
   "TRGP",
-  "TRV",
   "TT",
-  "TTWO",
-  "UNP",
-  "UPS",
-  "USB",
-  "VICI",
-  "VMC",
   "VMRK",
-  "VST",
   "VTR",
   "VYLR",
-  "WEC",
-  "WELL",
-  "WM",
-  "WMB",
-  "WY",
-  "XEL",
-  "YUM"
+  "WEC"
  ],
  "stream": [
   "SPY",
@@ -343,10 +835,10 @@
   "GOOGL",
   "TSLA",
   "SPCX",
+  "SOXL",
   "META",
   "GOOG",
-  "AVGO",
-  "TSM"
+  "AVGO"
  ],
  "sector_etf": {
   "NVDA": "XLK",
@@ -368,9 +860,9 @@
   "LLY": "XLV",
   "ORCL": "XLK",
   "PLTR": "XLK",
+  "MSTR": "XLK",
   "LRCX": "XLK",
   "DELL": "XLK",
-  "MSTR": "XLK",
   "XOM": "XLE",
   "AMAT": "XLK",
   "QCOM": "XLK",
@@ -388,27 +880,28 @@
   "COIN": "XLF",
   "V": "XLF",
   "MA": "XLF",
+  "CSCO": "XLK",
   "PANW": "XLK",
   "PEP": "XLP",
   "ACN": "XLK",
   "JPM": "XLF",
   "REGN": "XLV",
   "CVX": "XLE",
-  "CSCO": "XLK",
-  "JNJ": "XLV",
   "SNOW": "XLK",
+  "JNJ": "XLV",
+  "GE": "XLI",
   "HOOD": "XLF",
   "NXPI": "XLK",
-  "ARM": "XLK",
   "BAC": "XLF",
+  "ARM": "XLK",
   "ABBV": "XLV",
   "MRNA": "XLV",
   "NEE": "XLU",
   "GILD": "XLV",
   "GS": "XLF",
   "SPOT": "XLC",
-  "SYK": "XLV",
   "PG": "XLP",
+  "SYK": "XLV",
   "MRK": "XLV",
   "CRM": "XLK",
   "TMUS": "XLC",
@@ -423,9 +916,8 @@
   "GPN": "XLI",
   "LIN": "XLB",
   "MO": "XLP",
-  "GE": "XLI",
-  "MCHP": "XLK",
   "AMGN": "XLV",
+  "MCHP": "XLK",
   "BA": "XLI",
   "DASH": "XLY",
   "IBM": "XLK",
@@ -448,8 +940,8 @@
   "VZ": "XLC",
   "LMT": "XLI",
   "ON": "XLK",
-  "FTNT": "XLK",
   "AAOI": "XLK",
+  "FTNT": "XLK",
   "UBER": "XLK",
   "ALNY": "XLV",
   "CVNA": "XLY",
@@ -468,1097 +960,1599 @@
   "AZN": "XLV",
   "WFC": "XLF",
   "SCHW": "XLF",
-  "CIEN": "XLK"
+  "CIEN": "XLK",
+  "MDLZ": "XLP",
+  "EL": "XLP",
+  "PM": "XLP",
+  "NEM": "XLB",
+  "GD": "XLI",
+  "COF": "XLF",
+  "CSX": "XLI",
+  "MPC": "XLE",
+  "PWR": "XLI",
+  "ABT": "XLV",
+  "LOW": "XLY",
+  "SPGI": "XLF",
+  "PYPL": "XLF",
+  "DHR": "XLV",
+  "ICE": "XLF",
+  "EXC": "XLU",
+  "HPQ": "XLK",
+  "MELI": "XLY",
+  "DE": "XLI",
+  "CEG": "XLU",
+  "UNP": "XLI",
+  "CL": "XLP",
+  "NOK": "XLK",
+  "WELL": "XLRE",
+  "BABA": "XLY",
+  "FDX": "XLI",
+  "CBOE": "XLF",
+  "AXP": "XLF",
+  "TGT": "XLP",
+  "TEAM": "XLK",
+  "AEM": "XLB",
+  "MAR": "XLY",
+  "MCO": "XLF",
+  "RMD": "XLV",
+  "BMY": "XLV",
+  "CMG": "XLY",
+  "RIVN": "XLY",
+  "MCK": "XLV",
+  "TEM": "XLV",
+  "AAL": "XLI",
+  "DLR": "XLRE",
+  "BLK": "XLF",
+  "CVS": "XLV",
+  "SHW": "XLB",
+  "CCJ": "XLE",
+  "VST": "XLU",
+  "DXCM": "XLV",
+  "LHX": "XLI",
+  "DIS": "XLC",
+  "RKT": "XLF",
+  "SLB": "XLE",
+  "TTWO": "XLC",
+  "EBAY": "XLY",
+  "HON": "XLI",
+  "PINS": "XLC",
+  "EQIX": "XLRE",
+  "TJX": "XLY",
+  "EMR": "XLI",
+  "ABNB": "XLY",
+  "STM": "XLK",
+  "IDXX": "XLV",
+  "SHEL": "XLE",
+  "DUK": "XLU",
+  "WAT": "XLV",
+  "ROKU": "XLC",
+  "BX": "XLF",
+  "APO": "XLF",
+  "NVO": "XLV",
+  "WM": "XLI",
+  "FSLR": "XLK",
+  "XEL": "XLU",
+  "AEP": "XLU",
+  "CB": "XLF",
+  "CME": "XLF",
+  "UPS": "XLI",
+  "AON": "XLF",
+  "AMT": "XLRE",
+  "OXY": "XLE",
+  "HLT": "XLY",
+  "O": "XLRE",
+  "URI": "XLI",
+  "MDB": "XLK",
+  "SO": "XLU",
+  "WMB": "XLE",
+  "ASTS": "XLK",
+  "F": "XLY",
+  "TRV": "XLF",
+  "EW": "XLV",
+  "CI": "XLV",
+  "PLD": "XLRE",
+  "NOC": "XLI",
+  "ICLR": "XLV",
+  "CRH": "XLB",
+  "ZS": "XLK",
+  "CHRW": "XLI",
+  "ELV": "XLV",
+  "CRL": "XLV",
+  "VALE": "XLB",
+  "ADT": "XLI",
+  "HCA": "XLV",
+  "FIS": "XLK",
+  "ECL": "XLB",
+  "NDAQ": "XLF",
+  "UAL": "XLI",
+  "BKR": "XLE",
+  "EXPE": "XLY",
+  "SFM": "XLP",
+  "NVS": "XLV",
+  "MLM": "XLB",
+  "RBRK": "XLK",
+  "KMI": "XLE",
+  "RVTY": "XLV",
+  "BP": "XLE",
+  "DVN": "XLE",
+  "EQT": "XLE",
+  "WDAY": "XLK",
+  "AKAM": "XLK",
+  "CAH": "XLV",
+  "WPM": "XLB",
+  "A": "XLV",
+  "ROST": "XLY",
+  "ITW": "XLI",
+  "VRSN": "XLK",
+  "STZ": "XLP",
+  "SE": "XLY",
+  "PCAR": "XLI",
+  "TDG": "XLI",
+  "SWKS": "XLK",
+  "ODFL": "XLI",
+  "PGR": "XLF",
+  "COR": "XLV",
+  "IBKR": "XLF",
+  "XYZ": "XLK",
+  "USB": "XLF",
+  "DHI": "XLY",
+  "PDD": "XLY",
+  "RIO": "XLB",
+  "EOG": "XLE",
+  "VMC": "XLB",
+  "LULU": "XLY",
+  "FANG": "XLE",
+  "U": "XLK",
+  "APD": "XLB",
+  "UMC": "XLK",
+  "MET": "XLF",
+  "NUE": "XLB",
+  "SCCO": "XLB",
+  "ALL": "XLF",
+  "OKE": "XLE",
+  "BBY": "XLY",
+  "DOW": "XLB",
+  "TFC": "XLF",
+  "CHKP": "XLK",
+  "HSY": "XLP",
+  "KR": "XLP",
+  "TROW": "XLF",
+  "HUM": "XLV",
+  "SPG": "XLRE",
+  "ED": "XLU",
+  "CCI": "XLRE",
+  "MOH": "XLV",
+  "CTVA": "XLB",
+  "CRS": "XLI",
+  "B": "XLB",
+  "ULTA": "XLY",
+  "DAL": "XLI",
+  "D": "XLU",
+  "PNC": "XLF",
+  "KHC": "XLP",
+  "INCY": "XLV",
+  "TW": "XLF",
+  "YUM": "XLY",
+  "BIIB": "XLV",
+  "DVA": "XLV",
+  "ALB": "XLB",
+  "PNR": "XLI",
+  "ZTS": "XLV",
+  "TPR": "XLY",
+  "LYB": "XLB",
+  "CP": "XLI",
+  "ADM": "XLP",
+  "KKR": "XLF",
+  "PSA": "XLRE",
+  "EXPD": "XLI",
+  "IQV": "XLV",
+  "PEG": "XLU",
+  "ETSY": "XLY",
+  "DLTR": "XLP",
+  "AWK": "XLU",
+  "HIMS": "XLV",
+  "XYL": "XLI",
+  "ATI": "XLI",
+  "LEN": "XLY",
+  "MGM": "XLY",
+  "VICI": "XLRE",
+  "CSGP": "XLRE",
+  "OMC": "XLC",
+  "JBHT": "XLI",
+  "HAL": "XLE",
+  "GIS": "XLP",
+  "PCG": "XLU",
+  "ROK": "XLI",
+  "AFL": "XLF",
+  "FND": "XLY",
+  "SNAP": "XLC",
+  "PATH": "XLK",
+  "KGC": "XLB",
+  "WY": "XLRE",
+  "EXR": "XLRE",
+  "BHP": "XLB",
+  "SYY": "XLP",
+  "AIG": "XLF",
+  "W": "XLY",
+  "SRE": "XLU",
+  "S": "XLK",
+  "NVR": "XLY",
+  "PPG": "XLB",
+  "PHM": "XLY",
+  "PRU": "XLF",
+  "HII": "XLI",
+  "GSK": "XLV",
+  "DPZ": "XLY",
+  "HRL": "XLP",
+  "MTCH": "XLC",
+  "CHTR": "XLC",
+  "TXT": "XLI",
+  "AR": "XLE",
+  "BWA": "XLY",
+  "GME": "XLY",
+  "ALLY": "XLF",
+  "AN": "XLY",
+  "STT": "XLF",
+  "GFS": "XLK",
+  "SJM": "XLP",
+  "NSC": "XLI",
+  "RACE": "XLY",
+  "RGLD": "XLB",
+  "NRG": "XLU",
+  "CLF": "XLB",
+  "FIG": "XLK",
+  "SIRI": "XLC",
+  "NTRS": "XLF",
+  "CF": "XLB",
+  "STLD": "XLB",
+  "TSN": "XLP",
+  "TENB": "XLK",
+  "TTD": "XLC",
+  "JHX": "XLB",
+  "BIDU": "XLC",
+  "TOL": "XLY",
+  "EXE": "XLE",
+  "BG": "XLP",
+  "ENPH": "XLK",
+  "OVV": "XLE",
+  "CPRI": "XLY",
+  "SONY": "XLK",
+  "QLYS": "XLK",
+  "SBAC": "XLRE",
+  "GTLB": "XLK",
+  "LUV": "XLI",
+  "WYNN": "XLY",
+  "ZM": "XLK",
+  "ET": "XLE",
+  "MOS": "XLB",
+  "IVZ": "XLF",
+  "VFC": "XLY",
+  "NEU": "XLB",
+  "FNF": "XLF",
+  "MKTX": "XLF",
+  "POOL": "XLI",
+  "CHWY": "XLY",
+  "JD": "XLY",
+  "DD": "XLB",
+  "KMX": "XLY",
+  "ESTC": "XLK",
+  "JKHY": "XLK",
+  "FRO": "XLE",
+  "JEF": "XLF",
+  "KTOS": "XLI",
+  "AA": "XLB",
+  "FSLY": "XLK",
+  "FNV": "XLB",
+  "AES": "XLU",
+  "CPB": "XLP",
+  "OPCH": "XLV",
+  "M": "XLY",
+  "BMRN": "XLV",
+  "LYFT": "XLK",
+  "STNG": "XLE",
+  "ANF": "XLY",
+  "STLA": "XLY",
+  "RYAAY": "XLI",
+  "BEN": "XLF",
+  "VRNS": "XLK",
+  "REAL": "XLY",
+  "HEI": "XLI",
+  "BB": "XLK",
+  "Z": "XLC",
+  "OSCR": "XLV",
+  "BRKR": "XLV",
+  "NTES": "XLC",
+  "FOUR": "XLK",
+  "HP": "XLE",
+  "ACI": "XLP",
+  "SYM": "XLI",
+  "KSS": "XLY",
+  "DUOL": "XLK",
+  "WTRG": "XLU",
+  "WOLF": "XLK",
+  "LEA": "XLY",
+  "RH": "XLY",
+  "UPST": "XLF",
+  "APTV": "XLY",
+  "NTR": "XLB",
+  "MGA": "XLY",
+  "LPX": "XLI",
+  "AGCO": "XLI",
+  "DEO": "XLP",
+  "PAG": "XLY",
+  "MTH": "XLY",
+  "SPHR": "XLC",
+  "DB": "XLF",
+  "BYD": "XLY",
+  "NFG": "XLE",
+  "OSIS": "XLK",
+  "BTDR": "XLK",
+  "SIG": "XLY",
+  "KNSL": "XLF",
+  "SQM": "XLB",
+  "IBRX": "XLV",
+  "RUN": "XLK",
+  "AMC": "XLC",
+  "AM": "XLE",
+  "CRUS": "XLK",
+  "TM": "XLY",
+  "TDOC": "XLV",
+  "NWL": "XLP",
+  "FAF": "XLF",
+  "BIO": "XLV",
+  "SLM": "XLF",
+  "WMG": "XLC",
+  "EXP": "XLB",
+  "MT": "XLB",
+  "DAN": "XLY",
+  "ZIM": "XLI",
+  "CRSP": "XLV",
+  "LMND": "XLF",
+  "AAP": "XLY",
+  "PENN": "XLY",
+  "JBLU": "XLI",
+  "LUNR": "XLI",
+  "BNTX": "XLV",
+  "GPI": "XLY",
+  "CNK": "XLC",
+  "AI": "XLK",
+  "EADSY": "XLI",
+  "SEDG": "XLK",
+  "NTLA": "XLV",
+  "ABR": "XLRE",
+  "BIRK": "XLY",
+  "NXST": "XLC",
+  "WTM": "XLF",
+  "PLUG": "XLI",
+  "FTDR": "XLY",
+  "TARS": "XLV",
+  "LCID": "XLY",
+  "KBH": "XLY",
+  "DNTH": "XLV",
+  "BEAM": "XLV",
+  "SAM": "XLP",
+  "EOSE": "XLI",
+  "PPC": "XLP",
+  "PACB": "XLV",
+  "ABCB": "XLF",
+  "IPAR": "XLP",
+  "PRME": "XLV",
+  "HTZ": "XLI",
+  "SHLS": "XLK",
+  "DJT": "XLC",
+  "IMAX": "XLC",
+  "CRK": "XLE",
+  "HMC": "XLY",
+  "SPB": "XLP",
+  "RYCEY": "XLI",
+  "AGO": "XLF",
+  "ENVX": "XLI",
+  "ULCC": "XLI",
+  "BCC": "XLB",
+  "NMR": "XLF",
+  "OPY": "XLF",
+  "PCT": "XLI",
+  "VITL": "XLP",
+  "LI": "XLY",
+  "GOLD": "XLF",
+  "RUM": "XLC",
+  "BAESY": "XLI",
+  "BEP": "XLU",
+  "BATRK": "XLC",
+  "CSIQ": "XLK",
+  "NAVI": "XLF",
+  "AGL": "XLV",
+  "UWMC": "XLF",
+  "GRPN": "XLC",
+  "LAC": "XLB",
+  "SBLK": "XLI",
+  "HIMX": "XLK",
+  "NTDOY": "XLC",
+  "UAMY": "XLB",
+  "ARRY": "XLK",
+  "ECVT": "XLB",
+  "SPCE": "XLI",
+  "MCHB": "XLF",
+  "BOOM": "XLI",
+  "ADYEY": "XLK",
+  "GSL": "XLI",
+  "IDT": "XLC",
+  "PKX": "XLB",
+  "HPP": "XLRE",
+  "TRUP": "XLF",
+  "UROY": "XLE",
+  "JKS": "XLK",
+  "WOOF": "XLY",
+  "IEP": "XLE",
+  "PHAT": "XLV",
+  "VELO": "XLK",
+  "WPP": "XLC",
+  "CHPT": "XLY",
+  "GNK": "XLI",
+  "GOOS": "XLY",
+  "EDIT": "XLV",
+  "PUBM": "XLK",
+  "ALT": "XLV",
+  "BYND": "XLP",
+  "LAES": "XLK",
+  "JACK": "XLY",
+  "MGPI": "XLP",
+  "SPRY": "XLV",
+  "SANA": "XLV",
+  "DRUG": "XLV",
+  "SB": "XLI",
+  "RILY": "XLF",
+  "CRTO": "XLC",
+  "LOVE": "XLY",
+  "FOSL": "XLY",
+  "MTRX": "XLI",
+  "LPL": "XLK",
+  "PALI": "XLV",
+  "OPK": "XLV",
+  "VWAGY": "XLY",
+  "ACIC": "XLF",
+  "LILA": "XLC",
+  "EVGO": "XLY",
+  "MAGN": "XLP",
+  "GOGO": "XLC",
+  "CENN": "XLY",
+  "EU": "XLE",
+  "LZAGY": "XLV",
+  "CHRS": "XLV",
+  "NUWE": "XLV",
+  "ADV": "XLC",
+  "DASTY": "XLK",
+  "BOE": "XLF",
+  "VIVO": "XLK",
+  "CHGG": "XLP",
+  "CCU": "XLP",
+  "RGC": "XLV",
+  "CRVO": "XLV",
+  "OKUR": "XLV",
+  "BMEA": "XLV",
+  "STEM": "XLU",
+  "ALXO": "XLV",
+  "INDO": "XLE",
+  "PLCE": "XLY",
+  "CHSN": "XLY",
+  "PARA": "XLK",
+  "BLNK": "XLI",
+  "BZFD": "XLC",
+  "CTM": "XLK",
+  "TWG": "XLP",
+  "NRDY": "XLK",
+  "UPLD": "XLK",
+  "HAIN": "XLP",
+  "PCRFF": "XLK",
+  "NIVF": "XLV",
+  "XPON": "XLI",
+  "KOSS": "XLK",
+  "USBC": "XLK",
+  "NAAS": "XLY",
+  "COHN": "XLF",
+  "JTAI": "XLK",
+  "SOS": "XLF",
+  "FAMI": "XLP",
+  "LNVGY": "XLK",
+  "PUBGY": "XLC",
+  "TCEHY": "XLC",
+  "ADDYY": "XLY",
+  "FMCC": "XLF",
+  "FNMA": "XLF",
+  "BIGGQ": "XLP",
+  "SSNLF": "XLK",
+  "BCAB": "XLV",
+  "MAPS": "XLK"
  },
  "etf_weights": {
   "XLB": [
    [
     "LIN",
-    0.126431
+    0.128646
    ],
    [
     "NEM",
-    0.064214
-   ],
-   [
-    "FCX",
-    0.051773
+    0.060962
    ],
    [
     "VMC",
-    0.051503
+    0.051446
    ],
    [
     "ECL",
-    0.050746
-   ],
-   [
-    "NUE",
-    0.049008
+    0.050878
    ],
    [
     "APD",
-    0.048481
-   ],
-   [
-    "STLD",
-    0.048363
+    0.048991
    ],
    [
     "MLM",
-    0.04836
+    0.048688
+   ],
+   [
+    "FCX",
+    0.048683
+   ],
+   [
+    "NUE",
+    0.048538
+   ],
+   [
+    "STLD",
+    0.047631
    ],
    [
     "SHW",
-    0.047268
+    0.047416
    ],
    [
     "CRH",
-    0.046567
+    0.046457
    ],
    [
     "PPG",
-    0.04019
+    0.039851
    ],
    [
     "DOW",
-    0.036587
+    0.037595
    ],
    [
     "IFF",
-    0.034908
+    0.035599
    ],
    [
     "PKG",
-    0.03396
+    0.034114
    ],
    [
     "SW",
-    0.033609
+    0.033901
    ],
    [
     "AMCR",
-    0.032829
+    0.032864
    ],
    [
     "IP",
-    0.028746
+    0.028889
    ],
    [
     "CF",
-    0.026925
-   ],
-   [
-    "BALL",
-    0.025723
+    0.027988
    ],
    [
     "LYB",
-    0.025451
+    0.026606
+   ],
+   [
+    "BALL",
+    0.026391
    ],
    [
     "AVY",
-    0.020789
+    0.020714
    ],
    [
     "ALB",
-    0.016582
+    0.016106
    ],
    [
     "MOS",
-    0.008731
+    0.008769
    ]
   ],
   "XLC": [
    [
     "META",
-    0.220982
+    0.220472
    ],
    [
     "GOOGL",
-    0.111131
+    0.111013
    ],
    [
     "GOOG",
-    0.089543
+    0.089403
    ],
    [
     "DIS",
-    0.054904
-   ],
-   [
-    "TTWO",
-    0.047236
+    0.055641
    ],
    [
     "CMCSA",
-    0.046707
+    0.049339
+   ],
+   [
+    "TTWO",
+    0.047061
    ],
    [
     "VZ",
-    0.045268
-   ],
-   [
-    "APP",
-    0.043094
-   ],
-   [
-    "T",
-    0.042898
+    0.046988
    ],
    [
     "TMUS",
-    0.042834
+    0.046093
+   ],
+   [
+    "T",
+    0.04448
    ],
    [
     "NFLX",
-    0.042089
+    0.042664
    ],
    [
     "LYV",
-    0.040895
+    0.041446
+   ],
+   [
+    "APP",
+    0.039137
    ],
    [
     "OMC",
-    0.032248
-   ],
-   [
-    "RDDT",
-    0.027487
+    0.032789
    ],
    [
     "ECHO",
-    0.019629
+    0.01974
+   ],
+   [
+    "RDDT",
+    0.019711
    ],
    [
     "FOXA",
-    0.018674
+    0.018547
    ],
    [
     "CHTR",
-    0.01769
+    0.018332
    ],
    [
     "TKO",
-    0.015559
+    0.015932
    ],
    [
     "NWSA",
-    0.015412
+    0.01544
    ],
    [
     "FOX",
-    0.011166
+    0.011105
    ],
    [
     "SKYD",
-    0.006253
+    0.006375
    ],
    [
     "NWS",
-    0.005567
+    0.005563
    ]
   ],
   "XLE": [
    [
     "XOM",
-    0.242578
+    0.2435
    ],
    [
     "CVX",
-    0.183398
+    0.183363
    ],
    [
     "COP",
-    0.072281
+    0.072915
    ],
    [
     "MPC",
-    0.046046
+    0.046522
    ],
    [
     "PSX",
-    0.044618
-   ],
-   [
-    "WMB",
-    0.042373
+    0.045317
    ],
    [
     "VLO",
-    0.042047
+    0.042935
+   ],
+   [
+    "WMB",
+    0.04134
    ],
    [
     "EOG",
-    0.040665
+    0.040774
    ],
    [
     "SLB",
-    0.038167
+    0.037453
    ],
    [
     "TRGP",
-    0.031883
+    0.031717
    ],
    [
     "KMI",
-    0.031813
+    0.030893
    ],
    [
     "OKE",
-    0.028867
+    0.028417
    ],
    [
     "DVN",
-    0.0269
+    0.026937
    ],
    [
     "BKR",
-    0.02586
+    0.025745
    ],
    [
     "OXY",
-    0.021975
+    0.021931
    ],
    [
     "FANG",
-    0.020167
+    0.020358
    ],
    [
     "EQT",
-    0.016304
+    0.016267
    ],
    [
     "HAL",
-    0.014294
+    0.01415
    ],
    [
     "EXE",
-    0.010006
+    0.009844
    ],
    [
     "TPL",
-    0.009189
+    0.009131
    ],
    [
     "APA",
-    0.008625
+    0.00869
    ]
   ],
   "XLF": [
    [
     "BRK-B",
-    0.125784
+    0.126821
    ],
    [
     "JPM",
-    0.113812
+    0.112457
    ],
    [
     "V",
-    0.087182
+    0.088468
    ],
    [
     "MA",
-    0.064056
+    0.064756
    ],
    [
     "BAC",
-    0.041445
+    0.040824
    ],
    [
     "GS",
-    0.03366
+    0.032693
    ],
    [
     "WFC",
-    0.03196
+    0.031657
    ],
    [
     "MS",
-    0.028091
+    0.027613
    ],
    [
     "C",
-    0.026289
+    0.025682
    ],
    [
     "AXP",
-    0.021248
+    0.021099
    ],
    [
     "BLK",
-    0.02111
+    0.020745
    ],
    [
     "SCHW",
-    0.018125
+    0.017967
    ],
    [
     "SPGI",
-    0.017336
+    0.017685
    ],
    [
     "PGR",
-    0.016677
-   ],
-   [
-    "COF",
-    0.015958
+    0.016878
    ],
    [
     "CB",
-    0.015851
+    0.016047
+   ],
+   [
+    "COF",
+    0.015775
    ],
    [
     "CME",
-    0.013283
+    0.013682
    ],
    [
     "BNY",
-    0.01263
-   ],
-   [
-    "USB",
-    0.011774
+    0.012529
    ],
    [
     "MRSH",
-    0.011718
-   ],
-   [
-    "PNC",
-    0.011526
+    0.012018
    ],
    [
     "ICE",
-    0.011406
+    0.011898
+   ],
+   [
+    "USB",
+    0.011627
+   ],
+   [
+    "PNC",
+    0.011411
    ],
    [
     "BX",
-    0.011281
+    0.011061
    ],
    [
     "TRV",
-    0.010352
+    0.010373
    ],
    [
     "MCO",
-    0.009073
+    0.009234
    ]
   ],
   "XLI": [
    [
     "GE",
-    0.06007
+    0.058835
    ],
    [
     "CAT",
-    0.055036
+    0.053786
    ],
    [
     "RTX",
-    0.049702
+    0.050596
    ],
    [
     "GEV",
-    0.043732
+    0.042929
    ],
    [
     "UNP",
-    0.033174
+    0.033934
    ],
    [
     "DE",
-    0.030644
+    0.031863
    ],
    [
     "ETN",
-    0.028282
+    0.027
    ],
    [
     "BA",
-    0.025238
+    0.025477
    ],
    [
     "UBER",
-    0.024835
+    0.025043
    ],
    [
     "LMT",
-    0.024177
-   ],
-   [
-    "PH",
-    0.02165
+    0.024309
    ],
    [
     "ADP",
-    0.02102
+    0.021934
+   ],
+   [
+    "PH",
+    0.021317
    ],
    [
     "CSX",
-    0.0179
-   ],
-   [
-    "JCI",
-    0.017733
-   ],
-   [
-    "PWR",
-    0.017663
-   ],
-   [
-    "EMR",
-    0.017616
-   ],
-   [
-    "TT",
-    0.017543
-   ],
-   [
-    "VRT",
-    0.017512
+    0.018098
    ],
    [
     "GD",
-    0.017418
+    0.01778
+   ],
+   [
+    "PWR",
+    0.017537
+   ],
+   [
+    "EMR",
+    0.017289
+   ],
+   [
+    "JCI",
+    0.016964
+   ],
+   [
+    "TT",
+    0.016951
    ],
    [
     "MMM",
-    0.016919
+    0.016896
+   ],
+   [
+    "VRT",
+    0.016821
    ],
    [
     "WM",
-    0.015876
-   ],
-   [
-    "HWM",
-    0.015191
+    0.016307
    ],
    [
     "UPS",
-    0.014877
+    0.015244
+   ],
+   [
+    "HWM",
+    0.01493
    ],
    [
     "NSC",
-    0.014217
+    0.014462
    ],
    [
-    "NOC",
-    0.01389
+    "CTAS",
+    0.014217
    ]
   ],
   "XLK": [
    [
-    "NVDA",
-    0.14982
+    "AAPL",
+    0.153216
    ],
    [
-    "AAPL",
-    0.147545
+    "NVDA",
+    0.150861
    ],
    [
     "MSFT",
-    0.114065
-   ],
-   [
-    "AMD",
-    0.048501
+    0.118058
    ],
    [
     "AVGO",
-    0.047559
+    0.047259
+   ],
+   [
+    "AMD",
+    0.045444
    ],
    [
     "MU",
-    0.040561
-   ],
-   [
-    "INTC",
-    0.02684
+    0.040382
    ],
    [
     "PLTR",
-    0.026513
+    0.026127
    ],
    [
     "CSCO",
-    0.02511
+    0.025407
+   ],
+   [
+    "INTC",
+    0.020154
    ],
    [
     "AMAT",
-    0.019641
+    0.019103
    ],
    [
     "LRCX",
-    0.018676
+    0.018455
    ],
    [
     "PANW",
-    0.018197
+    0.018392
    ],
    [
     "TXN",
-    0.016686
+    0.016946
    ],
    [
     "CRWD",
-    0.015602
+    0.01573
    ],
    [
     "IBM",
-    0.014276
+    0.014982
    ],
    [
     "ORCL",
-    0.014151
+    0.013929
    ],
    [
     "KLAC",
-    0.012834
+    0.012726
    ],
    [
     "ADI",
-    0.012382
+    0.012531
    ],
    [
     "APH",
-    0.011875
-   ],
-   [
-    "QCOM",
-    0.011618
-   ],
-   [
-    "SNDK",
-    0.011393
-   ],
-   [
-    "ANET",
-    0.011314
-   ],
-   [
-    "MRVL",
-    0.011218
+    0.012062
    ],
    [
     "CRM",
-    0.011095
+    0.011577
    ],
    [
-    "STX",
-    0.009314
+    "ANET",
+    0.010903
+   ],
+   [
+    "QCOM",
+    0.010856
+   ],
+   [
+    "MRVL",
+    0.010609
+   ],
+   [
+    "SNDK",
+    0.010364
+   ],
+   [
+    "ACN",
+    0.009747
    ]
   ],
   "XLP": [
    [
     "WMT",
-    0.111038
+    0.111502
    ],
    [
     "COST",
-    0.09064
+    0.09094
    ],
    [
     "PG",
-    0.076706
+    0.076078
    ],
    [
     "KO",
-    0.073859
+    0.073799
    ],
    [
     "PM",
-    0.066779
+    0.065922
    ],
    [
     "MO",
-    0.046892
+    0.046997
    ],
    [
     "CL",
-    0.043893
+    0.044259
    ],
    [
     "MDLZ",
-    0.041552
+    0.042541
    ],
    [
     "PEP",
-    0.040599
+    0.041084
    ],
    [
     "TGT",
-    0.039978
+    0.040075
    ],
    [
     "MNST",
-    0.039177
+    0.039446
    ],
    [
     "KDP",
-    0.028392
+    0.028417
    ],
    [
     "SYY",
-    0.02334
-   ],
-   [
-    "KVUE",
-    0.022205
+    0.023114
    ],
    [
     "KR",
-    0.022202
+    0.022162
+   ],
+   [
+    "KVUE",
+    0.02161
    ],
    [
     "ADM",
-    0.021706
+    0.021597
    ],
    [
     "KMB",
-    0.021626
+    0.020916
    ],
    [
     "DG",
-    0.01696
+    0.017004
    ],
    [
     "EL",
-    0.015903
+    0.015738
    ],
    [
     "VYLR",
-    0.015281
+    0.015006
    ],
    [
     "DLTR",
-    0.014996
+    0.014989
    ],
    [
     "CHD",
-    0.014861
+    0.01482
    ],
    [
     "CASY",
-    0.014809
+    0.014666
    ],
    [
     "HSY",
-    0.01386
+    0.014118
    ],
    [
     "KHC",
-    0.012228
+    0.012276
    ]
   ],
   "XLRE": [
    [
     "WELL",
-    0.112914
+    0.113364
    ],
    [
     "PLD",
-    0.081744
+    0.081543
    ],
    [
     "EQIX",
-    0.068729
+    0.067062
    ],
    [
     "AMT",
-    0.058195
+    0.058664
    ],
    [
     "PSA",
-    0.048675
+    0.049752
    ],
    [
     "SPG",
-    0.0477
+    0.048046
    ],
    [
     "DLR",
-    0.043751
+    0.043131
    ],
    [
     "VMRK",
-    0.042979
-   ],
-   [
-    "O",
-    0.042833
-   ],
-   [
-    "CCI",
-    0.042456
+    0.042991
    ],
    [
     "VTR",
-    0.042358
+    0.042818
+   ],
+   [
+    "O",
+    0.042743
+   ],
+   [
+    "CCI",
+    0.042299
    ],
    [
     "CBRE",
-    0.041163
+    0.041161
    ],
    [
     "IRM",
-    0.039591
+    0.038895
    ],
    [
     "EXR",
-    0.035576
+    0.035836
    ],
    [
     "VICI",
-    0.030329
+    0.03019
    ],
    [
     "SBAC",
-    0.022034
+    0.022257
    ],
    [
     "HST",
-    0.01978
+    0.01943
    ],
    [
     "ESS",
-    0.019149
+    0.019033
    ],
    [
     "KIM",
-    0.018402
-   ],
-   [
-    "INVH",
-    0.016085
+    0.018438
    ],
    [
     "WY",
-    0.015991
+    0.016441
+   ],
+   [
+    "INVH",
+    0.016002
    ],
    [
     "MAA",
-    0.015413
+    0.015243
    ],
    [
     "DOC",
-    0.014671
+    0.014709
    ],
    [
     "REG",
-    0.014036
+    0.013933
    ],
    [
     "CSGP",
-    0.012809
+    0.013704
    ]
   ],
   "XLU": [
    [
     "NEE",
-    0.126286
+    0.127841
    ],
    [
     "SO",
-    0.078843
+    0.078923
    ],
    [
     "DUK",
-    0.07235
+    0.072718
    ],
    [
     "CEG",
-    0.064255
+    0.063295
    ],
    [
     "AEP",
-    0.051896
+    0.051897
    ],
    [
     "D",
-    0.042213
+    0.042898
    ],
    [
     "SRE",
-    0.041395
+    0.0412
    ],
    [
     "ETR",
-    0.037822
+    0.037617
    ],
    [
     "XEL",
-    0.036388
+    0.036502
    ],
    [
     "EXC",
-    0.034929
+    0.034885
    ],
    [
     "VST",
-    0.032774
+    0.031959
    ],
    [
     "ED",
-    0.03148
+    0.031582
    ],
    [
     "WEC",
-    0.02753
+    0.02769
    ],
    [
     "PEG",
-    0.027048
+    0.027109
    ],
    [
     "AEE",
-    0.022487
-   ],
-   [
-    "PCG",
-    0.021475
+    0.022404
    ],
    [
     "ATO",
-    0.021307
+    0.021331
+   ],
+   [
+    "PCG",
+    0.021251
    ],
    [
     "AWK",
-    0.020828
+    0.021003
    ],
    [
     "DTE",
-    0.020632
+    0.020642
    ],
    [
     "CNP",
-    0.020493
+    0.020467
    ],
    [
     "PPL",
-    0.019762
+    0.019641
    ],
    [
     "ES",
-    0.018851
+    0.018904
    ],
    [
     "FE",
-    0.017975
+    0.017886
    ],
    [
     "EIX",
-    0.016841
+    0.016563
    ],
    [
     "CMS",
-    0.016068
+    0.016094
    ]
   ],
   "XLV": [
    [
     "LLY",
-    0.164485
+    0.168996
    ],
    [
     "JNJ",
-    0.099246
+    0.098096
    ],
    [
     "ABBV",
-    0.076897
-   ],
-   [
-    "UNH",
-    0.055195
+    0.077642
    ],
    [
     "MRK",
-    0.054026
+    0.054963
+   ],
+   [
+    "UNH",
+    0.054427
    ],
    [
     "TMO",
-    0.03924
+    0.038398
    ],
    [
     "AMGN",
-    0.037275
+    0.037538
    ],
    [
     "GILD",
-    0.03073
+    0.031533
    ],
    [
     "ABT",
-    0.027078
+    0.02738
    ],
    [
     "PFE",
-    0.025546
+    0.025918
    ],
    [
     "ISRG",
-    0.023725
+    0.02274
    ],
    [
     "DHR",
-    0.022188
+    0.021649
    ],
    [
     "VRTX",
-    0.020482
+    0.021106
    ],
    [
     "BMY",
-    0.018766
+    0.019016
    ],
    [
     "MDT",
-    0.017786
-   ],
-   [
-    "CVS",
-    0.017289
+    0.017605
    ],
    [
     "MCK",
-    0.017113
+    0.017277
+   ],
+   [
+    "CVS",
+    0.017198
    ],
    [
     "SYK",
-    0.016284
+    0.015179
    ],
    [
     "ELV",
-    0.013696
-   ],
-   [
-    "MRNA",
-    0.012377
+    0.013574
    ],
    [
     "REGN",
-    0.012011
+    0.013553
+   ],
+   [
+    "MRNA",
+    0.012266
    ],
    [
     "CI",
-    0.0118
+    0.011742
    ],
    [
     "HCA",
-    0.010532
+    0.010379
    ],
    [
     "COR",
-    0.009439
+    0.009407
    ],
    [
     "BSX",
-    0.009258
+    0.009065
    ]
   ],
   "XLY": [
    [
     "AMZN",
-    0.214684
+    0.213067
    ],
    [
     "TSLA",
-    0.18838
+    0.187996
    ],
    [
     "HD",
-    0.054375
+    0.054775
    ],
    [
     "MCD",
-    0.044164
+    0.044587
    ],
    [
     "TJX",
-    0.040814
+    0.040772
    ],
    [
     "SBUX",
-    0.031433
+    0.031091
    ],
    [
     "LOW",
-    0.030373
+    0.03084
    ],
    [
     "BKNG",
-    0.029537
+    0.02928
    ],
    [
     "MAR",
-    0.02232
+    0.022449
    ],
    [
     "HLT",
-    0.020981
-   ],
-   [
-    "RCL",
-    0.020174
+    0.021121
    ],
    [
     "GM",
-    0.019645
+    0.020164
+   ],
+   [
+    "RCL",
+    0.020089
    ],
    [
     "ROST",
-    0.019463
+    0.019254
    ],
    [
     "ORLY",
-    0.018608
+    0.018743
    ],
    [
     "ABNB",
-    0.018239
+    0.018133
    ],
    [
     "DASH",
-    0.017592
+    0.017708
    ],
    [
     "AZO",
-    0.01339
+    0.013619
    ],
    [
     "CVNA",
-    0.012844
+    0.012926
    ],
    [
     "EBAY",
-    0.012677
+    0.012809
    ],
    [
     "F",
-    0.012644
-   ],
-   [
-    "GRMN",
-    0.012126
+    0.012615
    ],
    [
     "NKE",
-    0.012063
+    0.012222
+   ],
+   [
+    "GRMN",
+    0.01189
    ],
    [
     "YUM",
-    0.011016
+    0.011151
    ],
    [
     "CMG",
-    0.010338
+    0.01061
    ],
    [
     "DHI",
-    0.009742
+    0.009771
    ]
   ]
  },
@@ -1574,17 +2568,25 @@
   "GOOGL",
   "TSLA",
   "SPCX",
+  "SOXL",
   "META",
   "GOOG",
   "AVGO",
   "TSM",
+  "SOXX",
   "MRVL",
   "LLY",
+  "VOO",
+  "GLD",
   "ORCL",
+  "IBIT",
   "PLTR",
+  "HYG",
+  "IVV",
+  "MSTR",
   "LRCX",
   "DELL",
-  "MSTR",
+  "LQD",
   "XOM",
   "AMAT",
   "QCOM",
@@ -1594,7 +2596,9 @@
   "WMT",
   "KLAC",
   "COST",
+  "EWY",
   "ASML",
+  "TLT",
   "CAT",
   "ADI",
   "NFLX",
@@ -1602,31 +2606,39 @@
   "COIN",
   "V",
   "MA",
+  "CSCO",
+  "SQQQ",
   "PANW",
   "PEP",
   "ACN",
   "JPM",
   "REGN",
   "CVX",
-  "CSCO",
-  "JNJ",
   "SNOW",
+  "QQQM",
+  "JNJ",
+  "GE",
   "HOOD",
   "NXPI",
-  "ARM",
   "BAC",
+  "ARM",
+  "IEF",
   "ABBV",
   "MRNA",
   "NEE",
   "GILD",
   "GS",
   "SPOT",
-  "SYK",
   "PG",
+  "SYK",
   "MRK",
+  "SLV",
   "CRM",
+  "AGG",
   "TMUS",
   "VRT",
+  "EWZ",
+  "VTI",
   "UNH",
   "KO",
   "VRTX",
@@ -1637,17 +2649,1260 @@
   "GPN",
   "LIN",
   "MO",
-  "GE",
-  "MCHP",
   "AMGN",
+  "MCHP",
   "BA",
   "DASH",
-  "IBM"
+  "IBM",
+  "SBUX",
+  "MS",
+  "TMO",
+  "ADBE",
+  "LNG",
+  "BIL",
+  "XBI",
+  "NET",
+  "ANET",
+  "PFE",
+  "DDOG",
+  "INTU",
+  "ETN",
+  "HD",
+  "RTX",
+  "ILMN",
+  "RBLX",
+  "BKNG",
+  "VZ",
+  "LMT",
+  "ON",
+  "AAOI",
+  "FTNT",
+  "UBER",
+  "ALNY",
+  "CVNA",
+  "PH",
+  "VTV",
+  "CMCSA",
+  "T",
+  "FCX",
+  "OKTA",
+  "COP",
+  "NU",
+  "SOFI",
+  "KMB",
+  "NKE",
+  "PSX",
+  "GM",
+  "AZN",
+  "WFC",
+  "SCHW",
+  "CIEN",
+  "MDLZ",
+  "EL",
+  "PM",
+  "NEM",
+  "GD",
+  "COF",
+  "CSX",
+  "MPC",
+  "PWR",
+  "ABT",
+  "LOW",
+  "SPGI",
+  "PYPL",
+  "DHR",
+  "ICE",
+  "USO",
+  "EXC",
+  "HPQ",
+  "MELI",
+  "DE",
+  "CEG",
+  "UNP",
+  "CL",
+  "NOK",
+  "WELL",
+  "BABA",
+  "FDX",
+  "CBOE",
+  "AXP",
+  "TGT",
+  "TEAM",
+  "AEM",
+  "MAR",
+  "MCO",
+  "RMD",
+  "BMY",
+  "CMG",
+  "RIVN",
+  "MCK",
+  "TEM",
+  "AAL",
+  "IBB",
+  "DLR",
+  "BLK",
+  "CVS",
+  "SHW",
+  "CCJ",
+  "FXI",
+  "VST",
+  "DXCM",
+  "LHX",
+  "DIS",
+  "VXUS",
+  "RKT",
+  "EWJ",
+  "EMB",
+  "SLB",
+  "TTWO",
+  "EBAY",
+  "HON",
+  "PINS",
+  "EQIX",
+  "TJX",
+  "EMR",
+  "VWO",
+  "ABNB",
+  "ETHA",
+  "STM",
+  "IDXX",
+  "SHEL",
+  "BND",
+  "DUK",
+  "WAT",
+  "ROKU",
+  "BX",
+  "APO",
+  "NVO",
+  "WM",
+  "FSLR",
+  "XEL",
+  "AEP",
+  "CB",
+  "CME",
+  "UPS",
+  "AON",
+  "AMT",
+  "OXY",
+  "HLT",
+  "O",
+  "URI",
+  "MDB",
+  "SO",
+  "WMB",
+  "ASTS",
+  "F",
+  "TRV",
+  "EW",
+  "CI",
+  "PLD",
+  "NOC",
+  "FISV",
+  "ICLR",
+  "CRH",
+  "ZS",
+  "CHRW",
+  "ELV",
+  "CRL",
+  "VALE",
+  "ADT",
+  "HCA",
+  "FIS",
+  "ECL",
+  "NDAQ",
+  "UAL",
+  "BKR",
+  "IAU",
+  "EXPE",
+  "SFM",
+  "NVS",
+  "MLM",
+  "RBRK",
+  "KMI",
+  "RVTY",
+  "BP",
+  "DVN",
+  "EQT",
+  "WDAY",
+  "AKAM",
+  "CAH",
+  "WPM",
+  "A",
+  "ROST",
+  "ITW",
+  "VRSN",
+  "STZ",
+  "SE",
+  "PCAR",
+  "TSLL",
+  "TDG",
+  "SWKS",
+  "ODFL",
+  "PGR",
+  "COR",
+  "IBKR",
+  "XYZ",
+  "USB",
+  "DHI",
+  "PDD",
+  "RIO",
+  "XRT",
+  "EOG",
+  "VMC",
+  "LULU",
+  "FANG",
+  "UVXY",
+  "U",
+  "SPXS",
+  "APD",
+  "UMC",
+  "MET",
+  "NUE",
+  "SH",
+  "JNK",
+  "SCCO",
+  "ALL",
+  "OKE",
+  "BBY",
+  "DOW",
+  "TFC",
+  "CHKP",
+  "NVDL",
+  "HSY",
+  "KR",
+  "SHY",
+  "TROW",
+  "HUM",
+  "SPG",
+  "ED",
+  "CCI",
+  "MOH",
+  "CTVA",
+  "CRS",
+  "B",
+  "ULTA",
+  "DAL",
+  "D",
+  "PNC",
+  "KHC",
+  "INCY",
+  "KWEB",
+  "TW",
+  "YUM",
+  "BIIB",
+  "DVA",
+  "ALB",
+  "PNR",
+  "ZTS",
+  "TPR",
+  "LYB",
+  "CP",
+  "ADM",
+  "KKR",
+  "PSA",
+  "TNA",
+  "EXPD",
+  "IQV",
+  "PEG",
+  "ETSY",
+  "DLTR",
+  "AWK",
+  "HIMS",
+  "XYL",
+  "ATI",
+  "INDA",
+  "LEN",
+  "MGM",
+  "VICI",
+  "CSGP",
+  "VCSH",
+  "CIBR",
+  "OMC",
+  "JBHT",
+  "HAL",
+  "UVIX",
+  "GIS",
+  "GOVT",
+  "PCG",
+  "MBB",
+  "ROK",
+  "AFL",
+  "FND",
+  "SNAP",
+  "PATH",
+  "KGC",
+  "WY",
+  "EXR",
+  "BHP",
+  "SYY",
+  "AIG",
+  "W",
+  "SRE",
+  "S",
+  "NVR",
+  "TIP",
+  "PPG",
+  "PHM",
+  "PRU",
+  "HII",
+  "BNDX",
+  "GSK",
+  "DPZ",
+  "HRL",
+  "MTCH",
+  "CHTR",
+  "TXT",
+  "AR",
+  "BWA",
+  "GME",
+  "ALLY",
+  "AN",
+  "STT",
+  "GFS",
+  "SJM",
+  "NSC",
+  "RACE",
+  "RGLD",
+  "NRG",
+  "CLF",
+  "FIG",
+  "SIRI",
+  "NTRS",
+  "CF",
+  "STLD",
+  "TSN",
+  "TENB",
+  "TTD",
+  "BUG",
+  "JHX",
+  "BIDU",
+  "PHYS",
+  "TOL",
+  "EXE",
+  "UNG",
+  "BG",
+  "ENPH",
+  "OVV",
+  "MSTU",
+  "CPRI",
+  "SONY",
+  "ZSL",
+  "SCHP",
+  "QLYS",
+  "SBAC",
+  "GTLB",
+  "LUV",
+  "SIVR",
+  "WYNN",
+  "ZM",
+  "ET",
+  "MOS",
+  "IVZ",
+  "VFC",
+  "NEU",
+  "FNF",
+  "MKTX",
+  "POOL",
+  "CHWY",
+  "JD",
+  "DD",
+  "KMX",
+  "ESTC",
+  "JKHY",
+  "FRO",
+  "JEF",
+  "KTOS",
+  "AA",
+  "FSLY",
+  "FNV",
+  "AES",
+  "CPB",
+  "OPCH",
+  "M",
+  "BMRN",
+  "AMZU",
+  "LYFT",
+  "STNG",
+  "ANF",
+  "MCHI",
+  "RYAAY",
+  "BEN",
+  "VRNS",
+  "REAL",
+  "EWC",
+  "HEI",
+  "BB",
+  "FNDA",
+  "Z",
+  "OSCR",
+  "BRKR",
+  "PICK",
+  "NTES",
+  "FOUR",
+  "HP",
+  "ACI",
+  "SYM",
+  "KSS",
+  "DUOL",
+  "WTRG",
+  "XLG",
+  "WOLF",
+  "ICLN",
+  "LEA",
+  "RH",
+  "UPST",
+  "APTV",
+  "NTR",
+  "MGA",
+  "LPX",
+  "JETS",
+  "AGCO",
+  "UCO",
+  "SCO",
+  "EWW",
+  "DEO",
+  "PAG",
+  "MTH",
+  "SPHR",
+  "DB",
+  "BYD",
+  "NFG",
+  "OSIS",
+  "BTDR",
+  "SIG",
+  "KNSL",
+  "SQM",
+  "IBRX",
+  "RUN",
+  "AM",
+  "CRUS",
+  "TM",
+  "TDOC",
+  "NWL",
+  "FAF",
+  "BIO",
+  "GRNY",
+  "SLM",
+  "WMG",
+  "EXP",
+  "MT",
+  "SNK",
+  "DAN",
+  "ZIM",
+  "CRSP",
+  "LMND",
+  "AAP",
+  "PENN",
+  "BWET",
+  "LUNR",
+  "BNTX",
+  "GPI",
+  "CNK",
+  "AI",
+  "EADSY",
+  "REMX",
+  "SEDG",
+  "YINN",
+  "UUP",
+  "NTLA",
+  "HACK",
+  "AMLP",
+  "BIRK",
+  "MSFD",
+  "NXST",
+  "WTM",
+  "FTDR",
+  "TARS",
+  "IYT",
+  "KBH",
+  "DNTH",
+  "BEAM",
+  "SAM",
+  "PPC",
+  "ABCB",
+  "TAN",
+  "IPAR",
+  "SPYU",
+  "SHLS",
+  "DJT",
+  "YANG",
+  "IMAX",
+  "CRK",
+  "HMC",
+  "SPB",
+  "RYCEY",
+  "AGO",
+  "EWG",
+  "ULCC",
+  "BCC",
+  "NMR",
+  "OPY",
+  "EWQ",
+  "WGMI",
+  "VITL",
+  "LI",
+  "GOLD",
+  "RUM",
+  "BAESY",
+  "BEP"
  ],
+ "liquidity": {
+  "INDA": 298831755,
+  "PICK": 107191759,
+  "SOXX": 8919107679,
+  "AAPL": 23454510102,
+  "MSFT": 20073717555,
+  "NVDA": 34669330554,
+  "GOOGL": 18589051452,
+  "GOOG": 12629116374,
+  "META": 15656352076,
+  "AMZN": 25302046125,
+  "TSLA": 16845674102,
+  "AVGO": 11937022838,
+  "ORCL": 5378345578,
+  "RKT": 696199821,
+  "VELO": 9022066,
+  "BIGGQ": 0,
+  "SOFI": 1079614087,
+  "DJT": 29576550,
+  "OPY": 22884376,
+  "MCHB": 12913227,
+  "PYPL": 876282524,
+  "UPLD": 188525,
+  "TMUS": 1799473940,
+  "V": 2930874929,
+  "HIMX": 15880690,
+  "ANET": 1411216549,
+  "STX": 3738658109,
+  "CTM": 242480,
+  "BZFD": 265730,
+  "USBC": 72865,
+  "CVNA": 1160048922,
+  "LI": 21005433,
+  "MTRX": 3734050,
+  "TSM": 8958045149,
+  "COIN": 3007641706,
+  "XYZ": 441872035,
+  "NFG": 81026289,
+  "LYFT": 131165824,
+  "EU": 2137029,
+  "PLTR": 4998683158,
+  "AMD": 20107097688,
+  "AM": 71831771,
+  "TEM": 757250605,
+  "CRWD": 3136618971,
+  "VST": 732095191,
+  "PANW": 2774430626,
+  "MOH": 359048760,
+  "BABA": 834185105,
+  "GME": 224645271,
+  "CRM": 1810802568,
+  "ADBE": 1458531866,
+  "ACN": 2675496295,
+  "IBM": 1482377852,
+  "INTU": 1363739216,
+  "HD": 1298006630,
+  "MCD": 1691226761,
+  "BKNG": 1240577788,
+  "LOW": 888976721,
+  "NKE": 1045352227,
+  "TJX": 673056687,
+  "SBUX": 1475408944,
+  "CMG": 777907120,
+  "ABNB": 661836770,
+  "F": 561605072,
+  "GE": 2376838274,
+  "CAT": 3311570897,
+  "RTX": 1284191123,
+  "HON": 678483836,
+  "UNP": 843665360,
+  "BA": 1502403163,
+  "LMT": 1198692129,
+  "DE": 848423820,
+  "UPS": 589865616,
+  "ETN": 1349098565,
+  "NOC": 551931705,
+  "WM": 611163929,
+  "JPM": 2668927748,
+  "BAC": 2298451998,
+  "WFC": 1018123598,
+  "GS": 1944462760,
+  "MS": 1464086388,
+  "BLK": 744081002,
+  "C": 1672042609,
+  "AXP": 820611150,
+  "SCHW": 1010543951,
+  "BX": 614691105,
+  "PGR": 448783576,
+  "SPGI": 880293538,
+  "XOM": 4090443856,
+  "CVX": 2596708803,
+  "EOG": 429384108,
+  "SLB": 685615189,
+  "PSX": 1041998892,
+  "MPC": 928209325,
+  "OXY": 583738432,
+  "VLO": 1693902958,
+  "WMB": 567551692,
+  "KMI": 500970865,
+  "PG": 1883144397,
+  "COST": 3523561433,
+  "WMT": 3681275452,
+  "KO": 1740864881,
+  "PEP": 2680068691,
+  "PM": 959153282,
+  "MO": 1601852900,
+  "MDLZ": 977849701,
+  "CL": 842474803,
+  "TGT": 813463110,
+  "KMB": 1058289419,
+  "GIS": 281192059,
+  "LLY": 7511927196,
+  "UNH": 1753838436,
+  "JNJ": 2461483917,
+  "MRK": 1846518771,
+  "ABBV": 2036335175,
+  "TMO": 1459349326,
+  "ABT": 896628971,
+  "PFE": 1388918871,
+  "DHR": 872226851,
+  "BMY": 791614290,
+  "AMGN": 1534707005,
+  "CVS": 739093892,
+  "NEE": 1968348402,
+  "SO": 568931027,
+  "DUK": 625539678,
+  "CEG": 847951025,
+  "AEP": 598306096,
+  "D": 345177940,
+  "SRE": 253334564,
+  "PCG": 273306292,
+  "EXC": 862756850,
+  "XEL": 598311723,
+  "ED": 365507186,
+  "PEG": 307578355,
+  "PLD": 554617328,
+  "AMT": 584861841,
+  "EQIX": 673621897,
+  "WELL": 839445016,
+  "SPG": 367206632,
+  "O": 572794705,
+  "PSA": 314775203,
+  "CCI": 364293732,
+  "DLR": 748359112,
+  "EXR": 259401975,
+  "VICI": 290110007,
+  "CSCO": 2865115522,
+  "COP": 1083771253,
+  "SNDK": 20293050662,
+  "FIG": 209150258,
+  "AAOI": 1186982067,
+  "NFLX": 3252491387,
+  "MA": 2886017819,
+  "GD": 933889383,
+  "EMR": 672682059,
+  "ITW": 478155030,
+  "PH": 1146641526,
+  "ROK": 268306620,
+  "DASH": 1484306793,
+  "TTWO": 682193228,
+  "RBLX": 1264520284,
+  "PINS": 676478495,
+  "SNAP": 266944811,
+  "MTCH": 235082003,
+  "DIS": 704249783,
+  "ROST": 480686000,
+  "YUM": 337341698,
+  "ASML": 3482442592,
+  "MU": 27529576033,
+  "TXN": 3912462708,
+  "ARM": 2182782317,
+  "FTNT": 1182352172,
+  "SNOW": 2499998081,
+  "DDOG": 1381160534,
+  "NET": 1413977970,
+  "ZS": 543369250,
+  "MDB": 572474295,
+  "WDAY": 489013612,
+  "TEAM": 812188612,
+  "LRCX": 4485436514,
+  "KLAC": 3542732484,
+  "INTC": 30102293654,
+  "QCOM": 3978099153,
+  "T": 1129034062,
+  "VZ": 1211789063,
+  "CMCSA": 1136068802,
+  "SPOT": 1921205623,
+  "COF": 933556555,
+  "TFC": 379199978,
+  "MCO": 805909490,
+  "ICE": 872095054,
+  "CME": 593283479,
+  "CB": 594032650,
+  "TRV": 557572671,
+  "AIG": 256006787,
+  "ALL": 393956423,
+  "AFL": 268063519,
+  "MET": 403583501,
+  "PRU": 241335289,
+  "DVN": 493147975,
+  "FANG": 421563929,
+  "HAL": 285122793,
+  "BKR": 511350158,
+  "OKE": 392966054,
+  "SYK": 1879535497,
+  "ZTS": 328386610,
+  "HCA": 530585108,
+  "CI": 555649610,
+  "HUM": 368471018,
+  "ELV": 540637651,
+  "EW": 556220324,
+  "DXCM": 710870805,
+  "IDXX": 647579698,
+  "A": 482162056,
+  "IQV": 307704048,
+  "RMD": 798314660,
+  "MCK": 760197277,
+  "COR": 446049737,
+  "HSY": 374884070,
+  "KHC": 342333119,
+  "STZ": 463698366,
+  "SYY": 257210182,
+  "EL": 968300247,
+  "PPG": 242896432,
+  "ECL": 528600723,
+  "NEM": 935098165,
+  "FCX": 1121122853,
+  "DD": 148074865,
+  "DOW": 383595314,
+  "NUE": 402564799,
+  "LIN": 1603865707,
+  "APD": 413013929,
+  "SHW": 735483862,
+  "NSC": 220182177,
+  "CSX": 932729610,
+  "FDX": 832645296,
+  "ODFL": 450041139,
+  "JBHT": 286910107,
+  "CHRW": 541378114,
+  "EXPD": 309873722,
+  "RIVN": 763264778,
+  "LCID": 43431263,
+  "GM": 1022390779,
+  "USB": 437113081,
+  "PNC": 343430820,
+  "SHOP": 1660958836,
+  "HOOD": 2367573994,
+  "BBBY": 5563233,
+  "AMC": 72163686,
+  "UBER": 1172589545,
+  "SNK": 61328528,
+  "SPY": 58846136679,
+  "QQQ": 59303924745,
+  "DIA": 2531271195,
+  "IWM": 6818362060,
+  "HYG": 4704239750,
+  "LQD": 4199134747,
+  "JNK": 395572996,
+  "EMB": 688569163,
+  "XLK": 3444377385,
+  "XLF": 2095005232,
+  "XLV": 3461312876,
+  "XLE": 2210292282,
+  "XLI": 1807744063,
+  "XLP": 2477983880,
+  "XLY": 1168900819,
+  "XLU": 1317800095,
+  "XLB": 568466581,
+  "XLRE": 382800650,
+  "XLC": 812462624,
+  "UUP": 51635573,
+  "TLT": 3375497675,
+  "IEF": 2146312096,
+  "SHY": 374374237,
+  "BND": 630814281,
+  "AGG": 1799997091,
+  "GOVT": 275696360,
+  "TIP": 249967949,
+  "AMLP": 50384839,
+  "AMZU": 132956298,
+  "BDRY": 494390,
+  "BIL": 1432699067,
+  "BLOK": 13354828,
+  "BNDX": 238428331,
+  "BWET": 58944248,
+  "CPER": 19436281,
+  "ETHA": 659233382,
+  "ETHW": 8180473,
+  "EWC": 122122991,
+  "EWG": 23759864,
+  "EWI": 10483670,
+  "EWJ": 688921239,
+  "EWQ": 21836517,
+  "EWW": 87022514,
+  "EWY": 3503843732,
+  "EWZ": 1781847392,
+  "FNDA": 112325206,
+  "GLD": 5815635382,
+  "HACK": 50759737,
+  "JETS": 94998753,
+  "KWEB": 341100568,
+  "LIT": 13737340,
+  "MBB": 272803338,
+  "MSFD": 48350233,
+  "NRGU": 3154311,
+  "OILD": 1619324,
+  "REMX": 52861726,
+  "SCHP": 177622396,
+  "SCO": 91788862,
+  "SH": 396384134,
+  "SOXL": 15949425355,
+  "SOYB": 227157,
+  "SPXS": 414138895,
+  "SPYU": 30822160,
+  "SQQQ": 2858129035,
+  "TAN": 32899961,
+  "TSLL": 455413243,
+  "UCO": 92666724,
+  "UNG": 192559024,
+  "USO": 867002322,
+  "VCSH": 288958503,
+  "VOO": 7087761674,
+  "VTI": 1754946661,
+  "VTV": 1139417080,
+  "VWO": 664913601,
+  "VXUS": 703679414,
+  "WEAT": 6709950,
+  "WGMI": 21236930,
+  "XBI": 1419804830,
+  "XLG": 101928263,
+  "XRT": 429681074,
+  "XTN": 2890343,
+  "ZSL": 179259368,
+  "AMAT": 4018897934,
+  "SSNLF": 0,
+  "GFS": 222910556,
+  "UMC": 407412953,
+  "MRVL": 8515054570,
+  "SHEL": 631550962,
+  "CP": 319271741,
+  "DAL": 348621402,
+  "UAL": 516351485,
+  "AAL": 756746374,
+  "LUV": 171896701,
+  "LYB": 319488312,
+  "ALB": 328714022,
+  "SQM": 74337225,
+  "VALE": 539829107,
+  "BHP": 259394021,
+  "BYD": 82446765,
+  "PCRFF": 178125,
+  "VWAGY": 3449613,
+  "VRT": 1787057078,
+  "AKAM": 488000473,
+  "FSLY": 138468235,
+  "NOW": 3710305008,
+  "STLD": 202539308,
+  "AA": 139875733,
+  "NXPI": 2339415805,
+  "STM": 648568119,
+  "MCHP": 1534176952,
+  "ADI": 3287388647,
+  "ON": 1188196002,
+  "APTV": 98476212,
+  "BWA": 227194201,
+  "LEA": 99667615,
+  "MGA": 97283570,
+  "DAN": 60993322,
+  "STLA": 129297850,
+  "TM": 69974545,
+  "HMC": 26164720,
+  "AN": 223692219,
+  "PAG": 85998115,
+  "GPI": 55559789,
+  "KMX": 144870715,
+  "WAT": 621351521,
+  "BIO": 68267489,
+  "LZAGY": 1907080,
+  "NVO": 611434280,
+  "AZN": 1020678540,
+  "NVS": 507097090,
+  "GSK": 236064076,
+  "GILD": 1950953985,
+  "REGN": 2667233723,
+  "CAH": 487448107,
+  "NTR": 98385287,
+  "CF": 204814246,
+  "MOS": 163289242,
+  "CTVA": 358238972,
+  "AGCO": 94156934,
+  "ADM": 318416014,
+  "BG": 188760051,
+  "TSN": 202495422,
+  "PPC": 38063650,
+  "HRL": 235652528,
+  "IPAR": 31690228,
+  "SPB": 25423083,
+  "SJM": 221244251,
+  "KR": 374557648,
+  "DPZ": 236031639,
+  "CRUS": 71676219,
+  "SWKS": 451533316,
+  "LPL": 3691827,
+  "BOE": 1702259,
+  "HPQ": 860594929,
+  "DELL": 4466009110,
+  "LNVGY": 13261,
+  "PWR": 918450109,
+  "VIVO": 1502916,
+  "BBY": 389104583,
+  "ATI": 300295809,
+  "CRS": 357871434,
+  "RYCEY": 24913812,
+  "TXT": 232643791,
+  "TDG": 454472775,
+  "HEI": 118311898,
+  "LHX": 708907394,
+  "HII": 239480476,
+  "KTOS": 140596585,
+  "BAESY": 20486179,
+  "DASTY": 1756528,
+  "FIS": 529128356,
+  "FISV": 546305085,
+  "GPN": 1619887807,
+  "ADYEY": 12015172,
+  "EBAY": 679894373,
+  "ETSY": 305070261,
+  "PDD": 432609303,
+  "MELI": 858083244,
+  "SE": 462409185,
+  "LULU": 422034226,
+  "CIEN": 995290697,
+  "SBAC": 174969904,
+  "NOK": 840070842,
+  "CHTR": 233655836,
+  "FSLR": 609065840,
+  "ENPH": 188503569,
+  "SEDG": 51759562,
+  "JKS": 9923352,
+  "CSIQ": 19038810,
+  "BEP": 20461744,
+  "AES": 135524667,
+  "RUN": 73960737,
+  "ARRY": 14320743,
+  "SHLS": 30645446,
+  "ICLN": 100943147,
+  "JKHY": 143508865,
+  "CBOE": 825595723,
+  "MKTX": 153988025,
+  "TW": 340347620,
+  "STT": 223014286,
+  "NTRS": 206392285,
+  "IBKR": 441994131,
+  "KKR": 315285254,
+  "APO": 611583535,
+  "TROW": 368930821,
+  "BEN": 126235184,
+  "IVZ": 162825447,
+  "URI": 572672782,
+  "VMC": 424602562,
+  "MLM": 505398998,
+  "EXP": 64899111,
+  "CRH": 544740222,
+  "JHX": 199974342,
+  "BCC": 23385550,
+  "DHI": 436805720,
+  "LEN": 297970244,
+  "NVR": 251028174,
+  "TOL": 197962056,
+  "KBH": 42475176,
+  "POOL": 151114165,
+  "UWMC": 17733710,
+  "FNF": 154947509,
+  "Z": 111283491,
+  "CSGP": 289456049,
+  "ILMN": 1272612653,
+  "PACB": 35785976,
+  "NTLA": 51003784,
+  "RVTY": 499299878,
+  "MRNA": 2002211863,
+  "BNTX": 55767701,
+  "BIIB": 330798088,
+  "INCY": 342053753,
+  "BMRN": 133060399,
+  "ALNY": 1164593265,
+  "CRSP": 60122115,
+  "BEAM": 40892816,
+  "EDIT": 7768221,
+  "ICLR": 545483595,
+  "CRL": 540618771,
+  "OPCH": 134590195,
+  "IBB": 752403331,
+  "ESTC": 144646994,
+  "GTLB": 173568590,
+  "AI": 53181390,
+  "PATH": 264345214,
+  "DUOL": 102355702,
+  "CHGG": 1105023,
+  "TDOC": 69449872,
+  "PARA": 336125,
+  "SONY": 180063389,
+  "WMG": 65225867,
+  "ROKU": 617185561,
+  "IMAX": 28856456,
+  "CNK": 54247739,
+  "TTD": 201716544,
+  "PUBM": 7328325,
+  "CRTO": 4860548,
+  "OMC": 288087909,
+  "PUBGY": 11176,
+  "WPP": 8669849,
+  "S": 251799386,
+  "CHKP": 379183763,
+  "TENB": 202115022,
+  "QLYS": 176549185,
+  "RBRK": 501435146,
+  "CIBR": 288303249,
+  "BUG": 200111075,
+  "U": 414506373,
+  "NTDOY": 15265430,
+  "NTES": 106757507,
+  "TCEHY": 4904,
+  "STEM": 615801,
+  "BP": 497391023,
+  "CHPT": 8572148,
+  "EVGO": 3080013,
+  "CPB": 135404067,
+  "ACI": 104938629,
+  "NDAQ": 523140895,
+  "WY": 260479145,
+  "PHM": 242841212,
+  "FAF": 68285294,
+  "VRTX": 1701548164,
+  "OKTA": 1095827391,
+  "VRNS": 125247834,
+  "IYT": 43518614,
+  "MCHI": 128947373,
+  "AAP": 59758931,
+  "ABCB": 34168612,
+  "ABR": 50699547,
+  "ACIC": 3251758,
+  "ADDYY": 3749,
+  "ADT": 531450894,
+  "ADV": 1760323,
+  "AEM": 810571536,
+  "AGL": 18464816,
+  "AGO": 24749122,
+  "ALLY": 224104277,
+  "ALT": 7181375,
+  "ALXO": 515207,
+  "ANF": 129672451,
+  "AON": 586065048,
+  "AR": 230895569,
+  "ASTS": 563426733,
+  "AWK": 301223674,
+  "B": 357055826,
+  "BABO": 135003,
+  "BATRK": 19771653,
+  "BB": 112588518,
+  "BCAB": 0,
+  "BIDU": 199549771,
+  "BIRK": 48643692,
+  "BLNK": 315217,
+  "BMEA": 707985,
+  "BOOM": 12462409,
+  "BRKR": 109663315,
+  "BTDR": 78340800,
+  "BYND": 7096183,
+  "CCJ": 734942116,
+  "CCU": 1010615,
+  "CENN": 2271868,
+  "CHRS": 1821617,
+  "CHSN": 421221,
+  "CHWY": 150848826,
+  "CLF": 209458214,
+  "COHN": 54451,
+  "CPRI": 183346890,
+  "CRK": 26769939,
+  "CRVO": 936952,
+  "DB": 82586772,
+  "DEO": 86786605,
+  "DLTR": 301942179,
+  "DNTH": 40965679,
+  "DRUG": 5287317,
+  "DVA": 330256688,
+  "EADSY": 53131530,
+  "ECVT": 13536836,
+  "ENVX": 24361640,
+  "EOSE": 38410279,
+  "EQT": 490771247,
+  "ET": 164411106,
+  "EXE": 195770458,
+  "EXPE": 508067015,
+  "FAMI": 26985,
+  "FMCC": 2922,
+  "FND": 267517429,
+  "FNMA": 2626,
+  "FNV": 136792545,
+  "FOSL": 3855509,
+  "FOUR": 106743838,
+  "FRO": 142985148,
+  "FTDR": 45959143,
+  "FXI": 734259459,
+  "GNK": 8546321,
+  "GOGO": 2937225,
+  "GOLD": 20823288,
+  "GOOS": 8027900,
+  "GRNY": 68050329,
+  "GRPN": 17143103,
+  "GSL": 11415264,
+  "HAIN": 187286,
+  "HIMS": 301076661,
+  "HLT": 579807617,
+  "HP": 105013651,
+  "HPP": 10189134,
+  "HTZ": 30974350,
+  "IAU": 509211663,
+  "IBIT": 5318779419,
+  "IBRX": 74288389,
+  "IDT": 11108133,
+  "IEP": 9699845,
+  "INDO": 507751,
+  "IVV": 4579149043,
+  "JACK": 6464264,
+  "JBLU": 59400997,
+  "JD": 149937790,
+  "JEF": 141750789,
+  "JTAI": 45662,
+  "KGC": 261111907,
+  "KNSL": 74497687,
+  "KOSS": 121559,
+  "KSS": 103687644,
+  "LAC": 16924847,
+  "LAES": 6619157,
+  "LAZR": 11965590,
+  "LILA": 3219092,
+  "LMND": 59778191,
+  "LNG": 1445810310,
+  "LOVE": 4307462,
+  "LPX": 96890308,
+  "LUNR": 57180658,
+  "M": 134170004,
+  "MAGN": 2989967,
+  "MAPS": 0,
+  "MAR": 810490355,
+  "MGM": 297729477,
+  "MGPI": 5981625,
+  "MSTR": 4517534480,
+  "MSTU": 183641895,
+  "MT": 62037982,
+  "MTH": 85816468,
+  "NAAS": 69884,
+  "NAVI": 18474218,
+  "NEU": 155462471,
+  "NIVF": 168418,
+  "NMR": 23285681,
+  "NRDY": 192650,
+  "NRG": 210322794,
+  "NU": 1079762949,
+  "NUWE": 1777993,
+  "NVDD": 6346797,
+  "NVDL": 375201623,
+  "NWL": 69449369,
+  "NXST": 47777756,
+  "OKUR": 804584,
+  "OPK": 3567770,
+  "OSCR": 110554575,
+  "OSIS": 80937339,
+  "OVV": 184668739,
+  "PALI": 3585312,
+  "PCAR": 458771100,
+  "PCT": 22810731,
+  "PEMX": 89537,
+  "PENN": 59606632,
+  "PHAT": 9302726,
+  "PHO": 3986949,
+  "PHYS": 199526466,
+  "PKX": 10287303,
+  "PLCE": 430701,
+  "PLUG": 46531905,
+  "PNR": 328647281,
+  "PRME": 31016017,
+  "QQQM": 2462121670,
+  "QQQU": 2595902,
+  "RACE": 219085823,
+  "REAL": 122762655,
+  "RGC": 995220,
+  "RGLD": 213914363,
+  "RH": 99614259,
+  "RILY": 5026292,
+  "RIO": 431005659,
+  "RUM": 20722884,
+  "RYAAY": 126666334,
+  "SAM": 39048705,
+  "SANA": 5338509,
+  "SB": 5168028,
+  "SBLK": 16171382,
+  "SCCO": 394331234,
+  "SFM": 507680132,
+  "SIG": 75417052,
+  "SIRI": 207585465,
+  "SIVR": 170820172,
+  "SLM": 67316948,
+  "SLV": 1816685511,
+  "SLYV": 12671620,
+  "SOS": 29817,
+  "SPCE": 13270805,
+  "SPCX": 16588935134,
+  "SPHR": 84918669,
+  "SPRY": 5939093,
+  "STNG": 130640821,
+  "SYM": 104917680,
+  "TARS": 44563519,
+  "TNA": 313591389,
+  "TPR": 320393603,
+  "TRUP": 9971674,
+  "TWG": 223374,
+  "UAMY": 14870599,
+  "ULCC": 23498130,
+  "ULTA": 351636417,
+  "UPST": 98636971,
+  "UROY": 9970746,
+  "UVIX": 284867784,
+  "UVXY": 415156634,
+  "VFC": 155478923,
+  "VITL": 21057583,
+  "VRSN": 465151576,
+  "W": 254725902,
+  "WOLF": 101707307,
+  "WOOF": 9785430,
+  "WPM": 484046805,
+  "WTM": 46907073,
+  "WTRG": 102262774,
+  "WYNN": 168829255,
+  "XPON": 140404,
+  "XYL": 300718202,
+  "YANG": 29473903,
+  "YINN": 51668842,
+  "ZIM": 60638836,
+  "ZM": 166456500
+ },
  "counts": {
-  "symbols": 314,
-  "stocks": 120,
+  "bookTickers": 906,
+  "usTradable": 739,
+  "symbols": 806,
+  "stocks": 724,
+  "withSector": 622,
+  "momentum": 588,
   "etfsWithHoldings": 11,
-  "stream": 30
+  "stream": 30,
+  "notOnAlpacaStocks": {
+   "index": 39,
+   "future": 37,
+   "crypto": 9,
+   "fx": 36,
+   "foreign listing": 45,
+   "other": 1
+  }
  }
 }
