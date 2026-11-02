@@ -1,27 +1,27 @@
 {
- "asOf": "2026-11-02T15:50:12+00:00",
+ "asOf": "2026-11-02T16:05:15+00:00",
  "benchmarkWinRate": 0.5075,
  "live": {
   "n": 0
  },
  "shadow": {
-  "n": 226,
-  "wins": 79,
-  "losses": 145,
-  "winRate": 0.3527,
+  "n": 266,
+  "wins": 87,
+  "losses": 174,
+  "winRate": 0.3333,
   "winRateCI95": [
-   0.2931,
-   0.4173
+   0.2789,
+   0.3926
   ],
   "pBeatsBenchmark": 1.0,
   "benchmark": 0.5075,
-  "expectancyBps": -17.155,
-  "sdBps": 95.463,
-  "tStat": -2.7,
-  "avgWinBps": 17.04,
-  "avgLossBps": -36.02,
-  "profitFactor": 0.258,
-  "sharpePerTrade": -0.1797
+  "expectancyBps": -16.638,
+  "sdBps": 88.906,
+  "tStat": -3.05,
+  "avgWinBps": 16.05,
+  "avgLossBps": -33.46,
+  "profitFactor": 0.24,
+  "sharpePerTrade": -0.1871
  },
  "byStrategy": {
   "etf_arb": {
@@ -29,23 +29,23 @@
     "n": 0
    },
    "shadow": {
-    "n": 177,
-    "wins": 58,
-    "losses": 117,
-    "winRate": 0.3314,
+    "n": 211,
+    "wins": 65,
+    "losses": 141,
+    "winRate": 0.3155,
     "winRateCI95": [
-     0.266,
-     0.4041
+     0.2559,
+     0.3819
     ],
     "pBeatsBenchmark": 1.0,
     "benchmark": 0.5075,
-    "expectancyBps": -3.408,
-    "sdBps": 9.954,
-    "tStat": -4.56,
-    "avgWinBps": 7.16,
-    "avgLossBps": -8.71,
-    "profitFactor": 0.408,
-    "sharpePerTrade": -0.3424
+    "expectancyBps": -3.478,
+    "sdBps": 9.515,
+    "tStat": -5.31,
+    "avgWinBps": 6.99,
+    "avgLossBps": -8.43,
+    "profitFactor": 0.382,
+    "sharpePerTrade": -0.3655
    }
   },
   "opening_range": {
@@ -53,23 +53,23 @@
     "n": 0
    },
    "shadow": {
-    "n": 20,
+    "n": 25,
     "wins": 5,
-    "losses": 15,
-    "winRate": 0.25,
+    "losses": 20,
+    "winRate": 0.2,
     "winRateCI95": [
-     0.1119,
-     0.4687
+     0.0886,
+     0.3913
     ],
-    "pBeatsBenchmark": 0.9951,
+    "pBeatsBenchmark": 0.9997,
     "benchmark": 0.5075,
-    "expectancyBps": -121.943,
-    "sdBps": 272.987,
-    "tStat": -2.0,
+    "expectancyBps": -114.724,
+    "sdBps": 244.387,
+    "tStat": -2.35,
     "avgWinBps": 93.9,
-    "avgLossBps": -193.89,
-    "profitFactor": 0.161,
-    "sharpePerTrade": -0.4467
+    "avgLossBps": -166.88,
+    "profitFactor": 0.141,
+    "sharpePerTrade": -0.4694
    }
   },
   "sector_reversion": {
@@ -77,23 +77,23 @@
     "n": 0
    },
    "shadow": {
-    "n": 29,
-    "wins": 16,
+    "n": 30,
+    "wins": 17,
     "losses": 13,
-    "winRate": 0.5517,
+    "winRate": 0.5667,
     "winRateCI95": [
-     0.3755,
-     0.7159
+     0.392,
+     0.7262
     ],
-    "pBeatsBenchmark": 0.3863,
+    "pBeatsBenchmark": 0.3214,
     "benchmark": 0.5075,
-    "expectancyBps": -28.788,
-    "sdBps": 113.408,
-    "tStat": -1.37,
-    "avgWinBps": 28.83,
+    "expectancyBps": -27.463,
+    "sdBps": 111.672,
+    "tStat": -1.35,
+    "avgWinBps": 27.78,
     "avgLossBps": -99.7,
-    "profitFactor": 0.356,
-    "sharpePerTrade": -0.2538
+    "profitFactor": 0.364,
+    "sharpePerTrade": -0.2459
    }
   }
  },
@@ -103,5 +103,5 @@
    "pnl": 0
   }
  },
- "trades": 226
+ "trades": 266
 }
