@@ -1,27 +1,27 @@
 {
- "asOf": "2026-11-02T19:05:28+00:00",
+ "asOf": "2026-11-02T19:15:50+00:00",
  "benchmarkWinRate": 0.5075,
  "live": {
   "n": 0
  },
  "shadow": {
-  "n": 729,
-  "wins": 168,
-  "losses": 544,
-  "winRate": 0.236,
+  "n": 737,
+  "wins": 169,
+  "losses": 551,
+  "winRate": 0.2347,
   "winRateCI95": [
-   0.2062,
-   0.2685
+   0.2052,
+   0.267
   ],
   "pBeatsBenchmark": 1.0,
   "benchmark": 0.5075,
-  "expectancyBps": -12.477,
-  "sdBps": 83.229,
-  "tStat": -4.05,
-  "avgWinBps": 17.35,
-  "avgLossBps": -22.08,
-  "profitFactor": 0.243,
-  "sharpePerTrade": -0.1499
+  "expectancyBps": -12.444,
+  "sdBps": 82.791,
+  "tStat": -4.08,
+  "avgWinBps": 17.3,
+  "avgLossBps": -21.95,
+  "profitFactor": 0.242,
+  "sharpePerTrade": -0.1503
  },
  "byStrategy": {
   "etf_arb": {
@@ -29,23 +29,23 @@
     "n": 0
    },
    "shadow": {
-    "n": 613,
-    "wins": 123,
-    "losses": 473,
-    "winRate": 0.2064,
+    "n": 620,
+    "wins": 124,
+    "losses": 479,
+    "winRate": 0.2056,
     "winRateCI95": [
-     0.1758,
-     0.2407
+     0.1753,
+     0.2397
     ],
     "pBeatsBenchmark": 1.0,
     "benchmark": 0.5075,
-    "expectancyBps": -3.869,
-    "sdBps": 6.796,
-    "tStat": -14.1,
-    "avgWinBps": 5.45,
+    "expectancyBps": -3.871,
+    "sdBps": 6.784,
+    "tStat": -14.21,
+    "avgWinBps": 5.48,
     "avgLossBps": -6.43,
-    "profitFactor": 0.22,
-    "sharpePerTrade": -0.5693
+    "profitFactor": 0.221,
+    "sharpePerTrade": -0.5706
    }
   },
   "opening_range": {
@@ -77,23 +77,23 @@
     "n": 0
    },
    "shadow": {
-    "n": 76,
+    "n": 77,
     "wins": 34,
-    "losses": 42,
-    "winRate": 0.4474,
+    "losses": 43,
+    "winRate": 0.4416,
     "winRateCI95": [
-     0.3408,
-     0.559
+     0.3361,
+     0.5526
     ],
-    "pBeatsBenchmark": 0.8777,
+    "pBeatsBenchmark": 0.8983,
     "benchmark": 0.5075,
-    "expectancyBps": -25.218,
-    "sdBps": 86.926,
-    "tStat": -2.53,
+    "expectancyBps": -25.499,
+    "sdBps": 86.388,
+    "tStat": -2.59,
     "avgWinBps": 22.4,
-    "avgLossBps": -63.76,
-    "profitFactor": 0.284,
-    "sharpePerTrade": -0.2901
+    "avgLossBps": -63.37,
+    "profitFactor": 0.279,
+    "sharpePerTrade": -0.2952
    }
   }
  },
@@ -103,5 +103,5 @@
    "pnl": 0
   }
  },
- "trades": 729
+ "trades": 737
 }
