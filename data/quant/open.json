@@ -16,9 +16,12 @@
    "XLY"
   ],
   "sector_reversion": [
+   "AAL",
    "AES",
+   "BAC",
    "CMCSA",
    "CMG",
+   "DB",
    "DIS",
    "F",
    "GSK",
@@ -30,6 +33,7 @@
    "SOFI",
    "SONY",
    "STM",
+   "VFC",
    "VICI",
    "VRNS"
   ],
@@ -102,23 +106,6 @@
    "max_hold_min": 369,
    "mode": "shadow",
    "reason": "broke the opening range 13.15-13.52 (274 bps wide)",
-   "meta": {}
-  },
-  {
-   "id": "2026-11-04-ope-e43a3941",
-   "strategy": "opening_range",
-   "symbol": "AAL",
-   "side": "short",
-   "qty": 374,
-   "entry_px": 13.348665,
-   "entry_mid": 13.355,
-   "entry_spread_bps": 7.487832272556934,
-   "entry_ts": 1793803980.127716,
-   "stop_bps": 110.45,
-   "target_bps": 220.89,
-   "max_hold_min": 362,
-   "mode": "shadow",
-   "reason": "broke the opening range 13.37-13.64 (196 bps wide)",
    "meta": {}
   },
   {
@@ -394,23 +381,6 @@
    "meta": {}
   },
   {
-   "id": "2026-11-04-ope-8a235865",
-   "strategy": "opening_range",
-   "symbol": "VXUS",
-   "side": "short",
-   "qty": 59,
-   "entry_px": 83.461653,
-   "entry_mid": 83.475,
-   "entry_spread_bps": 1.1979634621150184,
-   "entry_ts": 1793808360.8121493,
-   "stop_bps": 31.15,
-   "target_bps": 62.29,
-   "max_hold_min": 289,
-   "mode": "shadow",
-   "reason": "broke the opening range 83.53-83.94 (50 bps wide)",
-   "meta": {}
-  },
-  {
    "id": "2026-11-04-ope-c06f0f87",
    "strategy": "opening_range",
    "symbol": "DOW",
@@ -445,77 +415,139 @@
    "meta": {}
   },
   {
-   "id": "2026-11-04-etf-7b0eb9f2",
-   "strategy": "etf_arb",
-   "symbol": "XLE",
+   "id": "2026-11-04-sec-6205c826",
+   "strategy": "sector_reversion",
+   "symbol": "DB",
    "side": "short",
-   "qty": 78,
-   "entry_px": 63.513648,
-   "entry_mid": 63.525000000000006,
-   "entry_spread_bps": 1.5741833923648971,
-   "entry_ts": 1793809620.0787714,
-   "stop_bps": 14.78,
-   "target_bps": 7.39,
-   "max_hold_min": 10,
+   "qty": 136,
+   "entry_px": 36.626337,
+   "entry_mid": 36.635000000000005,
+   "entry_spread_bps": 2.7296301351161483,
+   "entry_ts": 1793810340.6954942,
+   "stop_bps": 53.56,
+   "target_bps": 41.72,
+   "max_hold_min": 30,
    "mode": "shadow",
-   "reason": "basket -12.3 bps vs XLE over 5 min (100% of the fund priced)",
+   "reason": "residual z +2.60 vs XLF (beta 0.33)",
    "meta": {
-    "gap": -12.32
+    "etf": "XLF",
+    "z": 2.596
    }
   },
   {
-   "id": "2026-11-04-ope-6b345a94",
-   "strategy": "opening_range",
-   "symbol": "VTI",
+   "id": "2026-11-04-sec-00465360",
+   "strategy": "sector_reversion",
+   "symbol": "AAL",
    "side": "short",
-   "qty": 13,
-   "entry_px": 375.112485,
-   "entry_mid": 375.19,
-   "entry_spread_bps": 2.1322529918185698,
-   "entry_ts": 1793809680.2560875,
-   "stop_bps": 36.05,
-   "target_bps": 72.11,
-   "max_hold_min": 267,
+   "qty": 366,
+   "entry_px": 13.648635,
+   "entry_mid": 13.655000000000001,
+   "entry_spread_bps": 7.323324789454255,
+   "entry_ts": 1793810460.9112573,
+   "stop_bps": 108.47,
+   "target_bps": 100.2,
+   "max_hold_min": 30,
    "mode": "shadow",
-   "reason": "broke the opening range 375.26-377.69 (65 bps wide)",
-   "meta": {}
+   "reason": "residual z +3.08 vs XLI (beta 0.81)",
+   "meta": {
+    "etf": "XLI",
+    "z": 3.079
+   }
   },
   {
-   "id": "2026-11-04-etf-9c5a4576",
+   "id": "2026-11-04-etf-1a5d96fc",
+   "strategy": "etf_arb",
+   "symbol": "XLF",
+   "side": "short",
+   "qty": 85,
+   "entry_px": 58.804119,
+   "entry_mid": 58.815,
+   "entry_spread_bps": 1.700246535747345,
+   "entry_ts": 1793810640.306338,
+   "stop_bps": 43.11,
+   "target_bps": 21.56,
+   "max_hold_min": 10,
+   "mode": "shadow",
+   "reason": "basket -35.9 bps vs XLF over 5 min (77% of the fund priced)",
+   "meta": {
+    "gap": -35.93
+   }
+  },
+  {
+   "id": "2026-11-04-sec-ff09d5a0",
+   "strategy": "sector_reversion",
+   "symbol": "VFC",
+   "side": "short",
+   "qty": 237,
+   "entry_px": 21.067893,
+   "entry_mid": 21.075,
+   "entry_spread_bps": 4.744958481612342,
+   "entry_ts": 1793810640.306338,
+   "stop_bps": 47.11,
+   "target_bps": 37.7,
+   "max_hold_min": 30,
+   "mode": "shadow",
+   "reason": "residual z +2.67 vs XLY (beta 0.81)",
+   "meta": {
+    "etf": "XLY",
+    "z": 2.667
+   }
+  },
+  {
+   "id": "2026-11-04-etf-741e55d6",
    "strategy": "etf_arb",
    "symbol": "XLI",
-   "side": "long",
+   "side": "short",
    "qty": 29,
-   "entry_px": 168.056804,
-   "entry_mid": 168.02499999999998,
-   "entry_spread_bps": 1.7854485939593001,
-   "entry_ts": 1793809740.4379756,
-   "stop_bps": 81.24,
-   "target_bps": 40.62,
+   "entry_px": 168.78312,
+   "entry_mid": 168.81,
+   "entry_spread_bps": 1.184763935784717,
+   "entry_ts": 1793810640.306338,
+   "stop_bps": 19.63,
+   "target_bps": 9.82,
    "max_hold_min": 10,
    "mode": "shadow",
-   "reason": "basket +67.7 bps vs XLI over 5 min (63% of the fund priced)",
+   "reason": "basket -16.4 bps vs XLI over 5 min (63% of the fund priced)",
    "meta": {
-    "gap": 67.7
+    "gap": -16.36
    }
   },
   {
-   "id": "2026-11-04-etf-46ffb869",
+   "id": "2026-11-04-etf-b176260e",
    "strategy": "etf_arb",
-   "symbol": "XLV",
-   "side": "short",
-   "qty": 26,
-   "entry_px": 188.101188,
-   "entry_mid": 188.135,
-   "entry_spread_bps": 1.5945996226114831,
-   "entry_ts": 1793809800.6131644,
-   "stop_bps": 35.99,
-   "target_bps": 17.99,
+   "symbol": "XLP",
+   "side": "long",
+   "qty": 54,
+   "entry_px": 92.329232,
+   "entry_mid": 92.315,
+   "entry_spread_bps": 1.083247576232563,
+   "entry_ts": 1793810700.4402926,
+   "stop_bps": 40.47,
+   "target_bps": 20.24,
    "max_hold_min": 10,
    "mode": "shadow",
-   "reason": "basket -30.0 bps vs XLV over 5 min (83% of the fund priced)",
+   "reason": "basket +33.7 bps vs XLP over 5 min (92% of the fund priced)",
    "meta": {
-    "gap": -29.99
+    "gap": 33.73
+   }
+  },
+  {
+   "id": "2026-11-04-etf-a73c536c",
+   "strategy": "etf_arb",
+   "symbol": "XLRE",
+   "side": "long",
+   "qty": 111,
+   "entry_px": 44.794479,
+   "entry_mid": 44.785,
+   "entry_spread_bps": 2.2328904767216726,
+   "entry_ts": 1793810700.4402926,
+   "stop_bps": 32.72,
+   "target_bps": 16.36,
+   "max_hold_min": 10,
+   "mode": "shadow",
+   "reason": "basket +27.3 bps vs XLRE over 5 min (89% of the fund priced)",
+   "meta": {
+    "gap": 27.27
    }
   }
  ]
