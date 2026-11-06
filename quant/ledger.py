@@ -42,7 +42,8 @@ class Ledger:
              "entry_spread_bps": round(pos.entry_spread_bps, 2) if pos.entry_spread_bps is not None else None,
              "slip_entry_bps": round((pos.entry_px / pos.entry_mid - 1) * 1e4 * sign, 2) if pos.entry_mid else None,
              "gross_bps": round(gross, 3), "fee": round(fee, 4), "net_bps": round(net_bps, 3), "pnl": round(pnl, 2),
-             "stop_bps": pos.stop_bps, "target_bps": pos.target_bps, "reason_in": pos.reason, "reason_out": reason, "meta": pos.meta}
+             "stop_bps": pos.stop_bps, "target_bps": pos.target_bps, "reason_in": pos.reason, "reason_out": reason, "meta": pos.meta,
+             "variant": (pos.meta or {}).get("variant", "default"), "tags": (pos.meta or {}).get("tags") or {}}
         self.closed.append(t)
         if pos.mode == "live":
             self.pnl += pnl
