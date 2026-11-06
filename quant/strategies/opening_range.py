@@ -7,32 +7,35 @@
 #  the book is judged on expectancy, not hit rate alone.
 # ============================================================
 from .base import Signal, Strategy, round_trip_cost_bps
+from ..segments import tags_for
 
 
 class OpeningRange(Strategy):
     name = "opening_range"
-    RANGE_MIN, LAST_ENTRY, MIN_RANGE_BPS, MAX_RANGE_BPS = 15, 11 * 60 + 30, 25, 300
+    RANGE_MIN, LAST_ENTRY, MIN_RANGE_BPS, MAX_RANGE_BPS = 15, 11 * 60 + 30, 25, 300     # kept for reference: the defaults
+    DEFAULTS = {"range_min": 15, "last_entry": 11 * 60 + 30, "min_range_bps": 25, "max_range_bps": 300, "target_mult": 2.0, "cost_mult": 3.0}
 
     def on_minute(self, book, ctx):
-        if not (9 * 60 + 30 + self.RANGE_MIN <= ctx.minute <= self.LAST_ENTRY):
+        R = int(self.p["range_min"])
+        if not (9 * 60 + 30 + R <= ctx.minute <= self.p["last_entry"]):
             return []
         out = []
-        r0, r1 = ctx.day_open_epoch, ctx.day_open_epoch + self.RANGE_MIN * 60
+        r0, r1 = ctx.day_open_epoch, ctx.day_open_epoch + R * 60
         for sym in ctx.momentum_universe:
             if sym in ctx.open_symbols or sym in ctx.traded_today.get(self.name, set()):
                 continue
             st = book.s.get(sym)
-            if not st or len(st.bars) < self.RANGE_MIN + 2:
+            if not st or len(st.bars) < R + 2:
                 continue
             rng = [b for b in st.bars if r0 <= b[0] < r1 and not b[6]]
-            if len(rng) < self.RANGE_MIN - 2:
+            if len(rng) < max(3, R - 2):
                 continue
             hi, lo = max(b[2] for b in rng), min(b[3] for b in rng)
             mid = (hi + lo) / 2
             if lo <= 0:
                 continue
             width = (hi - lo) / mid * 1e4
-            if not (self.MIN_RANGE_BPS <= width <= self.MAX_RANGE_BPS):
+            if not (self.p["min_range_bps"] <= width <= self.p["max_range_bps"]):
                 continue
             last, prev = st.bars[-1][4], st.bars[-2][4]
             cost = round_trip_cost_bps(st, ctx.cfg)
@@ -44,8 +47,9 @@ class OpeningRange(Strategy):
                 side = "short"
             else:
                 continue
-            if stop < 3 * cost:
+            if stop < self.p["cost_mult"] * cost:
                 continue
-            out.append(Signal(sym, side, self.name, round(stop, 2), round(2 * stop, 2), ctx.cfg.flatten_at - ctx.minute,
-                              score=width / 100, reason=f"broke the opening range {lo:.2f}-{hi:.2f} ({width:.0f} bps wide)"))
+            out.append(Signal(sym, side, self.name, round(stop, 2), round(self.p["target_mult"] * stop, 2), ctx.cfg.flatten_at - ctx.minute,
+                              score=width / 100, reason=f"broke the {R}-minute opening range {lo:.2f}-{hi:.2f} ({width:.0f} bps wide)",
+                              variant=self.variant, tags=tags_for(sym, side, ctx)))
         return out
