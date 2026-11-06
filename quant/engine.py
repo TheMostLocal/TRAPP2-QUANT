@@ -23,7 +23,18 @@ from .broker import AlpacaBroker, SimBroker
 from .config import CFG
 from .ledger import DATA, Ledger
 from .risk import Position, Risk
+from .segments import matches
 from .strategies import ALL
+
+
+def load_models(data_dir):
+    """z175: the lab's verdict (data/quant/models.json) - per strategy, the parameter variants it found and the segments
+    where a variant passed out of sample. None when the lab hasn't run (the older all-or-nothing gate then applies)."""
+    try:
+        doc = json.loads((Path(data_dir) / "models.json").read_text())
+        return doc.get("strategies") if isinstance(doc, dict) else None
+    except Exception:
+        return None
 
 
 def load_gate(data_dir):
@@ -42,8 +53,20 @@ class Engine:
         self.risk = Risk(cfg)
         self.sim = SimBroker(cfg)
         self.broker = broker or (AlpacaBroker(cfg, sim=self.sim) if cfg.execution == "alpaca" else self.sim)
-        self.strategies = [ALL[n]() for n in cfg.strategies if n in ALL]
         self.gate = load_gate(self.dir)
+        self.models = load_models(self.dir)
+        # z175: every strategy runs its original rules everywhere (live where approved, shadow elsewhere - the evidence
+        # keeps coming); each variant the lab approved somewhere runs too, but only trades in its approved segments
+        self.strategies = []
+        for n in cfg.strategies:
+            if n not in ALL:
+                continue
+            self.strategies.append(ALL[n]())
+            m = (self.models or {}).get(n) or {}
+            for vid in sorted({a.get("variant") for a in (m.get("live") or []) if a.get("variant") not in (None, "default")}):
+                params = (m.get("variants") or {}).get(vid)
+                if params is not None:
+                    self.strategies.append(ALL[n](params=params, variant=vid))
         self.day = self.et(self.clock()).date().isoformat()
         self.ledger = Ledger(cfg, self.day, self.dir)
         self.positions = []
@@ -65,7 +88,18 @@ class Engine:
         e = self.et(now)
         return e.replace(hour=9, minute=30, second=0, microsecond=0).timestamp()
 
+    def live_signal(self, sig):
+        """z175: live only if the lab approved this strategy's variant in a segment this signal belongs to."""
+        if self.cfg.execution not in ("alpaca", "sim"):
+            return False
+        if self.models is not None:
+            m = self.models.get(sig.strategy) or {}
+            return any(a.get("variant", "default") == (sig.variant or "default") and matches(sig.tags or {}, a.get("segment", "")) for a in (m.get("live") or []))
+        return (sig.variant or "default") == "default" and self.live_for(sig.strategy)
+
     def live_for(self, strategy):
+        if self.models is not None:
+            return bool((self.models.get(strategy) or {}).get("live"))
         g = self.gate.get(strategy) or {}
         return bool(g.get("pass")) and self.cfg.execution in ("alpaca", "sim")
 
@@ -73,7 +107,7 @@ class Engine:
         return SimpleNamespace(cfg=self.cfg, minute=self.minute(now), now=now, day_open_epoch=self.day_open_epoch(now),
                                open_symbols={p.symbol for p in self.positions}, traded_today=self.traded_today,
                                sector_etf=self.uni.get("sector_etf") or {}, etf_weights={k: v for k, v in (self.uni.get("etf_weights") or {}).items()},
-                               momentum_universe=self.uni.get("momentum") or [])
+                               momentum_universe=self.uni.get("momentum") or [], liquidity=self.uni.get("liquidity") or {})
 
     # ---- entries / exits ---------------------------------------------------------------------------
     def enter(self, sig, now):
@@ -87,7 +121,7 @@ class Engine:
         if not ok:
             self.counts[f"skip:{q}"] += 1
             return None
-        mode = "live" if self.live_for(sig.strategy) else "shadow"
+        mode = "live" if self.live_signal(sig) else "shadow"
         br = self.broker if mode == "live" else self.sim
         mid, spread = st.mid(), st.spread_bps()
         fq, px = br.fill(sig.symbol, "buy" if sig.side == "long" else "sell", q, st)
@@ -96,7 +130,7 @@ class Engine:
             return None
         p = Position(id=f"{self.day}-{sig.strategy[:3]}-{uuid.uuid4().hex[:8]}", strategy=sig.strategy, symbol=sig.symbol, side=sig.side, qty=fq,
                      entry_px=px, entry_mid=mid, entry_spread_bps=spread, entry_ts=now, stop_bps=sig.stop_bps, target_bps=sig.target_bps,
-                     max_hold_min=sig.max_hold_min, mode=mode, reason=sig.reason, meta=dict(sig.meta))
+                     max_hold_min=sig.max_hold_min, mode=mode, reason=sig.reason, meta=dict(sig.meta, variant=sig.variant or "default", tags=dict(sig.tags or {})))
         self.positions.append(p)
         self.traded_today[sig.strategy].add(sig.symbol)
         self.counts[f"open:{mode}"] += 1
@@ -132,7 +166,7 @@ class Engine:
             elif held_min >= p.max_hold_min:
                 reason = f"time ({held_min:.0f} min)"
             elif minute_tick:
-                s = next((x for x in self.strategies if x.name == p.strategy), None)
+                s = next((x for x in self.strategies if x.name == p.strategy and x.variant == (p.meta or {}).get("variant", "default")), None)
                 reason = s.should_exit(p, self.book, ctx) if s else None
             if reason:
                 self.exit(p, now, reason)
@@ -156,7 +190,9 @@ class Engine:
                 sigs += s.on_minute(self.book, ctx)
             except Exception as e:
                 self.log(f"[engine] {s.name}: {type(e).__name__} {e}")
-        sigs.sort(key=lambda x: -x.score)
+        # z175: a non-default variant only acts where it was approved; live signals first, then by strength
+        sigs = [x for x in sigs if (x.variant or "default") == "default" or self.live_signal(x)]
+        sigs.sort(key=lambda x: (not self.live_signal(x), -x.score))
         for sig in sigs:
             self.enter(sig, now)
 
