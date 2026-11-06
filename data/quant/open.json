@@ -4,6 +4,7 @@
  "traded": {
   "etf_arb": [
    "XLB",
+   "XLC",
    "XLE",
    "XLF",
    "XLI",
@@ -15,81 +16,741 @@
    "XLY"
   ],
   "sector_reversion": [
+   "AMD",
    "BP",
-   "F"
+   "F",
+   "T"
+  ],
+  "opening_range": [
+   "AAL",
+   "EWQ",
+   "EWZ",
+   "FXI",
+   "GRNY",
+   "IAU",
+   "IBIT",
+   "ICLN",
+   "JETS",
+   "KWEB",
+   "MCHI",
+   "NVDA",
+   "NVO",
+   "PFE",
+   "SH",
+   "SLV",
+   "SOXX",
+   "SPXS",
+   "SPYU",
+   "SQQQ",
+   "TNA",
+   "VTI",
+   "VTV",
+   "VXUS",
+   "XRT",
+   "YANG",
+   "YINN"
   ]
  },
  "positions": [
   {
-   "id": "2026-11-06-sec-f469267c",
-   "strategy": "sector_reversion",
-   "symbol": "BP",
-   "side": "long",
-   "qty": 112,
-   "entry_px": 44.274427,
-   "entry_mid": 44.255,
-   "entry_spread_bps": 6.7788950401087185,
-   "entry_ts": 1793976060.4363925,
-   "stop_bps": 32.13,
-   "target_bps": 29.07,
-   "max_hold_min": 30,
-   "mode": "shadow",
-   "reason": "residual z -3.02 vs XLE (beta 0.76)",
-   "meta": {
-    "etf": "XLE",
-    "z": -3.015,
-    "variant": "default",
-    "tags": {
-     "liq": "large",
-     "tod": "open",
-     "side": "long",
-     "sector": "XLE"
-    }
-   }
-  },
-  {
-   "id": "2026-11-06-etf-699c4a60",
-   "strategy": "etf_arb",
-   "symbol": "XLU",
+   "id": "2026-11-06-ope-d00f0f91",
+   "strategy": "opening_range",
+   "symbol": "SQQQ",
    "side": "short",
-   "qty": 116,
-   "entry_px": 42.885711,
-   "entry_mid": 42.894999999999996,
-   "entry_spread_bps": 2.331274041263087,
-   "entry_ts": 1793976300.933274,
-   "stop_bps": 41.78,
-   "target_bps": 20.89,
-   "max_hold_min": 10,
+   "qty": 108,
+   "entry_px": 46.19538,
+   "entry_mid": 46.21,
+   "entry_spread_bps": 4.328067517852418,
+   "entry_ts": 1793976360.2060785,
+   "stop_bps": 193.68,
+   "target_bps": 387.36,
+   "max_hold_min": 369,
    "mode": "shadow",
-   "reason": "basket -34.8 bps vs XLU over 5 min (86% of the fund priced)",
+   "reason": "broke the 15-minute opening range 46.41-47.80 (293 bps wide)",
    "meta": {
-    "gap": -34.82,
     "variant": "default",
     "tags": {
      "liq": "mega",
      "tod": "open",
      "side": "short",
-     "sector": "XLU"
+     "sector": "none"
     }
    }
   },
   {
-   "id": "2026-11-06-etf-2d50ef5e",
+   "id": "2026-11-06-ope-a0b2f7fa",
+   "strategy": "opening_range",
+   "symbol": "SPYU",
+   "side": "long",
+   "qty": 177,
+   "entry_px": 28.222822,
+   "entry_mid": 28.21,
+   "entry_spread_bps": 7.089684509039196,
+   "entry_ts": 1793976360.2060785,
+   "stop_bps": 160.4,
+   "target_bps": 320.81,
+   "max_hold_min": 369,
+   "mode": "shadow",
+   "reason": "broke the 15-minute opening range 27.45-28.07 (225 bps wide)",
+   "meta": {
+    "variant": "default",
+    "tags": {
+     "liq": "mid",
+     "tod": "open",
+     "side": "long",
+     "sector": "none"
+    }
+   }
+  },
+  {
+   "id": "2026-11-06-ope-315ab539",
+   "strategy": "opening_range",
+   "symbol": "SOXX",
+   "side": "long",
+   "qty": 35,
+   "entry_px": 139.663965,
+   "entry_mid": 139.615,
+   "entry_spread_bps": 5.013787916770632,
+   "entry_ts": 1793976360.2060785,
+   "stop_bps": 133.4,
+   "target_bps": 266.81,
+   "max_hold_min": 369,
+   "mode": "shadow",
+   "reason": "broke the 15-minute opening range 136.25-139.25 (217 bps wide)",
+   "meta": {
+    "variant": "default",
+    "tags": {
+     "liq": "mega",
+     "tod": "open",
+     "side": "long",
+     "sector": "none"
+    }
+   }
+  },
+  {
+   "id": "2026-11-06-ope-141bb57a",
+   "strategy": "opening_range",
+   "symbol": "TNA",
+   "side": "long",
+   "qty": 94,
+   "entry_px": 53.015301,
+   "entry_mid": 53.0,
+   "entry_spread_bps": 3.7735849056596265,
+   "entry_ts": 1793976360.2060785,
+   "stop_bps": 127.83,
+   "target_bps": 255.66,
+   "max_hold_min": 369,
+   "mode": "shadow",
+   "reason": "broke the 15-minute opening range 51.80-52.84 (198 bps wide)",
+   "meta": {
+    "variant": "default",
+    "tags": {
+     "liq": "large",
+     "tod": "open",
+     "side": "long",
+     "sector": "none"
+    }
+   }
+  },
+  {
+   "id": "2026-11-06-ope-71e80c9f",
+   "strategy": "opening_range",
+   "symbol": "PFE",
+   "side": "long",
+   "qty": 171,
+   "entry_px": 29.10291,
+   "entry_mid": 29.095,
+   "entry_spread_bps": 3.437016669531385,
+   "entry_ts": 1793976360.2060785,
+   "stop_bps": 111.7,
+   "target_bps": 223.41,
+   "max_hold_min": 369,
+   "mode": "shadow",
+   "reason": "broke the 15-minute opening range 28.49-29.05 (195 bps wide)",
+   "meta": {
+    "variant": "default",
+    "tags": {
+     "liq": "mega",
+     "tod": "open",
+     "side": "long",
+     "sector": "XLV"
+    }
+   }
+  },
+  {
+   "id": "2026-11-06-ope-9ce6ffb2",
+   "strategy": "opening_range",
+   "symbol": "SPXS",
+   "side": "short",
+   "qty": 184,
+   "entry_px": 27.047295,
+   "entry_mid": 27.055,
+   "entry_spread_bps": 3.69617445943375,
+   "entry_ts": 1793976360.2060785,
+   "stop_bps": 127.52,
+   "target_bps": 255.04,
+   "max_hold_min": 369,
+   "mode": "shadow",
+   "reason": "broke the 15-minute opening range 27.16-27.64 (179 bps wide)",
+   "meta": {
+    "variant": "default",
+    "tags": {
+     "liq": "large",
+     "tod": "open",
+     "side": "short",
+     "sector": "none"
+    }
+   }
+  },
+  {
+   "id": "2026-11-06-ope-dfc065e0",
+   "strategy": "opening_range",
+   "symbol": "NVO",
+   "side": "long",
+   "qty": 125,
+   "entry_px": 40.004,
+   "entry_mid": 39.995000000000005,
+   "entry_spread_bps": 2.500312539066886,
+   "entry_ts": 1793976360.2060785,
+   "stop_bps": 57.51,
+   "target_bps": 115.01,
+   "max_hold_min": 369,
+   "mode": "shadow",
+   "reason": "broke the 15-minute opening range 39.59-39.94 (88 bps wide)",
+   "meta": {
+    "variant": "default",
+    "tags": {
+     "liq": "large",
+     "tod": "open",
+     "side": "long",
+     "sector": "XLV"
+    }
+   }
+  },
+  {
+   "id": "2026-11-06-ope-cfd635b1",
+   "strategy": "opening_range",
+   "symbol": "SLV",
+   "side": "long",
+   "qty": 106,
+   "entry_px": 46.844684,
+   "entry_mid": 46.835,
+   "entry_spread_bps": 2.1351553325515353,
+   "entry_ts": 1793976360.2060785,
+   "stop_bps": 63.52,
+   "target_bps": 127.04,
+   "max_hold_min": 369,
+   "mode": "shadow",
+   "reason": "broke the 15-minute opening range 46.35-46.72 (81 bps wide)",
+   "meta": {
+    "variant": "default",
+    "tags": {
+     "liq": "mega",
+     "tod": "open",
+     "side": "long",
+     "sector": "none"
+    }
+   }
+  },
+  {
+   "id": "2026-11-06-ope-c634739f",
+   "strategy": "opening_range",
+   "symbol": "EWZ",
+   "side": "long",
+   "qty": 155,
+   "entry_px": 32.063206,
+   "entry_mid": 32.055,
+   "entry_spread_bps": 3.1196381219794467,
+   "entry_ts": 1793976360.2060785,
+   "stop_bps": 49.91,
+   "target_bps": 99.83,
+   "max_hold_min": 369,
+   "mode": "shadow",
+   "reason": "broke the 15-minute opening range 31.79-32.00 (69 bps wide)",
+   "meta": {
+    "variant": "default",
+    "tags": {
+     "liq": "mega",
+     "tod": "open",
+     "side": "long",
+     "sector": "none"
+    }
+   }
+  },
+  {
+   "id": "2026-11-06-ope-c6ac4f35",
+   "strategy": "opening_range",
+   "symbol": "VTV",
+   "side": "long",
+   "qty": 22,
+   "entry_px": 223.142312,
+   "entry_mid": 223.085,
+   "entry_spread_bps": 3.137817423851589,
+   "entry_ts": 1793976360.2060785,
+   "stop_bps": 41.02,
+   "target_bps": 82.03,
+   "max_hold_min": 369,
+   "mode": "shadow",
+   "reason": "broke the 15-minute opening range 221.45-222.89 (65 bps wide)",
+   "meta": {
+    "variant": "default",
+    "tags": {
+     "liq": "large",
+     "tod": "open",
+     "side": "long",
+     "sector": "none"
+    }
+   }
+  },
+  {
+   "id": "2026-11-06-ope-e977f8d4",
+   "strategy": "opening_range",
+   "symbol": "EWQ",
+   "side": "long",
+   "qty": 116,
+   "entry_px": 42.834283,
+   "entry_mid": 42.825,
+   "entry_spread_bps": 2.3350846468179824,
+   "entry_ts": 1793976360.2060785,
+   "stop_bps": 34.44,
+   "target_bps": 68.88,
+   "max_hold_min": 369,
+   "mode": "shadow",
+   "reason": "broke the 15-minute opening range 42.54-42.81 (64 bps wide)",
+   "meta": {
+    "variant": "default",
+    "tags": {
+     "liq": "small",
+     "tod": "open",
+     "side": "long",
+     "sector": "none"
+    }
+   }
+  },
+  {
+   "id": "2026-11-06-ope-c3475fb2",
+   "strategy": "opening_range",
+   "symbol": "SH",
+   "side": "short",
+   "qty": 149,
+   "entry_px": 33.536646,
+   "entry_mid": 33.545,
+   "entry_spread_bps": 2.981070204202716,
+   "entry_ts": 1793976360.2060785,
+   "stop_bps": 41.73,
+   "target_bps": 83.47,
+   "max_hold_min": 369,
+   "mode": "shadow",
+   "reason": "broke the 15-minute opening range 33.59-33.78 (59 bps wide)",
+   "meta": {
+    "variant": "default",
+    "tags": {
+     "liq": "large",
+     "tod": "open",
+     "side": "short",
+     "sector": "none"
+    }
+   }
+  },
+  {
+   "id": "2026-11-06-ope-99ed0048",
+   "strategy": "opening_range",
+   "symbol": "VTI",
+   "side": "long",
+   "qty": 13,
+   "entry_px": 363.766373,
+   "entry_mid": 363.63,
+   "entry_spread_bps": 5.5000962516856555,
+   "entry_ts": 1793976360.2060785,
+   "stop_bps": 42.83,
+   "target_bps": 85.66,
+   "max_hold_min": 369,
+   "mode": "shadow",
+   "reason": "broke the 15-minute opening range 361.04-363.11 (57 bps wide)",
+   "meta": {
+    "variant": "default",
+    "tags": {
+     "liq": "mega",
+     "tod": "open",
+     "side": "long",
+     "sector": "none"
+    }
+   }
+  },
+  {
+   "id": "2026-11-06-ope-7ba979fb",
+   "strategy": "opening_range",
+   "symbol": "ICLN",
+   "side": "long",
+   "qty": 303,
+   "entry_px": 16.471647,
+   "entry_mid": 16.465,
+   "entry_spread_bps": 6.073489219555427,
+   "entry_ts": 1793976420.3645449,
+   "stop_bps": 72.88,
+   "target_bps": 145.76,
+   "max_hold_min": 368,
+   "mode": "shadow",
+   "reason": "broke the 15-minute opening range 16.23-16.45 (135 bps wide)",
+   "meta": {
+    "variant": "default",
+    "tags": {
+     "liq": "mid",
+     "tod": "open",
+     "side": "long",
+     "sector": "none"
+    }
+   }
+  },
+  {
+   "id": "2026-11-06-ope-1c92ce25",
+   "strategy": "opening_range",
+   "symbol": "IAU",
+   "side": "long",
+   "qty": 65,
+   "entry_px": 76.037603,
+   "entry_mid": 76.025,
+   "entry_spread_bps": 1.3153567905301038,
+   "entry_ts": 1793976420.3645449,
+   "stop_bps": 25.32,
+   "target_bps": 50.64,
+   "max_hold_min": 368,
+   "mode": "shadow",
+   "reason": "broke the 15-minute opening range 75.73-75.94 (27 bps wide)",
+   "meta": {
+    "variant": "default",
+    "tags": {
+     "liq": "large",
+     "tod": "open",
+     "side": "long",
+     "sector": "none"
+    }
+   }
+  },
+  {
+   "id": "2026-11-06-ope-59fca267",
+   "strategy": "opening_range",
+   "symbol": "XRT",
+   "side": "long",
+   "qty": 55,
+   "entry_px": 90.349034,
+   "entry_mid": 90.32,
+   "entry_spread_bps": 4.42869796279963,
+   "entry_ts": 1793976540.6682518,
+   "stop_bps": 49.55,
+   "target_bps": 99.09,
+   "max_hold_min": 366,
+   "mode": "shadow",
+   "reason": "broke the 15-minute opening range 89.47-90.27 (88 bps wide)",
+   "meta": {
+    "variant": "default",
+    "tags": {
+     "liq": "large",
+     "tod": "open",
+     "side": "long",
+     "sector": "none"
+    }
+   }
+  },
+  {
+   "id": "2026-11-06-ope-0562e0b9",
+   "strategy": "opening_range",
+   "symbol": "AAL",
+   "side": "long",
+   "qty": 377,
+   "entry_px": 13.241324,
+   "entry_mid": 13.235,
+   "entry_spread_bps": 7.555723460521184,
+   "entry_ts": 1793976600.8252773,
+   "stop_bps": 109.56,
+   "target_bps": 219.12,
+   "max_hold_min": 365,
+   "mode": "shadow",
+   "reason": "broke the 15-minute opening range 12.96-13.21 (191 bps wide)",
+   "meta": {
+    "variant": "default",
+    "tags": {
+     "liq": "large",
+     "tod": "open",
+     "side": "long",
+     "sector": "XLI"
+    }
+   }
+  },
+  {
+   "id": "2026-11-06-ope-32d159b7",
+   "strategy": "opening_range",
+   "symbol": "MCHI",
+   "side": "long",
+   "qty": 96,
+   "entry_px": 51.745174,
+   "entry_mid": 51.735,
+   "entry_spread_bps": 1.9329274185764216,
+   "entry_ts": 1793976780.0451505,
+   "stop_bps": 36.24,
+   "target_bps": 72.48,
+   "max_hold_min": 362,
+   "mode": "shadow",
+   "reason": "broke the 15-minute opening range 51.38-51.72 (65 bps wide)",
+   "meta": {
+    "variant": "default",
+    "tags": {
+     "liq": "large",
+     "tod": "open",
+     "side": "long",
+     "sector": "none"
+    }
+   }
+  },
+  {
+   "id": "2026-11-06-ope-fd229c58",
+   "strategy": "opening_range",
+   "symbol": "YINN",
+   "side": "long",
+   "qty": 191,
+   "entry_px": 26.112611,
+   "entry_mid": 26.105,
+   "entry_spread_bps": 3.8306837770534417,
+   "entry_ts": 1793976840.2038639,
+   "stop_bps": 111.09,
+   "target_bps": 222.18,
+   "max_hold_min": 361,
+   "mode": "shadow",
+   "reason": "broke the 15-minute opening range 25.58-26.05 (182 bps wide)",
+   "meta": {
+    "variant": "default",
+    "tags": {
+     "liq": "mid",
+     "tod": "open",
+     "side": "long",
+     "sector": "none"
+    }
+   }
+  },
+  {
+   "id": "2026-11-06-ope-0fe8327c",
+   "strategy": "opening_range",
+   "symbol": "YANG",
+   "side": "short",
+   "qty": 169,
+   "entry_px": 29.517048,
+   "entry_mid": 29.525,
+   "entry_spread_bps": 3.386960203218142,
+   "entry_ts": 1793976840.2038639,
+   "stop_bps": 109.23,
+   "target_bps": 218.46,
+   "max_hold_min": 361,
+   "mode": "shadow",
+   "reason": "broke the 15-minute opening range 29.59-30.10 (173 bps wide)",
+   "meta": {
+    "variant": "default",
+    "tags": {
+     "liq": "small",
+     "tod": "open",
+     "side": "short",
+     "sector": "none"
+    }
+   }
+  },
+  {
+   "id": "2026-11-06-ope-16d678ea",
+   "strategy": "opening_range",
+   "symbol": "KWEB",
+   "side": "long",
+   "qty": 201,
+   "entry_px": 24.792479,
+   "entry_mid": 24.785,
+   "entry_spread_bps": 4.034698406293327,
+   "entry_ts": 1793976840.2038639,
+   "stop_bps": 55.48,
+   "target_bps": 110.95,
+   "max_hold_min": 361,
+   "mode": "shadow",
+   "reason": "broke the 15-minute opening range 24.52-24.77 (103 bps wide)",
+   "meta": {
+    "variant": "default",
+    "tags": {
+     "liq": "mega",
+     "tod": "open",
+     "side": "long",
+     "sector": "none"
+    }
+   }
+  },
+  {
+   "id": "2026-11-06-ope-d08e3b97",
+   "strategy": "opening_range",
+   "symbol": "FXI",
+   "side": "long",
+   "qty": 143,
+   "entry_px": 34.833483,
+   "entry_mid": 34.825,
+   "entry_spread_bps": 2.871500358936973,
+   "entry_ts": 1793976840.2038639,
+   "stop_bps": 37.33,
+   "target_bps": 74.66,
+   "max_hold_min": 361,
+   "mode": "shadow",
+   "reason": "broke the 15-minute opening range 34.59-34.80 (58 bps wide)",
+   "meta": {
+    "variant": "default",
+    "tags": {
+     "liq": "mega",
+     "tod": "open",
+     "side": "long",
+     "sector": "none"
+    }
+   }
+  },
+  {
+   "id": "2026-11-06-sec-333b4de0",
+   "strategy": "sector_reversion",
+   "symbol": "BP",
+   "side": "short",
+   "qty": 111,
+   "entry_px": 44.645535,
+   "entry_mid": 44.66,
+   "entry_spread_bps": 4.478280340350006,
+   "entry_ts": 1793976900.3573463,
+   "stop_bps": 41.33,
+   "target_bps": 32.65,
+   "max_hold_min": 30,
+   "mode": "shadow",
+   "reason": "residual z +2.63 vs XLE (beta 0.77)",
+   "meta": {
+    "etf": "XLE",
+    "z": 2.634,
+    "variant": "default",
+    "tags": {
+     "liq": "large",
+     "tod": "open",
+     "side": "short",
+     "sector": "XLE"
+    }
+   }
+  },
+  {
+   "id": "2026-11-06-sec-84c09461",
+   "strategy": "sector_reversion",
+   "symbol": "T",
+   "side": "short",
+   "qty": 231,
+   "entry_px": 21.617838,
+   "entry_mid": 21.625,
+   "entry_spread_bps": 4.624277456646479,
+   "entry_ts": 1793977020.837076,
+   "stop_bps": 53.1,
+   "target_bps": 45.54,
+   "max_hold_min": 30,
+   "mode": "shadow",
+   "reason": "residual z +2.86 vs XLC (beta 0.30)",
+   "meta": {
+    "etf": "XLC",
+    "z": 2.859,
+    "variant": "default",
+    "tags": {
+     "liq": "mega",
+     "tod": "open",
+     "side": "short",
+     "sector": "XLC"
+    }
+   }
+  },
+  {
+   "id": "2026-11-06-etf-5979836d",
+   "strategy": "etf_arb",
+   "symbol": "XLK",
+   "side": "long",
+   "qty": 29,
+   "entry_px": 167.21672,
+   "entry_mid": 167.18,
+   "entry_spread_bps": 2.3926306974513722,
+   "entry_ts": 1793977080.9932663,
+   "stop_bps": 19.72,
+   "target_bps": 9.86,
+   "max_hold_min": 10,
+   "mode": "shadow",
+   "reason": "basket +16.4 bps vs XLK over 5 min (85% of the fund priced)",
+   "meta": {
+    "gap": 16.43,
+    "variant": "default",
+    "tags": {
+     "liq": "mega",
+     "tod": "open",
+     "side": "long",
+     "sector": "XLK"
+    }
+   }
+  },
+  {
+   "id": "2026-11-06-etf-004fc2ac",
+   "strategy": "etf_arb",
+   "symbol": "XLC",
+   "side": "long",
+   "qty": 47,
+   "entry_px": 104.690468,
+   "entry_mid": 104.67,
+   "entry_spread_bps": 1.910767173020945,
+   "entry_ts": 1793977140.1467643,
+   "stop_bps": 48.74,
+   "target_bps": 24.37,
+   "max_hold_min": 10,
+   "mode": "shadow",
+   "reason": "basket +40.6 bps vs XLC over 5 min (98% of the fund priced)",
+   "meta": {
+    "gap": 40.62,
+    "variant": "default",
+    "tags": {
+     "liq": "mega",
+     "tod": "open",
+     "side": "long",
+     "sector": "XLC"
+    }
+   }
+  },
+  {
+   "id": "2026-11-06-etf-1aa16d3f",
+   "strategy": "etf_arb",
+   "symbol": "XLRE",
+   "side": "long",
+   "qty": 113,
+   "entry_px": 44.034403,
+   "entry_mid": 44.025000000000006,
+   "entry_spread_bps": 2.2714366837019897,
+   "entry_ts": 1793977140.1467643,
+   "stop_bps": 51.05,
+   "target_bps": 25.53,
+   "max_hold_min": 10,
+   "mode": "shadow",
+   "reason": "basket +42.5 bps vs XLRE over 5 min (82% of the fund priced)",
+   "meta": {
+    "gap": 42.54,
+    "variant": "default",
+    "tags": {
+     "liq": "large",
+     "tod": "open",
+     "side": "long",
+     "sector": "XLRE"
+    }
+   }
+  },
+  {
+   "id": "2026-11-06-etf-5461e178",
    "strategy": "etf_arb",
    "symbol": "XLB",
    "side": "short",
    "qty": 96,
-   "entry_px": 51.734826,
-   "entry_mid": 51.745000000000005,
-   "entry_spread_bps": 1.93255386993874,
-   "entry_ts": 1793976300.933274,
-   "stop_bps": 34.39,
-   "target_bps": 17.2,
+   "entry_px": 52.024797,
+   "entry_mid": 52.04,
+   "entry_spread_bps": 3.84319754035281,
+   "entry_ts": 1793977200.3011608,
+   "stop_bps": 91.57,
+   "target_bps": 45.78,
    "max_hold_min": 10,
    "mode": "shadow",
-   "reason": "basket -28.7 bps vs XLB over 5 min (94% of the fund priced)",
+   "reason": "basket -76.3 bps vs XLB over 5 min (93% of the fund priced)",
    "meta": {
-    "gap": -28.66,
+    "gap": -76.3,
     "variant": "default",
     "tags": {
      "liq": "mega",
@@ -100,28 +761,54 @@
    }
   },
   {
-   "id": "2026-11-06-etf-b4bd3a74",
+   "id": "2026-11-06-etf-4b4e0568",
    "strategy": "etf_arb",
-   "symbol": "XLRE",
+   "symbol": "XLP",
    "side": "long",
-   "qty": 113,
-   "entry_px": 43.974397,
-   "entry_mid": 43.965,
-   "entry_spread_bps": 2.2745365631748005,
-   "entry_ts": 1793976300.933274,
-   "stop_bps": 22.3,
-   "target_bps": 11.15,
+   "qty": 55,
+   "entry_px": 89.898989,
+   "entry_mid": 89.88499999999999,
+   "entry_spread_bps": 1.1125326806480633,
+   "entry_ts": 1793977200.3011608,
+   "stop_bps": 16.1,
+   "target_bps": 8.05,
    "max_hold_min": 10,
    "mode": "shadow",
-   "reason": "basket +18.6 bps vs XLRE over 5 min (93% of the fund priced)",
+   "reason": "basket +13.4 bps vs XLP over 5 min (91% of the fund priced)",
    "meta": {
-    "gap": 18.58,
+    "gap": 13.41,
     "variant": "default",
     "tags": {
-     "liq": "large",
+     "liq": "mega",
      "tod": "open",
      "side": "long",
-     "sector": "XLRE"
+     "sector": "XLP"
+    }
+   }
+  },
+  {
+   "id": "2026-11-06-etf-9c90fb93",
+   "strategy": "etf_arb",
+   "symbol": "XLF",
+   "side": "long",
+   "qty": 87,
+   "entry_px": 57.285728,
+   "entry_mid": 57.275000000000006,
+   "entry_spread_bps": 1.7459624618067238,
+   "entry_ts": 1793977200.3011608,
+   "stop_bps": 14.83,
+   "target_bps": 7.42,
+   "max_hold_min": 10,
+   "mode": "shadow",
+   "reason": "basket +12.4 bps vs XLF over 5 min (77% of the fund priced)",
+   "meta": {
+    "gap": 12.36,
+    "variant": "default",
+    "tags": {
+     "liq": "mega",
+     "tod": "open",
+     "side": "long",
+     "sector": "XLF"
     }
    }
   }
