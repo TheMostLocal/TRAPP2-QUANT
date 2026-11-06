@@ -17,11 +17,19 @@ class Signal:
     score: float = 0.0        # strength (|z|, gap / threshold ...) - ranks signals when slots are short
     reason: str = ""
     meta: dict = field(default_factory=dict)
+    variant: str = "default"  # z175: which parameter set produced it
+    tags: dict = field(default_factory=dict)   # z175: liq / tod / side / sector - the segments it belongs to
 
 
 class Strategy:
     name = "base"
     horizon = "intraday"
+    DEFAULTS = {}
+
+    def __init__(self, params=None, variant="default"):
+        # z175: every tunable is a parameter (the lab searches them); the defaults are the original rules
+        self.p = dict(self.DEFAULTS, **(params or {}))
+        self.variant = variant
 
     def on_minute(self, book, ctx):
         return []
