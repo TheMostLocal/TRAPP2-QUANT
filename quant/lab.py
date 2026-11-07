@@ -156,7 +156,7 @@ def session_events(uni, bars, d, close_min, cfg=CFG):
                     side = "short" if z > 0 else "long"
                     ev.append({"strategy": "sector_reversion", "sym": s, "i": j, "side": side, "level": lv, "z": z, "cum": cum, "sd": sd,
                                "spike": spike, "cost": cost[s], "etf": etf,
-                               "tags": {"liq": liq_bucket(liq.get(s)), "tod": tod_bucket(minute), "side": side, "sector": etf}})
+                               "tags": {"liq": liq_bucket(liq.get(s)), "tod": tod_bucket(minute), "side": side, "sector": etf, "kind": "stock"}})
     # --- ETF arbitrage: the first minute the gap crosses each level (x the round trip cost), and the second minute
     #     in a row (the "persistent" version)
     for etf, members in weights.items():
@@ -178,7 +178,7 @@ def session_events(uni, bars, d, close_min, cfg=CFG):
                 if abs(g) < thr:
                     continue
                 side = "long" if g > 0 else "short"
-                tags = {"liq": liq_bucket(liq.get(etf)), "tod": tod_bucket(minute), "side": side, "sector": etf}
+                tags = {"liq": liq_bucket(liq.get(etf)), "tod": tod_bucket(minute), "side": side, "sector": etf, "kind": "fund"}
                 ok_time = cfg.no_entry_before <= minute <= cfg.no_entry_after
                 if armed[lv][0]:
                     armed[lv][0] = False
@@ -222,7 +222,8 @@ def session_events(uni, bars, d, close_min, cfg=CFG):
                 minute = 9 * 60 + 30 + j
                 if minute >= cfg.no_entry_before and stop > 0:
                     ev.append({"strategy": "opening_range", "sym": s, "i": j, "side": side, "R": R, "stop": stop, "cost": cost[s], "minute": minute,
-                               "tags": {"liq": liq_bucket(liq.get(s)), "tod": tod_bucket(minute), "side": side, "sector": sector_etf.get(s) or "none"}})
+                               "tags": {"liq": liq_bucket(liq.get(s)), "tod": tod_bucket(minute), "side": side, "sector": sector_etf.get(s) or "none",
+                                        "kind": (uni.get("kinds") or {}).get(s, "stock")}})
                 break
     return ev, closes, rets
 
