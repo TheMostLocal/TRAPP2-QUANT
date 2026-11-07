@@ -71,6 +71,11 @@ def main():
     uni = load()
     if str(uni.get("asOf", ""))[:10] != mh.et_now().date().isoformat():
         uni = build()
+    from .macro import current_quads
+    uni["quad"] = current_quads()                       # z177: official + nowcast quad on every trade
+    q = uni["quad"]
+    print(f"[run] macro quad: official Q{q.get('official')} (as of {q.get('officialAsOf')}) · market nowcast Q{q.get('nowcast')} "
+          f"(as of {q.get('nowcastAsOf')})" + (f" · {q['note']}" if q.get("note") else ""), flush=True)
     eng = Engine(CFG, uni)
     stream = uni["symbols"] if CFG.feed == "sip" else uni["stream"][:CFG.stream_limit]
     feeds = FeedManager(eng.book, uni["symbols"], stream, CFG)
