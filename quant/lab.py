@@ -408,6 +408,8 @@ def run(n_days=None, strategies=("sector_reversion", "etf_arb", "opening_range")
         log("ALPACA_KEY_ID / ALPACA_SECRET_KEY not set - cannot fetch history")
         return 1
     uni = load()
+    from .macro import history_rows, official_on
+    qrows = history_rows()                              # z177: segment by the official quad as known each day
     days = sessions(int(n_days or os.environ.get("QUANT_LAB_DAYS", "40")))
     cut = max(1, round(len(days) * 2 / 3))
     train, test = {d for d, _ in days[:cut]}, {d for d, _ in days[cut:]}
@@ -418,12 +420,16 @@ def run(n_days=None, strategies=("sector_reversion", "etf_arb", "opening_range")
             log(f"{d}: no bars - skipped")
             continue
         events, closes, rets = session_events(uni, bars, d, close)
+        qd = official_on(d, qrows)
+        if qd:
+            for e in events:
+                e["tags"]["quad"] = f"Q{qd}"
         scored = score_events(events, closes, rets, uni)
         split = "train" if d in train else "test"
         for st, vid, net, tags in scored:
             for seg in keys_for(tags):
                 acc.setdefault((st, vid, seg, split), Acc()).add(net)
-        log(f"{d} ({split}): {len(bars)} symbols · {len(events)} candidate trades · {len(scored)} variant scores · {time.time() - t0:.0f} s")
+        log(f"{d} ({split}, official quad then: Q{qd}): {len(bars)} symbols · {len(events)} candidate trades · {len(scored)} variant scores · {time.time() - t0:.0f} s")
     models = build_models(acc, list(strategies), [d.isoformat() for d, _ in days[:cut]], [d.isoformat() for d, _ in days[cut:]])
     DATA.mkdir(parents=True, exist_ok=True)
     (DATA / "lab").mkdir(exist_ok=True)
