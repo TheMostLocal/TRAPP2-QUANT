@@ -33,6 +33,13 @@ class Config:
     max_symbols: int = int(_f("QUANT_MAX_SYMBOLS", 5000))
     min_dollar_volume: float = _f("QUANT_MIN_DV", 5e6)              # no new entry below $5M traded a day
     momentum_min_dollar_volume: float = _f("QUANT_MOMENTUM_MIN_DV", 2e7)   # opening-range breakouts: $20M a day
+    # z176: after a trade closes, the same strategy waits this long before trading that symbol again. Without it the ETF
+    # arbitrage re-entered the same fund within a minute, over and over (811 of 967 trades on 11-02, ~1 minute each).
+    cooldown_min: float = _f("QUANT_COOLDOWN_MIN", 15)
+    # z176: send EVERY signal to the Alpaca paper account, proven or not (repository variable QUANT_PAPER_ALL = 1).
+    # Still paper money - it trades the losing strategies too, but every fill is a real quote, which measures the
+    # true spread and slippage. Off by default: then only lab-approved segments go to Alpaca, the rest is shadow.
+    paper_all: bool = os.environ.get("QUANT_PAPER_ALL", "") in ("1", "true", "yes")
     min_price: float = _f("QUANT_MIN_PRICE", 5)
     # ---- session, ET minutes from midnight ---------------------------------------------------------
     no_entry_before: int = 9 * 60 + 40          # let the opening auction settle
