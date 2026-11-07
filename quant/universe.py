@@ -142,7 +142,8 @@ def build(n_stream=None, max_symbols=None, momentum_min_dv=None):
                 except ValueError:
                     px, vol = 0.0, 0.0
                 etf = SECTOR_ETF.get(str(r.get("sector") or "").strip().lower())
-                rows[t] = {"price": px, "dv": px * vol, "etf": etf, "book": b}
+                fund = bool(str(r.get("expenseRatio") or "").strip())      # z176: only funds carry an expense ratio
+                rows[t] = {"price": px, "dv": px * vol, "etf": etf, "book": b, "fund": fund}
         except Exception as e:
             log(f"{b}: {e}")
     stocks = sorted((t for t in rows if t not in ETFS + INDEX_ETFS), key=lambda t: -rows[t]["dv"])
@@ -160,10 +161,12 @@ def build(n_stream=None, max_symbols=None, momentum_min_dv=None):
     sector_etf = {t: rows[t]["etf"] for t in stocks if rows[t]["etf"]}
     momentum = [t for t in stocks if rows[t]["dv"] >= momentum_min_dv and rows[t]["price"] >= 5]
     liquidity = {t: round(rows[t]["dv"]) for t in rows}
+    kinds = {t: ("fund" if (rows.get(t, {}).get("fund") or t in ETFS + INDEX_ETFS) else "stock") for t in symbols}
     doc = {"asOf": datetime.now(timezone.utc).isoformat(timespec="seconds"), "symbols": symbols, "stream": stream,
-           "sector_etf": sector_etf, "etf_weights": weights, "momentum": momentum, "liquidity": liquidity,
+           "sector_etf": sector_etf, "etf_weights": weights, "momentum": momentum, "liquidity": liquidity, "kinds": kinds,
            "counts": {"bookTickers": len(seen), "usTradable": len(rows), "symbols": len(symbols), "stocks": len(stocks),
                       "withSector": len(sector_etf), "momentum": len(momentum), "etfsWithHoldings": len(weights),
+                      "stocksInUniverse": sum(1 for v in kinds.values() if v == "stock"), "fundsInUniverse": sum(1 for v in kinds.values() if v == "fund"),
                       "stream": len(stream), "notOnAlpacaStocks": skipped}}
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text(json.dumps(doc, indent=1))
