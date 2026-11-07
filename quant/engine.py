@@ -111,7 +111,7 @@ class Engine:
                                open_symbols={p.symbol for p in self.positions}, traded_today=self.traded_today,
                                sector_etf=self.uni.get("sector_etf") or {}, etf_weights={k: v for k, v in (self.uni.get("etf_weights") or {}).items()},
                                momentum_universe=self.uni.get("momentum") or [], liquidity=self.uni.get("liquidity") or {},
-                               kinds=self.uni.get("kinds") or {})
+                               kinds=self.uni.get("kinds") or {}, quad=self.uni.get("quad") or {})
 
     # ---- entries / exits ---------------------------------------------------------------------------
     def enter(self, sig, now):
