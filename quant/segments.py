@@ -27,7 +27,8 @@ def tod_bucket(minute):
 def tags_for(symbol, side, ctx, sector=None):
     liq = (getattr(ctx, "liquidity", None) or {}).get(symbol)
     sec = sector or (getattr(ctx, "sector_etf", None) or {}).get(symbol) or "none"
-    return {"liq": liq_bucket(liq), "tod": tod_bucket(ctx.minute), "side": side, "sector": sec}
+    kind = (getattr(ctx, "kinds", None) or {}).get(symbol) or ("fund" if sector == symbol else "stock")   # z176: shown, not segmented
+    return {"liq": liq_bucket(liq), "tod": tod_bucket(ctx.minute), "side": side, "sector": sec, "kind": kind}
 
 
 def keys_for(tags):
