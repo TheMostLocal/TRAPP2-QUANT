@@ -71,6 +71,7 @@ class Engine:
         self.ledger = Ledger(cfg, self.day, self.dir)
         self.positions = []
         self.traded_today = defaultdict(set)
+        self.last_exit = {}                     # z176: "strategy|symbol" -> epoch of its last close (the re-entry cooldown)
         self.flattened = False
         self.counts = defaultdict(int)
         self._restore()
@@ -92,6 +93,8 @@ class Engine:
         """z175: live only if the lab approved this strategy's variant in a segment this signal belongs to."""
         if self.cfg.execution not in ("alpaca", "sim"):
             return False
+        if self.cfg.paper_all:                    # z176: every signal to the paper account when asked to
+            return (sig.variant or "default") == "default"
         if self.models is not None:
             m = self.models.get(sig.strategy) or {}
             return any(a.get("variant", "default") == (sig.variant or "default") and matches(sig.tags or {}, a.get("segment", "")) for a in (m.get("live") or []))
@@ -107,11 +110,16 @@ class Engine:
         return SimpleNamespace(cfg=self.cfg, minute=self.minute(now), now=now, day_open_epoch=self.day_open_epoch(now),
                                open_symbols={p.symbol for p in self.positions}, traded_today=self.traded_today,
                                sector_etf=self.uni.get("sector_etf") or {}, etf_weights={k: v for k, v in (self.uni.get("etf_weights") or {}).items()},
-                               momentum_universe=self.uni.get("momentum") or [], liquidity=self.uni.get("liquidity") or {})
+                               momentum_universe=self.uni.get("momentum") or [], liquidity=self.uni.get("liquidity") or {},
+                               kinds=self.uni.get("kinds") or {})
 
     # ---- entries / exits ---------------------------------------------------------------------------
     def enter(self, sig, now):
         st = self.book.s.get(sig.symbol)
+        le = self.last_exit.get(f"{sig.strategy}|{sig.symbol}")
+        if le is not None and now - le < self.cfg.cooldown_min * 60:          # z176: no churning one name
+            self.counts["skip:cooldown"] += 1
+            return None
         liq = (self.uni.get("liquidity") or {})
         if liq and sig.symbol in liq and liq[sig.symbol] < self.cfg.min_dollar_volume:      # z174: every symbol is watched, not every one is traded
             self.counts["skip:illiquid"] += 1
@@ -145,6 +153,7 @@ class Engine:
             self.counts["exit fill failed"] += 1
             return None
         self.positions.remove(p)
+        self.last_exit[f"{p.strategy}|{p.symbol}"] = now
         t = self.ledger.close(p, px, st.mid() if st else None, now, reason)
         self.counts[f"close:{p.mode}"] += 1
         self.log(f"[engine] CLOSE {p.mode} {p.symbol} {t['net_bps']:+.1f} bps ${t['pnl']:+.2f} ({reason})")
@@ -209,12 +218,14 @@ class Engine:
             self.positions.append(Position(**d))
         for k, v in (doc.get("traded") or {}).items():
             self.traded_today[k] = set(v)
+        self.last_exit = {k: float(v) for k, v in (doc.get("lastExit") or {}).items()}
         self.ledger.pnl = float(doc.get("pnl") or 0)
         self.log(f"[engine] picked up {len(self.positions)} open positions from the previous job")
 
     def save_open(self):
         self.dir.mkdir(parents=True, exist_ok=True)
         (self.dir / "open.json").write_text(json.dumps({"day": self.day, "pnl": self.ledger.pnl, "traded": {k: sorted(v) for k, v in self.traded_today.items()},
+                                                         "lastExit": self.last_exit,
                                                          "positions": [p.__dict__ for p in self.positions]}, indent=1))
 
     def state(self, now, feed_status=None):
