@@ -112,8 +112,12 @@ class Ledger:
         out["curve"] = curve[-2000:]
         # z176: what kind of instrument each strategy traded (ETF arbitrage trades funds by design)
         out["byKind"] = {}
+        try:                                     # z177: trades from before kinds existed - look the name up in the universe
+            _kinds = (json.loads((DATA / "universe.json").read_text()).get("kinds") or {})
+        except Exception:
+            _kinds = {}
         for r in rows:
-            k = (r.get("tags") or {}).get("kind") or ("fund" if r.get("strategy") == "etf_arb" else "stock")
+            k = (r.get("tags") or {}).get("kind") or _kinds.get(r.get("symbol")) or ("fund" if r.get("strategy") == "etf_arb" else "stock")
             d = out["byKind"].setdefault(r.get("strategy"), {})
             d[k] = d.get(k, 0) + 1
         return out
