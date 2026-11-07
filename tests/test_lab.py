@@ -121,5 +121,34 @@ class EngineUsesModels(unittest.TestCase):
         self.assertTrue(e.live_for("sector_reversion") and not e.live_for("etf_arb"))
 
 
+
+
+class Quad(unittest.TestCase):
+    """z177: the quad on every trade, the same definition live and in the lab."""
+
+    def test_official_as_known_and_current(self):
+        from quant.macro import official_on, current_quads
+        rows = [{"date": "2026-07-01", "quad": 4}, {"date": "2026-08-01", "quad": 4}, {"date": "2026-09-01", "quad": 3}]
+        self.assertEqual(official_on("2026-10-10", rows), 4, "September's CPI isn't out until mid-October")
+        self.assertEqual(official_on("2026-11-06", rows), 3)
+        doc = {"current": {"quad": 4, "method": "market-nowcast", "asOf": "2026-11-06"}, "official": {"quad": 3, "asOf": "2026-09-01"},
+               "nowcast": {"quad": 4, "asOf": "2026-11-06"}, "agree": {"sameQuad": False, "note": "disagree on inflation"}}
+        q = current_quads(doc)
+        self.assertEqual((q["official"], q["nowcast"], q["agree"]), (3, 4, False))
+        old = {"current": {"quad": 3, "asOf": "2026-09-01"}}            # an old-shape file (official only)
+        self.assertEqual(current_quads(old)["official"], 3)
+
+    def test_tags_and_segments_carry_the_quad(self):
+        from types import SimpleNamespace
+        from quant.segments import tags_for
+        ctx = SimpleNamespace(minute=700, liquidity={"AAPL": 5e9}, sector_etf={"AAPL": "XLK"}, kinds={"AAPL": "stock"}, quad={"official": 3, "nowcast": 4})
+        t = tags_for("AAPL", "long", ctx)
+        self.assertEqual((t["quad"], t["quadNow"]), ("Q3", "Q4"))
+        ks = keys_for(t)
+        self.assertIn("quad:Q3", ks)
+        self.assertIn("liq:mega|quad:Q3", ks)
+        self.assertFalse(any("quadNow" in k for k in ks), "the nowcast is recorded, not segmented")
+
+
 if __name__ == "__main__":
     unittest.main()
