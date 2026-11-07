@@ -61,6 +61,8 @@ jobs:
           FINNHUB_KEY: ${{ secrets.FINNHUB_KEY }}
           QUANT_FEED: ${{ vars.QUANT_FEED || 'iex' }}
           QUANT_STREAM_LIMIT: ${{ vars.QUANT_STREAM_LIMIT || '30' }}
+          QUANT_PAPER_ALL: ${{ vars.QUANT_PAPER_ALL || '' }}          # z176: 1 = every signal to the Alpaca paper account
+          QUANT_COOLDOWN_MIN: ${{ vars.QUANT_COOLDOWN_MIN || '15' }}   # z176: re-entry cooldown per strategy and symbol
           QUANT_BUDGET_MIN: '345'
           GH_TOKEN: ${{ github.token }}
         run: bash quant/engine_job.sh
