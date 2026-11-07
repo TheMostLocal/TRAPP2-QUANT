@@ -8,7 +8,7 @@
 # ============================================================
 from itertools import combinations
 
-DIMS = ("liq", "tod", "side", "sector")
+DIMS = ("liq", "tod", "side", "sector", "quad")    # z177: + the official quad as known that day
 
 
 def liq_bucket(dollar_volume):
@@ -28,7 +28,13 @@ def tags_for(symbol, side, ctx, sector=None):
     liq = (getattr(ctx, "liquidity", None) or {}).get(symbol)
     sec = sector or (getattr(ctx, "sector_etf", None) or {}).get(symbol) or "none"
     kind = (getattr(ctx, "kinds", None) or {}).get(symbol) or ("fund" if sector == symbol else "stock")   # z176: shown, not segmented
-    return {"liq": liq_bucket(liq), "tod": tod_bucket(ctx.minute), "side": side, "sector": sec, "kind": kind}
+    q = getattr(ctx, "quad", None) or {}
+    out = {"liq": liq_bucket(liq), "tod": tod_bucket(ctx.minute), "side": side, "sector": sec, "kind": kind}
+    if q.get("official"):
+        out["quad"] = f"Q{q['official']}"                 # z177: a segment dimension (official, as known)
+    if q.get("nowcast"):
+        out["quadNow"] = f"Q{q['nowcast']}"               # z177: recorded, not segmented
+    return out
 
 
 def keys_for(tags):
