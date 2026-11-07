@@ -114,5 +114,46 @@ class Backtest(unittest.TestCase):
         self.assertEqual([(d.isoformat(), c) for d, c in days], [("2026-11-24", 960), ("2026-11-25", 960), ("2026-11-27", 780)])   # no Thanksgiving; Friday closes 1300
 
 
+
+
+class Cooldown(unittest.TestCase):
+    def test_no_reentry_within_the_cooldown(self):
+        import tempfile
+        from quant.strategies import Signal
+        from quant.risk import Position
+        d = tempfile.mkdtemp()
+        e = Engine(replace(Config(), execution="sim"), universe(), clock=lambda: 1793026800, data_dir=d, log=lambda *a: None)
+        st = e.book.get("XLK"); st.on_quote(249.99, 250.01, 1, 1, 1793026800)
+        e.last_exit["etf_arb|XLK"] = 1793026800 - 120            # closed two minutes ago
+        sig = Signal("XLK", "long", "etf_arb", 10, 10, 10)
+        self.assertIsNone(e.enter(sig, 1793026800))
+        self.assertEqual(e.counts["skip:cooldown"], 1)
+        e.last_exit["etf_arb|XLK"] = 1793026800 - 16 * 60        # sixteen minutes ago: allowed again (other checks permitting)
+        e.enter(sig, 1793026800)
+        self.assertEqual(e.counts["skip:cooldown"], 1)
+
+    def test_curve_and_kinds_in_the_summary(self):
+        import tempfile
+        d = tempfile.mkdtemp()
+        eng, s = run_session(Engine, cfg(), d, gate=ALL_PASS)
+        self.assertTrue(s["curve"] and len(s["curve"][0]) == 3)
+        self.assertAlmostEqual(s["curve"][-1][1], round(sum(t["pnl"] for t in eng.ledger.closed if t["mode"] == "live"), 2), places=1)
+        self.assertIn("etf_arb", s["byKind"])
+
+
+
+
+class PaperAll(unittest.TestCase):
+    def test_paper_all_sends_every_default_signal(self):
+        import tempfile
+        from quant.strategies import Signal
+        d = tempfile.mkdtemp()
+        e = Engine(replace(Config(), execution="sim", paper_all=True), universe(), clock=lambda: 1793026800, data_dir=d, log=lambda *a: None)
+        self.assertTrue(e.live_signal(Signal("AAPL", "long", "sector_reversion", 10, 10, 10)))
+        self.assertFalse(e.live_signal(Signal("AAPL", "long", "sector_reversion", 10, 10, 10, variant="sr:x")), "lab variants still need approval")
+        e2 = Engine(replace(Config(), execution="sim"), universe(), clock=lambda: 1793026800, data_dir=tempfile.mkdtemp(), log=lambda *a: None)
+        self.assertFalse(e2.live_signal(Signal("AAPL", "long", "sector_reversion", 10, 10, 10)), "off by default: no gate, no lab → shadow")
+
+
 if __name__ == "__main__":
     unittest.main()
