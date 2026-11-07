@@ -71,5 +71,26 @@ class Costs(unittest.TestCase):
         self.assertEqual(h(None), 2.0)           # unknown: the base
 
 
+
+
+class Kinds(unittest.TestCase):
+    def test_funds_by_expense_ratio_and_tags(self):
+        from types import SimpleNamespace
+        from quant.segments import tags_for, keys_for
+        out = Path(tempfile.mkdtemp()) / "universe.json"
+        U.OUT = out
+        rows = [{"ticker": "AAPL", "price": "200", "volume": "5e7", "sector": "Technology", "expenseRatio": ""},
+                {"ticker": "EWZ", "price": "26", "volume": "4e7", "expenseRatio": "0.59"},
+                {"ticker": "GLD", "price": "300", "volume": "1e7", "expenseRatio": "0.4"}]
+        U.get = lambda url, timeout=60: (_ for _ in ()).throw(RuntimeError("offline")) if "ssga" in url else (master(rows) if "/TRAPP2/" in url else master([]))
+        d = U.build(n_stream=30, momentum_min_dv=0)
+        self.assertEqual((d["kinds"]["AAPL"], d["kinds"]["EWZ"], d["kinds"]["GLD"], d["kinds"]["XLK"]), ("stock", "fund", "fund", "fund"))
+        self.assertEqual(d["counts"]["stocksInUniverse"], 1)
+        ctx = SimpleNamespace(minute=700, liquidity=d["liquidity"], sector_etf=d["sector_etf"], kinds=d["kinds"])
+        self.assertEqual(tags_for("AAPL", "long", ctx)["kind"], "stock")
+        self.assertEqual(tags_for("XLK", "short", ctx, sector="XLK")["kind"], "fund")
+        self.assertFalse(any("kind" in k for k in keys_for(tags_for("AAPL", "long", ctx))), "kind is shown, not a segment dimension")
+
+
 if __name__ == "__main__":
     unittest.main()
