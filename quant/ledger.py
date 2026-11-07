@@ -94,6 +94,28 @@ class Ledger:
         for dday in sorted({r["day"] for r in rows})[-30:]:
             rr = [r for r in live if r["day"] == dday]
             out["byDay"][dday] = {"n": len(rr), "pnl": round(sum(r["pnl"] for r in rr), 2), **{k: v for k, v in summarize(rr, b).items() if k in ("winRate", "expectancyBps")}}
+        # z176: the book's curve - cumulative dollars after each 10-minute slice of closes, live and shadow apart
+        # (shadow is simulated: what the strategies would have made); small enough for a phone, enough to draw
+        curve, cum_l, cum_s, slot = [], 0.0, 0.0, None
+        for r in sorted(rows, key=lambda r: r.get("exit_ts") or ""):
+            if r.get("mode") == "live":
+                cum_l += float(r.get("pnl") or 0)
+            elif r.get("mode") == "shadow":
+                cum_s += float(r.get("pnl") or 0)
+            ts = str(r.get("exit_ts") or "")
+            sl = ts[:15]                         # YYYY-MM-DDTHH:M  -> one point per 10 minutes
+            if curve and slot == sl:
+                curve[-1] = [ts[:16], round(cum_l, 2), round(cum_s, 2)]
+            else:
+                curve.append([ts[:16], round(cum_l, 2), round(cum_s, 2)])
+                slot = sl
+        out["curve"] = curve[-2000:]
+        # z176: what kind of instrument each strategy traded (ETF arbitrage trades funds by design)
+        out["byKind"] = {}
+        for r in rows:
+            k = (r.get("tags") or {}).get("kind") or ("fund" if r.get("strategy") == "etf_arb" else "stock")
+            d = out["byKind"].setdefault(r.get("strategy"), {})
+            d[k] = d.get(k, 0) + 1
         return out
 
     def write_summary(self):
