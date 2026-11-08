@@ -77,8 +77,16 @@ def main():
     print(f"[run] macro quad: official Q{q.get('official')} (as of {q.get('officialAsOf')}) · market nowcast Q{q.get('nowcast')} "
           f"(as of {q.get('nowcastAsOf')})" + (f" · {q['note']}" if q.get("note") else ""), flush=True)
     eng = Engine(CFG, uni)
-    stream = uni["symbols"] if CFG.feed == "sip" else uni["stream"][:CFG.stream_limit]
-    feeds = FeedManager(eng.book, uni["symbols"], stream, CFG)
+    from .universe import watch_symbols
+    watch = watch_symbols(uni, CFG.min_dollar_volume)          # z178: what can trade, plus the reference ETFs
+    stream = watch if CFG.feed == "sip" else uni["stream"][:CFG.stream_limit]
+    # z178: keep the poll under ~170 requests a minute (Alpaca's free limit is 200): 200 symbols a request
+    n_req = -(-max(0, len(watch) - len(stream)) // 200)
+    poll_every = max(CFG.poll_seconds, -(-n_req * 60 // 170)) if n_req else CFG.poll_seconds
+    from dataclasses import replace as _dc_replace
+    feeds = FeedManager(eng.book, watch, stream, _dc_replace(CFG, poll_seconds=poll_every))
+    print(f"[run] watching {len(watch)} of {len(uni['symbols'])} symbols (the rest are below ${CFG.min_dollar_volume / 1e6:.0f}M a day) · "
+          f"poll every {poll_every} s ({n_req} requests)", flush=True)
     live = [n for n in CFG.strategies if eng.live_for(n)]
     print(f"[run] {len(uni['symbols'])} symbols ({len(stream)} streamed, feed {CFG.feed}) · live: {', '.join(live) or 'none'} · "
           f"shadow: {', '.join(n for n in CFG.strategies if n not in live) or 'none'} · execution {CFG.execution}"
