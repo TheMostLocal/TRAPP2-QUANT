@@ -92,5 +92,11 @@ class Kinds(unittest.TestCase):
         self.assertFalse(any("kind" in k for k in keys_for(tags_for("AAPL", "long", ctx))), "kind is shown, not a segment dimension")
 
 
+class Watch(unittest.TestCase):
+    def test_watch_list_keeps_tradable_names_and_references(self):
+        uni = {"symbols": ["XLK", "SPY", "AAPL", "THIN", "MIDCAP", "HOLDX"], "liquidity": {"AAPL": 9e9, "THIN": 3e5, "MIDCAP": 6e6}}
+        self.assertEqual(U.watch_symbols(uni, 5e6), ["XLK", "SPY", "AAPL", "MIDCAP", "HOLDX"])     # THIN can never be entered
+
+
 if __name__ == "__main__":
     unittest.main()
