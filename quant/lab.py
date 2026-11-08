@@ -31,6 +31,7 @@ from . import market_hours as mh
 from .backtest import fetch_day, half_spread_bps, sessions
 from .book import Book
 from .config import CFG
+from .universe import watch_symbols
 from .ledger import DATA
 from .segments import keys_for, liq_bucket, tod_bucket
 from .strategies import EtfArb, OpeningRange, SectorReversion
@@ -415,7 +416,7 @@ def run(n_days=None, strategies=("sector_reversion", "etf_arb", "opening_range")
     train, test = {d for d, _ in days[:cut]}, {d for d, _ in days[cut:]}
     acc, bad, t0 = {}, {}, time.time()
     for d, close in days:
-        bars = fetch_day(uni["symbols"], d, close, key, secret, bad)
+        bars = fetch_day(watch_symbols(uni, CFG.min_dollar_volume), d, close, key, secret, bad)   # z178: tradable names + references
         if not bars:
             log(f"{d}: no bars - skipped")
             continue
