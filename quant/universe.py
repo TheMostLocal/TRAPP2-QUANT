@@ -20,7 +20,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "data" / "quant" / "universe.json"
 RAW = "https://raw.githubusercontent.com/TheMostLocal"
-BOOKS = ("TRAPP2", "TRAPP2-1", "TRAPP2-2", "TRAPP2-3")
+BOOKS = ("TRAPP2", "TRAPP2-1", "TRAPP2-2", "TRAPP2-3", "TRAPP2-4")   # z178: + TRAPP2-4 (~1,600 NYSE equities)
 SECTOR_ETF = {"technology": "XLK", "information technology": "XLK", "communication services": "XLC", "consumer cyclical": "XLY",
               "consumer discretionary": "XLY", "consumer defensive": "XLP", "consumer staples": "XLP", "energy": "XLE",
               "financial services": "XLF", "financials": "XLF", "financial": "XLF", "healthcare": "XLV", "health care": "XLV",
@@ -174,6 +174,15 @@ def build(n_stream=None, max_symbols=None, momentum_min_dv=None):
         + (", ".join(f"{v} {k}" for k, v in sorted(skipped.items(), key=lambda x: -x[1])) or "none")
         + f" · {len(symbols)} symbols with the ETF holdings · {len(sector_etf)} with a sector ETF · {len(momentum)} momentum-liquid · {len(stream)} streamed")
     return doc
+
+
+def watch_symbols(uni, min_dollar_volume):
+    """z178: the symbols worth watching - every name that may trade (a day's dollar volume at or above the entry
+    floor) and every name without a volume figure (the sector / index ETFs and the ETFs' holdings, which the
+    strategies need as references). With TRAPP2-4 the universe passed 2,400 names; most of the thin ones can never
+    be entered, and polling them every 4 seconds would crowd Alpaca's free limit (200 requests a minute)."""
+    liq = uni.get("liquidity") or {}
+    return [s for s in uni.get("symbols") or [] if s not in liq or (liq.get(s) or 0) >= min_dollar_volume]
 
 
 def load():
