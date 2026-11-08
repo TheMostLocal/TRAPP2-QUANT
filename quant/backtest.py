@@ -25,6 +25,7 @@ from . import market_hours as mh
 from .broker import SimBroker
 from .config import CFG
 from .engine import Engine
+from .universe import watch_symbols
 from .ledger import DATA
 from .stats import summarize
 
@@ -192,7 +193,7 @@ def main(n_days=None):
     days = sessions(int(n_days or os.environ.get("QUANT_BT_DAYS", "10")))
     trades, bad, loaded = [], {}, 0
     for d, close in days:
-        bars = fetch_day(uni["symbols"], d, close, key, secret, bad)
+        bars = fetch_day(watch_symbols(uni, cfg.min_dollar_volume), d, close, key, secret, bad)   # z178: tradable names + references
         if not bars:
             log(f"{d}: no bars came back - day skipped")
             continue
