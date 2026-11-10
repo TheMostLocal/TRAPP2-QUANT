@@ -8,6 +8,9 @@
 #  (data/quant/gate.json: enough trades, positive expectancy net of costs, t-stat >= 2); until then it runs in
 #  SHADOW (same signals, simulated fills, its own statistics) - evidence first, then capital.
 #  Survives a job hand-off: open positions are saved to data/quant/open.json and picked up by the next job.
+#  z180: only a lab v2 verdict (session-clustered statistics) can send a signal live - an older models.json is read as
+#  "nothing approved" (everything shadow) until the lab re-runs; and an approval that is split by the macro quad trades
+#  live only while the regime is dialed in and the nowcast agrees with the official quad (STATUS 1b) - else shadow.
 # ============================================================
 import asyncio
 import json
@@ -27,14 +30,32 @@ from .segments import matches
 from .strategies import ALL
 
 
-def load_models(data_dir):
+MIN_LAB_VERSION = 2                     # z180: approvals from per-trade statistics (lab v1) are not trusted
+
+
+def load_models(data_dir, log=print):
     """z175: the lab's verdict (data/quant/models.json) - per strategy, the parameter variants it found and the segments
-    where a variant passed out of sample. None when the lab hasn't run (the older all-or-nothing gate then applies)."""
+    where a variant passed out of sample. None when the lab hasn't run (the older all-or-nothing gate then applies).
+    z180: a verdict from an older lab counts as "nothing approved" ({}): every strategy shadow until the lab re-runs."""
     try:
         doc = json.loads((Path(data_dir) / "models.json").read_text())
-        return doc.get("strategies") if isinstance(doc, dict) else None
     except Exception:
         return None
+    if not isinstance(doc, dict):
+        return None
+    if int(doc.get("labVersion") or 1) < MIN_LAB_VERSION:
+        n = sum(len((m or {}).get("live") or []) for m in (doc.get("strategies") or {}).values())
+        log(f"[engine] models.json is from lab v{doc.get('labVersion') or 1} (per-trade statistics): its {n} approval(s) are not trusted "
+            f"for live - every strategy runs in shadow until the lab (v{MIN_LAB_VERSION}, judged by session) re-runs")
+        return {}
+    return doc.get("strategies") or {}
+
+
+def regime_ok(uni):
+    """z180 (STATUS 1b): regime-split trading needs the regime dialed in AND the nowcast agreeing with the official
+    quad. Missing = not dialed in."""
+    g = (uni or {}).get("regime") or {}
+    return bool(g.get("ok"))
 
 
 def load_gate(data_dir):
@@ -54,7 +75,7 @@ class Engine:
         self.sim = SimBroker(cfg)
         self.broker = broker or (AlpacaBroker(cfg, sim=self.sim) if cfg.execution == "alpaca" else self.sim)
         self.gate = load_gate(self.dir)
-        self.models = load_models(self.dir)
+        self.models = load_models(self.dir, log=log)
         # z175: every strategy runs its original rules everywhere (live where approved, shadow elsewhere - the evidence
         # keeps coming); each variant the lab approved somewhere runs too, but only trades in its approved segments
         self.strategies = []
@@ -89,15 +110,27 @@ class Engine:
         e = self.et(now)
         return e.replace(hour=9, minute=30, second=0, microsecond=0).timestamp()
 
+    def _approvals(self, sig):
+        """The lab's approvals this signal falls inside (its variant, a segment it belongs to)."""
+        m = (self.models or {}).get(sig.strategy) or {}
+        return [a for a in (m.get("live") or []) if a.get("variant", "default") == (sig.variant or "default") and matches(sig.tags or {}, a.get("segment", ""))]
+
+    def regime_blocked(self, sig):
+        """z180: True when the signal's only approvals are quad-split and the regime gate is shut (STATUS 1b)."""
+        if self.cfg.paper_all or self.models is None:
+            return False
+        ap = self._approvals(sig)
+        return bool(ap) and all("quad:" in a.get("segment", "") for a in ap) and not regime_ok(self.uni)
+
     def live_signal(self, sig):
-        """z175: live only if the lab approved this strategy's variant in a segment this signal belongs to."""
+        """z175: live only if the lab approved this strategy's variant in a segment this signal belongs to.
+        z180: a quad-split approval counts only while the regime gate is open."""
         if self.cfg.execution not in ("alpaca", "sim"):
             return False
         if self.cfg.paper_all:                    # z176: every signal to the paper account when asked to
             return (sig.variant or "default") == "default"
         if self.models is not None:
-            m = self.models.get(sig.strategy) or {}
-            return any(a.get("variant", "default") == (sig.variant or "default") and matches(sig.tags or {}, a.get("segment", "")) for a in (m.get("live") or []))
+            return any("quad:" not in a.get("segment", "") or regime_ok(self.uni) for a in self._approvals(sig))
         return (sig.variant or "default") == "default" and self.live_for(sig.strategy)
 
     def live_for(self, strategy):
@@ -130,6 +163,8 @@ class Engine:
             self.counts[f"skip:{q}"] += 1
             return None
         mode = "live" if self.live_signal(sig) else "shadow"
+        if mode == "shadow" and self.regime_blocked(sig):
+            self.counts["shadow:regime gate"] += 1               # z180: approved, but only for a regime that isn't dialed in
         br = self.broker if mode == "live" else self.sim
         mid, spread = st.mid(), st.spread_bps()
         fq, px = br.fill(sig.symbol, "buy" if sig.side == "long" else "sell", q, st)
@@ -200,7 +235,8 @@ class Engine:
             except Exception as e:
                 self.log(f"[engine] {s.name}: {type(e).__name__} {e}")
         # z175: a non-default variant only acts where it was approved; live signals first, then by strength
-        sigs = [x for x in sigs if (x.variant or "default") == "default" or self.live_signal(x)]
+        # z180: ... and where its approval waits on the regime gate it keeps trading in shadow (the evidence keeps coming)
+        sigs = [x for x in sigs if (x.variant or "default") == "default" or self.live_signal(x) or self.regime_blocked(x)]
         sigs.sort(key=lambda x: (not self.live_signal(x), -x.score))
         for sig in sigs:
             self.enter(sig, now)
@@ -232,7 +268,7 @@ class Engine:
         return {"day": self.day, "at": now, "minute": self.minute(now), "open": [{"symbol": p.symbol, "side": p.side, "qty": p.qty, "strategy": p.strategy,
                 "mode": p.mode, "entry": p.entry_px, "moveBps": round(p.move_bps((self.book.s.get(p.symbol) or self.book.get(p.symbol)).mid() or p.entry_px), 1)}
                 for p in self.positions], "dayPnl": round(self.ledger.pnl, 2), "closedToday": len(self.ledger.closed),
-                "counts": dict(self.counts), "feed": feed_status or {}, "gate": self.gate}
+                "counts": dict(self.counts), "feed": feed_status or {}, "gate": self.gate, "regime": (self.uni or {}).get("regime") or {}}
 
     def persist(self, now, feed_status=None):
         self.ledger.flush_files()
