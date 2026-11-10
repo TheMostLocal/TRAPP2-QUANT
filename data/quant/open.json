@@ -19,6 +19,7 @@
    "AAL",
    "ACI",
    "APLE",
+   "AS",
    "AVTR",
    "BAX",
    "BBVA",
@@ -30,6 +31,7 @@
    "CPRI",
    "DB",
    "DOW",
+   "ET",
    "EXC",
    "FIG",
    "GIS",
@@ -42,6 +44,7 @@
    "NFG",
    "NVO",
    "PATH",
+   "PINS",
    "RKT",
    "SOFI",
    "STM",
@@ -99,17 +102,17 @@
   ]
  },
  "lastExit": {
-  "etf_arb|XLV": 1794334980.7232733,
-  "etf_arb|XLB": 1794334500.9766834,
-  "etf_arb|XLP": 1794335040.8664727,
-  "etf_arb|XLF": 1794334800.6777241,
+  "etf_arb|XLV": 1794336060.8635733,
+  "etf_arb|XLB": 1794335520.9706974,
+  "etf_arb|XLP": 1794336060.8635733,
+  "etf_arb|XLF": 1794336180.143944,
   "sector_reversion|RKT": 1794321737.940282,
-  "etf_arb|XLY": 1794334800.6777241,
+  "etf_arb|XLY": 1794335880.6544933,
   "etf_arb|XLK": 1794334920.5814245,
-  "etf_arb|XLRE": 1794335100.0047617,
+  "etf_arb|XLRE": 1794336120.0080771,
   "etf_arb|XLU": 1794335160.2030263,
-  "etf_arb|XLC": 1794334920.5814245,
-  "etf_arb|XLE": 1794334560.129727,
+  "etf_arb|XLC": 1794336000.9470716,
+  "etf_arb|XLE": 1794335520.9706974,
   "etf_arb|XLI": 1794334800.6777241,
   "sector_reversion|WFC": 1794322025.6091769,
   "opening_range|ICLN": 1794322540.369903,
@@ -172,7 +175,10 @@
   "opening_range|EQT": 1794333911.9084437,
   "sector_reversion|AVTR": 1794334320.554402,
   "sector_reversion|AAL": 1794334320.554402,
-  "sector_reversion|NFG": 1794335357.6831849
+  "sector_reversion|NFG": 1794335357.6831849,
+  "sector_reversion|ET": 1794335940.8088274,
+  "sector_reversion|AS": 1794336180.143944,
+  "sector_reversion|PINS": 1794336240.2822227
  },
  "positions": [
   {
@@ -589,6 +595,35 @@
      "tod": "mid",
      "side": "short",
      "sector": "none",
+     "kind": "fund",
+     "quad": "Q3",
+     "quadNow": "Q4"
+    }
+   }
+  },
+  {
+   "id": "2026-11-10-etf-f3d4abd9",
+   "strategy": "etf_arb",
+   "symbol": "XLU",
+   "side": "long",
+   "qty": 114,
+   "entry_px": 43.714371,
+   "entry_mid": 43.7,
+   "entry_spread_bps": 4.576659038902317,
+   "entry_ts": 1794336180.143944,
+   "stop_bps": 26.8,
+   "target_bps": 13.4,
+   "max_hold_min": 10,
+   "mode": "shadow",
+   "reason": "basket +22.3 bps vs XLU over 5 min (90% of the fund priced)",
+   "meta": {
+    "gap": 22.34,
+    "variant": "default",
+    "tags": {
+     "liq": "mega",
+     "tod": "mid",
+     "side": "long",
+     "sector": "XLU",
      "kind": "fund",
      "quad": "Q3",
      "quadNow": "Q4"
