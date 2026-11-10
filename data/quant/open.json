@@ -1,7 +1,64 @@
 {
  "day": "2026-11-10",
  "pnl": 0.0,
- "traded": {},
- "lastExit": {},
- "positions": []
+ "traded": {
+  "etf_arb": [
+   "XLB",
+   "XLC",
+   "XLE",
+   "XLF",
+   "XLK",
+   "XLP",
+   "XLRE",
+   "XLU",
+   "XLV",
+   "XLY"
+  ],
+  "sector_reversion": [
+   "RKT"
+  ]
+ },
+ "lastExit": {
+  "etf_arb|XLV": 1794321660.7484486,
+  "etf_arb|XLB": 1794321660.7484486,
+  "etf_arb|XLP": 1794321720.8753574,
+  "etf_arb|XLF": 1794321720.8753574,
+  "sector_reversion|RKT": 1794321737.940282,
+  "etf_arb|XLY": 1794321780.0040014,
+  "etf_arb|XLK": 1794321780.0040014,
+  "etf_arb|XLRE": 1794321780.0040014,
+  "etf_arb|XLU": 1794321780.0040014,
+  "etf_arb|XLC": 1794321900.2554522
+ },
+ "positions": [
+  {
+   "id": "2026-11-10-etf-73231d26",
+   "strategy": "etf_arb",
+   "symbol": "XLE",
+   "side": "short",
+   "qty": 81,
+   "entry_px": 61.073892,
+   "entry_mid": 61.085,
+   "entry_spread_bps": 1.637063108783681,
+   "entry_ts": 1794321720.8753574,
+   "stop_bps": 27.26,
+   "target_bps": 13.63,
+   "max_hold_min": 10,
+   "mode": "shadow",
+   "reason": "basket -22.7 bps vs XLE over 5 min (100% of the fund priced)",
+   "meta": {
+    "gap": -22.72,
+    "variant": "default",
+    "tags": {
+     "liq": "mega",
+     "tod": "open",
+     "side": "short",
+     "sector": "XLE",
+     "kind": "fund",
+     "quad": "Q3",
+     "quadNow": "Q4"
+    }
+   }
+  }
+ ]
 }
