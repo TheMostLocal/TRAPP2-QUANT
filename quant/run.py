@@ -71,11 +71,15 @@ def main():
     uni = load()
     if str(uni.get("asOf", ""))[:10] != mh.et_now().date().isoformat():
         uni = build()
-    from .macro import current_quads
+    from .macro import current_quads, regime_gate
     uni["quad"] = current_quads()                       # z177: official + nowcast quad on every trade
     q = uni["quad"]
     print(f"[run] macro quad: official Q{q.get('official')} (as of {q.get('officialAsOf')}) · market nowcast Q{q.get('nowcast')} "
           f"(as of {q.get('nowcastAsOf')})" + (f" · {q['note']}" if q.get("note") else ""), flush=True)
+    uni["regime"] = regime_gate(q)                      # z180: quad-split approvals trade live only through this gate
+    rg = uni["regime"]
+    print(f"[run] regime gate: {'OPEN' if rg['ok'] else 'SHUT'} - {rg['why']} · quad-split approvals "
+          f"{'may trade live' if rg['ok'] else 'stay in shadow'}", flush=True)
     eng = Engine(CFG, uni)
     from .universe import watch_symbols
     watch = watch_symbols(uni, CFG.min_dollar_volume)          # z178: what can trade, plus the reference ETFs
