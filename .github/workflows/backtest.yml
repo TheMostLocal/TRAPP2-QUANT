@@ -2,9 +2,10 @@
 #  >>> DESTINATION: TheMostLocal/TRAPP2-QUANT
 #  >>> FILE PATH:   .github/workflows/backtest.yml
 #  The quality gate, every weekday at 1840 ET: rebuild the universe, replay the last 10 sessions of real 1-minute
-#  bars through the engine (data/quant/gate.json - the whole-book view), then z175 the strategy lab RETRAINS: 40
-#  sessions, every strategy x parameter variant x segment, trained on two thirds and tested on the last third with
-#  false-discovery control -> data/quant/models.json. The engine trades live only in segments the lab approved.
+#  bars through the engine (data/quant/gate.json - the whole-book view), then z175 the strategy lab RETRAINS: 60
+#  sessions (z180, was 40), every strategy x parameter variant x segment, trained on two thirds and tested on the last
+#  third, judged by session (z180 lab v2) with false-discovery control -> data/quant/models.json. The engine trades
+#  live only in segments the lab approved.
 # ============================================================
 name: Quant backtest (quality gate)
 
@@ -21,7 +22,7 @@ on:
       lab_days:
         description: 'Sessions for the strategy lab (train on the first 2/3, test on the last 1/3)'
         required: false
-        default: '40'
+        default: '60'
 
 concurrency:
   group: quant-backtest
@@ -69,7 +70,7 @@ jobs:
         env:
           ALPACA_KEY_ID: ${{ secrets.ALPACA_KEY_ID }}
           ALPACA_SECRET_KEY: ${{ secrets.ALPACA_SECRET_KEY }}
-          QUANT_LAB_DAYS: ${{ github.event.inputs.lab_days || '40' }}
+          QUANT_LAB_DAYS: ${{ github.event.inputs.lab_days || '60' }}
         run: python -m quant.lab
       - name: Commit
         if: always()
