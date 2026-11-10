@@ -18,6 +18,15 @@ whenever the stream is silent > 10 s → Finnhub websocket trades (optional `FIN
 **Execution:** market orders on the Alpaca **paper** account (same keys) — real fills against real quotes. Strategies
 not yet proven run in **shadow** (same signals, simulated fills at the far quote + slippage, separate statistics).
 
+**The strategy lab, v2 (z180)** (`quant/lab.py`, nightly after the gate): 60 sessions of real 1-minute bars, every
+strategy x parameter variant x segment (liquidity, time of day, side, sector, official quad), trained on the first 40
+sessions and tested on the last 20 - **judged by session, not by trade** (trades on one day share one market: a
+cluster-robust standard error with the sessions as clusters, Student t with sessions - 1 df), false-discovery control
+(Benjamini-Hochberg, q <= 10 %). Live needs training evidence of its own (clustered t >= 1), >= 12 / 8 sessions with
+trades, >= 0.5 bps a trade out of sample and a positive result without its best day; a quad segment also needs the
+quad to vary inside both halves, and trades live only while TRAPP2-1's regime certainty is dialed in and the two quads
+agree. `models.json` carries `labVersion: 2`; the engine ignores approvals from an older lab.
+
 **The quality gate** (`quant/backtest.py`, nightly): the last 10 sessions of real 1-minute bars through the same engine;
 a strategy trades live only with ≥ 200 trades, expectancy ≥ 0.5 bps net of costs and t ≥ 2.
 
