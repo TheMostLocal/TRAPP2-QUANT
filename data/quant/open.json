@@ -39,6 +39,7 @@
    "JD",
    "MGA",
    "MOS",
+   "NFG",
    "NVO",
    "PATH",
    "RKT",
@@ -98,18 +99,18 @@
   ]
  },
  "lastExit": {
-  "etf_arb|XLV": 1794333840.7064378,
+  "etf_arb|XLV": 1794334980.7232733,
   "etf_arb|XLB": 1794334500.9766834,
-  "etf_arb|XLP": 1794334020.9742281,
-  "etf_arb|XLF": 1794333660.2894247,
+  "etf_arb|XLP": 1794335040.8664727,
+  "etf_arb|XLF": 1794334800.6777241,
   "sector_reversion|RKT": 1794321737.940282,
-  "etf_arb|XLY": 1794333780.5654016,
-  "etf_arb|XLK": 1794333540.9567401,
-  "etf_arb|XLRE": 1794334140.2467656,
-  "etf_arb|XLU": 1794334080.1069152,
-  "etf_arb|XLC": 1794333480.8215346,
-  "etf_arb|XLE": 1794333300.1072602,
-  "etf_arb|XLI": 1794333780.5654016,
+  "etf_arb|XLY": 1794334800.6777241,
+  "etf_arb|XLK": 1794334920.5814245,
+  "etf_arb|XLRE": 1794335100.0047617,
+  "etf_arb|XLU": 1794335160.2030263,
+  "etf_arb|XLC": 1794334920.5814245,
+  "etf_arb|XLE": 1794334560.129727,
+  "etf_arb|XLI": 1794334800.6777241,
   "sector_reversion|WFC": 1794322025.6091769,
   "opening_range|ICLN": 1794322540.369903,
   "opening_range|FNDA": 1794322601.5399616,
@@ -170,7 +171,8 @@
   "sector_reversion|CPRI": 1794333580.0589159,
   "opening_range|EQT": 1794333911.9084437,
   "sector_reversion|AVTR": 1794334320.554402,
-  "sector_reversion|AAL": 1794334320.554402
+  "sector_reversion|AAL": 1794334320.554402,
+  "sector_reversion|NFG": 1794335357.6831849
  },
  "positions": [
   {
@@ -587,35 +589,6 @@
      "tod": "mid",
      "side": "short",
      "sector": "none",
-     "kind": "fund",
-     "quad": "Q3",
-     "quadNow": "Q4"
-    }
-   }
-  },
-  {
-   "id": "2026-11-10-etf-98c10fb2",
-   "strategy": "etf_arb",
-   "symbol": "XLE",
-   "side": "long",
-   "qty": 80,
-   "entry_px": 62.166216,
-   "entry_mid": 62.155,
-   "entry_spread_bps": 1.6088810232480106,
-   "entry_ts": 1794334500.9766834,
-   "stop_bps": 18.45,
-   "target_bps": 9.23,
-   "max_hold_min": 10,
-   "mode": "shadow",
-   "reason": "basket +15.4 bps vs XLE over 5 min (100% of the fund priced)",
-   "meta": {
-    "gap": 15.38,
-    "variant": "default",
-    "tags": {
-     "liq": "mega",
-     "tod": "mid",
-     "side": "long",
-     "sector": "XLE",
      "kind": "fund",
      "quad": "Q3",
      "quadNow": "Q4"
