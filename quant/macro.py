@@ -7,13 +7,17 @@
 #  in quad_history_full.json; a month's CPI is out ~45 days after the month starts), so a live trade and the lab's
 #  history use one definition. Evidence first: the quad tags trades and segments; it does not tilt anything until
 #  the lab shows a segment that earns it.
+#  z180: regime_gate() - and even then (STATUS 1b) a quad-split approval trades live only while TRAPP2-1's regime
+#  certainty is dialed in, fresh, and the nowcast agrees with the official quad.
 # ============================================================
 import json
 import urllib.request
 from datetime import date, datetime, timedelta
 
 RAW = "https://raw.githubusercontent.com/TheMostLocal/TRAPP2-1/main/data/macro"
+CERT_URL = "https://raw.githubusercontent.com/TheMostLocal/TRAPP2-1/main/data/regime_certainty.json"
 KNOWN_LAG_DAYS = 45
+CERT_MAX_AGE_DAYS = 4               # z180: an older certainty file is no evidence that the call is right NOW
 
 
 def _get(url, timeout=20):
@@ -53,3 +57,30 @@ def official_on(day, rows):
 def history_rows():
     d = _get(f"{RAW}/quad_history_full.json", timeout=30) or {}
     return sorted(d.get("rows") or [], key=lambda r: str(r.get("date")))
+
+
+def regime_gate(quads=None, cert=None, today=None):
+    """z180 - STATUS 1b, for the quant book: a lab approval split by the quad ("quad:Q3") may trade live only while
+    TRAPP2-1's regime certainty is dialed in (>= its threshold, 65 %), the certainty file is fresh, AND the market
+    nowcast agrees with the official GDP/CPI quad. Anything missing = not dialed in.
+    -> {'ok', 'certainty', 'dialedIn', 'agree', 'asOf', 'why'}"""
+    cert = cert if cert is not None else (_get(CERT_URL) or {})
+    quads = quads or {}
+    c, dialed, as_of = cert.get("certainty"), bool(cert.get("dialedIn")), str(cert.get("asOf") or "")[:10]
+    agree = quads.get("agree")
+    why = []
+    if not cert:
+        why.append("no regime certainty file")
+    elif not dialed:
+        why.append(f"certainty {c * 100:.0f}% < {float(cert.get('threshold') or 0.65) * 100:.0f}% - not dialed in" if isinstance(c, (int, float)) else "not dialed in")
+    if as_of:
+        try:
+            age = ((today or date.today()) - datetime.strptime(as_of, "%Y-%m-%d").date()).days
+            if age > CERT_MAX_AGE_DAYS:
+                why.append(f"certainty file is {age} days old")
+        except ValueError:
+            why.append("certainty date unreadable")
+    if agree is not True:
+        why.append("the nowcast and the official quad disagree" if agree is False else "quad agreement unknown")
+    return {"ok": not why, "certainty": c, "dialedIn": dialed, "agree": agree, "asOf": as_of or None,
+            "why": "; ".join(why) or "dialed in, quads agree"}
