@@ -1,7 +1,194 @@
 {
  "day": "2026-11-11",
  "pnl": 0.0,
- "traded": {},
- "lastExit": {},
- "positions": []
+ "traded": {
+  "etf_arb": [
+   "XLB",
+   "XLC",
+   "XLE",
+   "XLF",
+   "XLI",
+   "XLK",
+   "XLP",
+   "XLRE",
+   "XLU",
+   "XLV",
+   "XLY"
+  ],
+  "sector_reversion": [
+   "BAC",
+   "BCS",
+   "BP",
+   "PFE",
+   "RKT",
+   "SPCX",
+   "STM",
+   "UMC"
+  ]
+ },
+ "lastExit": {
+  "etf_arb|XLP": 1794408060.3247633,
+  "etf_arb|XLY": 1794408060.3247633,
+  "etf_arb|XLE": 1794408060.3247633,
+  "sector_reversion|BP": 1794408083.3841202,
+  "etf_arb|XLV": 1794408120.4450943,
+  "sector_reversion|BCS": 1794408120.4450943,
+  "etf_arb|XLC": 1794408120.4450943,
+  "sector_reversion|UMC": 1794408155.530656,
+  "sector_reversion|STM": 1794408159.5374699,
+  "etf_arb|XLU": 1794408180.5692146,
+  "sector_reversion|PFE": 1794408231.672307,
+  "etf_arb|XLB": 1794408240.687098,
+  "etf_arb|XLF": 1794408240.687098,
+  "sector_reversion|BAC": 1794408300.803085
+ },
+ "positions": [
+  {
+   "id": "2026-11-11-sec-5fcefa5e",
+   "strategy": "sector_reversion",
+   "symbol": "RKT",
+   "side": "short",
+   "qty": 343,
+   "entry_px": 14.528547,
+   "entry_mid": 14.535,
+   "entry_spread_bps": 6.87994496044017,
+   "entry_ts": 1794408000.6078172,
+   "stop_bps": 63.34,
+   "target_bps": 56.31,
+   "max_hold_min": 30,
+   "mode": "shadow",
+   "reason": "residual z +2.96 vs XLF (beta 0.62)",
+   "meta": {
+    "etf": "XLF",
+    "z": 2.963,
+    "variant": "default",
+    "tags": {
+     "liq": "large",
+     "tod": "open",
+     "side": "short",
+     "sector": "XLF",
+     "kind": "stock",
+     "quad": "Q3",
+     "quadNow": "Q4"
+    }
+   }
+  },
+  {
+   "id": "2026-11-11-etf-c94185b3",
+   "strategy": "etf_arb",
+   "symbol": "XLI",
+   "side": "short",
+   "qty": 29,
+   "entry_px": 169.493049,
+   "entry_mid": 169.53,
+   "entry_spread_bps": 2.359464401582048,
+   "entry_ts": 1794408240.687098,
+   "stop_bps": 99.94,
+   "target_bps": 49.97,
+   "max_hold_min": 10,
+   "mode": "shadow",
+   "reason": "basket -83.3 bps vs XLI over 5 min (63% of the fund priced)",
+   "meta": {
+    "gap": -83.28,
+    "variant": "default",
+    "tags": {
+     "liq": "large",
+     "tod": "open",
+     "side": "short",
+     "sector": "XLI",
+     "kind": "fund",
+     "quad": "Q3",
+     "quadNow": "Q4"
+    }
+   }
+  },
+  {
+   "id": "2026-11-11-sec-01ddcd14",
+   "strategy": "sector_reversion",
+   "symbol": "SPCX",
+   "side": "long",
+   "qty": 35,
+   "entry_px": 140.91409,
+   "entry_mid": 140.845,
+   "entry_spread_bps": 7.8100039050029215,
+   "entry_ts": 1794408240.687098,
+   "stop_bps": 147.48,
+   "target_bps": 125.26,
+   "max_hold_min": 30,
+   "mode": "shadow",
+   "reason": "residual z -2.83 vs XLI (beta 0.78)",
+   "meta": {
+    "etf": "XLI",
+    "z": -2.831,
+    "variant": "default",
+    "tags": {
+     "liq": "mega",
+     "tod": "open",
+     "side": "long",
+     "sector": "XLI",
+     "kind": "stock",
+     "quad": "Q3",
+     "quadNow": "Q4"
+    }
+   }
+  },
+  {
+   "id": "2026-11-11-etf-74a5ca57",
+   "strategy": "etf_arb",
+   "symbol": "XLRE",
+   "side": "short",
+   "qty": 112,
+   "entry_px": 44.565543,
+   "entry_mid": 44.575,
+   "entry_spread_bps": 2.2434099831739784,
+   "entry_ts": 1794408300.803085,
+   "stop_bps": 19.34,
+   "target_bps": 9.67,
+   "max_hold_min": 10,
+   "mode": "shadow",
+   "reason": "basket -16.1 bps vs XLRE over 5 min (93% of the fund priced)",
+   "meta": {
+    "gap": -16.12,
+    "variant": "default",
+    "tags": {
+     "liq": "large",
+     "tod": "open",
+     "side": "short",
+     "sector": "XLRE",
+     "kind": "fund",
+     "quad": "Q3",
+     "quadNow": "Q4"
+    }
+   }
+  },
+  {
+   "id": "2026-11-11-etf-f8a8ea8c",
+   "strategy": "etf_arb",
+   "symbol": "XLK",
+   "side": "short",
+   "qty": 28,
+   "entry_px": 173.102688,
+   "entry_mid": 173.135,
+   "entry_spread_bps": 1.732751898807355,
+   "entry_ts": 1794408300.803085,
+   "stop_bps": 13.49,
+   "target_bps": 6.74,
+   "max_hold_min": 10,
+   "mode": "shadow",
+   "reason": "basket -11.2 bps vs XLK over 5 min (85% of the fund priced)",
+   "meta": {
+    "gap": -11.24,
+    "variant": "default",
+    "tags": {
+     "liq": "mega",
+     "tod": "open",
+     "side": "short",
+     "sector": "XLK",
+     "kind": "fund",
+     "quad": "Q3",
+     "quadNow": "Q4"
+    }
+   }
+  }
+ ]
 }
