@@ -1,5 +1,5 @@
 {
- "asOf": "2026-11-11T01:09:58+00:00",
+ "asOf": "2026-11-11T03:04:05+00:00",
  "days": [
   "2026-10-27",
   "2026-10-28",
@@ -29,16 +29,13 @@
   },
   "etf_arb": {
    "pass": false,
-   "n": 9,
-   "winRate": 0.7778,
-   "winRateCI95": [
-    0.4526,
-    0.9368
-   ],
-   "expectancyBps": 1.138,
-   "tStat": 0.21,
-   "profitFactor": 1.234,
-   "pBeatsBenchmark": 0.0975
+   "n": 0,
+   "winRate": null,
+   "winRateCI95": null,
+   "expectancyBps": null,
+   "tStat": null,
+   "profitFactor": null,
+   "pBeatsBenchmark": null
   },
   "opening_range": {
    "pass": true,
