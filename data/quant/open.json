@@ -113,24 +113,24 @@
   ]
  },
  "lastExit": {
-  "etf_arb|XLV": 1794511980.591448,
+  "etf_arb|XLV": 1794513420.608413,
   "etf_arb|XLE": 1794512040.7276983,
-  "etf_arb|XLI": 1794512160.1533542,
-  "etf_arb|XLB": 1794511920.4427023,
+  "etf_arb|XLI": 1794513420.608413,
+  "etf_arb|XLB": 1794513540.7885785,
   "sector_reversion|UMC": 1794494640.9305546,
   "etf_arb|XLC": 1794512820.6458662,
   "sector_reversion|PFE": 1794494700.0522933,
-  "etf_arb|XLP": 1794512400.7097986,
+  "etf_arb|XLP": 1794513420.608413,
   "etf_arb|XLF": 1794512520.7088008,
   "sector_reversion|T": 1794510840.16564,
   "sector_reversion|SOFI": 1794494760.3815715,
   "sector_reversion|AG": 1794494760.3815715,
   "sector_reversion|DB": 1794501840.5621421,
-  "etf_arb|XLY": 1794511920.4427023,
-  "etf_arb|XLRE": 1794512040.7276983,
+  "etf_arb|XLY": 1794513420.608413,
+  "etf_arb|XLRE": 1794513420.608413,
   "etf_arb|XLU": 1794512580.8417072,
   "sector_reversion|SONY": 1794494880.687657,
-  "etf_arb|XLK": 1794511865.3556278,
+  "etf_arb|XLK": 1794513300.427953,
   "opening_range|EWI": 1794495477.6691072,
   "sector_reversion|PCG": 1794495545.906898,
   "opening_range|EWG": 1794495571.9446914,
@@ -204,7 +204,8 @@
   "sector_reversion|NFLX": 1794512329.5529962,
   "sector_reversion|AVTR": 1794512340.5707047,
   "sector_reversion|TTD": 1794512580.8417072,
-  "sector_reversion|BEN": 1794512787.595597
+  "sector_reversion|BEN": 1794512787.595597,
+  "sector_reversion|KHC": 1794513089.0862432
  },
  "positions": [
   {
@@ -482,65 +483,6 @@
      "side": "long",
      "sector": "XLC",
      "kind": "stock",
-     "quad": "Q3",
-     "quadNow": "Q4"
-    }
-   }
-  },
-  {
-   "id": "2026-11-12-sec-60a03a28",
-   "strategy": "sector_reversion",
-   "symbol": "KHC",
-   "side": "short",
-   "qty": 203,
-   "entry_px": 24.607539,
-   "entry_mid": 24.615000000000002,
-   "entry_spread_bps": 4.0625634775549715,
-   "entry_ts": 1794512580.8417072,
-   "stop_bps": 18.27,
-   "target_bps": 15.43,
-   "max_hold_min": 30,
-   "mode": "shadow",
-   "reason": "residual z +2.82 vs XLP (beta 0.30)",
-   "meta": {
-    "etf": "XLP",
-    "z": 2.816,
-    "variant": "default",
-    "tags": {
-     "liq": "large",
-     "tod": "late",
-     "side": "short",
-     "sector": "XLP",
-     "kind": "stock",
-     "quad": "Q3",
-     "quadNow": "Q4"
-    }
-   }
-  },
-  {
-   "id": "2026-11-12-etf-351d28a8",
-   "strategy": "etf_arb",
-   "symbol": "XLK",
-   "side": "short",
-   "qty": 28,
-   "entry_px": 173.492649,
-   "entry_mid": 173.51999999999998,
-   "entry_spread_bps": 1.152604887045311,
-   "entry_ts": 1794512880.7813013,
-   "stop_bps": 24.48,
-   "target_bps": 12.24,
-   "max_hold_min": 10,
-   "mode": "shadow",
-   "reason": "basket -20.4 bps vs XLK over 5 min (84% of the fund priced)",
-   "meta": {
-    "gap": -20.4,
-    "variant": "default",
-    "tags": {
-     "liq": "mega",
-     "tod": "late",
-     "side": "short",
-     "sector": "XLK",
-     "kind": "fund",
      "quad": "Q3",
      "quadNow": "Q4"
     }
