@@ -1,5 +1,5 @@
 {
- "asOf": "2026-11-11T23:55:39+00:00",
+ "asOf": "2026-11-12T04:18:30+00:00",
  "days": [
   "2026-10-28",
   "2026-10-29",
@@ -22,9 +22,9 @@
     0.46,
     0.5051
    ],
-   "expectancyBps": -3.63,
-   "tStat": -3.9,
-   "profitFactor": 0.752,
+   "expectancyBps": -3.634,
+   "tStat": -3.91,
+   "profitFactor": 0.751,
    "pBeatsBenchmark": 0.9859
   },
   "etf_arb": {
@@ -48,7 +48,7 @@
     0.4095,
     0.5048
    ],
-   "expectancyBps": 19.743,
+   "expectancyBps": 19.745,
    "tStat": 2.56,
    "profitFactor": 1.348,
    "pBeatsBenchmark": 0.983
