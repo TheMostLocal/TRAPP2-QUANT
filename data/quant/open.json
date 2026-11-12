@@ -117,21 +117,21 @@
  },
  "lastExit": {
   "etf_arb|XLV": 1794515520.9623826,
-  "etf_arb|XLE": 1794514860.3152473,
+  "etf_arb|XLE": 1794516000.133379,
   "etf_arb|XLI": 1794515580.064504,
   "etf_arb|XLB": 1794515640.1665223,
   "sector_reversion|UMC": 1794494640.9305546,
   "etf_arb|XLC": 1794515280.8730223,
   "sector_reversion|PFE": 1794494700.0522933,
   "etf_arb|XLP": 1794515640.1665223,
-  "etf_arb|XLF": 1794514740.7170064,
+  "etf_arb|XLF": 1794516000.133379,
   "sector_reversion|T": 1794510840.16564,
   "sector_reversion|SOFI": 1794494760.3815715,
   "sector_reversion|AG": 1794494760.3815715,
   "sector_reversion|DB": 1794501840.5621421,
   "etf_arb|XLY": 1794514920.4114158,
   "etf_arb|XLRE": 1794515640.1665223,
-  "etf_arb|XLU": 1794514860.3152473,
+  "etf_arb|XLU": 1794516000.133379,
   "sector_reversion|SONY": 1794494880.687657,
   "etf_arb|XLK": 1794515580.064504,
   "opening_range|EWI": 1794495477.6691072,
@@ -198,7 +198,7 @@
   "sector_reversion|CSX": 1794509880.803494,
   "sector_reversion|B": 1794510139.5859005,
   "sector_reversion|CMCSA": 1794510171.6414745,
-  "sector_reversion|CLF": 1794510225.771307,
+  "sector_reversion|CLF": 1794516240.5276923,
   "sector_reversion|USB": 1794510229.7776618,
   "sector_reversion|JHX": 1794510400.1005197,
   "sector_reversion|CMG": 1794511200.4322312,
@@ -208,7 +208,10 @@
   "sector_reversion|AVTR": 1794512340.5707047,
   "sector_reversion|TTD": 1794512580.8417072,
   "sector_reversion|BEN": 1794512787.595597,
-  "sector_reversion|KHC": 1794513089.0862432
+  "sector_reversion|KHC": 1794513089.0862432,
+  "sector_reversion|BF-B": 1794515820.1266403,
+  "sector_reversion|BEKE": 1794515880.2321956,
+  "sector_reversion|UPST": 1794516000.133379
  },
  "positions": [
   {
@@ -485,96 +488,6 @@
      "tod": "mid",
      "side": "long",
      "sector": "XLC",
-     "kind": "stock",
-     "quad": "Q3",
-     "quadNow": "Q4"
-    }
-   }
-  },
-  {
-   "id": "2026-11-12-sec-5c017f72",
-   "strategy": "sector_reversion",
-   "symbol": "BEKE",
-   "side": "long",
-   "qty": 284,
-   "entry_px": 17.571757,
-   "entry_mid": 17.564999999999998,
-   "entry_spread_bps": 5.69313976658216,
-   "entry_ts": 1794515520.9623826,
-   "stop_bps": 19.25,
-   "target_bps": 17.46,
-   "max_hold_min": 30,
-   "mode": "shadow",
-   "reason": "residual z -3.02 vs XLRE (beta 0.30)",
-   "meta": {
-    "etf": "XLRE",
-    "z": -3.023,
-    "variant": "default",
-    "tags": {
-     "liq": "mid",
-     "tod": "late",
-     "side": "long",
-     "sector": "XLRE",
-     "kind": "stock",
-     "quad": "Q3",
-     "quadNow": "Q4"
-    }
-   }
-  },
-  {
-   "id": "2026-11-12-sec-0c98d640",
-   "strategy": "sector_reversion",
-   "symbol": "BF-B",
-   "side": "short",
-   "qty": 166,
-   "entry_px": 30.026997,
-   "entry_mid": 30.04,
-   "entry_spread_bps": 6.657789613848061,
-   "entry_ts": 1794515640.1665223,
-   "stop_bps": 28.05,
-   "target_bps": 24.84,
-   "max_hold_min": 30,
-   "mode": "shadow",
-   "reason": "residual z +2.95 vs XLP (beta 0.30)",
-   "meta": {
-    "etf": "XLP",
-    "z": 2.952,
-    "variant": "default",
-    "tags": {
-     "liq": "mid",
-     "tod": "late",
-     "side": "short",
-     "sector": "XLP",
-     "kind": "stock",
-     "quad": "Q3",
-     "quadNow": "Q4"
-    }
-   }
-  },
-  {
-   "id": "2026-11-12-sec-0cde80a5",
-   "strategy": "sector_reversion",
-   "symbol": "UPST",
-   "side": "long",
-   "qty": 261,
-   "entry_px": 19.091909,
-   "entry_mid": 19.085,
-   "entry_spread_bps": 5.239717055279834,
-   "entry_ts": 1794515640.1665223,
-   "stop_bps": 47.8,
-   "target_bps": 37.24,
-   "max_hold_min": 30,
-   "mode": "shadow",
-   "reason": "residual z -2.60 vs XLF (beta 1.13)",
-   "meta": {
-    "etf": "XLF",
-    "z": -2.597,
-    "variant": "default",
-    "tags": {
-     "liq": "mid",
-     "tod": "late",
-     "side": "long",
-     "sector": "XLF",
      "kind": "stock",
      "quad": "Q3",
      "quadNow": "Q4"
