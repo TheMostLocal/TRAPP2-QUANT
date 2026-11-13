@@ -1,5 +1,5 @@
 {
- "asOf": "2026-11-13T20:49:31+00:00",
+ "asOf": "2026-11-13T21:02:04+00:00",
  "benchmarkWinRate": 0.5075,
  "live": {
   "n": 12,
@@ -21,23 +21,23 @@
   "sharpePerTrade": -0.3865
  },
  "shadow": {
-  "n": 6319,
-  "wins": 1508,
-  "losses": 4739,
-  "winRate": 0.2414,
+  "n": 6342,
+  "wins": 1519,
+  "losses": 4751,
+  "winRate": 0.2423,
   "winRateCI95": [
-   0.2309,
-   0.2522
+   0.2318,
+   0.253
   ],
   "pBeatsBenchmark": 1.0,
   "benchmark": 0.5075,
-  "expectancyBps": -9.27,
-  "sdBps": 60.361,
-  "tStat": -12.21,
-  "avgWinBps": 18.17,
-  "avgLossBps": -18.14,
-  "profitFactor": 0.319,
-  "sharpePerTrade": -0.1536
+  "expectancyBps": -9.3,
+  "sdBps": 60.437,
+  "tStat": -12.25,
+  "avgWinBps": 18.26,
+  "avgLossBps": -18.25,
+  "profitFactor": 0.32,
+  "sharpePerTrade": -0.1539
  },
  "byStrategy": {
   "etf_arb": {
@@ -85,23 +85,23 @@
     "sharpePerTrade": -0.3865
    },
    "shadow": {
-    "n": 450,
-    "wins": 159,
-    "losses": 290,
-    "winRate": 0.3541,
+    "n": 473,
+    "wins": 170,
+    "losses": 302,
+    "winRate": 0.3602,
     "winRateCI95": [
-     0.3113,
-     0.3994
+     0.3182,
+     0.4044
     ],
     "pBeatsBenchmark": 1.0,
     "benchmark": 0.5075,
-    "expectancyBps": -46.167,
-    "sdBps": 194.122,
-    "tStat": -5.05,
-    "avgWinBps": 103.14,
-    "avgLossBps": -128.19,
+    "expectancyBps": -44.785,
+    "sdBps": 190.216,
+    "tStat": -5.12,
+    "avgWinBps": 98.39,
+    "avgLossBps": -125.53,
     "profitFactor": 0.441,
-    "sharpePerTrade": -0.2378
+    "sharpePerTrade": -0.2354
    }
   },
   "sector_reversion": {
@@ -175,7 +175,7 @@
    "pnl": 0
   }
  },
- "trades": 6331,
+ "trades": 6354,
  "curve": [
   [
    "2026-11-02T14:49",
@@ -2068,9 +2068,14 @@
    -29002.35
   ],
   [
-   "2026-11-13T20:45",
+   "2026-11-13T20:49",
    -88.92,
-   -29018.85
+   -29177.53
+  ],
+  [
+   "2026-11-13T20:55",
+   -88.92,
+   -29221.95
   ]
  ],
  "byKind": {
@@ -2081,8 +2086,8 @@
    "stock": 720
   },
   "opening_range": {
-   "stock": 202,
-   "fund": 260
+   "stock": 215,
+   "fund": 270
   }
  }
 }
