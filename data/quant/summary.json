@@ -1,5 +1,5 @@
 {
- "asOf": "2026-11-13T19:59:25+00:00",
+ "asOf": "2026-11-13T20:14:27+00:00",
  "benchmarkWinRate": 0.5075,
  "live": {
   "n": 12,
@@ -21,22 +21,22 @@
   "sharpePerTrade": -0.3865
  },
  "shadow": {
-  "n": 6283,
+  "n": 6290,
   "wins": 1503,
-  "losses": 4708,
-  "winRate": 0.242,
+  "losses": 4715,
+  "winRate": 0.2417,
   "winRateCI95": [
-   0.2315,
-   0.2528
+   0.2312,
+   0.2525
   ],
   "pBeatsBenchmark": 1.0,
   "benchmark": 0.5075,
-  "expectancyBps": -9.334,
-  "sdBps": 60.466,
-  "tStat": -12.24,
+  "expectancyBps": -9.331,
+  "sdBps": 60.433,
+  "tStat": -12.25,
   "avgWinBps": 18.08,
-  "avgLossBps": -18.23,
-  "profitFactor": 0.317,
+  "avgLossBps": -18.21,
+  "profitFactor": 0.316,
   "sharpePerTrade": -0.1544
  },
  "byStrategy": {
@@ -45,23 +45,23 @@
     "n": 0
    },
    "shadow": {
-    "n": 5125,
+    "n": 5132,
     "wins": 1067,
-    "losses": 3987,
-    "winRate": 0.2111,
+    "losses": 3994,
+    "winRate": 0.2108,
     "winRateCI95": [
-     0.2001,
-     0.2226
+     0.1998,
+     0.2223
     ],
     "pBeatsBenchmark": 1.0,
     "benchmark": 0.5075,
-    "expectancyBps": -4.041,
-    "sdBps": 7.48,
-    "tStat": -38.68,
+    "expectancyBps": -4.044,
+    "sdBps": 7.475,
+    "tStat": -38.76,
     "avgWinBps": 5.96,
     "avgLossBps": -6.79,
-    "profitFactor": 0.235,
-    "sharpePerTrade": -0.5403
+    "profitFactor": 0.234,
+    "sharpePerTrade": -0.541
    }
   },
   "opening_range": {
@@ -175,7 +175,7 @@
    "pnl": 0
   }
  },
- "trades": 6295,
+ "trades": 6302,
  "curve": [
   [
    "2026-11-02T14:49",
@@ -2046,11 +2046,21 @@
    "2026-11-13T19:59",
    -88.92,
    -29054.08
+  ],
+  [
+   "2026-11-13T20:08",
+   -88.92,
+   -29071.13
+  ],
+  [
+   "2026-11-13T20:13",
+   -88.92,
+   -29076.13
   ]
  ],
  "byKind": {
   "etf_arb": {
-   "fund": 5125
+   "fund": 5132
   },
   "sector_reversion": {
    "stock": 709
