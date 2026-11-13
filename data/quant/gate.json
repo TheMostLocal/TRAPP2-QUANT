@@ -1,5 +1,5 @@
 {
- "asOf": "2026-11-13T00:03:41+00:00",
+ "asOf": "2026-11-13T03:46:16+00:00",
  "strategies": {
   "sector_reversion": {
    "pass": false,
@@ -9,7 +9,7 @@
     0.4516,
     0.4944
    ],
-   "expectancyBps": -4.07,
+   "expectancyBps": -4.069,
    "tStat": -4.77,
    "profitFactor": 0.728,
    "pBeatsBenchmark": 0.9993
@@ -35,7 +35,7 @@
     0.4587,
     0.5562
    ],
-   "expectancyBps": 29.787,
+   "expectancyBps": 29.788,
    "tStat": 3.34,
    "profitFactor": 1.469,
    "pBeatsBenchmark": 0.52
