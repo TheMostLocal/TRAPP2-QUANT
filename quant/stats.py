@@ -4,6 +4,9 @@
 #  How good is the book, honestly: win rate with its 95 % interval (Wilson), whether it beats a benchmark win
 #  rate (one-sided binomial test), expectancy per trade in bps net of costs, profit factor, per-trade Sharpe
 #  and its t-statistic. A win rate means little alone - a strategy can win 70 % of trades and lose money.
+#  z186: SIGNAL vs COST - each trade's move from the entry mid to the exit mid (the strategy's signal, before any
+#  spread, slippage or fee) and what the fills cost on top. A losing strategy either has no signal (fix the idea)
+#  or a signal smaller than its cost (fix the execution or the horizon) - the record now says which.
 # ============================================================
 import math
 
@@ -54,7 +57,33 @@ def summarize(trades, benchmark=0.5075):
             "benchmark": benchmark, "expectancyBps": round(mean, 3), "sdBps": round(sd, 3),
             "tStat": round(mean / (sd / math.sqrt(n)), 2) if sd > 0 else None,
             "avgWinBps": round(gw / wins, 2) if wins else None, "avgLossBps": round(-gl / losses, 2) if losses else None,
-            "profitFactor": round(gw / gl, 3) if gl > 0 else None, "sharpePerTrade": round(mean / sd, 4) if sd > 0 else None}
+            "profitFactor": round(gw / gl, 3) if gl > 0 else None, "sharpePerTrade": round(mean / sd, 4) if sd > 0 else None,
+            **signal_vs_cost(trades)}
+
+
+def signal_vs_cost(trades):
+    """z186: mid-to-mid move (side-adjusted, bps) = the signal; minus the net = the cost. -> {signalBps, signalT,
+    costBps, diagnosis}; {} when the trades carry no mids (older rows, backtests)."""
+    sig, cost = [], []
+    for t in trades:
+        a, b, net = t.get("entry_mid"), t.get("exit_mid"), t.get("net_bps")
+        if not a or not b or net is None or a <= 0:
+            continue
+        m = (1 if t.get("side") == "long" else -1) * (b / a - 1) * 1e4
+        sig.append(m)
+        cost.append(m - float(net))
+    n = len(sig)
+    if n < 2:
+        return {}
+    mu = sum(sig) / n
+    sd = math.sqrt(sum((x - mu) ** 2 for x in sig) / (n - 1))
+    t = mu / (sd / math.sqrt(n)) if sd > 0 else 0.0
+    c = sum(cost) / n
+    if mu <= 0 or t < 2.0:
+        dx = "no signal" if mu <= 0 or t < 1.0 else "weak signal"
+    else:
+        dx = "edge" if mu > c else "signal smaller than cost"
+    return {"signalBps": round(mu, 3), "signalT": round(t, 2), "costBps": round(c, 3), "diagnosis": dx}
 
 
 def trades_needed(edge_win_rate, benchmark=0.5075, z=1.645):
