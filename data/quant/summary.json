@@ -1,5 +1,5 @@
 {
- "asOf": "2026-11-16T20:01:07+00:00",
+ "asOf": "2026-11-16T20:16:08+00:00",
  "benchmarkWinRate": 0.5075,
  "live": {
   "n": 12,
@@ -25,26 +25,26 @@
   "diagnosis": "no signal"
  },
  "shadow": {
-  "n": 6680,
-  "wins": 1617,
-  "losses": 4989,
-  "winRate": 0.2448,
+  "n": 6697,
+  "wins": 1622,
+  "losses": 5001,
+  "winRate": 0.2449,
   "winRateCI95": [
-   0.2346,
-   0.2553
+   0.2347,
+   0.2554
   ],
   "pBeatsBenchmark": 1.0,
   "benchmark": 0.5075,
-  "expectancyBps": -9.89,
-  "sdBps": 65.774,
-  "tStat": -12.29,
-  "avgWinBps": 18.7,
-  "avgLossBps": -19.3,
+  "expectancyBps": -9.877,
+  "sdBps": 65.693,
+  "tStat": -12.3,
+  "avgWinBps": 18.65,
+  "avgLossBps": -19.28,
   "profitFactor": 0.314,
   "sharpePerTrade": -0.1504,
-  "signalBps": -1.447,
+  "signalBps": -1.442,
   "signalT": -2.58,
-  "costBps": 8.443,
+  "costBps": 8.435,
   "diagnosis": "no signal"
  },
  "byStrategy": {
@@ -53,26 +53,26 @@
     "n": 0
    },
    "shadow": {
-    "n": 5340,
-    "wins": 1109,
-    "losses": 4158,
-    "winRate": 0.2106,
+    "n": 5348,
+    "wins": 1110,
+    "losses": 4165,
+    "winRate": 0.2104,
     "winRateCI95": [
-     0.1998,
-     0.2218
+     0.1996,
+     0.2216
     ],
     "pBeatsBenchmark": 1.0,
     "benchmark": 0.5075,
-    "expectancyBps": -4.049,
-    "sdBps": 7.475,
-    "tStat": -39.58,
-    "avgWinBps": 5.93,
+    "expectancyBps": -4.048,
+    "sdBps": 7.47,
+    "tStat": -39.64,
+    "avgWinBps": 5.92,
     "avgLossBps": -6.78,
     "profitFactor": 0.233,
-    "sharpePerTrade": -0.5416,
+    "sharpePerTrade": -0.542,
     "signalBps": -0.009,
     "signalT": -0.09,
-    "costBps": 4.04,
+    "costBps": 4.039,
     "diagnosis": "no signal"
    }
   },
@@ -129,26 +129,26 @@
     "n": 0
    },
    "shadow": {
-    "n": 818,
-    "wins": 314,
-    "losses": 504,
-    "winRate": 0.3839,
+    "n": 827,
+    "wins": 318,
+    "losses": 509,
+    "winRate": 0.3845,
     "winRateCI95": [
-     0.3512,
-     0.4177
+     0.352,
+     0.4181
     ],
     "pBeatsBenchmark": 1.0,
     "benchmark": 0.5075,
-    "expectancyBps": -24.945,
-    "sdBps": 96.039,
-    "tStat": -7.43,
-    "avgWinBps": 16.12,
-    "avgLossBps": -50.53,
+    "expectancyBps": -24.736,
+    "sdBps": 95.546,
+    "tStat": -7.45,
+    "avgWinBps": 15.95,
+    "avgLossBps": -50.16,
     "profitFactor": 0.199,
-    "sharpePerTrade": -0.2597,
-    "signalBps": -6.259,
+    "sharpePerTrade": -0.2589,
+    "signalBps": -6.18,
     "signalT": -2.89,
-    "costBps": 18.686,
+    "costBps": 18.556,
     "diagnosis": "no signal"
    }
   }
@@ -203,7 +203,7 @@
    "pnl": 0
   }
  },
- "trades": 6692,
+ "trades": 6709,
  "curve": [
   [
    "2026-11-02T14:49",
@@ -2266,17 +2266,22 @@
    -32742.2
   ],
   [
-   "2026-11-16T20:00",
+   "2026-11-16T20:09",
    -88.92,
-   -32745.34
+   -32755.74
+  ],
+  [
+   "2026-11-16T20:15",
+   -88.92,
+   -32786.77
   ]
  ],
  "byKind": {
   "etf_arb": {
-   "fund": 5340
+   "fund": 5348
   },
   "sector_reversion": {
-   "stock": 818
+   "stock": 827
   },
   "opening_range": {
    "stock": 335,
