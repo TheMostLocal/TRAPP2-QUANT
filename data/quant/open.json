@@ -18,6 +18,7 @@
   "sector_reversion": [
    "AAL",
    "AAPL",
+   "ACI",
    "AMX",
    "ASX",
    "AVTR",
@@ -133,17 +134,17 @@
   ]
  },
  "lastExit": {
-  "etf_arb|XLY": 1794937860.7237506,
-  "etf_arb|XLRE": 1794937680.85983,
-  "etf_arb|XLV": 1794937740.0539477,
-  "etf_arb|XLE": 1794937980.1281338,
-  "etf_arb|XLU": 1794937920.928165,
+  "etf_arb|XLY": 1794938940.551243,
+  "etf_arb|XLRE": 1794938940.551243,
+  "etf_arb|XLV": 1794939000.7679417,
+  "etf_arb|XLE": 1794939000.7679417,
+  "etf_arb|XLU": 1794938940.551243,
   "etf_arb|XLK": 1794938160.1120093,
-  "etf_arb|XLB": 1794938280.5212283,
+  "etf_arb|XLB": 1794939300.1832643,
   "sector_reversion|PFE": 1794926520.9196882,
-  "etf_arb|XLF": 1794937560.4825468,
-  "etf_arb|XLC": 1794937680.85983,
-  "etf_arb|XLP": 1794938160.1120093,
+  "etf_arb|XLF": 1794938940.551243,
+  "etf_arb|XLC": 1794938820.129729,
+  "etf_arb|XLP": 1794939120.5735347,
   "sector_reversion|PBR-A": 1794926671.4110527,
   "sector_reversion|NVO": 1794926820.9464512,
   "sector_reversion|NFLX": 1794926820.9464512,
@@ -151,7 +152,7 @@
   "opening_range|UBS": 1794927026.1948273,
   "sector_reversion|BTI": 1794933534.0619872,
   "opening_range|ING": 1794927155.6676106,
-  "etf_arb|XLI": 1794937440.7374246,
+  "etf_arb|XLI": 1794938640.171717,
   "opening_range|JETS": 1794927465.5424182,
   "opening_range|GRNY": 1794927503.7479308,
   "sector_reversion|NU": 1794927540.8264642,
@@ -238,7 +239,9 @@
   "sector_reversion|VZ": 1794937200.4991565,
   "sector_reversion|T": 1794937200.4991565,
   "sector_reversion|JD": 1794938015.2758074,
-  "sector_reversion|AVTR": 1794938400.9263368
+  "sector_reversion|AVTR": 1794938400.9263368,
+  "sector_reversion|DOW": 1794938700.3781314,
+  "sector_reversion|ACI": 1794939115.562643
  },
  "positions": [
   {
@@ -680,36 +683,6 @@
     "variant": "default",
     "tags": {
      "liq": "mid",
-     "tod": "mid",
-     "side": "long",
-     "sector": "XLB",
-     "kind": "stock",
-     "quad": "Q3",
-     "quadNow": "Q4"
-    }
-   }
-  },
-  {
-   "id": "2026-11-17-sec-30471835",
-   "strategy": "sector_reversion",
-   "symbol": "DOW",
-   "side": "long",
-   "qty": 157,
-   "entry_px": 31.70317,
-   "entry_mid": 31.689999999999998,
-   "entry_spread_bps": 6.311139160618358,
-   "entry_ts": 1794938220.318237,
-   "stop_bps": 27.58,
-   "target_bps": 20.82,
-   "max_hold_min": 30,
-   "mode": "shadow",
-   "reason": "residual z -2.52 vs XLB (beta 0.30)",
-   "meta": {
-    "etf": "XLB",
-    "z": -2.517,
-    "variant": "default",
-    "tags": {
-     "liq": "large",
      "tod": "mid",
      "side": "long",
      "sector": "XLB",
