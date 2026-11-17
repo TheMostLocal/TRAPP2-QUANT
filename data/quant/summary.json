@@ -1,5 +1,5 @@
 {
- "asOf": "2026-11-17T19:59:33+00:00",
+ "asOf": "2026-11-17T20:14:35+00:00",
  "benchmarkWinRate": 0.5075,
  "live": {
   "n": 12,
@@ -25,26 +25,26 @@
   "diagnosis": "no signal"
  },
  "shadow": {
-  "n": 7074,
-  "wins": 1736,
-  "losses": 5262,
+  "n": 7080,
+  "wins": 1738,
+  "losses": 5266,
   "winRate": 0.2481,
   "winRateCI95": [
-   0.2381,
-   0.2583
+   0.2382,
+   0.2584
   ],
   "pBeatsBenchmark": 1.0,
   "benchmark": 0.5075,
-  "expectancyBps": -10.291,
-  "sdBps": 68.127,
+  "expectancyBps": -10.281,
+  "sdBps": 68.099,
   "tStat": -12.7,
-  "avgWinBps": 19.57,
-  "avgLossBps": -20.29,
+  "avgWinBps": 19.56,
+  "avgLossBps": -20.28,
   "profitFactor": 0.318,
-  "sharpePerTrade": -0.1511,
-  "signalBps": -1.448,
+  "sharpePerTrade": -0.151,
+  "signalBps": -1.443,
   "signalT": -2.55,
-  "costBps": 8.843,
+  "costBps": 8.838,
   "diagnosis": "no signal"
  },
  "byStrategy": {
@@ -53,25 +53,25 @@
     "n": 0
    },
    "shadow": {
-    "n": 5551,
-    "wins": 1158,
-    "losses": 4318,
-    "winRate": 0.2115,
+    "n": 5557,
+    "wins": 1160,
+    "losses": 4322,
+    "winRate": 0.2116,
     "winRateCI95": [
-     0.2009,
-     0.2225
+     0.201,
+     0.2226
     ],
     "pBeatsBenchmark": 1.0,
     "benchmark": 0.5075,
-    "expectancyBps": -4.05,
-    "sdBps": 7.462,
-    "tStat": -40.43,
+    "expectancyBps": -4.044,
+    "sdBps": 7.463,
+    "tStat": -40.4,
     "avgWinBps": 5.89,
     "avgLossBps": -6.78,
     "profitFactor": 0.233,
-    "sharpePerTrade": -0.5427,
-    "signalBps": -0.01,
-    "signalT": -0.1,
+    "sharpePerTrade": -0.5419,
+    "signalBps": -0.005,
+    "signalT": -0.05,
     "costBps": 4.039,
     "diagnosis": "no signal"
    }
@@ -207,7 +207,7 @@
    "pnl": 0
   }
  },
- "trades": 7086,
+ "trades": 7092,
  "curve": [
   [
    "2026-11-02T14:49",
@@ -2458,11 +2458,21 @@
    "2026-11-17T19:59",
    -88.92,
    -35985.81
+  ],
+  [
+   "2026-11-17T20:05",
+   -88.92,
+   -35980.99
+  ],
+  [
+   "2026-11-17T20:13",
+   -88.92,
+   -35983.34
   ]
  ],
  "byKind": {
   "etf_arb": {
-   "fund": 5551
+   "fund": 5557
   },
   "sector_reversion": {
    "stock": 932
