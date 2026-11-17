@@ -1,7 +1,100 @@
 {
  "day": "2026-11-17",
  "pnl": 0.0,
- "traded": {},
- "lastExit": {},
- "positions": []
+ "traded": {
+  "etf_arb": [
+   "XLB",
+   "XLC",
+   "XLE",
+   "XLF",
+   "XLK",
+   "XLP",
+   "XLRE",
+   "XLU",
+   "XLV",
+   "XLY"
+  ],
+  "sector_reversion": [
+   "NFLX",
+   "NVO",
+   "PBR-A",
+   "PFE"
+  ]
+ },
+ "lastExit": {
+  "etf_arb|XLY": 1794926454.730659,
+  "etf_arb|XLRE": 1794926460.7396562,
+  "etf_arb|XLV": 1794926460.7396562,
+  "etf_arb|XLE": 1794926460.7396562,
+  "etf_arb|XLU": 1794926460.7396562,
+  "etf_arb|XLK": 1794926469.829445,
+  "etf_arb|XLB": 1794926520.9196882,
+  "sector_reversion|PFE": 1794926520.9196882,
+  "etf_arb|XLF": 1794926520.9196882,
+  "etf_arb|XLC": 1794926546.039632,
+  "etf_arb|XLP": 1794926640.2818701,
+  "sector_reversion|PBR-A": 1794926671.4110527
+ },
+ "positions": [
+  {
+   "id": "2026-11-17-sec-e31a6e1e",
+   "strategy": "sector_reversion",
+   "symbol": "NVO",
+   "side": "long",
+   "qty": 123,
+   "entry_px": 40.344034,
+   "entry_mid": 40.325,
+   "entry_spread_bps": 7.439553626782675,
+   "entry_ts": 1794926400.934546,
+   "stop_bps": 85.95,
+   "target_bps": 71.64,
+   "max_hold_min": 30,
+   "mode": "shadow",
+   "reason": "residual z -2.78 vs XLV (beta 0.50)",
+   "meta": {
+    "etf": "XLV",
+    "z": -2.778,
+    "variant": "default",
+    "tags": {
+     "liq": "large",
+     "tod": "open",
+     "side": "long",
+     "sector": "XLV",
+     "kind": "stock",
+     "quad": "Q3",
+     "quadNow": "Q4"
+    }
+   }
+  },
+  {
+   "id": "2026-11-17-sec-8bec79f0",
+   "strategy": "sector_reversion",
+   "symbol": "NFLX",
+   "side": "long",
+   "qty": 82,
+   "entry_px": 60.426042,
+   "entry_mid": 60.405,
+   "entry_spread_bps": 4.9664762850759265,
+   "entry_ts": 1794926520.9196882,
+   "stop_bps": 41.53,
+   "target_bps": 35.26,
+   "max_hold_min": 30,
+   "mode": "shadow",
+   "reason": "residual z -2.83 vs XLC (beta 0.49)",
+   "meta": {
+    "etf": "XLC",
+    "z": -2.83,
+    "variant": "default",
+    "tags": {
+     "liq": "mega",
+     "tod": "open",
+     "side": "long",
+     "sector": "XLC",
+     "kind": "stock",
+     "quad": "Q3",
+     "quadNow": "Q4"
+    }
+   }
+  }
+ ]
 }
