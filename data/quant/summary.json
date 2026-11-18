@@ -1,5 +1,5 @@
 {
- "asOf": "2026-11-18T18:00:24+00:00",
+ "asOf": "2026-11-18T18:15:25+00:00",
  "benchmarkWinRate": 0.5075,
  "live": {
   "n": 12,
@@ -25,26 +25,26 @@
   "diagnosis": "no signal"
  },
  "shadow": {
-  "n": 7340,
-  "wins": 1820,
-  "losses": 5441,
-  "winRate": 0.2507,
+  "n": 7354,
+  "wins": 1825,
+  "losses": 5450,
+  "winRate": 0.2509,
   "winRateCI95": [
-   0.2408,
-   0.2608
+   0.241,
+   0.261
   ],
   "pBeatsBenchmark": 1.0,
   "benchmark": 0.5075,
-  "expectancyBps": -10.482,
-  "sdBps": 68.837,
-  "tStat": -13.05,
-  "avgWinBps": 20.29,
-  "avgLossBps": -20.93,
-  "profitFactor": 0.324,
-  "sharpePerTrade": -0.1523,
-  "signalBps": -1.445,
-  "signalT": -2.55,
-  "costBps": 9.037,
+  "expectancyBps": -10.59,
+  "sdBps": 69.041,
+  "tStat": -13.15,
+  "avgWinBps": 20.25,
+  "avgLossBps": -21.07,
+  "profitFactor": 0.322,
+  "sharpePerTrade": -0.1534,
+  "signalBps": -1.495,
+  "signalT": -2.64,
+  "costBps": 9.094,
   "diagnosis": "no signal"
  },
  "byStrategy": {
@@ -53,25 +53,25 @@
     "n": 0
    },
    "shadow": {
-    "n": 5693,
-    "wins": 1193,
-    "losses": 4422,
-    "winRate": 0.2125,
+    "n": 5700,
+    "wins": 1195,
+    "losses": 4427,
+    "winRate": 0.2126,
     "winRateCI95": [
-     0.202,
+     0.2021,
      0.2234
     ],
     "pBeatsBenchmark": 1.0,
     "benchmark": 0.5075,
     "expectancyBps": -4.054,
-    "sdBps": 7.492,
-    "tStat": -40.83,
+    "sdBps": 7.493,
+    "tStat": -40.85,
     "avgWinBps": 5.92,
     "avgLossBps": -6.82,
     "profitFactor": 0.234,
-    "sharpePerTrade": -0.5411,
-    "signalBps": -0.012,
-    "signalT": -0.12,
+    "sharpePerTrade": -0.541,
+    "signalBps": -0.013,
+    "signalT": -0.13,
     "costBps": 4.042,
     "diagnosis": "no signal"
    }
@@ -101,26 +101,26 @@
     "diagnosis": "no signal"
    },
    "shadow": {
-    "n": 645,
+    "n": 646,
     "wins": 247,
-    "losses": 397,
-    "winRate": 0.3835,
+    "losses": 398,
+    "winRate": 0.3829,
     "winRateCI95": [
-     0.3468,
-     0.4217
+     0.3462,
+     0.421
     ],
     "pBeatsBenchmark": 1.0,
     "benchmark": 0.5075,
-    "expectancyBps": -42.674,
-    "sdBps": 189.11,
-    "tStat": -5.73,
+    "expectancyBps": -43.023,
+    "sdBps": 189.171,
+    "tStat": -5.78,
     "avgWinBps": 95.62,
-    "avgLossBps": -128.82,
-    "profitFactor": 0.462,
-    "sharpePerTrade": -0.2257,
-    "signalBps": -6.751,
-    "signalT": -1.24,
-    "costBps": 35.923,
+    "avgLossBps": -129.17,
+    "profitFactor": 0.459,
+    "sharpePerTrade": -0.2274,
+    "signalBps": -6.901,
+    "signalT": -1.26,
+    "costBps": 36.122,
     "diagnosis": "no signal"
    }
   },
@@ -129,26 +129,26 @@
     "n": 0
    },
    "shadow": {
-    "n": 1002,
-    "wins": 380,
-    "losses": 622,
-    "winRate": 0.3792,
+    "n": 1008,
+    "wins": 383,
+    "losses": 625,
+    "winRate": 0.38,
     "winRateCI95": [
-     0.3497,
-     0.4097
+     0.3505,
+     0.4103
     ],
     "pBeatsBenchmark": 1.0,
     "benchmark": 0.5075,
-    "expectancyBps": -26.282,
-    "sdBps": 101.299,
-    "tStat": -8.21,
-    "avgWinBps": 16.44,
-    "avgLossBps": -52.38,
-    "profitFactor": 0.192,
-    "sharpePerTrade": -0.2594,
-    "signalBps": -6.17,
-    "signalT": -2.93,
-    "costBps": 20.112,
+    "expectancyBps": -26.76,
+    "sdBps": 101.922,
+    "tStat": -8.34,
+    "avgWinBps": 16.38,
+    "avgLossBps": -53.2,
+    "profitFactor": 0.189,
+    "sharpePerTrade": -0.2626,
+    "signalBps": -6.415,
+    "signalT": -3.05,
+    "costBps": 20.346,
     "diagnosis": "no signal"
    }
   }
@@ -211,7 +211,7 @@
    "pnl": 0
   }
  },
- "trades": 7352,
+ "trades": 7366,
  "curve": [
   [
    "2026-11-02T14:49",
@@ -2592,18 +2592,28 @@
    "2026-11-18T17:59",
    -88.92,
    -38021.55
+  ],
+  [
+   "2026-11-18T18:07",
+   -88.92,
+   -38489.2
+  ],
+  [
+   "2026-11-18T18:14",
+   -88.92,
+   -38489.1
   ]
  ],
  "byKind": {
   "etf_arb": {
-   "fund": 5693
+   "fund": 5700
   },
   "sector_reversion": {
-   "stock": 1002
+   "stock": 1008
   },
   "opening_range": {
    "stock": 328,
-   "fund": 329
+   "fund": 330
   }
  }
 }
