@@ -1,5 +1,5 @@
 {
- "asOf": "2026-11-17T23:56:13+00:00",
+ "asOf": "2026-11-18T04:56:30+00:00",
  "days": [
   "2026-11-03",
   "2026-11-04",
@@ -22,7 +22,7 @@
     0.4582,
     0.503
    ],
-   "expectancyBps": -3.357,
+   "expectancyBps": -3.356,
    "tStat": -3.84,
    "profitFactor": 0.761,
    "pBeatsBenchmark": 0.9912
@@ -48,7 +48,7 @@
     0.4121,
     0.5073
    ],
-   "expectancyBps": 11.053,
+   "expectancyBps": 11.054,
    "tStat": 1.35,
    "profitFactor": 1.168,
    "pBeatsBenchmark": 0.9783
