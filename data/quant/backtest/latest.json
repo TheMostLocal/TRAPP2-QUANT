@@ -1,5 +1,5 @@
 {
- "asOf": "2026-11-18T23:58:46+00:00",
+ "asOf": "2026-11-19T04:36:49+00:00",
  "days": [
   "2026-11-04",
   "2026-11-05",
@@ -12,20 +12,20 @@
   "2026-11-16",
   "2026-11-17"
  ],
- "trades": 2404,
+ "trades": 2403,
  "strategies": {
   "sector_reversion": {
    "pass": false,
-   "n": 1974,
-   "winRate": 0.4789,
+   "n": 1973,
+   "winRate": 0.4792,
    "winRateCI95": [
-    0.457,
-    0.501
+    0.4572,
+    0.5013
    ],
-   "expectancyBps": -3.402,
-   "tStat": -3.8,
-   "profitFactor": 0.759,
-   "pBeatsBenchmark": 0.9947
+   "expectancyBps": -3.367,
+   "tStat": -3.76,
+   "profitFactor": 0.761,
+   "pBeatsBenchmark": 0.9944
   },
   "etf_arb": {
    "pass": false,
@@ -48,7 +48,7 @@
     0.4054,
     0.4994
    ],
-   "expectancyBps": 10.767,
+   "expectancyBps": 10.764,
    "tStat": 1.3,
    "profitFactor": 1.159,
    "pBeatsBenchmark": 0.9905
