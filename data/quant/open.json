@@ -53,8 +53,10 @@
    "CAG",
    "CMCSA",
    "CNQ",
+   "CRBG",
    "DB",
    "DOC",
+   "DOW",
    "EQNR",
    "ET",
    "ETHA",
@@ -100,6 +102,7 @@
    "TLT",
    "TNA",
    "UBS",
+   "UL",
    "VICI",
    "VOO",
    "VWO",
@@ -111,17 +114,17 @@
   ]
  },
  "lastExit": {
-  "etf_arb|XLY": 1795187640.1719353,
-  "etf_arb|XLP": 1795188060.585735,
+  "etf_arb|XLY": 1795189200.0379786,
+  "etf_arb|XLP": 1795189140.7724752,
   "sector_reversion|CNQ": 1795185660.0723512,
-  "etf_arb|XLB": 1795187880.6921625,
-  "etf_arb|XLRE": 1795187880.6921625,
+  "etf_arb|XLB": 1795188900.5723522,
+  "etf_arb|XLRE": 1795189020.266155,
   "sector_reversion|NLY": 1795185780.4827895,
   "sector_reversion|STM": 1795185780.4827895,
   "sector_reversion|GSK": 1795185780.4827895,
-  "etf_arb|XLU": 1795188060.585735,
-  "etf_arb|XLC": 1795187978.178893,
-  "etf_arb|XLV": 1795188060.585735,
+  "etf_arb|XLU": 1795189260.508349,
+  "etf_arb|XLC": 1795189277.6890855,
+  "etf_arb|XLV": 1795189129.748231,
   "sector_reversion|BP": 1795185799.602878,
   "sector_reversion|HMY": 1795185813.6346831,
   "sector_reversion|PUK": 1795185840.693274,
@@ -134,8 +137,8 @@
   "sector_reversion|KEY": 1795185943.1218567,
   "sector_reversion|HRL": 1795185960.1567369,
   "sector_reversion|RF": 1795185960.1567369,
-  "etf_arb|XLF": 1795188300.6596723,
-  "etf_arb|XLE": 1795188180.1257446,
+  "etf_arb|XLF": 1795189497.5657816,
+  "etf_arb|XLE": 1795189260.508349,
   "sector_reversion|T": 1795186140.9325163,
   "sector_reversion|CPNG": 1795186140.9325163,
   "opening_range|SH": 1795186206.0986917,
@@ -146,12 +149,12 @@
   "sector_reversion|BMNR": 1795186260.2148826,
   "sector_reversion|SHEL": 1795186260.2148826,
   "sector_reversion|PINS": 1795186320.4745483,
-  "etf_arb|XLI": 1795187571.8872008,
+  "etf_arb|XLI": 1795188780.0487797,
   "sector_reversion|KO": 1795186476.1955953,
   "opening_range|MDLZ": 1795186519.6526837,
   "opening_range|IBIT": 1795186569.8892877,
   "opening_range|ETHA": 1795186579.9084907,
-  "etf_arb|XLK": 1795187760.1411252,
+  "etf_arb|XLK": 1795188899.5702226,
   "sector_reversion|NCLH": 1795186740.5145466,
   "opening_range|NVO": 1795186769.7107997,
   "opening_range|SHEL": 1795186773.7200668,
@@ -185,7 +188,9 @@
   "opening_range|SNN": 1795188107.8230436,
   "opening_range|PK": 1795188120.8509555,
   "opening_range|FMS": 1795188138.0312436,
-  "opening_range|IAU": 1795188273.6033108
+  "opening_range|IAU": 1795188273.6033108,
+  "opening_range|PFE": 1795188644.4891994,
+  "opening_range|INTC": 1795189125.7403145
  },
  "positions": [
   {
@@ -462,34 +467,6 @@
      "tod": "open",
      "side": "long",
      "sector": "XLRE",
-     "kind": "stock",
-     "quad": "Q3",
-     "quadNow": "Q4"
-    }
-   }
-  },
-  {
-   "id": "2026-11-20-ope-7e5d7913",
-   "strategy": "opening_range",
-   "symbol": "PFE",
-   "side": "long",
-   "qty": 178,
-   "entry_px": 28.022802,
-   "entry_mid": 28.015,
-   "entry_spread_bps": 3.569516330536502,
-   "entry_ts": 1795187100.422532,
-   "stop_bps": 51.76,
-   "target_bps": 103.52,
-   "max_hold_min": 350,
-   "mode": "shadow",
-   "reason": "broke the 15-minute opening range 27.74-27.99 (90 bps wide)",
-   "meta": {
-    "variant": "default",
-    "tags": {
-     "liq": "large",
-     "tod": "open",
-     "side": "long",
-     "sector": "XLV",
      "kind": "stock",
      "quad": "Q3",
      "quadNow": "Q4"
@@ -777,34 +754,6 @@
    }
   },
   {
-   "id": "2026-11-20-ope-a3dd4a6e",
-   "strategy": "opening_range",
-   "symbol": "INTC",
-   "side": "long",
-   "qty": 91,
-   "entry_px": 54.685468,
-   "entry_mid": 54.665,
-   "entry_spread_bps": 5.487972194274424,
-   "entry_ts": 1795188060.585735,
-   "stop_bps": 171.5,
-   "target_bps": 343.0,
-   "max_hold_min": 334,
-   "mode": "shadow",
-   "reason": "broke the 15-minute opening range 53.00-54.45 (271 bps wide)",
-   "meta": {
-    "variant": "default",
-    "tags": {
-     "liq": "mega",
-     "tod": "open",
-     "side": "long",
-     "sector": "XLK",
-     "kind": "stock",
-     "quad": "Q3",
-     "quadNow": "Q4"
-    }
-   }
-  },
-  {
    "id": "2026-11-20-ope-4a0433b9",
    "strategy": "opening_range",
    "symbol": "AAL",
@@ -908,6 +857,90 @@
     "tags": {
      "liq": "mid",
      "tod": "open",
+     "side": "long",
+     "sector": "XLP",
+     "kind": "stock",
+     "quad": "Q3",
+     "quadNow": "Q4"
+    }
+   }
+  },
+  {
+   "id": "2026-11-20-ope-801075d6",
+   "strategy": "opening_range",
+   "symbol": "DOW",
+   "side": "short",
+   "qty": 166,
+   "entry_px": 30.046995,
+   "entry_mid": 30.060000000000002,
+   "entry_spread_bps": 6.653359946772978,
+   "entry_ts": 1795188900.5723522,
+   "stop_bps": 76.51,
+   "target_bps": 153.03,
+   "max_hold_min": 320,
+   "mode": "shadow",
+   "reason": "broke the 15-minute opening range 30.11-30.47 (119 bps wide)",
+   "meta": {
+    "variant": "default",
+    "tags": {
+     "liq": "mid",
+     "tod": "mid",
+     "side": "short",
+     "sector": "XLB",
+     "kind": "stock",
+     "quad": "Q3",
+     "quadNow": "Q4"
+    }
+   }
+  },
+  {
+   "id": "2026-11-20-ope-46420f5c",
+   "strategy": "opening_range",
+   "symbol": "CRBG",
+   "side": "short",
+   "qty": 149,
+   "entry_px": 33.346665,
+   "entry_mid": 33.36,
+   "entry_spread_bps": 5.995203836929263,
+   "entry_ts": 1795188900.5723522,
+   "stop_bps": 53.21,
+   "target_bps": 106.41,
+   "max_hold_min": 320,
+   "mode": "shadow",
+   "reason": "broke the 15-minute opening range 33.37-33.70 (100 bps wide)",
+   "meta": {
+    "variant": "default",
+    "tags": {
+     "liq": "mid",
+     "tod": "mid",
+     "side": "short",
+     "sector": "XLF",
+     "kind": "stock",
+     "quad": "Q3",
+     "quadNow": "Q4"
+    }
+   }
+  },
+  {
+   "id": "2026-11-20-ope-f5b5c081",
+   "strategy": "opening_range",
+   "symbol": "UL",
+   "side": "long",
+   "qty": 77,
+   "entry_px": 64.486448,
+   "entry_mid": 64.47,
+   "entry_spread_bps": 3.102218085933028,
+   "entry_ts": 1795189140.7724752,
+   "stop_bps": 46.92,
+   "target_bps": 93.84,
+   "max_hold_min": 316,
+   "mode": "shadow",
+   "reason": "broke the 15-minute opening range 63.91-64.43 (82 bps wide)",
+   "meta": {
+    "variant": "default",
+    "tags": {
+     "liq": "large",
+     "tod": "mid",
      "side": "long",
      "sector": "XLP",
      "kind": "stock",
