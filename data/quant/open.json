@@ -188,7 +188,7 @@
   "etf_arb|XLY": 1795203720.397945,
   "etf_arb|XLP": 1795203840.8256474,
   "sector_reversion|CNQ": 1795185660.0723512,
-  "etf_arb|XLB": 1795203420.5568717,
+  "etf_arb|XLB": 1795204680.59726,
   "etf_arb|XLRE": 1795203360.3430219,
   "sector_reversion|NLY": 1795185780.4827895,
   "sector_reversion|STM": 1795185780.4827895,
@@ -208,7 +208,7 @@
   "sector_reversion|KEY": 1795185943.1218567,
   "sector_reversion|HRL": 1795185960.1567369,
   "sector_reversion|RF": 1795185960.1567369,
-  "etf_arb|XLF": 1795203420.5568717,
+  "etf_arb|XLF": 1795204620.4659483,
   "etf_arb|XLE": 1795203420.5568717,
   "sector_reversion|T": 1795201080.6009097,
   "sector_reversion|CPNG": 1795186140.9325163,
@@ -220,12 +220,12 @@
   "sector_reversion|BMNR": 1795186260.2148826,
   "sector_reversion|SHEL": 1795186260.2148826,
   "sector_reversion|PINS": 1795186320.4745483,
-  "etf_arb|XLI": 1795202640.6942403,
+  "etf_arb|XLI": 1795204500.198634,
   "sector_reversion|KO": 1795204080.7074883,
   "opening_range|MDLZ": 1795186519.6526837,
   "opening_range|IBIT": 1795186569.8892877,
   "opening_range|ETHA": 1795186579.9084907,
-  "etf_arb|XLK": 1795203319.5048702,
+  "etf_arb|XLK": 1795204620.4659483,
   "sector_reversion|NCLH": 1795186740.5145466,
   "opening_range|NVO": 1795186769.7107997,
   "opening_range|SHEL": 1795186773.7200668,
@@ -350,7 +350,8 @@
   "sector_reversion|CPRI": 1795203540.9822009,
   "sector_reversion|LYFT": 1795203900.043672,
   "sector_reversion|AEO": 1795204020.495377,
-  "sector_reversion|ORI": 1795204020.495377
+  "sector_reversion|ORI": 1795204020.495377,
+  "sector_reversion|CNP": 1795204247.725455
  },
  "positions": [
   {
@@ -550,65 +551,6 @@
    }
   },
   {
-   "id": "2026-11-20-sec-6eeacd0e",
-   "strategy": "sector_reversion",
-   "symbol": "CNP",
-   "side": "long",
-   "qty": 127,
-   "entry_px": 39.30393,
-   "entry_mid": 39.295,
-   "entry_spread_bps": 2.5448530347367373,
-   "entry_ts": 1795203240.159189,
-   "stop_bps": 19.2,
-   "target_bps": 17.44,
-   "max_hold_min": 30,
-   "mode": "shadow",
-   "reason": "residual z -3.03 vs XLU (beta 0.61)",
-   "meta": {
-    "etf": "XLU",
-    "z": -3.027,
-    "variant": "default",
-    "tags": {
-     "liq": "large",
-     "tod": "late",
-     "side": "long",
-     "sector": "XLU",
-     "kind": "stock",
-     "quad": "Q3",
-     "quadNow": "Q4"
-    }
-   }
-  },
-  {
-   "id": "2026-11-20-etf-2cc6fc2c",
-   "strategy": "etf_arb",
-   "symbol": "XLI",
-   "side": "short",
-   "qty": 31,
-   "entry_px": 157.28427,
-   "entry_mid": 157.315,
-   "entry_spread_bps": 1.9070018752185829,
-   "entry_ts": 1795203960.2791584,
-   "stop_bps": 46.94,
-   "target_bps": 23.47,
-   "max_hold_min": 10,
-   "mode": "shadow",
-   "reason": "basket -39.1 bps vs XLI over 5 min (63% of the fund priced)",
-   "meta": {
-    "gap": -39.12,
-    "variant": "default",
-    "tags": {
-     "liq": "mega",
-     "tod": "late",
-     "side": "short",
-     "sector": "XLI",
-     "kind": "fund",
-     "quad": "Q3",
-     "quadNow": "Q4"
-    }
-   }
-  },
-  {
    "id": "2026-11-20-sec-7477faab",
    "strategy": "sector_reversion",
    "symbol": "INVH",
@@ -663,6 +605,64 @@
      "side": "short",
      "sector": "XLRE",
      "kind": "stock",
+     "quad": "Q3",
+     "quadNow": "Q4"
+    }
+   }
+  },
+  {
+   "id": "2026-11-20-etf-aef6ef0d",
+   "strategy": "etf_arb",
+   "symbol": "XLRE",
+   "side": "short",
+   "qty": 116,
+   "entry_px": 42.775722,
+   "entry_mid": 42.785,
+   "entry_spread_bps": 2.337267734018467,
+   "entry_ts": 1795204740.733294,
+   "stop_bps": 85.25,
+   "target_bps": 42.62,
+   "max_hold_min": 10,
+   "mode": "shadow",
+   "reason": "basket -71.0 bps vs XLRE over 5 min (95% of the fund priced)",
+   "meta": {
+    "gap": -71.04,
+    "variant": "default",
+    "tags": {
+     "liq": "large",
+     "tod": "late",
+     "side": "short",
+     "sector": "XLRE",
+     "kind": "fund",
+     "quad": "Q3",
+     "quadNow": "Q4"
+    }
+   }
+  },
+  {
+   "id": "2026-11-20-etf-86a0e41a",
+   "strategy": "etf_arb",
+   "symbol": "XLY",
+   "side": "short",
+   "qty": 44,
+   "entry_px": 113.198679,
+   "entry_mid": 113.22,
+   "entry_spread_bps": 1.7664723547085526,
+   "entry_ts": 1795204740.733294,
+   "stop_bps": 46.67,
+   "target_bps": 23.34,
+   "max_hold_min": 10,
+   "mode": "shadow",
+   "reason": "basket -38.9 bps vs XLY over 5 min (90% of the fund priced)",
+   "meta": {
+    "gap": -38.89,
+    "variant": "default",
+    "tags": {
+     "liq": "mega",
+     "tod": "late",
+     "side": "short",
+     "sector": "XLY",
+     "kind": "fund",
      "quad": "Q3",
      "quadNow": "Q4"
     }
