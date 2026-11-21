@@ -80,7 +80,15 @@ def main():
     rg = uni["regime"]
     print(f"[run] regime gate: {'OPEN' if rg['ok'] else 'SHUT'} - {rg['why']} · quad-split approvals "
           f"{'may trade live' if rg['ok'] else 'stay in shadow'}", flush=True)
+    from . import tape                                  # z202: the market tape - the read as known at the open + SPY's prior close
+    try:
+        uni["mkt"] = tape.current(mh.et_now().date())
+    except Exception as e:
+        uni["mkt"] = {}
+        print(f"[run] market tape unavailable ({type(e).__name__}: {e}) - trades carry no mkt / spx tags", flush=True)
+    print(f"[run] {tape.describe(uni['mkt'])}", flush=True)
     eng = Engine(CFG, uni)
+    eng.refresh_now = tape.trends_now                   # z202: the live Today's Trends read, refreshed every 30 min
     from .universe import watch_symbols
     watch = watch_symbols(uni, CFG.min_dollar_volume)          # z178: what can trade, plus the reference ETFs
     stream = watch if CFG.feed == "sip" else uni["stream"][:CFG.stream_limit]
