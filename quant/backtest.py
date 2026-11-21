@@ -190,6 +190,8 @@ def main(n_days=None):
         log("ALPACA_KEY_ID / ALPACA_SECRET_KEY not set - cannot fetch history")
         return 1
     uni = load()
+    from . import tape
+    H = tape.load_histories()                       # z202: each replayed session carries its own market tape
     days = sessions(int(n_days or os.environ.get("QUANT_BT_DAYS", "10")))
     trades, bad, loaded = [], {}, 0
     for d, close in days:
@@ -198,7 +200,8 @@ def main(n_days=None):
             log(f"{d}: no bars came back - day skipped")
             continue
         loaded += 1
-        tr = replay_day(cfg, uni, bars, d, close)
+        uni_d = dict(uni, mkt=dict(tape.state_on(d, H) or {}, spyPrev=tape.prior_close(H.get("spy"), d)))
+        tr = replay_day(cfg, uni_d, bars, d, close)
         trades += tr
         log(f"{d}: {sum(len(v) for v in bars.values())} bars, {len(bars)} symbols · {len(tr)} trades")
     if bad:
