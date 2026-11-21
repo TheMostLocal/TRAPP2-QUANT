@@ -5,10 +5,13 @@
 #  (mid-size names, the middle of the day, short side, one sector). Every signal carries four tags; a segment is
 #  one tag or two together ("liq:mid", "liq:mid|tod:mid") or "all". The lab (quant/lab.py) tests each strategy in
 #  every segment, out of sample, and the engine trades live only in segments that passed.
+#  z202: + the MARKET TAPE (quant/tape.py): "mkt" - the sell-off read as known at the open (calm / pressure / selloff)
+#  and "spx" - the S&P 500 today at the signal's minute (SPY vs its prior close: dn / flat / up). Recorded, not
+#  segmented: mktNow (the live Today's Trends label), mktRun (the S&P's run through the prior close), spxBps.
 # ============================================================
 from itertools import combinations
 
-DIMS = ("liq", "tod", "side", "sector", "quad")    # z177: + the official quad as known that day
+DIMS = ("liq", "tod", "side", "sector", "quad", "mkt", "spx")    # z177: + the official quad as known that day; z202: + the tape
 
 
 def liq_bucket(dollar_volume):
@@ -34,6 +37,18 @@ def tags_for(symbol, side, ctx, sector=None):
         out["quad"] = f"Q{q['official']}"                 # z177: a segment dimension (official, as known)
     if q.get("nowcast"):
         out["quadNow"] = f"Q{q['nowcast']}"               # z177: recorded, not segmented
+    m = getattr(ctx, "mkt", None) or {}                   # z202: the market tape (quant/tape.py)
+    if m.get("state"):
+        out["mkt"] = m["state"]                           # segmented: the read as known at the open
+        out["mktRun"] = m.get("run")                      # recorded: the S&P's run through the prior close
+    mv = getattr(ctx, "spx_move", None)
+    if mv is not None:
+        from .tape import day_bucket
+        out["spx"] = day_bucket(mv)                       # segmented: SPY vs its prior close at this minute
+        out["spxBps"] = round(mv * 1e4, 1)                # recorded
+    now = m.get("now") or {}
+    if now.get("label"):
+        out["mktNow"] = now["label"]                      # recorded: the live Today's Trends read (7 criteria)
     return out
 
 
