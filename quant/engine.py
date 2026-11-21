@@ -11,6 +11,8 @@
 #  z180: only a lab v2 verdict (session-clustered statistics) can send a signal live - an older models.json is read as
 #  "nothing approved" (everything shadow) until the lab re-runs; and an approval that is split by the macro quad trades
 #  live only while the regime is dialed in and the nowcast agrees with the official quad (STATUS 1b) - else shadow.
+#  z202: the market tape on every signal (quant/tape.py): the sell-off read as known at the open ("mkt") and the S&P
+#  500 at the minute (SPY vs its prior close, "spx") - lab segments like the quad; the live Today's Trends read recorded.
 # ============================================================
 import asyncio
 import json
@@ -95,6 +97,8 @@ class Engine:
         self.last_exit = {}                     # z176: "strategy|symbol" -> epoch of its last close (the re-entry cooldown)
         self.flattened = False
         self.counts = defaultdict(int)
+        self.refresh_now = None                 # z202: callable -> the live Today's Trends read (run.py sets it; tests don't)
+        self._now_at = clock()                  # run.py read it at the start: the first refresh is 30 min in
         self._restore()
 
     # ---- helpers -----------------------------------------------------------------------------------
@@ -139,12 +143,20 @@ class Engine:
         g = self.gate.get(strategy) or {}
         return bool(g.get("pass")) and self.cfg.execution in ("alpaca", "sim")
 
+    def spx_move(self):
+        """z202: the S&P 500 today - SPY's live mid against its prior close (quant/tape.py), a fraction or None."""
+        prev = ((self.uni or {}).get("mkt") or {}).get("spyPrev")
+        st = self.book.s.get("SPY")
+        mid = st.mid() if st else None
+        return (mid / prev - 1) if (prev and mid) else None
+
     def ctx(self, now):
         return SimpleNamespace(cfg=self.cfg, minute=self.minute(now), now=now, day_open_epoch=self.day_open_epoch(now),
                                open_symbols={p.symbol for p in self.positions}, traded_today=self.traded_today,
                                sector_etf=self.uni.get("sector_etf") or {}, etf_weights={k: v for k, v in (self.uni.get("etf_weights") or {}).items()},
                                momentum_universe=self.uni.get("momentum") or [], liquidity=self.uni.get("liquidity") or {},
-                               kinds=self.uni.get("kinds") or {}, quad=self.uni.get("quad") or {})
+                               kinds=self.uni.get("kinds") or {}, quad=self.uni.get("quad") or {},
+                               mkt=self.uni.get("mkt") or {}, spx_move=self.spx_move())       # z202: the market tape
 
     # ---- entries / exits ---------------------------------------------------------------------------
     def enter(self, sig, now):
@@ -268,7 +280,9 @@ class Engine:
         return {"day": self.day, "at": now, "minute": self.minute(now), "open": [{"symbol": p.symbol, "side": p.side, "qty": p.qty, "strategy": p.strategy,
                 "mode": p.mode, "entry": p.entry_px, "moveBps": round(p.move_bps((self.book.s.get(p.symbol) or self.book.get(p.symbol)).mid() or p.entry_px), 1)}
                 for p in self.positions], "dayPnl": round(self.ledger.pnl, 2), "closedToday": len(self.ledger.closed),
-                "counts": dict(self.counts), "feed": feed_status or {}, "gate": self.gate, "regime": (self.uni or {}).get("regime") or {}}
+                "counts": dict(self.counts), "feed": feed_status or {}, "gate": self.gate, "regime": (self.uni or {}).get("regime") or {},
+                "mkt": {k: v for k, v in ((self.uni or {}).get("mkt") or {}).items() if k != "criteria"} or {},     # z202: the tape
+                "spxBps": (lambda m: round(m * 1e4, 1) if m is not None else None)(self.spx_move())}
 
     def persist(self, now, feed_status=None):
         self.ledger.flush_files()
@@ -303,6 +317,14 @@ class Engine:
                 if now - last_save >= 300:
                     self.persist(now, feeds.status() if feeds else None)
                     last_save = now
+                if self.refresh_now and now - self._now_at >= 1800:     # z202: the trends doc moves every 30 min
+                    self._now_at = now
+                    try:
+                        doc = await asyncio.to_thread(self.refresh_now)
+                        if doc:
+                            self.uni.setdefault("mkt", {})["now"] = doc
+                    except Exception as e:
+                        self.log(f"[engine] trends refresh: {type(e).__name__} {e}")
                 await sleep(tick)
         finally:
             stop.set()
