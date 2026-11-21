@@ -32,6 +32,15 @@
 #      trades it live only while the regime is dialed in and the nowcast agrees with the official quad (STATUS 1b).
 #  60 sessions by default (40 train / 20 test): more sessions = more clusters = an honest test with power.
 #  models.json carries labVersion 2; the engine trusts no approval from an older lab.
+#
+#  z202 - THE MARKET TAPE (quant/tape.py; owner 11-21: the trends "considered by the BOT and QUANT"). Every event
+#  carries "mkt" (the sell-off read as known at that session's open: calm / pressure / selloff - six of Today's
+#  Trends' seven criteria, from TRAPP2-1's daily ^GSPC / ^VIX / HYG) and "spx" (SPY against its prior close at the
+#  event's minute: dn / flat / up). Both are segment dimensions: a strategy that only works on sell-off days, or only
+#  when the S&P is down on the day, can go live there and nowhere else. A "mkt:" segment, like a quad segment, needs
+#  the state to vary inside both halves (>= MIN_REGIME_SESSIONS sessions in it and out of it, train and test) - two
+#  weeks of sell-off at the end of the window are the calendar, not a regime. The state is hard data (closes), so an
+#  approved mkt segment needs no gate - it trades on the days that are in that state.
 # ============================================================
 import json
 import math
@@ -248,6 +257,21 @@ def session_events(uni, bars, d, close_min, cfg=CFG):
     return ev, closes, rets
 
 
+def tag_market(events, closes, d, H):
+    """z202: the market tape on every event of session d - "mkt" (the read as known at the open) and "spx" (SPY vs its
+    prior close at the event's minute). -> the session's state dict (or None)."""
+    from . import tape
+    ms = tape.state_on(d, H) if H else None
+    prev = tape.prior_close((H or {}).get("spy"), d) if H else None
+    spy = closes.get("SPY") if closes else None
+    for e in events:
+        if ms:
+            e["tags"]["mkt"] = ms["state"]
+        if prev and spy and 0 <= e["i"] < len(spy) and spy[e["i"]]:
+            e["tags"]["spx"] = tape.day_bucket(spy[e["i"]] / prev - 1)
+    return ms
+
+
 # ---------------------------------------------------------------------------------------------------- scoring
 def exit_move(c, i, side, stop, target, max_hold, extra_exit=None):
     """Net-of-nothing move (bps, in the trade's favour) from minute i to its exit: the stop, the target, the strategy's own
@@ -459,6 +483,26 @@ def quad_of(segment):
     return None
 
 
+def mkt_of(segment):
+    """z202: 'side:long|mkt:selloff' -> 'selloff' (None when the segment isn't split by the market read)."""
+    for part in str(segment).split("|"):
+        if part.startswith("mkt:"):
+            return part.split(":", 1)[1]
+    return None
+
+
+def mkt_varies(m, mkt_days):
+    """z202: a market-read segment is a REGIME test only if both halves hold sessions in AND out of that state."""
+    if not mkt_days:
+        return False, "no record of the market read by session"
+    for half in ("train", "test"):
+        days = mkt_days.get(half) or {}
+        tot, inside = sum(days.values()), days.get(m, 0)
+        if inside < MIN_REGIME_SESSIONS or tot - inside < MIN_REGIME_SESSIONS:
+            return False, f"the market read is the calendar here: {m} on {inside} of {tot} {half} sessions"
+    return True, ""
+
+
 def quad_varies(q, quad_days):
     """z180: a quad segment is a REGIME test only if both halves hold sessions inside AND outside that quad."""
     if not quad_days:
@@ -484,7 +528,7 @@ def benjamini_hochberg(ps):
     return q
 
 
-def select(acc, strategies, quad_days=None, n_test=None):
+def select(acc, strategies, quad_days=None, n_test=None, mkt_days=None):
     """Train: best variant per (strategy, segment) by its session-clustered t. Test: that variant only. BH across
     everything tested, on session-clustered p-values (z180). Every candidate says why it is or isn't live."""
     segs = {}
@@ -530,13 +574,19 @@ def select(acc, strategies, quad_days=None, n_test=None):
             ok, msg = quad_varies(qd, quad_days)
             if not ok:
                 why.append(msg)
+        mk = mkt_of(c["segment"])
+        c["marketDependent"] = mk                      # z202: live only on sessions in this market state (hard data)
+        if mk:
+            ok, msg = mkt_varies(mk, mkt_days)
+            if not ok:
+                why.append(msg)
         c["approved"] = not why
         c["reasons"] = why
     return cands
 
 
-def build_models(acc, strategies, days_train, days_test, cfg=CFG, quad_days=None):
-    cands = select(acc, strategies, quad_days, n_test=len(days_test) if days_test else None)
+def build_models(acc, strategies, days_train, days_test, cfg=CFG, quad_days=None, mkt_days=None):
+    cands = select(acc, strategies, quad_days, n_test=len(days_test) if days_test else None, mkt_days=mkt_days)
     by_vid = {vid_of(st, p): p for st in strategies for p in GRIDS[st]}
     out = {"asOf": datetime.now(timezone.utc).isoformat(timespec="seconds"), "labVersion": LAB_VERSION,
            "inference": "session-clustered (CR1 standard error, Student t with sessions - 1 df); BH false-discovery control on those p-values",
@@ -545,8 +595,11 @@ def build_models(acc, strategies, days_train, days_test, cfg=CFG, quad_days=None
            "rules": {"minTrainTrades": MIN_TRAIN, "minTestTrades": MIN_TEST, "fdr": FDR, "minTestExpectancyBps": MIN_EXP_BPS,
                      "minTrainSessions": MIN_TRAIN_SESSIONS, "minTestSessions": MIN_TEST_SESSIONS, "minTrainTCl": MIN_TRAIN_T,
                      "minRegimeSessions": MIN_REGIME_SESSIONS, "dropBestSession": "out-of-sample mean without the best session > 0",
-                     "quadSegmentsLive": "only while regime certainty is dialed in and the nowcast agrees with the official quad"},
+                     "quadSegmentsLive": "only while regime certainty is dialed in and the nowcast agrees with the official quad",
+                     "marketSegments": "mkt = the sell-off read as known at the open (needs the state to vary in both halves); "
+                                       "spx = SPY vs its prior close at the minute (dn <= -0.75 %, up >= +0.75 %)"},
            "quadSessions": quad_days or {},
+           "mktSessions": mkt_days or {},
            "costs": {"halfSpreadBps": "scaled by liquidity (2 bps at $200M a day)", "slippageBps": cfg.slippage_bps, "feeBpsSell": cfg.fee_bps_sell},
            "strategies": {}}
     for st in strategies:
@@ -560,7 +613,8 @@ def build_models(acc, strategies, days_train, days_test, cfg=CFG, quad_days=None
                 overall[vid] = {"train": tr.view() if tr else None, "test": te.view() if te else None}
         out["strategies"][st] = {"variants": {c["variant"]: by_vid[c["variant"]] for c in live},
                                  "live": [{"segment": c["segment"], "variant": c["variant"], "params": c["params"], "train": c["train"], "test": c["test"],
-                                           "p": c["p"], "q": c["q"], "regimeDependent": c["regimeDependent"]} for c in live],
+                                           "p": c["p"], "q": c["q"], "regimeDependent": c["regimeDependent"],
+                                           "marketDependent": c.get("marketDependent")} for c in live],
                                  "report": [dict(c, params=by_vid[c["variant"]]) for c in sorted(mine, key=lambda c: (-c["approved"], c["q"], -c["train"]["tCl"]))[:25]],
                                  "tested": len(mine), "overall": overall}
     return out
@@ -575,12 +629,15 @@ def run(n_days=None, strategies=("sector_reversion", "etf_arb", "opening_range")
         return 1
     uni = load()
     from .macro import history_rows, official_on
+    from . import tape
     qrows = history_rows()                              # z177: segment by the official quad as known each day
+    H = tape.load_histories()                           # z202: the market tape, as known at each session's open
     days = sessions(int(n_days or os.environ.get("QUANT_LAB_DAYS", "") or DEFAULT_LAB_DAYS))
     cut = max(1, round(len(days) * 2 / 3))
     train, test = {d for d, _ in days[:cut]}, {d for d, _ in days[cut:]}
     acc, bad, t0 = {}, {}, time.time()
     quad_days = {"train": {}, "test": {}}               # z180: sessions per official quad label, per half
+    mkt_days = {"train": {}, "test": {}}                # z202: sessions per market read, per half
     for d, close in days:
         bars = fetch_day(watch_symbols(uni, CFG.min_dollar_volume), d, close, key, secret, bad)   # z178: tradable names + references
         if not bars:
@@ -591,17 +648,21 @@ def run(n_days=None, strategies=("sector_reversion", "etf_arb", "opening_range")
         if qd:
             for e in events:
                 e["tags"]["quad"] = f"Q{qd}"
+        ms = tag_market(events, closes, d, H)           # z202
         scored = score_events(events, closes, rets, uni)
         split = "train" if d in train else "test"
         if qd:
             quad_days[split][f"Q{qd}"] = quad_days[split].get(f"Q{qd}", 0) + 1
+        if ms:
+            mkt_days[split][ms["state"]] = mkt_days[split].get(ms["state"], 0) + 1
         day_key = d.isoformat()
         for st, vid, net, tags in scored:
             for seg in keys_for(tags):
                 acc.setdefault((st, vid, seg, split), Acc()).add(net, day_key)      # z180: clustered by session
-        log(f"{d} ({split}, official quad then: Q{qd}): {len(bars)} symbols · {len(events)} candidate trades · {len(scored)} variant scores · {time.time() - t0:.0f} s")
+        log(f"{d} ({split}, official quad then: Q{qd}, market {ms['state'] if ms else '?'}): {len(bars)} symbols · {len(events)} candidate trades · {len(scored)} variant scores · {time.time() - t0:.0f} s")
     models = build_models(acc, list(strategies), [d.isoformat() for d, _ in days[:cut]], [d.isoformat() for d, _ in days[cut:]],
-                          quad_days=quad_days)
+                          quad_days=quad_days, mkt_days=mkt_days)
+    log(f"market read by session: train {mkt_days['train']} · test {mkt_days['test']}")
     DATA.mkdir(parents=True, exist_ok=True)
     (DATA / "lab").mkdir(exist_ok=True)
     (DATA / "models.json").write_text(json.dumps(models, indent=1))
@@ -611,7 +672,8 @@ def run(n_days=None, strategies=("sector_reversion", "etf_arb", "opening_range")
         for a in m["live"][:8]:
             log(f"      LIVE {a['segment']} · {a['variant']} · test {a['test']['n']} trades on {a['test']['sessions']} sessions "
                 f"{a['test']['meanBps']:+.2f} bps · clustered t {a['test']['tCl']} (per-trade {a['test']['t']}) · q {a['q']}"
-                + (" · REGIME-GATED (live only while the regime is dialed in)" if a.get("regimeDependent") else ""))
+                + (" · REGIME-GATED (live only while the regime is dialed in)" if a.get("regimeDependent") else "")
+                + (f" · market-dependent (live only on {a['marketDependent']} sessions)" if a.get("marketDependent") else ""))
         for c in [c for c in m["report"] if not c.get("approved")][:5]:
             log(f"      not live: {c['segment']} · " + "; ".join(c.get("reasons") or []))
     if bad:
