@@ -27,6 +27,14 @@ trades, >= 0.5 bps a trade out of sample and a positive result without its best 
 quad to vary inside both halves, and trades live only while TRAPP2-1's regime certainty is dialed in and the two quads
 agree. `models.json` carries `labVersion: 2`; the engine ignores approvals from an older lab.
 
+**The market tape (z202)** (`quant/tape.py`): every signal carries the market it fired in - `mkt`, the sell-off read
+as known at the open (six of TRAPP2-ANALYTICS' Today's Trends criteria from TRAPP2-1's daily ^GSPC / ^VIX / HYG:
+calm / pressure / selloff) and `spx`, SPY against its prior close at that minute (dn / flat / up). Both are lab
+segments, computed the same way live and for every past session; a `mkt:` segment counts only where the state varied
+inside both halves. The live Today's Trends read is recorded on each trade (`mktNow`), and the summary reports every
+mode's record by market (`byMarket`). Nothing is tilted by assumption - a strategy trades a market state only once
+the lab approves it there.
+
 **The quality gate** (`quant/backtest.py`, nightly): the last 10 sessions of real 1-minute bars through the same engine;
 a strategy trades live only with ≥ 200 trades, expectancy ≥ 0.5 bps net of costs and t ≥ 2.
 
