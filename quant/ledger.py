@@ -5,6 +5,7 @@
 #  with its fills, the mid and spread at entry, fees, net bps and dollars, hold time and why it closed. Closed
 #  trades append to data/quant/trades/<ET date>.jsonl (committed at the end of each job); summary.json carries
 #  the statistics overall, per strategy, live vs shadow, per day. Supabase (Bot project) gets the same rows live.
+#  z202: + byMarket - the record by the market tape at entry (the sell-off read as known at the open; the S&P that day).
 # ============================================================
 import json
 import os
@@ -110,6 +111,15 @@ class Ledger:
                 curve.append([ts[:16], round(cum_l, 2), round(cum_s, 2)])
                 slot = sl
         out["curve"] = curve[-2000:]
+        # z202: by the MARKET TAPE at entry (quant/tape.py) - each mode's record in calm / pressure / selloff markets
+        # (the read as known at the open) and on S&P down / flat / up minutes; the evidence behind the lab's market
+        # segments, shown on the Quant tab. Trades from before z202 carry no tape and are not counted here.
+        out["byMarket"] = {}
+        for dim in ("mkt", "spx"):
+            for mode in ("live", "shadow"):
+                rr = [r for r in rows if r.get("mode") == mode and (r.get("tags") or {}).get(dim)]
+                for v in sorted({r["tags"][dim] for r in rr}):
+                    out["byMarket"].setdefault(dim, {}).setdefault(v, {})[mode] = summarize([r for r in rr if r["tags"][dim] == v], b)
         # z176: what kind of instrument each strategy traded (ETF arbitrage trades funds by design)
         out["byKind"] = {}
         try:                                     # z177: trades from before kinds existed - look the name up in the universe
