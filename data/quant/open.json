@@ -187,17 +187,17 @@
   ]
  },
  "lastExit": {
-  "etf_arb|XLE": 1795461660.1519132,
-  "etf_arb|XLP": 1795461600.0525262,
-  "etf_arb|XLU": 1795461060.5723243,
+  "etf_arb|XLE": 1795462800.7147584,
+  "etf_arb|XLP": 1795462680.336584,
+  "etf_arb|XLU": 1795462500.5309985,
   "sector_reversion|VZ": 1795460280.1571443,
   "sector_reversion|T": 1795444920.882358,
   "sector_reversion|PCG": 1795444920.882358,
   "sector_reversion|GSK": 1795444968.0446205,
   "sector_reversion|TFIN": 1795448220.6197894,
-  "etf_arb|XLRE": 1795461180.8568964,
-  "etf_arb|XLB": 1795461300.152328,
-  "etf_arb|XLK": 1795459260.072512,
+  "etf_arb|XLRE": 1795462500.5309985,
+  "etf_arb|XLB": 1795462260.8089905,
+  "etf_arb|XLK": 1795462860.7054324,
   "sector_reversion|BEKE": 1795458120.6426184,
   "sector_reversion|GIS": 1795445040.2480614,
   "sector_reversion|JD": 1795451100.2552462,
@@ -206,7 +206,7 @@
   "sector_reversion|NWG": 1795452420.9562533,
   "sector_reversion|TFC": 1795445100.4350986,
   "sector_reversion|VICI": 1795445100.4350986,
-  "etf_arb|XLF": 1795461540.893821,
+  "etf_arb|XLF": 1795462620.1578684,
   "sector_reversion|BSX": 1795456320.2063477,
   "sector_reversion|UBS": 1795445122.657769,
   "etf_arb|XLV": 1795462080.5026917,
@@ -223,10 +223,10 @@
   "sector_reversion|DB": 1795456440.531885,
   "sector_reversion|PSO": 1795452360.7753592,
   "opening_range|INVH": 1795445240.1169696,
-  "etf_arb|XLC": 1795461240.0030687,
+  "etf_arb|XLC": 1795462560.9845757,
   "opening_range|BRK-B": 1795445297.358238,
   "sector_reversion|HBM": 1795457040.7280436,
-  "etf_arb|XLY": 1795461300.152328,
+  "etf_arb|XLY": 1795462260.8089905,
   "sector_reversion|NFLX": 1795456881.2791634,
   "sector_reversion|MUFG": 1795445460.923824,
   "sector_reversion|FMS": 1795449120.870323,
@@ -335,7 +335,8 @@
   "sector_reversion|TAP": 1795460238.065852,
   "sector_reversion|BCE": 1795461163.8210497,
   "opening_range|HR": 1795461941.9514961,
-  "opening_range|FIS": 1795462165.7681892
+  "opening_range|FIS": 1795462165.7681892,
+  "opening_range|MGY": 1795462970.0527413
  },
  "positions": [
   {
@@ -963,39 +964,6 @@
    }
   },
   {
-   "id": "2026-11-23-ope-7175eead",
-   "strategy": "opening_range",
-   "symbol": "MGY",
-   "side": "short",
-   "qty": 221,
-   "entry_px": 22.577742,
-   "entry_mid": 22.585,
-   "entry_spread_bps": 4.427717511623451,
-   "entry_ts": 1795447920.349192,
-   "stop_bps": 66.42,
-   "target_bps": 132.83,
-   "max_hold_min": 323,
-   "mode": "shadow",
-   "reason": "broke the 15-minute opening range 22.61-22.87 (114 bps wide)",
-   "meta": {
-    "variant": "default",
-    "tags": {
-     "liq": "mid",
-     "tod": "mid",
-     "side": "short",
-     "sector": "XLE",
-     "kind": "stock",
-     "quad": "Q3",
-     "quadNow": "Q4",
-     "mkt": "selloff",
-     "mktRun": -7,
-     "spx": "up",
-     "spxBps": 550.0,
-     "mktNow": "heavy sell-off"
-    }
-   }
-  },
-  {
    "id": "2026-11-23-ope-896c2036",
    "strategy": "opening_range",
    "symbol": "BNL",
@@ -1255,74 +1223,6 @@
      "mktRun": -7,
      "spx": "up",
      "spxBps": 500.1,
-     "mktNow": "heavy sell-off"
-    }
-   }
-  },
-  {
-   "id": "2026-11-23-etf-8acd2114",
-   "strategy": "etf_arb",
-   "symbol": "XLY",
-   "side": "short",
-   "qty": 42,
-   "entry_px": 117.358263,
-   "entry_mid": 117.38,
-   "entry_spread_bps": 1.7038677798599438,
-   "entry_ts": 1795462200.8451102,
-   "stop_bps": 43.36,
-   "target_bps": 21.68,
-   "max_hold_min": 10,
-   "mode": "shadow",
-   "reason": "basket -36.1 bps vs XLY over 5 min (90% of the fund priced)",
-   "meta": {
-    "gap": -36.14,
-    "variant": "default",
-    "tags": {
-     "liq": "mega",
-     "tod": "late",
-     "side": "short",
-     "sector": "XLY",
-     "kind": "fund",
-     "quad": "Q3",
-     "quadNow": "Q4",
-     "mkt": "selloff",
-     "mktRun": -7,
-     "spx": "up",
-     "spxBps": 490.1,
-     "mktNow": "heavy sell-off"
-    }
-   }
-  },
-  {
-   "id": "2026-11-23-etf-c09c520c",
-   "strategy": "etf_arb",
-   "symbol": "XLB",
-   "side": "short",
-   "qty": 100,
-   "entry_px": 49.815018,
-   "entry_mid": 49.825,
-   "entry_spread_bps": 2.00702458605078,
-   "entry_ts": 1795462200.8451102,
-   "stop_bps": 16.44,
-   "target_bps": 8.22,
-   "max_hold_min": 10,
-   "mode": "shadow",
-   "reason": "basket -13.7 bps vs XLB over 5 min (100% of the fund priced)",
-   "meta": {
-    "gap": -13.7,
-    "variant": "default",
-    "tags": {
-     "liq": "large",
-     "tod": "late",
-     "side": "short",
-     "sector": "XLB",
-     "kind": "fund",
-     "quad": "Q3",
-     "quadNow": "Q4",
-     "mkt": "selloff",
-     "mktRun": -7,
-     "spx": "up",
-     "spxBps": 490.1,
      "mktNow": "heavy sell-off"
     }
    }
