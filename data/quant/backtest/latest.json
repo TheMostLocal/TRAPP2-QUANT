@@ -1,7 +1,6 @@
 {
- "asOf": "2026-11-21T04:30:09+00:00",
+ "asOf": "2026-11-23T23:58:28+00:00",
  "days": [
-  "2026-11-06",
   "2026-11-09",
   "2026-11-10",
   "2026-11-11",
@@ -10,48 +9,49 @@
   "2026-11-16",
   "2026-11-17",
   "2026-11-18",
-  "2026-11-19"
+  "2026-11-19",
+  "2026-11-20"
  ],
- "trades": 1880,
+ "trades": 2095,
  "strategies": {
   "sector_reversion": {
    "pass": false,
-   "n": 1458,
-   "winRate": 0.4519,
+   "n": 1669,
+   "winRate": 0.4537,
    "winRateCI95": [
-    0.4265,
-    0.4776
+    0.4299,
+    0.4777
    ],
-   "expectancyBps": -6.171,
-   "tStat": -6.25,
-   "profitFactor": 0.588,
+   "expectancyBps": -5.777,
+   "tStat": -6.33,
+   "profitFactor": 0.611,
    "pBeatsBenchmark": 1.0
   },
   "etf_arb": {
    "pass": false,
-   "n": 5,
-   "winRate": 0.6,
+   "n": 4,
+   "winRate": 0.75,
    "winRateCI95": [
-    0.2307,
-    0.8824
+    0.3006,
+    0.9544
    ],
-   "expectancyBps": -2.695,
-   "tStat": -0.42,
-   "profitFactor": 0.587,
-   "pBeatsBenchmark": 0.5141
+   "expectancyBps": 3.099,
+   "tStat": 0.95,
+   "profitFactor": 2.917,
+   "pBeatsBenchmark": 0.3238
   },
   "opening_range": {
    "pass": false,
-   "n": 417,
-   "winRate": 0.4221,
+   "n": 422,
+   "winRate": 0.4431,
    "winRateCI95": [
-    0.3756,
-    0.47
+    0.3965,
+    0.4908
    ],
-   "expectancyBps": -1.811,
-   "tStat": -0.23,
-   "profitFactor": 0.974,
-   "pBeatsBenchmark": 0.9998
+   "expectancyBps": 8.848,
+   "tStat": 1.1,
+   "profitFactor": 1.135,
+   "pBeatsBenchmark": 0.9965
   }
  },
  "costs": {
