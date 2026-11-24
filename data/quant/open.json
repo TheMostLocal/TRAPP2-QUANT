@@ -182,32 +182,32 @@
   ]
  },
  "lastExit": {
-  "etf_arb|XLRE": 1795550700.2536435,
+  "etf_arb|XLRE": 1795552020.3337712,
   "etf_arb|XLE": 1795551060.5134048,
   "sector_reversion|AAL": 1795531260.1122904,
-  "etf_arb|XLU": 1795550520.4611406,
-  "etf_arb|XLY": 1795550460.3030446,
+  "etf_arb|XLU": 1795551720.1705694,
+  "etf_arb|XLY": 1795551540.5930185,
   "sector_reversion|OXY": 1795531380.6057687,
   "sector_reversion|JD": 1795547205.6149566,
-  "etf_arb|XLV": 1795550400.146736,
-  "etf_arb|XLC": 1795550280.6671667,
+  "etf_arb|XLV": 1795551540.5930185,
+  "etf_arb|XLC": 1795551531.5734606,
   "sector_reversion|PFE": 1795531383.7287405,
   "sector_reversion|MDLZ": 1795531393.7517548,
   "sector_reversion|T": 1795531409.7897794,
   "etf_arb|XLK": 1795550751.3921342,
   "sector_reversion|DUK": 1795531474.0581987,
   "sector_reversion|HAL": 1795531500.1150389,
-  "etf_arb|XLB": 1795550220.5233786,
+  "etf_arb|XLB": 1795551420.2263603,
   "sector_reversion|TTD": 1795531511.5630095,
   "sector_reversion|RELX": 1795531547.6428354,
-  "etf_arb|XLP": 1795550100.2560358,
+  "etf_arb|XLP": 1795551600.8236747,
   "sector_reversion|LVS": 1795531620.008092,
   "sector_reversion|NVO": 1795531680.349145,
   "sector_reversion|RKT": 1795540560.633092,
   "sector_reversion|UBS": 1795531680.349145,
   "sector_reversion|CMCSA": 1795537080.8805358,
   "sector_reversion|HPQ": 1795531680.349145,
-  "etf_arb|XLF": 1795550460.3030446,
+  "etf_arb|XLF": 1795551600.8236747,
   "sector_reversion|NCLH": 1795531680.349145,
   "sector_reversion|AAPL": 1795531713.6405072,
   "sector_reversion|AGI": 1795531740.7026327,
@@ -221,7 +221,7 @@
   "sector_reversion|BAC": 1795531881.4525795,
   "sector_reversion|CPNG": 1795531920.540077,
   "sector_reversion|PHG": 1795531920.540077,
-  "etf_arb|XLI": 1795550580.614378,
+  "etf_arb|XLI": 1795551780.3440025,
   "opening_range|KO": 1795532040.2406745,
   "sector_reversion|HZO": 1795540740.4522095,
   "sector_reversion|HMY": 1795532100.5899146,
@@ -329,7 +329,8 @@
   "sector_reversion|DOCS": 1795549440.789442,
   "sector_reversion|AEO": 1795549713.6610007,
   "sector_reversion|NNN": 1795550253.6138597,
-  "opening_range|HAYW": 1795550413.200898
+  "opening_range|HAYW": 1795550413.200898,
+  "opening_range|MSFT": 1795551491.477936
  },
  "positions": [
   {
@@ -948,61 +949,6 @@
      "tod": "mid",
      "side": "long",
      "sector": "none",
-     "kind": "fund",
-     "mktNow": "sell-off"
-    }
-   }
-  },
-  {
-   "id": "2026-11-24-ope-2df55253",
-   "strategy": "opening_range",
-   "symbol": "MSFT",
-   "side": "long",
-   "qty": 10,
-   "entry_px": 495.54955,
-   "entry_mid": 495.34000000000003,
-   "entry_spread_bps": 6.460209149271069,
-   "entry_ts": 1795537080.8805358,
-   "stop_bps": 64.6,
-   "target_bps": 129.2,
-   "max_hold_min": 277,
-   "mode": "shadow",
-   "reason": "broke the 15-minute opening range 489.12-495.15 (123 bps wide)",
-   "meta": {
-    "variant": "default",
-    "tags": {
-     "liq": "mega",
-     "tod": "mid",
-     "side": "long",
-     "sector": "XLK",
-     "kind": "stock",
-     "mktNow": "sell-off"
-    }
-   }
-  },
-  {
-   "id": "2026-11-24-etf-c5e6c1be",
-   "strategy": "etf_arb",
-   "symbol": "XLB",
-   "side": "long",
-   "qty": 99,
-   "entry_px": 50.10501,
-   "entry_mid": 50.095,
-   "entry_spread_bps": 1.9962072063076175,
-   "entry_ts": 1795551180.864714,
-   "stop_bps": 24.38,
-   "target_bps": 12.19,
-   "max_hold_min": 10,
-   "mode": "shadow",
-   "reason": "basket +20.3 bps vs XLB over 5 min (100% of the fund priced)",
-   "meta": {
-    "gap": 20.32,
-    "variant": "default",
-    "tags": {
-     "liq": "large",
-     "tod": "late",
-     "side": "long",
-     "sector": "XLB",
      "kind": "fund",
      "mktNow": "sell-off"
     }
