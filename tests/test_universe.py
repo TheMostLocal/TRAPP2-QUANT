@@ -5,6 +5,7 @@ import sys
 import tempfile
 import unittest
 from dataclasses import replace
+from datetime import datetime, timezone
 from pathlib import Path
 from types import SimpleNamespace
 
@@ -100,3 +101,50 @@ class Watch(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class AverageDollarVolume(unittest.TestCase):
+    """z205: the 20-session average dollar volume (data/derived/market.json) is a name's liquidity; one session's
+    price x volume only where the file has nothing (or is over a week old)."""
+
+    def setUp(self):
+        self.out = Path(tempfile.mkdtemp()) / "universe.json"
+        U.OUT = self.out
+        self.books = {"TRAPP2": [{"ticker": "AAA", "price": "50", "volume": "100000", "sector": "Technology"},     # $5.0M today
+                                 {"ticker": "BBB", "price": "20", "volume": "50000", "sector": "Energy"},          # $1.0M today
+                                 {"ticker": "CCC", "price": "10", "volume": "1000", "sector": "Energy"},           # not in the file
+                                 {"ticker": "EEE", "price": "30", "volume": "10000", "sector": "Energy"}],         # flagged px:
+                      "TRAPP2-1": [], "TRAPP2-2": [], "TRAPP2-3": [], "TRAPP2-4": []}
+        self.at = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")      # a fresh file, whenever the test runs
+
+        def get(url, timeout=60):
+            if "ssga" in url:
+                raise RuntimeError("offline")
+            if "derived/market.json" in url:
+                return json.dumps({"at": self.at, "date": "2026-11-20", "tickers": {
+                    "AAA": {"dv20": 3.2e6}, "BBB": {"dv20": 7.5e6}, "DDD": {"dv20": 1e9, "q": ["stale"]},
+                    "EEE": {"dv20": 9e6, "q": ["short", "px:x0.415"]}}}).encode()
+            b = url.split("/TheMostLocal/")[1].split("/")[0]
+            return master(self.books[b])
+        U.get = get
+
+    def test_average_wins_and_the_floor_moves_with_it(self):
+        d = U.build(n_stream=10, momentum_min_dv=2e7)
+        self.assertEqual(d["liquidity"]["AAA"], 3200000)                  # one session said $5.0M - above the $5M floor
+        self.assertEqual(d["liquidity"]["BBB"], 7500000)                  # one session said $1.0M - below it
+        self.assertEqual(d["liquidity"]["CCC"], 10000)                    # not in the file: one session's figure
+        self.assertEqual(d["liquidity"]["EEE"], 300000)                   # its close disagreed with the book's: one session's
+        self.assertEqual(d["counts"]["liquidity"], {"avg20": 2, "oneSession": 2, "asOf": "2026-11-20"})
+        w = U.watch_symbols(d, 5e6)
+        self.assertIn("BBB", w)
+        self.assertNotIn("AAA", w)
+
+    def test_old_or_missing_file_falls_back(self):
+        self.at = "2026-11-01T03:00:00Z"
+        adv, date = U.average_dollar_volume()
+        self.assertEqual((adv, date), ({}, None))
+        d = U.build(n_stream=10, momentum_min_dv=2e7)
+        self.assertEqual(d["liquidity"]["AAA"], 5000000)
+        self.assertEqual(d["counts"]["liquidity"]["oneSession"], 4)
+        U.get = lambda url, timeout=60: (_ for _ in ()).throw(RuntimeError("offline"))
+        self.assertEqual(U.average_dollar_volume(), ({}, None))
