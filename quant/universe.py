@@ -6,6 +6,10 @@
 #  top holdings with their weights from State Street's daily holdings file (for the ETF arbitrage). The names
 #  that stream (the free plan allows 30) are the ETFs and the largest stocks; the rest are polled every few
 #  seconds. Falls back to the previous day's file for anything that can't be fetched.
+#  z205: a name's dollar volume is its 20-session AVERAGE (TRAPP2-ANALYTICS data/derived/market.json - close x volume
+#  from the books' own histories), not one session's price x volume: that single day sat -35 % / +64 % from the
+#  average (p10 / p90 on 11-20) and put 65 names on the wrong side of the $5M entry floor. One day's figure is the
+#  fallback (a name the file lacks, or a file over a week old); the counts say which each name got.
 #    -> data/quant/universe.json
 # ============================================================
 import io
@@ -28,6 +32,8 @@ SECTOR_ETF = {"technology": "XLK", "information technology": "XLK", "communicati
 ETFS = sorted(set(SECTOR_ETF.values()))
 INDEX_ETFS = ["SPY", "QQQ", "IWM", "DIA"]
 SSGA = "https://www.ssga.com/us/en/intermediary/library-content/products/fund-data/etfs/us/holdings-daily-us-en-{}.xlsx"
+DERIVED = f"{RAW}/TRAPP2-ANALYTICS/main/data/derived/market.json"     # z205: 20-session average dollar volume
+DERIVED_MAX_AGE_DAYS = 7
 UA = {"User-Agent": "Mozilla/5.0 (valuatio quant)"}
 
 
@@ -109,6 +115,28 @@ def _kind(t):
     return "us" if us_symbol(t) else "other"
 
 
+def average_dollar_volume(now=None):
+    """z205: {ticker: 20-session average dollar volume} from data/derived/market.json, with the file's session date;
+    ({}, None) when it can't be read or is more than a week old. A name flagged "stale" (no recent session) or "px:"
+    (its last close isn't the book's price that day - units or a bad print) keeps one session's figure."""
+    try:
+        d = json.loads(get(DERIVED).decode())
+        at = datetime.strptime(str(d.get("at") or "")[:19], "%Y-%m-%dT%H:%M:%S").replace(tzinfo=timezone.utc)
+        if ((now or datetime.now(timezone.utc)) - at).days > DERIVED_MAX_AGE_DAYS:
+            log(f"market statistics from {d.get('at')} - over a week old, one session's dollar volume used")
+            return {}, None
+        out = {}
+        for t, e in (d.get("tickers") or {}).items():
+            v = (e or {}).get("dv20")
+            q = " ".join((e or {}).get("q") or [])
+            if isinstance(v, (int, float)) and v > 0 and "stale" not in q and "px:" not in q:   # px: its close isn't the book's
+                out[str(t).upper()] = float(v)
+        return out, d.get("date")
+    except Exception as e:
+        log(f"market statistics unavailable ({type(e).__name__}) - one session's dollar volume used")
+        return {}, None
+
+
 def build(n_stream=None, max_symbols=None, momentum_min_dv=None):
     """z174: EVERY US-listed stock and ETF in the four books (739 of 906 on 10-31; new imports join automatically the
     next morning), plus the sector / index ETFs and the sector ETFs' holdings. Nothing is cut by size any more: the
@@ -124,6 +152,7 @@ def build(n_stream=None, max_symbols=None, momentum_min_dv=None):
     except Exception:
         pass
     rows, skipped, seen = {}, {}, set()
+    adv, adv_date = average_dollar_volume()
     for b in BOOKS:
         try:
             data = json.loads(get(f"{RAW}/{b}/main/data/master.json").decode())
@@ -143,7 +172,9 @@ def build(n_stream=None, max_symbols=None, momentum_min_dv=None):
                     px, vol = 0.0, 0.0
                 etf = SECTOR_ETF.get(str(r.get("sector") or "").strip().lower())
                 fund = bool(str(r.get("expenseRatio") or "").strip())      # z176: only funds carry an expense ratio
-                rows[t] = {"price": px, "dv": px * vol, "etf": etf, "book": b, "fund": fund}
+                avg = adv.get(t)
+                rows[t] = {"price": px, "dv": avg if avg else px * vol, "dvSrc": "avg20" if avg else "day",
+                           "etf": etf, "book": b, "fund": fund}
         except Exception as e:
             log(f"{b}: {e}")
     stocks = sorted((t for t in rows if t not in ETFS + INDEX_ETFS), key=lambda t: -rows[t]["dv"])
@@ -167,12 +198,17 @@ def build(n_stream=None, max_symbols=None, momentum_min_dv=None):
            "counts": {"bookTickers": len(seen), "usTradable": len(rows), "symbols": len(symbols), "stocks": len(stocks),
                       "withSector": len(sector_etf), "momentum": len(momentum), "etfsWithHoldings": len(weights),
                       "stocksInUniverse": sum(1 for v in kinds.values() if v == "stock"), "fundsInUniverse": sum(1 for v in kinds.values() if v == "fund"),
-                      "stream": len(stream), "notOnAlpacaStocks": skipped}}
+                      "stream": len(stream), "notOnAlpacaStocks": skipped,
+                      # z205: where each name's dollar volume came from
+                      "liquidity": {"avg20": sum(1 for r in rows.values() if r["dvSrc"] == "avg20"),
+                                    "oneSession": sum(1 for r in rows.values() if r["dvSrc"] == "day"), "asOf": adv_date}}}
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text(json.dumps(doc, indent=1))
     log(f"{len(seen)} book tickers: {len(rows)} US stocks / ETFs (all kept) · not tradable through Alpaca's stock API: "
         + (", ".join(f"{v} {k}" for k, v in sorted(skipped.items(), key=lambda x: -x[1])) or "none")
-        + f" · {len(symbols)} symbols with the ETF holdings · {len(sector_etf)} with a sector ETF · {len(momentum)} momentum-liquid · {len(stream)} streamed")
+        + f" · {len(symbols)} symbols with the ETF holdings · {len(sector_etf)} with a sector ETF · {len(momentum)} momentum-liquid · {len(stream)} streamed"
+        + f" · dollar volume: {doc['counts']['liquidity']['avg20']} the 20-session average ({adv_date or 'no file'}), "
+          f"{doc['counts']['liquidity']['oneSession']} one session's")
     return doc
 
 
