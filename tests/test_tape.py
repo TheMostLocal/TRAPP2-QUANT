@@ -205,6 +205,20 @@ class CrowdedShorts(unittest.TestCase):
         self.assertEqual((t["shortPct"], t["dtc"]), (18.0, 2.0))
         self.assertFalse(any(k.startswith(("shortPct", "dtc")) for k in keys_for(t)), "recorded, not segmented")
 
+    def test_dealer_gamma_recorded_not_segmented(self):
+        # z209: the trends doc's flows.dealer (SPY) -> trends_now gex / gexFlipPct -> the fill's gammaNow
+        doc = {"date": "2026-11-25", "read": {"label": "sell-off"}, "indices": {"^GSPC": {"chg": 0.6}},
+               "flows": {"date": "2026-11-25", "label": None, "dealer": {"SPY": {"gex": -6.18e9, "flipPct": 1.47}}}}
+        now = tape.trends_now(doc)
+        self.assertEqual((now["gex"], now["gexFlipPct"]), (-6.18e9, 1.47))
+        ctx = SimpleNamespace(minute=700, liquidity={"AAPL": 5e9}, sector_etf={"AAPL": "XLK"}, kinds={}, quad={},
+                              mkt={"state": "selloff", "run": 1, "now": now}, spx_move=None)
+        t = tags_for("AAPL", "long", ctx)
+        self.assertEqual(t["gammaNow"], "neg")
+        self.assertFalse(any(k.startswith("gammaNow") for k in keys_for(t)), "recorded, not segmented")
+        self.assertIn("dealer gamma (SPY) -6.2B per 1%", tape.describe({"state": "selloff", "asOf": "2026-11-24", "on": 3, "of": 6,
+                                                                        "run": -1, "dd": -8.2, "vix": None, "criteria": {}, "now": now}))
+
     def test_current_lists_them_and_trends_now_records_the_settlement(self):
         doc = {"date": "2026-11-24", "read": {"label": "sell-off"}, "indices": {"^GSPC": {"chg": 1.0}},
                "flows": {"date": "2026-11-24", "label": "short-covering rally", "reported": {"settle": "2026-11-13", "basket": {"chg": -8.4}}}}
