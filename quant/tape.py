@@ -209,7 +209,10 @@ def trends_now(doc=None, fetch=None):
             "flow": fl.get("label"), "flowZ": fl.get("z"), "flowFlags": sorted((fl.get("flags") or {}).keys()) or None,
             "flowAfter": (fl.get("after") or {}).get("prior"), "proxy": (d.get("proxy") or {}).get(SPX),
             # z207: FINRA's latest settlement - the most-shorted 50's dollars short vs the settlement before (recorded)
-            "flowReported": ((fl.get("reported") or {}).get("basket") or {}).get("chg")}
+            "flowReported": ((fl.get("reported") or {}).get("basket") or {}).get("chg"),
+            # z209: dealer gamma from SPY's open interest (TRAPP2-OPTIONS via the trends doc): USD per 1 % move, the flip
+            "gex": ((fl.get("dealer") or {}).get("SPY") or {}).get("gex"),
+            "gexFlipPct": ((fl.get("dealer") or {}).get("SPY") or {}).get("flipPct")}
 
 
 def crowded_now(doc=None, fetch=None):
@@ -274,6 +277,7 @@ def describe(m):
             f"S&P run {m.get('run'):+d} · {m.get('dd'):+.1f}% from the 52-week high · VIX {m.get('vix')}"
             + (f" · today's trends: {now.get('label')} ({now.get('on')} of {now.get('of')}, {now.get('date')} {now.get('etTime') or ''})" if now else "")
             + (f" · positioning: {now.get('flow')}" if now.get("flow") else "")
+            + (f" · dealer gamma (SPY) {now['gex'] / 1e9:+.1f}B per 1%" if now.get("gex") is not None else "")
             + (f" · {len(m['crowded'])} crowded shorts listed (FINRA) - "
                + ("shorts being covered: no short at 8%+ of shares / 7+ days" if covering(now) else "no short at 15%+ of shares / 10+ days")
                if m.get("crowded") else "")
