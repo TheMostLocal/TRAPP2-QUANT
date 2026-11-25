@@ -1,5 +1,5 @@
 {
- "asOf": "2026-11-25T19:48:43+00:00",
+ "asOf": "2026-11-25T19:59:06+00:00",
  "benchmarkWinRate": 0.5075,
  "live": {
   "n": 14,
@@ -25,26 +25,26 @@
   "diagnosis": "no signal"
  },
  "shadow": {
-  "n": 9484,
-  "wins": 2514,
-  "losses": 6875,
-  "winRate": 0.2678,
+  "n": 9491,
+  "wins": 2517,
+  "losses": 6879,
+  "winRate": 0.2679,
   "winRateCI95": [
-   0.2589,
-   0.2768
+   0.259,
+   0.2769
   ],
   "pBeatsBenchmark": 1.0,
   "benchmark": 0.5075,
-  "expectancyBps": -11.609,
-  "sdBps": 79.644,
+  "expectancyBps": -11.602,
+  "sdBps": 79.616,
   "tStat": -14.2,
-  "avgWinBps": 23.68,
+  "avgWinBps": 23.66,
   "avgLossBps": -24.67,
   "profitFactor": 0.351,
-  "sharpePerTrade": -0.1458,
-  "signalBps": -0.526,
+  "sharpePerTrade": -0.1457,
+  "signalBps": -0.524,
   "signalT": -0.86,
-  "costBps": 11.083,
+  "costBps": 11.078,
   "diagnosis": "no signal"
  },
  "byStrategy": {
@@ -53,26 +53,26 @@
     "n": 0
    },
    "shadow": {
-    "n": 6788,
-    "wins": 1470,
-    "losses": 5224,
-    "winRate": 0.2196,
+    "n": 6795,
+    "wins": 1473,
+    "losses": 5228,
+    "winRate": 0.2198,
     "winRateCI95": [
-     0.2098,
-     0.2297
+     0.2101,
+     0.2299
     ],
     "pBeatsBenchmark": 1.0,
     "benchmark": 0.5075,
-    "expectancyBps": -4.088,
-    "sdBps": 7.733,
-    "tStat": -43.56,
-    "avgWinBps": 5.99,
+    "expectancyBps": -4.086,
+    "sdBps": 7.74,
+    "tStat": -43.51,
+    "avgWinBps": 6.0,
     "avgLossBps": -7.0,
     "profitFactor": 0.241,
-    "sharpePerTrade": -0.5287,
-    "signalBps": -0.029,
-    "signalT": -0.31,
-    "costBps": 4.059,
+    "sharpePerTrade": -0.5279,
+    "signalBps": -0.026,
+    "signalT": -0.28,
+    "costBps": 4.06,
     "diagnosis": "no signal"
    }
   },
@@ -233,7 +233,7 @@
    "pnl": 0
   }
  },
- "trades": 9498,
+ "trades": 9505,
  "curve": [
   [
    "2026-11-02T14:49",
@@ -3619,6 +3619,11 @@
    "2026-11-25T19:48",
    -58.49,
    -54461.06
+  ],
+  [
+   "2026-11-25T19:59",
+   -58.49,
+   -54467.23
   ]
  ],
  "byMarket": {
@@ -3679,7 +3684,7 @@
  },
  "byKind": {
   "etf_arb": {
-   "fund": 6788
+   "fund": 6795
   },
   "sector_reversion": {
    "stock": 1634
