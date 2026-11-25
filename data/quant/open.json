@@ -28,6 +28,7 @@
    "DOW",
    "DV",
    "DVN",
+   "EQNR",
    "ET",
    "EXC",
    "HAL",
@@ -35,6 +36,7 @@
    "HRL",
    "HZO",
    "ING",
+   "INVH",
    "IRT",
    "KO",
    "L",
@@ -43,7 +45,9 @@
    "NKE",
    "OGN",
    "OPCH",
+   "OSBC",
    "OXY",
+   "PAAS",
    "PBR-A",
    "PFE",
    "PHG",
@@ -77,6 +81,7 @@
    "BN",
    "BUD",
    "CNP",
+   "CNQ",
    "COLD",
    "CSW",
    "DB",
@@ -87,6 +92,7 @@
    "FE",
    "FMS",
    "FNB",
+   "FNF",
    "FXI",
    "GFI",
    "GOOG",
@@ -115,9 +121,11 @@
    "NEE",
    "NI",
    "NKE",
+   "NOV",
    "NWG",
    "OXY",
    "PBR",
+   "PCG",
    "PFE",
    "PHG",
    "PPL",
@@ -148,21 +156,21 @@
   "sector_reversion|KO": 1795617616.413171,
   "sector_reversion|VICI": 1795617642.470303,
   "sector_reversion|NFLX": 1795617658.5024555,
-  "etf_arb|XLB": 1795622520.1280348,
+  "etf_arb|XLB": 1795623480.469278,
   "sector_reversion|PHG": 1795617660.5075085,
   "etf_arb|XLU": 1795623240.6668339,
-  "etf_arb|XLV": 1795622782.113029,
-  "etf_arb|XLF": 1795622400.0442498,
+  "etf_arb|XLV": 1795623780.0907753,
+  "etf_arb|XLF": 1795623360.7849207,
   "sector_reversion|NKE": 1795617720.7428107,
-  "etf_arb|XLC": 1795622880.5346105,
+  "etf_arb|XLC": 1795624200.6090932,
   "sector_reversion|HAL": 1795617780.9774058,
   "etf_arb|XLRE": 1795623300.986501,
   "sector_reversion|TTD": 1795617780.9774058,
-  "etf_arb|XLP": 1795622700.1190236,
+  "etf_arb|XLP": 1795623845.6388474,
   "sector_reversion|DB": 1795617899.4457126,
   "sector_reversion|USB": 1795617900.448558,
   "sector_reversion|ET": 1795617900.448558,
-  "etf_arb|XLY": 1795622280.372305,
+  "etf_arb|XLY": 1795623420.1298547,
   "sector_reversion|CCL": 1795617919.252484,
   "sector_reversion|PFE": 1795619722.4583976,
   "sector_reversion|CPNG": 1795617960.341457,
@@ -183,11 +191,11 @@
   "etf_arb|XLI": 1795623300.986501,
   "sector_reversion|DOW": 1795618226.8943152,
   "sector_reversion|BAC": 1795618260.9698424,
-  "etf_arb|XLK": 1795623060.6706123,
+  "etf_arb|XLK": 1795624140.2694027,
   "opening_range|CNP": 1795618310.2606537,
   "opening_range|PUK": 1795618439.905117,
   "sector_reversion|HZO": 1795618440.9077854,
-  "sector_reversion|WY": 1795618620.118594,
+  "sector_reversion|WY": 1795624020.6076977,
   "opening_range|FXI": 1795618645.3630836,
   "opening_range|YINN": 1795618671.4211214,
   "sector_reversion|PINS": 1795618860.5551617,
@@ -242,7 +250,14 @@
   "opening_range|RELX": 1795622585.6712003,
   "opening_range|MT": 1795622737.813418,
   "opening_range|GOOGL": 1795623009.41691,
-  "sector_reversion|L": 1795623215.6134932
+  "sector_reversion|L": 1795623215.6134932,
+  "opening_range|EQNR": 1795623368.0066547,
+  "opening_range|OXY": 1795623437.372467,
+  "opening_range|PR": 1795623600.1467671,
+  "sector_reversion|EQNR": 1795623618.3371825,
+  "opening_range|ALC": 1795623776.0814254,
+  "opening_range|AMH": 1795623811.3573008,
+  "opening_range|IAU": 1795624122.2309265
  },
  "positions": [
   {
@@ -264,33 +279,6 @@
     "variant": "default",
     "tags": {
      "liq": "large",
-     "tod": "open",
-     "side": "long",
-     "sector": "XLE",
-     "kind": "stock",
-     "mktNow": "sell-off"
-    }
-   }
-  },
-  {
-   "id": "2026-11-25-ope-5fce6052",
-   "strategy": "opening_range",
-   "symbol": "EQNR",
-   "side": "long",
-   "qty": 128,
-   "entry_px": 38.983898,
-   "entry_mid": 38.974999999999994,
-   "entry_spread_bps": 2.565747273893012,
-   "entry_ts": 1795618020.6693065,
-   "stop_bps": 73.12,
-   "target_bps": 146.25,
-   "max_hold_min": 368,
-   "mode": "shadow",
-   "reason": "broke the 15-minute opening range 38.46-38.92 (119 bps wide)",
-   "meta": {
-    "variant": "default",
-    "tags": {
-     "liq": "mid",
      "tod": "open",
      "side": "long",
      "sector": "XLE",
@@ -462,33 +450,6 @@
    }
   },
   {
-   "id": "2026-11-25-ope-31f8797c",
-   "strategy": "opening_range",
-   "symbol": "OXY",
-   "side": "long",
-   "qty": 91,
-   "entry_px": 54.415441,
-   "entry_mid": 54.394999999999996,
-   "entry_spread_bps": 5.515212795292588,
-   "entry_ts": 1795618980.1971254,
-   "stop_bps": 136.04,
-   "target_bps": 272.08,
-   "max_hold_min": 352,
-   "mode": "shadow",
-   "reason": "broke the 15-minute opening range 52.96-54.35 (259 bps wide)",
-   "meta": {
-    "variant": "default",
-    "tags": {
-     "liq": "large",
-     "tod": "open",
-     "side": "long",
-     "sector": "XLE",
-     "kind": "stock",
-     "mktNow": "sell-off"
-    }
-   }
-  },
-  {
    "id": "2026-11-25-ope-0ca3b4be",
    "strategy": "opening_range",
    "symbol": "FMS",
@@ -537,33 +498,6 @@
      "tod": "open",
      "side": "long",
      "sector": "XLU",
-     "kind": "stock",
-     "mktNow": "sell-off"
-    }
-   }
-  },
-  {
-   "id": "2026-11-25-ope-87c9f72e",
-   "strategy": "opening_range",
-   "symbol": "AMH",
-   "side": "long",
-   "qty": 151,
-   "entry_px": 33.083308,
-   "entry_mid": 33.075,
-   "entry_spread_bps": 3.0234315948595647,
-   "entry_ts": 1795619040.5121317,
-   "stop_bps": 52.91,
-   "target_bps": 105.82,
-   "max_hold_min": 351,
-   "mode": "shadow",
-   "reason": "broke the 15-minute opening range 32.74-33.06 (97 bps wide)",
-   "meta": {
-    "variant": "default",
-    "tags": {
-     "liq": "mid",
-     "tod": "open",
-     "side": "long",
-     "sector": "XLRE",
      "kind": "stock",
      "mktNow": "sell-off"
     }
@@ -840,33 +774,6 @@
    }
   },
   {
-   "id": "2026-11-25-ope-07768ea3",
-   "strategy": "opening_range",
-   "symbol": "IAU",
-   "side": "short",
-   "qty": 77,
-   "entry_px": 64.833516,
-   "entry_mid": 64.845,
-   "entry_spread_bps": 1.542138946717697,
-   "entry_ts": 1795619760.5382912,
-   "stop_bps": 37.4,
-   "target_bps": 74.79,
-   "max_hold_min": 339,
-   "mode": "shadow",
-   "reason": "broke the 15-minute opening range 64.92-65.25 (51 bps wide)",
-   "meta": {
-    "variant": "default",
-    "tags": {
-     "liq": "large",
-     "tod": "open",
-     "side": "short",
-     "sector": "none",
-     "kind": "fund",
-     "mktNow": "sell-off"
-    }
-   }
-  },
-  {
    "id": "2026-11-25-ope-aa37d4ea",
    "strategy": "opening_range",
    "symbol": "AAPL",
@@ -1056,33 +963,6 @@
    }
   },
   {
-   "id": "2026-11-25-ope-168c41db",
-   "strategy": "opening_range",
-   "symbol": "ALC",
-   "side": "long",
-   "qty": 64,
-   "entry_px": 77.027702,
-   "entry_mid": 76.99,
-   "entry_spread_bps": 7.793219898688437,
-   "entry_ts": 1795620840.9589562,
-   "stop_bps": 46.43,
-   "target_bps": 92.87,
-   "max_hold_min": 321,
-   "mode": "shadow",
-   "reason": "broke the 15-minute opening range 76.35-76.91 (72 bps wide)",
-   "meta": {
-    "variant": "default",
-    "tags": {
-     "liq": "large",
-     "tod": "mid",
-     "side": "long",
-     "sector": "XLV",
-     "kind": "stock",
-     "mktNow": "sell-off"
-    }
-   }
-  },
-  {
    "id": "2026-11-25-ope-bb90b3a3",
    "strategy": "opening_range",
    "symbol": "HR",
@@ -1131,33 +1011,6 @@
      "tod": "mid",
      "side": "short",
      "sector": "XLP",
-     "kind": "stock",
-     "mktNow": "sell-off"
-    }
-   }
-  },
-  {
-   "id": "2026-11-25-ope-d19fe2cd",
-   "strategy": "opening_range",
-   "symbol": "PR",
-   "side": "long",
-   "qty": 236,
-   "entry_px": 21.182118,
-   "entry_mid": 21.175,
-   "entry_spread_bps": 4.722550177094692,
-   "entry_ts": 1795621680.9364462,
-   "stop_bps": 116.88,
-   "target_bps": 233.77,
-   "max_hold_min": 307,
-   "mode": "shadow",
-   "reason": "broke the 15-minute opening range 20.71-21.14 (208 bps wide)",
-   "meta": {
-    "variant": "default",
-    "tags": {
-     "liq": "large",
-     "tod": "mid",
-     "side": "long",
-     "sector": "XLE",
      "kind": "stock",
      "mktNow": "sell-off"
     }
@@ -1245,23 +1098,104 @@
    }
   },
   {
-   "id": "2026-11-25-sec-fd94151d",
-   "strategy": "sector_reversion",
-   "symbol": "WY",
+   "id": "2026-11-25-ope-23effbbc",
+   "strategy": "opening_range",
+   "symbol": "PCG",
    "side": "short",
-   "qty": 242,
-   "entry_px": 20.607939,
-   "entry_mid": 20.615000000000002,
-   "entry_spread_bps": 4.850836769343469,
-   "entry_ts": 1795623000.2013214,
-   "stop_bps": 50.67,
-   "target_bps": 44.37,
+   "qty": 352,
+   "entry_px": 14.178582,
+   "entry_mid": 14.184999999999999,
+   "entry_spread_bps": 7.049700387733371,
+   "entry_ts": 1795623360.7849207,
+   "stop_bps": 42.3,
+   "target_bps": 84.6,
+   "max_hold_min": 279,
+   "mode": "shadow",
+   "reason": "broke the 15-minute opening range 14.20-14.29 (70 bps wide)",
+   "meta": {
+    "variant": "default",
+    "tags": {
+     "liq": "large",
+     "tod": "mid",
+     "side": "short",
+     "sector": "XLU",
+     "kind": "stock",
+     "mktNow": "sell-off"
+    }
+   }
+  },
+  {
+   "id": "2026-11-25-ope-79eafe55",
+   "strategy": "opening_range",
+   "symbol": "NOV",
+   "side": "long",
+   "qty": 302,
+   "entry_px": 16.521652,
+   "entry_mid": 16.515,
+   "entry_spread_bps": 6.055101422947629,
+   "entry_ts": 1795623600.1467671,
+   "stop_bps": 75.69,
+   "target_bps": 151.38,
+   "max_hold_min": 275,
+   "mode": "shadow",
+   "reason": "broke the 15-minute opening range 16.28-16.50 (134 bps wide)",
+   "meta": {
+    "variant": "default",
+    "tags": {
+     "liq": "mid",
+     "tod": "mid",
+     "side": "long",
+     "sector": "XLE",
+     "kind": "stock",
+     "mktNow": "sell-off"
+    }
+   }
+  },
+  {
+   "id": "2026-11-25-ope-f372d416",
+   "strategy": "opening_range",
+   "symbol": "CNQ",
+   "side": "long",
+   "qty": 110,
+   "entry_px": 45.164516,
+   "entry_mid": 45.155,
+   "entry_spread_bps": 2.2145941756168774,
+   "entry_ts": 1795623720.765069,
+   "stop_bps": 72.53,
+   "target_bps": 145.06,
+   "max_hold_min": 273,
+   "mode": "shadow",
+   "reason": "broke the 15-minute opening range 44.52-45.13 (135 bps wide)",
+   "meta": {
+    "variant": "default",
+    "tags": {
+     "liq": "large",
+     "tod": "mid",
+     "side": "long",
+     "sector": "XLE",
+     "kind": "stock",
+     "mktNow": "sell-off"
+    }
+   }
+  },
+  {
+   "id": "2026-11-25-sec-0d94a828",
+   "strategy": "sector_reversion",
+   "symbol": "INVH",
+   "side": "short",
+   "qty": 179,
+   "entry_px": 27.827217,
+   "entry_mid": 27.835,
+   "entry_spread_bps": 3.59259924555472,
+   "entry_ts": 1795623780.0907753,
+   "stop_bps": 32.66,
+   "target_bps": 24.87,
    "max_hold_min": 30,
    "mode": "shadow",
-   "reason": "residual z +2.92 vs XLRE (beta 0.63)",
+   "reason": "residual z +2.54 vs XLRE (beta 0.64)",
    "meta": {
     "etf": "XLRE",
-    "z": 2.919,
+    "z": 2.538,
     "variant": "default",
     "tags": {
      "liq": "mid",
@@ -1274,28 +1208,113 @@
    }
   },
   {
-   "id": "2026-11-25-etf-271d4cf8",
-   "strategy": "etf_arb",
-   "symbol": "XLF",
+   "id": "2026-11-25-sec-8e235a3b",
+   "strategy": "sector_reversion",
+   "symbol": "OSBC",
+   "side": "short",
+   "qty": 203,
+   "entry_px": 24.547545,
+   "entry_mid": 24.555,
+   "entry_spread_bps": 4.072490327834662,
+   "entry_ts": 1795623900.7565424,
+   "stop_bps": 26.25,
+   "target_bps": 20.28,
+   "max_hold_min": 30,
+   "mode": "shadow",
+   "reason": "residual z +2.58 vs XLF (beta 0.30)",
+   "meta": {
+    "etf": "XLF",
+    "z": 2.576,
+    "variant": "default",
+    "tags": {
+     "liq": "small",
+     "tod": "mid",
+     "side": "short",
+     "sector": "XLF",
+     "kind": "stock",
+     "mktNow": "sell-off"
+    }
+   }
+  },
+  {
+   "id": "2026-11-25-ope-8b2cbbdc",
+   "strategy": "opening_range",
+   "symbol": "FNF",
    "side": "long",
-   "qty": 89,
-   "entry_px": 55.635563,
-   "entry_mid": 55.625,
-   "entry_spread_bps": 1.797752808989684,
-   "entry_ts": 1795623300.986501,
-   "stop_bps": 143.23,
-   "target_bps": 71.62,
+   "qty": 111,
+   "entry_px": 44.70447,
+   "entry_mid": 44.69,
+   "entry_spread_bps": 4.47527411053997,
+   "entry_ts": 1795624020.6076977,
+   "stop_bps": 145.45,
+   "target_bps": 290.89,
+   "max_hold_min": 268,
+   "mode": "shadow",
+   "reason": "broke the 15-minute opening range 43.40-44.68 (291 bps wide)",
+   "meta": {
+    "variant": "default",
+    "tags": {
+     "liq": "mid",
+     "tod": "mid",
+     "side": "long",
+     "sector": "XLF",
+     "kind": "stock",
+     "mktNow": "sell-off"
+    }
+   }
+  },
+  {
+   "id": "2026-11-25-sec-bf080570",
+   "strategy": "sector_reversion",
+   "symbol": "PAAS",
+   "side": "short",
+   "qty": 163,
+   "entry_px": 30.576942,
+   "entry_mid": 30.585,
+   "entry_spread_bps": 3.269576589832128,
+   "entry_ts": 1795624020.6076977,
+   "stop_bps": 76.3,
+   "target_bps": 59.55,
+   "max_hold_min": 30,
+   "mode": "shadow",
+   "reason": "residual z +2.60 vs XLB (beta 1.43)",
+   "meta": {
+    "etf": "XLB",
+    "z": 2.601,
+    "variant": "default",
+    "tags": {
+     "liq": "large",
+     "tod": "mid",
+     "side": "short",
+     "sector": "XLB",
+     "kind": "stock",
+     "mktNow": "sell-off"
+    }
+   }
+  },
+  {
+   "id": "2026-11-25-etf-4a837580",
+   "strategy": "etf_arb",
+   "symbol": "XLE",
+   "side": "short",
+   "qty": 83,
+   "entry_px": 60.09399,
+   "entry_mid": 60.105000000000004,
+   "entry_spread_bps": 1.663755095249648,
+   "entry_ts": 1795624140.2694027,
+   "stop_bps": 28.69,
+   "target_bps": 14.34,
    "max_hold_min": 10,
    "mode": "shadow",
-   "reason": "basket +119.4 bps vs XLF over 5 min (78% of the fund priced)",
+   "reason": "basket -23.9 bps vs XLE over 5 min (99% of the fund priced)",
    "meta": {
-    "gap": 119.36,
+    "gap": -23.91,
     "variant": "default",
     "tags": {
      "liq": "mega",
      "tod": "mid",
-     "side": "long",
-     "sector": "XLF",
+     "side": "short",
+     "sector": "XLE",
      "kind": "fund",
      "mktNow": "sell-off"
     }
