@@ -28,12 +28,22 @@
 import json
 import urllib.parse
 import urllib.request
-from datetime import date, datetime, timedelta
+from datetime import date
 
 RAW = "https://raw.githubusercontent.com/TheMostLocal"
 HIST = RAW + "/TRAPP2-1/main/data/history/{}.json"
 HIST_FALLBACK = RAW + "/TRAPP2/main/data/history/{}.json"     # z206: the macro book out
 TRENDS_URL = RAW + "/TRAPP2-ANALYTICS/main/data/trends/latest.json"
+# z207: the crowded shorts - TRAPP2-ANALYTICS' factor monitor lists every name at 8 %+ of its shares sold short (FINRA's
+# latest settlement / the SEC count) or 7+ days to cover with 5 %+ (Yahoo's short % of float only where FINRA has none).
+# No intraday short sale in one at CROWDED_SO / CROWDED_DTC, nor at SQUEEZE_SO / SQUEEZE_DTC while the tape shows shorts
+# being covered (the flows label, its squeeze flag, or the session after a short-covering rally) - the same bars as the
+# swing bot (TRAPP2-BOT risk_book.crowded_short). Each trade records the name's short % and days to cover.
+FACTORS_URL = RAW + "/TRAPP2-ANALYTICS/main/data/derived/factors.json"
+CROWDED_SO, CROWDED_DTC = 15.0, 10.0          # % of the shares outstanding, days to cover (with DTC_MIN_SO %+ short)
+SQUEEZE_SO, SQUEEZE_DTC = 8.0, 7.0            # ... while shorts are being covered
+DTC_MIN_SO = 5.0
+YAHOO_SO, YAHOO_SQUEEZE = 20.0, 10.0          # Yahoo's short % of float, where FINRA has no reading
 SPX, VIX, HYG, SPY = "^GSPC", "^VIX", "HYG", "SPY"
 STATES = ((0, "calm"), (2, "pressure"), (3, "selloff"))
 DAY_BAND = 0.0075                   # +-0.75 % on the day = "flat"
@@ -197,7 +207,47 @@ def trends_now(doc=None, fetch=None):
             "run": run, "runThrough": s.get("through"), "pctUp": (d.get("internals") or {}).get("pctUp"),
             # z206: who was forced to trade (recorded on every trade, never segmented - the lab can't know it live)
             "flow": fl.get("label"), "flowZ": fl.get("z"), "flowFlags": sorted((fl.get("flags") or {}).keys()) or None,
-            "flowAfter": (fl.get("after") or {}).get("prior"), "proxy": (d.get("proxy") or {}).get(SPX)}
+            "flowAfter": (fl.get("after") or {}).get("prior"), "proxy": (d.get("proxy") or {}).get(SPX),
+            # z207: FINRA's latest settlement - the most-shorted 50's dollars short vs the settlement before (recorded)
+            "flowReported": ((fl.get("reported") or {}).get("basket") or {}).get("chg")}
+
+
+def crowded_now(doc=None, fetch=None):
+    """{symbol: {"si": % short, "dtc": days to cover, "src": finra | yahoo}} from the factor monitor, or {}."""
+    d = doc if doc is not None else (fetch or _get)(FACTORS_URL)
+    cr = d.get("crowded") if isinstance(d, dict) else None
+    if not isinstance(cr, dict):
+        return {}
+    out = {}
+    for t, v in cr.items():
+        if isinstance(v, (int, float)):                          # a pre-z207 file: {t: % of float (Yahoo)}
+            out[t] = {"si": float(v), "dtc": None, "src": "yahoo"}
+        elif isinstance(v, dict) and isinstance(v.get("si"), (int, float)):
+            out[t] = {"si": float(v["si"]), "dtc": v.get("dtc"), "src": v.get("src") or "finra"}
+    return out
+
+
+def covering(now):
+    """Shorts are being covered: today's flows label, its squeeze flag, or the session after a short-covering rally."""
+    now = now or {}
+    return now.get("flow") == "short-covering rally" or "squeeze" in (now.get("flowFlags") or []) or bool(now.get("flowAfter"))
+
+
+def crowded_block(symbol, side, mkt):
+    """z207: a reason to skip a short sale into a crowded short, or None."""
+    if side != "short":
+        return None
+    c = ((mkt or {}).get("crowded") or {}).get(symbol)
+    if not c:
+        return None
+    cov = covering((mkt or {}).get("now"))
+    si, dtc = c.get("si") or 0.0, c.get("dtc")
+    if c.get("src") == "yahoo":
+        return "crowded short" if si >= (YAHOO_SQUEEZE if cov else YAHOO_SO) else None
+    bar, dbar = (SQUEEZE_SO, SQUEEZE_DTC) if cov else (CROWDED_SO, CROWDED_DTC)
+    if si >= bar or (dtc is not None and dtc >= dbar and si >= DTC_MIN_SO):
+        return "crowded short while covering" if cov else "crowded short"
+    return None
 
 
 def current(today=None, H=None, fetch=None):
@@ -207,6 +257,7 @@ def current(today=None, H=None, fetch=None):
     st = state_on(today, H) or {}
     out = dict(st, spyPrev=prior_close(H.get("spy"), today))
     out["now"] = trends_now(fetch=fetch)
+    out["crowded"] = crowded_now(fetch=fetch)                 # z207: no intraday short into a crowded short
     if H.get("src"):
         out["src"] = H["src"]                               # z206: what stood in for the macro book
     return out
@@ -223,5 +274,8 @@ def describe(m):
             f"S&P run {m.get('run'):+d} · {m.get('dd'):+.1f}% from the 52-week high · VIX {m.get('vix')}"
             + (f" · today's trends: {now.get('label')} ({now.get('on')} of {now.get('of')}, {now.get('date')} {now.get('etTime') or ''})" if now else "")
             + (f" · positioning: {now.get('flow')}" if now.get("flow") else "")
+            + (f" · {len(m['crowded'])} crowded shorts listed (FINRA) - "
+               + ("shorts being covered: no short at 8%+ of shares / 7+ days" if covering(now) else "no short at 15%+ of shares / 10+ days")
+               if m.get("crowded") else "")
             + (f" · read on {m['src'].get('spx') or 'TRAPP2'} - the macro book (TRAPP2-1) is out, no VIX" if m.get("src") else "")
             + (f" · SPY prior close {m['spyPrev']:.2f}" if m.get("spyPrev") else " · no SPY prior close (no 'spx' tag today)"))
