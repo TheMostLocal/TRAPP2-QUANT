@@ -1,7 +1,619 @@
 {
  "day": "2026-11-25",
  "pnl": 0.0,
- "traded": {},
- "lastExit": {},
- "positions": []
+ "traded": {
+  "etf_arb": [
+   "XLB",
+   "XLC",
+   "XLE",
+   "XLF",
+   "XLP",
+   "XLRE",
+   "XLU",
+   "XLV",
+   "XLY"
+  ],
+  "sector_reversion": [
+   "AMZN",
+   "BAC",
+   "CCL",
+   "CNQ",
+   "CPNG",
+   "DB",
+   "DOW",
+   "ET",
+   "EXC",
+   "HAL",
+   "HZO",
+   "KO",
+   "NFLX",
+   "NKE",
+   "OGN",
+   "OPCH",
+   "OXY",
+   "PBR-A",
+   "PFE",
+   "PHG",
+   "RF",
+   "STM",
+   "T",
+   "TTD",
+   "UDR",
+   "USB",
+   "VICI",
+   "VZ"
+  ]
+ },
+ "lastExit": {
+  "sector_reversion|KO": 1795617616.413171,
+  "sector_reversion|VICI": 1795617642.470303,
+  "sector_reversion|NFLX": 1795617658.5024555,
+  "etf_arb|XLB": 1795617660.5075085,
+  "sector_reversion|PHG": 1795617660.5075085,
+  "etf_arb|XLU": 1795617660.5075085,
+  "etf_arb|XLV": 1795617667.6234043,
+  "etf_arb|XLF": 1795617720.7428107,
+  "sector_reversion|NKE": 1795617720.7428107,
+  "etf_arb|XLC": 1795617720.7428107,
+  "sector_reversion|HAL": 1795617780.9774058,
+  "etf_arb|XLRE": 1795617780.9774058,
+  "sector_reversion|TTD": 1795617780.9774058,
+  "etf_arb|XLP": 1795617780.9774058,
+  "sector_reversion|DB": 1795617899.4457126,
+  "sector_reversion|USB": 1795617900.448558,
+  "sector_reversion|ET": 1795617900.448558,
+  "etf_arb|XLY": 1795617900.448558
+ },
+ "positions": [
+  {
+   "id": "2026-11-25-sec-66dbbf5a",
+   "strategy": "sector_reversion",
+   "symbol": "HZO",
+   "side": "short",
+   "qty": 94,
+   "entry_px": 52.944705,
+   "entry_mid": 52.955,
+   "entry_spread_bps": 1.8883958077609313,
+   "entry_ts": 1795617600.4877594,
+   "stop_bps": 12.0,
+   "target_bps": 19.48,
+   "max_hold_min": 30,
+   "mode": "shadow",
+   "reason": "residual z +5.71 vs XLY (beta 0.30)",
+   "meta": {
+    "etf": "XLY",
+    "z": 5.71,
+    "variant": "default",
+    "tags": {
+     "liq": "small",
+     "tod": "open",
+     "side": "short",
+     "sector": "XLY",
+     "kind": "stock",
+     "mktNow": "sell-off"
+    }
+   }
+  },
+  {
+   "id": "2026-11-25-sec-0c7661b5",
+   "strategy": "sector_reversion",
+   "symbol": "OPCH",
+   "side": "short",
+   "qty": 158,
+   "entry_px": 31.616838,
+   "entry_mid": 31.625,
+   "entry_spread_bps": 3.16205533596775,
+   "entry_ts": 1795617600.4877594,
+   "stop_bps": 16.19,
+   "target_bps": 25.98,
+   "max_hold_min": 30,
+   "mode": "shadow",
+   "reason": "residual z +5.35 vs XLV (beta 0.30)",
+   "meta": {
+    "etf": "XLV",
+    "z": 5.349,
+    "variant": "default",
+    "tags": {
+     "liq": "mid",
+     "tod": "open",
+     "side": "short",
+     "sector": "XLV",
+     "kind": "stock",
+     "mktNow": "sell-off"
+    }
+   }
+  },
+  {
+   "id": "2026-11-25-sec-a9acd067",
+   "strategy": "sector_reversion",
+   "symbol": "PBR-A",
+   "side": "long",
+   "qty": 364,
+   "entry_px": 13.711371,
+   "entry_mid": 13.705,
+   "entry_spread_bps": 7.296607077710006,
+   "entry_ts": 1795617600.4877594,
+   "stop_bps": 57.47,
+   "target_bps": 82.65,
+   "max_hold_min": 30,
+   "mode": "shadow",
+   "reason": "residual z -4.79 vs XLE (beta 0.58)",
+   "meta": {
+    "etf": "XLE",
+    "z": -4.794,
+    "variant": "default",
+    "tags": {
+     "liq": "large",
+     "tod": "open",
+     "side": "long",
+     "sector": "XLE",
+     "kind": "stock",
+     "mktNow": "sell-off"
+    }
+   }
+  },
+  {
+   "id": "2026-11-25-sec-851944e2",
+   "strategy": "sector_reversion",
+   "symbol": "CNQ",
+   "side": "short",
+   "qty": 111,
+   "entry_px": 45.025497,
+   "entry_mid": 45.045,
+   "entry_spread_bps": 6.660006660006912,
+   "entry_ts": 1795617600.4877594,
+   "stop_bps": 60.17,
+   "target_bps": 66.36,
+   "max_hold_min": 30,
+   "mode": "shadow",
+   "reason": "residual z +3.68 vs XLE (beta 0.30)",
+   "meta": {
+    "etf": "XLE",
+    "z": 3.677,
+    "variant": "default",
+    "tags": {
+     "liq": "large",
+     "tod": "open",
+     "side": "short",
+     "sector": "XLE",
+     "kind": "stock",
+     "mktNow": "sell-off"
+    }
+   }
+  },
+  {
+   "id": "2026-11-25-sec-660a1f55",
+   "strategy": "sector_reversion",
+   "symbol": "T",
+   "side": "short",
+   "qty": 216,
+   "entry_px": 23.107689,
+   "entry_mid": 23.115000000000002,
+   "entry_spread_bps": 4.3261951114001995,
+   "entry_ts": 1795617600.4877594,
+   "stop_bps": 43.07,
+   "target_bps": 46.61,
+   "max_hold_min": 30,
+   "mode": "shadow",
+   "reason": "residual z +3.61 vs XLC (beta 0.30)",
+   "meta": {
+    "etf": "XLC",
+    "z": 3.607,
+    "variant": "default",
+    "tags": {
+     "liq": "large",
+     "tod": "open",
+     "side": "short",
+     "sector": "XLC",
+     "kind": "stock",
+     "mktNow": "sell-off"
+    }
+   }
+  },
+  {
+   "id": "2026-11-25-sec-001c2a0a",
+   "strategy": "sector_reversion",
+   "symbol": "EXC",
+   "side": "short",
+   "qty": 107,
+   "entry_px": 46.575342,
+   "entry_mid": 46.59,
+   "entry_spread_bps": 4.292766688131171,
+   "entry_ts": 1795617600.4877594,
+   "stop_bps": 36.56,
+   "target_bps": 36.14,
+   "max_hold_min": 30,
+   "mode": "shadow",
+   "reason": "residual z +3.30 vs XLU (beta 0.39)",
+   "meta": {
+    "etf": "XLU",
+    "z": 3.295,
+    "variant": "default",
+    "tags": {
+     "liq": "large",
+     "tod": "open",
+     "side": "short",
+     "sector": "XLU",
+     "kind": "stock",
+     "mktNow": "sell-off"
+    }
+   }
+  },
+  {
+   "id": "2026-11-25-sec-ba3dedd0",
+   "strategy": "sector_reversion",
+   "symbol": "OXY",
+   "side": "short",
+   "qty": 93,
+   "entry_px": 53.644635,
+   "entry_mid": 53.66,
+   "entry_spread_bps": 3.7271710771530238,
+   "entry_ts": 1795617600.4877594,
+   "stop_bps": 46.99,
+   "target_bps": 44.43,
+   "max_hold_min": 30,
+   "mode": "shadow",
+   "reason": "residual z +3.15 vs XLE (beta 0.30)",
+   "meta": {
+    "etf": "XLE",
+    "z": 3.152,
+    "variant": "default",
+    "tags": {
+     "liq": "large",
+     "tod": "open",
+     "side": "short",
+     "sector": "XLE",
+     "kind": "stock",
+     "mktNow": "sell-off"
+    }
+   }
+  },
+  {
+   "id": "2026-11-25-sec-a7b9f744",
+   "strategy": "sector_reversion",
+   "symbol": "CPNG",
+   "side": "long",
+   "qty": 326,
+   "entry_px": 15.30153,
+   "entry_mid": 15.295,
+   "entry_spread_bps": 6.538084341289025,
+   "entry_ts": 1795617600.4877594,
+   "stop_bps": 128.42,
+   "target_bps": 117.41,
+   "max_hold_min": 30,
+   "mode": "shadow",
+   "reason": "residual z -3.05 vs XLY (beta 0.30)",
+   "meta": {
+    "etf": "XLY",
+    "z": -3.047,
+    "variant": "default",
+    "tags": {
+     "liq": "large",
+     "tod": "open",
+     "side": "long",
+     "sector": "XLY",
+     "kind": "stock",
+     "mktNow": "sell-off"
+    }
+   }
+  },
+  {
+   "id": "2026-11-25-sec-4676993c",
+   "strategy": "sector_reversion",
+   "symbol": "OGN",
+   "side": "short",
+   "qty": 359,
+   "entry_px": 13.908609,
+   "entry_mid": 13.915,
+   "entry_spread_bps": 7.186489399927982,
+   "entry_ts": 1795617660.5075085,
+   "stop_bps": 14.49,
+   "target_bps": 21.51,
+   "max_hold_min": 30,
+   "mode": "shadow",
+   "reason": "residual z +4.95 vs XLV (beta 0.30)",
+   "meta": {
+    "etf": "XLV",
+    "z": 4.946,
+    "variant": "default",
+    "tags": {
+     "liq": "small",
+     "tod": "open",
+     "side": "short",
+     "sector": "XLV",
+     "kind": "stock",
+     "mktNow": "sell-off"
+    }
+   }
+  },
+  {
+   "id": "2026-11-25-sec-573c7c63",
+   "strategy": "sector_reversion",
+   "symbol": "BAC",
+   "side": "short",
+   "qty": 104,
+   "entry_px": 47.655234,
+   "entry_mid": 47.665,
+   "entry_spread_bps": 2.097975453688265,
+   "entry_ts": 1795617660.5075085,
+   "stop_bps": 85.7,
+   "target_bps": 75.91,
+   "max_hold_min": 30,
+   "mode": "shadow",
+   "reason": "residual z +2.95 vs XLF (beta 1.56)",
+   "meta": {
+    "etf": "XLF",
+    "z": 2.953,
+    "variant": "default",
+    "tags": {
+     "liq": "mega",
+     "tod": "open",
+     "side": "short",
+     "sector": "XLF",
+     "kind": "stock",
+     "mktNow": "sell-off"
+    }
+   }
+  },
+  {
+   "id": "2026-11-25-sec-8369e7b2",
+   "strategy": "sector_reversion",
+   "symbol": "STM",
+   "side": "short",
+   "qty": 132,
+   "entry_px": 37.666233,
+   "entry_mid": 37.675,
+   "entry_spread_bps": 2.6542800265422724,
+   "entry_ts": 1795617660.5075085,
+   "stop_bps": 66.12,
+   "target_bps": 57.86,
+   "max_hold_min": 30,
+   "mode": "shadow",
+   "reason": "residual z +2.92 vs XLK (beta 1.55)",
+   "meta": {
+    "etf": "XLK",
+    "z": 2.917,
+    "variant": "default",
+    "tags": {
+     "liq": "large",
+     "tod": "open",
+     "side": "short",
+     "sector": "XLK",
+     "kind": "stock",
+     "mktNow": "sell-off"
+    }
+   }
+  },
+  {
+   "id": "2026-11-25-sec-f69c986e",
+   "strategy": "sector_reversion",
+   "symbol": "VZ",
+   "side": "short",
+   "qty": 104,
+   "entry_px": 47.655234,
+   "entry_mid": 47.665,
+   "entry_spread_bps": 2.097975453688265,
+   "entry_ts": 1795617660.5075085,
+   "stop_bps": 45.08,
+   "target_bps": 37.82,
+   "max_hold_min": 30,
+   "mode": "shadow",
+   "reason": "residual z +2.80 vs XLC (beta 0.30)",
+   "meta": {
+    "etf": "XLC",
+    "z": 2.797,
+    "variant": "default",
+    "tags": {
+     "liq": "mega",
+     "tod": "open",
+     "side": "short",
+     "sector": "XLC",
+     "kind": "stock",
+     "mktNow": "sell-off"
+    }
+   }
+  },
+  {
+   "id": "2026-11-25-sec-1d23b246",
+   "strategy": "sector_reversion",
+   "symbol": "CCL",
+   "side": "long",
+   "qty": 182,
+   "entry_px": 27.442744,
+   "entry_mid": 27.43,
+   "entry_spread_bps": 7.291286912139837,
+   "entry_ts": 1795617660.5075085,
+   "stop_bps": 106.53,
+   "target_bps": 87.28,
+   "max_hold_min": 30,
+   "mode": "shadow",
+   "reason": "residual z -2.73 vs XLY (beta 0.30)",
+   "meta": {
+    "etf": "XLY",
+    "z": -2.731,
+    "variant": "default",
+    "tags": {
+     "liq": "large",
+     "tod": "open",
+     "side": "long",
+     "sector": "XLY",
+     "kind": "stock",
+     "mktNow": "sell-off"
+    }
+   }
+  },
+  {
+   "id": "2026-11-25-sec-8707e324",
+   "strategy": "sector_reversion",
+   "symbol": "RF",
+   "side": "short",
+   "qty": 183,
+   "entry_px": 27.247275,
+   "entry_mid": 27.255000000000003,
+   "entry_spread_bps": 3.6690515501748533,
+   "entry_ts": 1795617660.5075085,
+   "stop_bps": 41.65,
+   "target_bps": 33.25,
+   "max_hold_min": 30,
+   "mode": "shadow",
+   "reason": "residual z +2.66 vs XLF (beta 1.39)",
+   "meta": {
+    "etf": "XLF",
+    "z": 2.661,
+    "variant": "default",
+    "tags": {
+     "liq": "large",
+     "tod": "open",
+     "side": "short",
+     "sector": "XLF",
+     "kind": "stock",
+     "mktNow": "sell-off"
+    }
+   }
+  },
+  {
+   "id": "2026-11-25-etf-9e8e8d28",
+   "strategy": "etf_arb",
+   "symbol": "XLE",
+   "side": "long",
+   "qty": 82,
+   "entry_px": 60.266026,
+   "entry_mid": 60.254999999999995,
+   "entry_spread_bps": 1.659613310098417,
+   "entry_ts": 1795617780.9774058,
+   "stop_bps": 34.77,
+   "target_bps": 17.39,
+   "max_hold_min": 10,
+   "mode": "shadow",
+   "reason": "basket +29.0 bps vs XLE over 5 min (99% of the fund priced)",
+   "meta": {
+    "gap": 28.98,
+    "variant": "default",
+    "tags": {
+     "liq": "mega",
+     "tod": "open",
+     "side": "long",
+     "sector": "XLE",
+     "kind": "fund",
+     "mktNow": "sell-off"
+    }
+   }
+  },
+  {
+   "id": "2026-11-25-sec-767f552c",
+   "strategy": "sector_reversion",
+   "symbol": "UDR",
+   "side": "short",
+   "qty": 137,
+   "entry_px": 36.336366,
+   "entry_mid": 36.35,
+   "entry_spread_bps": 5.502063273726552,
+   "entry_ts": 1795617780.9774058,
+   "stop_bps": 39.22,
+   "target_bps": 30.27,
+   "max_hold_min": 30,
+   "mode": "shadow",
+   "reason": "residual z +2.57 vs XLRE (beta 0.79)",
+   "meta": {
+    "etf": "XLRE",
+    "z": 2.572,
+    "variant": "default",
+    "tags": {
+     "liq": "mid",
+     "tod": "open",
+     "side": "short",
+     "sector": "XLRE",
+     "kind": "stock",
+     "mktNow": "sell-off"
+    }
+   }
+  },
+  {
+   "id": "2026-11-25-sec-f3ad2e9d",
+   "strategy": "sector_reversion",
+   "symbol": "PFE",
+   "side": "short",
+   "qty": 176,
+   "entry_px": 28.277172,
+   "entry_mid": 28.285,
+   "entry_spread_bps": 3.5354428142117764,
+   "entry_ts": 1795617840.2118132,
+   "stop_bps": 15.24,
+   "target_bps": 13.31,
+   "max_hold_min": 30,
+   "mode": "shadow",
+   "reason": "residual z +2.91 vs XLV (beta 0.90)",
+   "meta": {
+    "etf": "XLV",
+    "z": 2.912,
+    "variant": "default",
+    "tags": {
+     "liq": "mega",
+     "tod": "open",
+     "side": "short",
+     "sector": "XLV",
+     "kind": "stock",
+     "mktNow": "sell-off"
+    }
+   }
+  },
+  {
+   "id": "2026-11-25-sec-c9786849",
+   "strategy": "sector_reversion",
+   "symbol": "AMZN",
+   "side": "long",
+   "qty": 21,
+   "entry_px": 237.863784,
+   "entry_mid": 237.785,
+   "entry_spread_bps": 4.626027714112062,
+   "entry_ts": 1795617840.2118132,
+   "stop_bps": 54.2,
+   "target_bps": 43.23,
+   "max_hold_min": 30,
+   "mode": "shadow",
+   "reason": "residual z -2.66 vs XLY (beta 0.90)",
+   "meta": {
+    "etf": "XLY",
+    "z": -2.659,
+    "variant": "default",
+    "tags": {
+     "liq": "mega",
+     "tod": "open",
+     "side": "long",
+     "sector": "XLY",
+     "kind": "stock",
+     "mktNow": "sell-off"
+    }
+   }
+  },
+  {
+   "id": "2026-11-25-sec-5389afe4",
+   "strategy": "sector_reversion",
+   "symbol": "DOW",
+   "side": "short",
+   "qty": 171,
+   "entry_px": 29.207079,
+   "entry_mid": 29.22,
+   "entry_spread_bps": 6.8446269678301075,
+   "entry_ts": 1795617900.448558,
+   "stop_bps": 59.69,
+   "target_bps": 50.61,
+   "max_hold_min": 30,
+   "mode": "shadow",
+   "reason": "residual z +2.83 vs XLB (beta 0.76)",
+   "meta": {
+    "etf": "XLB",
+    "z": 2.826,
+    "variant": "default",
+    "tags": {
+     "liq": "large",
+     "tod": "open",
+     "side": "short",
+     "sector": "XLB",
+     "kind": "stock",
+     "mktNow": "sell-off"
+    }
+   }
+  }
+ ]
 }
