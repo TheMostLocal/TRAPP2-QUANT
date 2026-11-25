@@ -1,7 +1,8 @@
 """z202: the market tape in the quant book (quant/tape.py) - the sell-off read as known at the open ("mkt", six of
 Today's Trends' seven criteria from daily histories, no look-ahead) and the S&P 500 at the minute ("spx", SPY vs its
 prior close); both tag every signal and are lab segments; a "mkt:" segment needs the state to vary in both halves;
-the live Today's Trends read is recorded, never segmented; the ledger reports by market state."""
+the live Today's Trends read is recorded, never segmented; the ledger reports by market state. z207: no intraday short
+sale into a crowded short (FINRA via the factor monitor), its short % / days to cover recorded on the trade."""
 import asyncio
 import json
 import os
@@ -165,6 +166,55 @@ class MacroBookOut(unittest.TestCase):
         t = tags_for("AAPL", "long", ctx)
         self.assertEqual(t["flowNow"], "risk-off rotation")
         self.assertFalse(any("flow" in k for k in keys_for(t)), "recorded, not segmented")
+
+
+class CrowdedShorts(unittest.TestCase):
+    """z207: no intraday short sale into a crowded short (FINRA's short interest via the factor monitor)."""
+    FAC = {"crowded": {"WHR": {"si": 32.0, "dtc": 3.46, "chg": -1.0, "settle": "2026-11-13", "src": "finra"},
+                       "AAL": {"si": 11.9, "dtc": 1.29, "src": "finra"}, "MID": {"si": 6.0, "dtc": 11.0, "src": "finra"},
+                       "LOW": {"si": 4.5, "dtc": 12.0, "src": "finra"}, "YHO": {"si": 12.0, "src": "yahoo"}}}
+
+    def test_reads_the_factor_monitor_and_an_old_file(self):
+        c = tape.crowded_now(self.FAC)
+        self.assertEqual(c["WHR"], {"si": 32.0, "dtc": 3.46, "src": "finra"})
+        self.assertEqual(tape.crowded_now({"crowded": {"GME": 21.5}}), {"GME": {"si": 21.5, "dtc": None, "src": "yahoo"}})
+        self.assertEqual(tape.crowded_now(None), {})
+
+    def test_standing_and_covering_bars(self):
+        mkt = {"crowded": tape.crowded_now(self.FAC), "now": {"flow": "de-grossing"}}
+        b = lambda s, side="short": tape.crowded_block(s, side, mkt)
+        self.assertEqual((b("WHR"), b("AAL"), b("MID"), b("LOW"), b("YHO"), b("AAPL")), ("crowded short", None, "crowded short", None, None, None))
+        self.assertIsNone(b("WHR", "long"))
+        mkt["now"] = {"flow": "risk-off rotation", "flowAfter": "2026-11-23"}            # the session after a short-covering rally
+        self.assertEqual((b("AAL"), b("LOW"), b("YHO")), ("crowded short while covering", None, "crowded short"))
+        mkt["now"] = {"flow": "rotation under a quiet index", "flowFlags": ["squeeze"]}
+        self.assertEqual(b("AAL"), "crowded short while covering")
+
+    def test_the_engine_skips_it_and_trades_record_it(self):
+        from quant.strategies import Signal
+        uni = dict(universe(), mkt={"crowded": {"AAPL": {"si": 18.0, "dtc": 2.0, "src": "finra"}}, "now": {}})
+        e = Engine(replace(Config(), execution="sim"), uni, clock=lambda: 1793026800, data_dir=tempfile.mkdtemp(), log=lambda *a: None)
+        st = e.book.get("AAPL")
+        st.on_quote(249.99, 250.01, 1, 1, 1793026800)
+        self.assertIsNone(e.enter(Signal("AAPL", "short", "sector_reversion", 30, 30, 30), 1793026800))
+        self.assertEqual(e.counts["skip:crowded short"], 1)
+        e.enter(Signal("AAPL", "long", "sector_reversion", 30, 30, 30), 1793026800)        # a long isn't touched by it
+        self.assertEqual(e.counts["skip:crowded short"], 1)
+        ctx = SimpleNamespace(minute=700, liquidity={"AAPL": 5e9}, sector_etf={"AAPL": "XLK"}, kinds={}, quad={}, mkt=uni["mkt"], spx_move=None)
+        t = tags_for("AAPL", "long", ctx)
+        self.assertEqual((t["shortPct"], t["dtc"]), (18.0, 2.0))
+        self.assertFalse(any(k.startswith(("shortPct", "dtc")) for k in keys_for(t)), "recorded, not segmented")
+
+    def test_current_lists_them_and_trends_now_records_the_settlement(self):
+        doc = {"date": "2026-11-24", "read": {"label": "sell-off"}, "indices": {"^GSPC": {"chg": 1.0}},
+               "flows": {"date": "2026-11-24", "label": "short-covering rally", "reported": {"settle": "2026-11-13", "basket": {"chg": -8.4}}}}
+        self.assertEqual(tape.trends_now(doc)["flowReported"], -8.4)
+        fac = self.FAC
+
+        def fetch(url):
+            return fac if url == tape.FACTORS_URL else doc if url == tape.TRENDS_URL else None
+        m = tape.current(date(2026, 11, 24), H={}, fetch=fetch)
+        self.assertEqual(sorted(m["crowded"]), ["AAL", "LOW", "MID", "WHR", "YHO"])
 
 
 class Tags(unittest.TestCase):
