@@ -32,6 +32,7 @@ from datetime import date, datetime, timedelta
 
 RAW = "https://raw.githubusercontent.com/TheMostLocal"
 HIST = RAW + "/TRAPP2-1/main/data/history/{}.json"
+HIST_FALLBACK = RAW + "/TRAPP2/main/data/history/{}.json"     # z206: the macro book out
 TRENDS_URL = RAW + "/TRAPP2-ANALYTICS/main/data/trends/latest.json"
 SPX, VIX, HYG, SPY = "^GSPC", "^VIX", "HYG", "SPY"
 STATES = ((0, "calm"), (2, "pressure"), (3, "selloff"))
@@ -70,11 +71,25 @@ def series(rows):
 
 
 def load_histories(fetch=None):
-    """{'spx', 'vix', 'hyg', 'spy'} -> (dates, closes, volumes) from TRAPP2-1 (one request each, ~300 KB)."""
+    """{'spx', 'vix', 'hyg', 'spy'} -> (dates, closes, volumes) from TRAPP2-1 (one request each, ~300 KB). z206: when the
+    macro book can't be read (11-24: every TRAPP2-1 file 404), SPY and HYG from TRAPP2 and SPY standing in for the
+    S&P 500 (its volume for the distribution days); no VIX - that criterion is then simply not counted. 'src' says
+    what stood in."""
     fetch = fetch or _get
     out = {}
     for k, sym in (("spx", SPX), ("vix", VIX), ("hyg", HYG), ("spy", SPY)):
         out[k] = series(fetch(HIST.format(urllib.parse.quote(sym, safe=""))))
+    src = {}
+    for k, sym in (("spy", SPY), ("hyg", HYG)):
+        if not out[k][0]:
+            out[k] = series(fetch(HIST_FALLBACK.format(sym)))
+            if out[k][0]:
+                src[k] = f"TRAPP2 {sym}"
+    if not out["spx"][0] and out["spy"][0]:
+        out["spx"] = out["spy"]
+        src["spx"] = "SPY (TRAPP2)"
+    if src:
+        out["src"] = src
     return out
 
 
@@ -175,9 +190,14 @@ def trends_now(doc=None, fetch=None):
     r, spx = d["read"], ((d.get("indices") or {}).get(SPX) or {})
     s = spx.get("streak") or {}
     run = (-1 if s.get("dir") == "down" else 1) * int(s.get("n") or 0) if s.get("dir") else 0
+    fl = d.get("flows") or {}
+    fl = fl if fl.get("date") == d.get("date") else {}
     return {"label": r.get("label"), "state": r.get("state"), "overlay": r.get("overlay"), "on": r.get("on"), "of": r.get("of"),
             "date": d.get("date"), "etTime": d.get("etTime"), "session": d.get("state"), "spxChg": spx.get("chg"),
-            "run": run, "runThrough": s.get("through"), "pctUp": (d.get("internals") or {}).get("pctUp")}
+            "run": run, "runThrough": s.get("through"), "pctUp": (d.get("internals") or {}).get("pctUp"),
+            # z206: who was forced to trade (recorded on every trade, never segmented - the lab can't know it live)
+            "flow": fl.get("label"), "flowZ": fl.get("z"), "flowFlags": sorted((fl.get("flags") or {}).keys()) or None,
+            "flowAfter": (fl.get("after") or {}).get("prior"), "proxy": (d.get("proxy") or {}).get(SPX)}
 
 
 def current(today=None, H=None, fetch=None):
@@ -187,6 +207,8 @@ def current(today=None, H=None, fetch=None):
     st = state_on(today, H) or {}
     out = dict(st, spyPrev=prior_close(H.get("spy"), today))
     out["now"] = trends_now(fetch=fetch)
+    if H.get("src"):
+        out["src"] = H["src"]                               # z206: what stood in for the macro book
     return out
 
 
@@ -200,4 +222,6 @@ def describe(m):
     return (f"market tape (as of the {m.get('asOf')} close): {m['state'].upper()} - {m.get('on')} of {m.get('of')} on ({on}) · "
             f"S&P run {m.get('run'):+d} · {m.get('dd'):+.1f}% from the 52-week high · VIX {m.get('vix')}"
             + (f" · today's trends: {now.get('label')} ({now.get('on')} of {now.get('of')}, {now.get('date')} {now.get('etTime') or ''})" if now else "")
+            + (f" · positioning: {now.get('flow')}" if now.get("flow") else "")
+            + (f" · read on {m['src'].get('spx') or 'TRAPP2'} - the macro book (TRAPP2-1) is out, no VIX" if m.get("src") else "")
             + (f" · SPY prior close {m['spyPrev']:.2f}" if m.get("spyPrev") else " · no SPY prior close (no 'spx' tag today)"))

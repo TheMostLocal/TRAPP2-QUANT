@@ -115,6 +115,58 @@ class TapeState(unittest.TestCase):
         self.assertIsNone(m["now"])                         # the trends doc wasn't served
 
 
+class MacroBookOut(unittest.TestCase):
+    """z206 - 11-24: every TRAPP2-1 file 404. The tape reads SPY (as the S&P 500, with its volume) and HYG from TRAPP2;
+    no VIX - that criterion isn't counted; 'src' says what stood in."""
+
+    def setUp(self):
+        self.H, self.ds = hist_calm_then_selloff()
+
+    def test_fallback_to_trapp2(self):
+        def fetch(url):
+            if "/TRAPP2-1/" in url:
+                return None
+            for k, v in (("SPY", "spy"), ("HYG", "hyg")):
+                if url.endswith(f"/TRAPP2/main/data/history/{k}.json"):
+                    s = self.H["spx"] if v == "spy" else self.H[v]        # SPY moves as the index does here
+                    return [{"date": d, "close": c / (10 if v == "spy" else 1), "volume": vv} for d, c, vv in zip(*s)]
+            return None
+        H = tape.load_histories(fetch)
+        self.assertEqual(H["src"], {"spy": "TRAPP2 SPY", "hyg": "TRAPP2 HYG", "spx": "SPY (TRAPP2)"})
+        self.assertEqual(H["vix"], ([], [], []))
+        st = tape.state_on("2026-11-23", H)
+        self.assertEqual((st["state"], st["run"], st["of"]), ("selloff", -7, 5))       # no VIX: five criteria known
+        self.assertNotIn("fear", st["criteria"])
+        m = tape.current(date(2026, 11, 23), H=H, fetch=lambda url: None)
+        self.assertEqual(m["src"]["spx"], "SPY (TRAPP2)")
+        self.assertIn("read on SPY (TRAPP2) - the macro book (TRAPP2-1) is out", tape.describe(m))
+
+    def test_the_macro_book_present_no_src(self):
+        def fetch(url):
+            key = {"%5EGSPC": "spx", "%5EVIX": "vix", "HYG": "hyg", "SPY": "spy"}
+            for k, v in key.items():
+                if url.endswith(f"/TRAPP2-1/main/data/history/{k}.json"):
+                    return [{"date": d, "close": c, "volume": vv} for d, c, vv in zip(*self.H[v])]
+            return None
+        self.assertNotIn("src", tape.load_histories(fetch))
+
+    def test_trends_now_carries_the_positioning(self):
+        doc = {"date": "2026-11-24", "etTime": "11:15", "state": "intraday", "read": {"label": "sell-off", "state": "sell-off", "on": 3, "of": 6},
+               "indices": {"^GSPC": {"chg": -1.23}}, "proxy": {"^GSPC": "SPY"},
+               "flows": {"date": "2026-11-24", "label": "risk-off rotation", "z": {"si": 0.0, "mom": -1.2, "rev": 0.2, "beta": -2.5},
+                         "flags": {"riskOff": True}, "after": {"prior": "2026-11-23"}}}
+        now = tape.trends_now(doc)
+        self.assertEqual((now["flow"], now["flowFlags"], now["flowAfter"], now["proxy"]), ("risk-off rotation", ["riskOff"], "2026-11-23", "SPY"))
+        self.assertEqual(now["flowZ"]["beta"], -2.5)
+        doc["flows"]["date"] = "2026-11-23"                  # a flows block from another session: not today's
+        self.assertIsNone(tape.trends_now(doc)["flow"])
+        ctx = SimpleNamespace(minute=700, liquidity={"AAPL": 5e9}, sector_etf={"AAPL": "XLK"}, kinds={"AAPL": "stock"}, quad={},
+                              mkt={"state": "selloff", "run": 1, "now": tape.trends_now(dict(doc, flows=dict(doc["flows"], date="2026-11-24")))}, spx_move=-0.012)
+        t = tags_for("AAPL", "long", ctx)
+        self.assertEqual(t["flowNow"], "risk-off rotation")
+        self.assertFalse(any("flow" in k for k in keys_for(t)), "recorded, not segmented")
+
+
 class Tags(unittest.TestCase):
     def test_tags_and_segment_keys(self):
         ctx = SimpleNamespace(minute=700, liquidity={"AAPL": 5e9}, sector_etf={"AAPL": "XLK"}, kinds={"AAPL": "stock"}, quad={"official": 3},
