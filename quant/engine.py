@@ -23,6 +23,7 @@ from pathlib import Path
 from types import SimpleNamespace
 
 from . import market_hours as mh
+from . import tape
 from .book import Book
 from .broker import AlpacaBroker, SimBroker
 from .config import CFG
@@ -168,6 +169,10 @@ class Engine:
         liq = (self.uni.get("liquidity") or {})
         if liq and sig.symbol in liq and liq[sig.symbol] < self.cfg.min_dollar_volume:      # z174: every symbol is watched, not every one is traded
             self.counts["skip:illiquid"] += 1
+            return None
+        crowd = tape.crowded_block(sig.symbol, sig.side, self.uni.get("mkt"))   # z207: FINRA's crowded shorts
+        if crowd:
+            self.counts[f"skip:{crowd}"] += 1
             return None
         day_pnl = self.ledger.pnl
         ok, q = self.risk.check(sig, st, self.minute(now), now, self.positions, day_pnl)
