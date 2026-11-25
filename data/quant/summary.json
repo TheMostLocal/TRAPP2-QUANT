@@ -1,5 +1,5 @@
 {
- "asOf": "2026-11-25T20:29:08+00:00",
+ "asOf": "2026-11-25T20:49:10+00:00",
  "benchmarkWinRate": 0.5075,
  "live": {
   "n": 14,
@@ -25,26 +25,26 @@
   "diagnosis": "no signal"
  },
  "shadow": {
-  "n": 9507,
-  "wins": 2519,
-  "losses": 6893,
-  "winRate": 0.2676,
+  "n": 9521,
+  "wins": 2521,
+  "losses": 6905,
+  "winRate": 0.2675,
   "winRateCI95": [
-   0.2588,
-   0.2767
+   0.2586,
+   0.2765
   ],
   "pBeatsBenchmark": 1.0,
   "benchmark": 0.5075,
-  "expectancyBps": -11.577,
-  "sdBps": 79.561,
-  "tStat": -14.19,
-  "avgWinBps": 23.69,
-  "avgLossBps": -24.63,
-  "profitFactor": 0.352,
-  "sharpePerTrade": -0.1455,
-  "signalBps": -0.488,
-  "signalT": -0.8,
-  "costBps": 11.089,
+  "expectancyBps": -11.576,
+  "sdBps": 79.504,
+  "tStat": -14.21,
+  "avgWinBps": 23.68,
+  "avgLossBps": -24.61,
+  "profitFactor": 0.351,
+  "sharpePerTrade": -0.1456,
+  "signalBps": -0.495,
+  "signalT": -0.81,
+  "costBps": 11.081,
   "diagnosis": "no signal"
  },
  "byStrategy": {
@@ -53,25 +53,25 @@
     "n": 0
    },
    "shadow": {
-    "n": 6810,
+    "n": 6817,
     "wins": 1474,
-    "losses": 5242,
-    "winRate": 0.2195,
+    "losses": 5249,
+    "winRate": 0.2192,
     "winRateCI95": [
-     0.2097,
-     0.2295
+     0.2095,
+     0.2293
     ],
     "pBeatsBenchmark": 1.0,
     "benchmark": 0.5075,
-    "expectancyBps": -4.087,
-    "sdBps": 7.733,
-    "tStat": -43.62,
+    "expectancyBps": -4.09,
+    "sdBps": 7.73,
+    "tStat": -43.68,
     "avgWinBps": 5.99,
     "avgLossBps": -6.99,
     "profitFactor": 0.241,
-    "sharpePerTrade": -0.5286,
-    "signalBps": -0.027,
-    "signalT": -0.29,
+    "sharpePerTrade": -0.5291,
+    "signalBps": -0.029,
+    "signalT": -0.31,
     "costBps": 4.06,
     "diagnosis": "no signal"
    }
@@ -101,26 +101,26 @@
     "diagnosis": "no signal"
    },
    "shadow": {
-    "n": 1063,
+    "n": 1064,
     "wins": 408,
-    "losses": 654,
-    "winRate": 0.3842,
+    "losses": 655,
+    "winRate": 0.3838,
     "winRateCI95": [
-     0.3554,
-     0.4138
+     0.3551,
+     0.4134
     ],
     "pBeatsBenchmark": 1.0,
     "benchmark": 0.5075,
-    "expectancyBps": -44.215,
-    "sdBps": 202.901,
-    "tStat": -7.1,
+    "expectancyBps": -44.212,
+    "sdBps": 202.806,
+    "tStat": -7.11,
     "avgWinBps": 96.77,
-    "avgLossBps": -132.24,
-    "profitFactor": 0.457,
-    "sharpePerTrade": -0.2179,
-    "signalBps": -2.501,
+    "avgLossBps": -132.1,
+    "profitFactor": 0.456,
+    "sharpePerTrade": -0.218,
+    "signalBps": -2.533,
     "signalT": -0.53,
-    "costBps": 41.713,
+    "costBps": 41.678,
     "diagnosis": "no signal"
    }
   },
@@ -129,26 +129,26 @@
     "n": 0
    },
    "shadow": {
-    "n": 1634,
-    "wins": 637,
-    "losses": 997,
-    "winRate": 0.3898,
+    "n": 1640,
+    "wins": 639,
+    "losses": 1001,
+    "winRate": 0.3896,
     "winRateCI95": [
-     0.3665,
-     0.4137
+     0.3663,
+     0.4135
     ],
     "pBeatsBenchmark": 1.0,
     "benchmark": 0.5075,
-    "expectancyBps": -21.562,
-    "sdBps": 93.795,
-    "tStat": -9.29,
-    "avgWinBps": 17.84,
-    "avgLossBps": -46.74,
+    "expectancyBps": -21.521,
+    "sdBps": 93.632,
+    "tStat": -9.31,
+    "avgWinBps": 17.81,
+    "avgLossBps": -46.63,
     "profitFactor": 0.244,
-    "sharpePerTrade": -0.2299,
-    "signalBps": -1.101,
+    "sharpePerTrade": -0.2298,
+    "signalBps": -1.108,
     "signalT": -0.64,
-    "costBps": 20.461,
+    "costBps": 20.412,
     "diagnosis": "no signal"
    }
   }
@@ -233,7 +233,7 @@
    "pnl": 0
   }
  },
- "trades": 9521,
+ "trades": 9535,
  "curve": [
   [
    "2026-11-02T14:49",
@@ -3639,6 +3639,16 @@
    "2026-11-25T20:27",
    -58.49,
    -54444.51
+  ],
+  [
+   "2026-11-25T20:39",
+   -58.49,
+   -54487.53
+  ],
+  [
+   "2026-11-25T20:46",
+   -58.49,
+   -54517.02
   ]
  ],
  "byMarket": {
@@ -3699,13 +3709,13 @@
  },
  "byKind": {
   "etf_arb": {
-   "fund": 6810
+   "fund": 6817
   },
   "sector_reversion": {
-   "stock": 1634
+   "stock": 1640
   },
   "opening_range": {
-   "stock": 693,
+   "stock": 694,
    "fund": 384
   }
  }
