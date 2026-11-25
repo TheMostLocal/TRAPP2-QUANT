@@ -9,6 +9,7 @@
 #  and "spx" - the S&P 500 today at the signal's minute (SPY vs its prior close: dn / flat / up). Recorded, not
 #  segmented: mktNow (the live Today's Trends label), mktRun (the S&P's run through the prior close), spxBps.
 #  z206: + flowNow (recorded, not segmented) - the positioning label of the day (short-covering rally, de-grossing ...).
+#  z207: + shortPct / dtc (recorded, not segmented) - a crowded name's short % of shares and days to cover (FINRA).
 # ============================================================
 from itertools import combinations
 
@@ -52,6 +53,11 @@ def tags_for(symbol, side, ctx, sector=None):
         out["mktNow"] = now["label"]                      # recorded: the live Today's Trends read (7 criteria)
     if now.get("flow"):
         out["flowNow"] = now["flow"]                      # z206: recorded - the tape's positioning label (not segmented)
+    cr = (m.get("crowded") or {}).get(symbol)
+    if cr:                                                # z207: recorded - the name's short % / days to cover (FINRA)
+        out["shortPct"] = cr.get("si")
+        if cr.get("dtc") is not None:
+            out["dtc"] = cr["dtc"]
     return out
 
 
