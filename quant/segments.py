@@ -8,6 +8,7 @@
 #  z202: + the MARKET TAPE (quant/tape.py): "mkt" - the sell-off read as known at the open (calm / pressure / selloff)
 #  and "spx" - the S&P 500 today at the signal's minute (SPY vs its prior close: dn / flat / up). Recorded, not
 #  segmented: mktNow (the live Today's Trends label), mktRun (the S&P's run through the prior close), spxBps.
+#  z206: + flowNow (recorded, not segmented) - the positioning label of the day (short-covering rally, de-grossing ...).
 # ============================================================
 from itertools import combinations
 
@@ -49,6 +50,8 @@ def tags_for(symbol, side, ctx, sector=None):
     now = m.get("now") or {}
     if now.get("label"):
         out["mktNow"] = now["label"]                      # recorded: the live Today's Trends read (7 criteria)
+    if now.get("flow"):
+        out["flowNow"] = now["flow"]                      # z206: recorded - the tape's positioning label (not segmented)
     return out
 
 
