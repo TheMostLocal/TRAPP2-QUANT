@@ -141,25 +141,25 @@
   ]
  },
  "lastExit": {
-  "etf_arb|XLB": 1795796940.0921724,
+  "etf_arb|XLB": 1795798080.7157269,
   "sector_reversion|KO": 1795790460.7345657,
   "sector_reversion|B": 1795790460.7345657,
   "sector_reversion|USB": 1795790479.8492405,
   "sector_reversion|SHEL": 1795790520.9326584,
-  "etf_arb|XLC": 1795796580.7563484,
+  "etf_arb|XLC": 1795797720.6462479,
   "sector_reversion|KEY": 1795790520.9326584,
-  "etf_arb|XLE": 1795796455.8972352,
-  "etf_arb|XLRE": 1795796700.0214844,
-  "etf_arb|XLP": 1795797180.750019,
-  "etf_arb|XLK": 1795796580.7563484,
+  "etf_arb|XLE": 1795797660.494341,
+  "etf_arb|XLRE": 1795797720.6462479,
+  "etf_arb|XLP": 1795798320.3146884,
+  "etf_arb|XLK": 1795797855.3166633,
   "sector_reversion|PFE": 1795790580.1304843,
   "sector_reversion|NU": 1795790580.1304843,
-  "etf_arb|XLU": 1795796700.0214844,
+  "etf_arb|XLU": 1795797720.6462479,
   "sector_reversion|BCS": 1795790640.3257318,
   "sector_reversion|BMNR": 1795790640.3257318,
-  "etf_arb|XLV": 1795796460.9079046,
-  "etf_arb|XLF": 1795796520.0247838,
-  "etf_arb|XLY": 1795796580.7563484,
+  "etf_arb|XLV": 1795797720.6462479,
+  "etf_arb|XLF": 1795797660.494341,
+  "etf_arb|XLY": 1795797720.6462479,
   "sector_reversion|DB": 1795790700.5174148,
   "sector_reversion|JBS": 1795790700.5174148,
   "sector_reversion|GOOG": 1795790760.5899549,
@@ -170,7 +170,7 @@
   "sector_reversion|INTC": 1795790760.5899549,
   "sector_reversion|T": 1795790820.8293417,
   "sector_reversion|NFLX": 1795790820.8293417,
-  "etf_arb|XLI": 1795796880.9581335,
+  "etf_arb|XLI": 1795797900.402145,
   "sector_reversion|CCL": 1795790833.980124,
   "sector_reversion|BP": 1795790841.9960153,
   "sector_reversion|RKT": 1795790880.074048,
@@ -242,7 +242,9 @@
   "opening_range|ING": 1795797049.364672,
   "opening_range|SNK": 1795797055.3760288,
   "sector_reversion|TTD": 1795797300.9817963,
-  "opening_range|CPNG": 1795797306.0405378
+  "opening_range|CPNG": 1795797306.0405378,
+  "opening_range|IRT": 1795798058.6736696,
+  "opening_range|GRNY": 1795798287.2461648
  },
  "positions": [
   {
@@ -502,38 +504,6 @@
    }
   },
   {
-   "id": "2026-11-27-ope-49122899",
-   "strategy": "opening_range",
-   "symbol": "GRNY",
-   "side": "short",
-   "qty": 206,
-   "entry_px": 24.157584,
-   "entry_mid": 24.165,
-   "entry_spread_bps": 4.138216428719869,
-   "entry_ts": 1795791600.388419,
-   "stop_bps": 140.7,
-   "target_bps": 281.4,
-   "max_hold_min": 355,
-   "mode": "shadow",
-   "reason": "broke the 15-minute opening range 24.20-24.80 (245 bps wide)",
-   "meta": {
-    "variant": "default",
-    "tags": {
-     "liq": "mid",
-     "tod": "open",
-     "side": "short",
-     "sector": "none",
-     "kind": "fund",
-     "mkt": "selloff",
-     "mktRun": -2,
-     "spx": "flat",
-     "spxBps": 47.4,
-     "mktNow": "sell-off",
-     "gammaNow": "neg"
-    }
-   }
-  },
-  {
    "id": "2026-11-27-ope-dc64526b",
    "strategy": "opening_range",
    "symbol": "PATH",
@@ -692,40 +662,6 @@
      "spxBps": 60.5,
      "mktNow": "sell-off",
      "gammaNow": "neg"
-    }
-   }
-  },
-  {
-   "id": "2026-11-27-ope-26ec4a6c",
-   "strategy": "opening_range",
-   "symbol": "IRT",
-   "side": "short",
-   "qty": 335,
-   "entry_px": 14.89851,
-   "entry_mid": 14.905000000000001,
-   "entry_spread_bps": 6.709158000670772,
-   "entry_ts": 1795792260.592734,
-   "stop_bps": 41.93,
-   "target_bps": 83.86,
-   "max_hold_min": 344,
-   "mode": "shadow",
-   "reason": "broke the 15-minute opening range 14.91-15.02 (70 bps wide)",
-   "meta": {
-    "variant": "default",
-    "tags": {
-     "liq": "small",
-     "tod": "open",
-     "side": "short",
-     "sector": "XLRE",
-     "kind": "stock",
-     "mkt": "selloff",
-     "mktRun": -2,
-     "spx": "flat",
-     "spxBps": 64.0,
-     "mktNow": "sell-off",
-     "gammaNow": "neg",
-     "shortPct": 8.3,
-     "dtc": 6.34
     }
    }
   },
