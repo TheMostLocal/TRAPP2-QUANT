@@ -1,16 +1,16 @@
 {
- "asOf": "2026-11-28T00:29:45+00:00",
+ "asOf": "2026-11-28T05:22:36+00:00",
  "labVersion": 2,
  "inference": "session-clustered (CR1 standard error, Student t with sessions - 1 df); BH false-discovery control on those p-values",
  "sessions": {
   "train": [
-   "2026-09-02",
-   "2026-10-28",
+   "2026-09-03",
+   "2026-10-29",
    40
   ],
   "test": [
-   "2026-10-29",
-   "2026-11-25",
+   "2026-10-30",
+   "2026-11-27",
    20
   ]
  },
@@ -33,14 +33,14 @@
  },
  "mktSessions": {
   "train": {
-   "pressure": 13,
-   "calm": 25,
-   "selloff": 2
+   "calm": 26,
+   "selloff": 2,
+   "pressure": 12
   },
   "test": {
-   "calm": 2,
+   "calm": 1,
    "pressure": 9,
-   "selloff": 9
+   "selloff": 10
   }
  },
  "costs": {
@@ -58,36 +58,36 @@
      "segment": "liq:mega|sector:XLY",
      "variant": "sr:max_hold=15-vol_spike_max=None-z_in=3.0",
      "train": {
-      "n": 116,
-      "meanBps": 2.529,
-      "t": 1.13,
-      "sessions": 36,
-      "tCl": 1.09,
-      "df": 35,
-      "nEff": 109,
+      "n": 117,
+      "meanBps": 2.448,
+      "t": 1.1,
+      "sessions": 37,
+      "tCl": 1.07,
+      "df": 36,
+      "nEff": 110,
       "posSessions": 22,
-      "dropBestBps": 1.481
+      "dropBestBps": 1.406
      },
      "test": {
       "n": 49,
-      "meanBps": -1.036,
-      "t": -0.25,
+      "meanBps": -0.868,
+      "t": -0.21,
       "sessions": 19,
-      "tCl": -0.24,
+      "tCl": -0.2,
       "df": 18,
       "nEff": 42,
-      "posSessions": 8,
-      "dropBestBps": -4.074
+      "posSessions": 9,
+      "dropBestBps": -3.883
      },
-     "p": 0.5917,
-     "pTrade": 0.60058,
-     "q": 0.8265,
+     "p": 0.57722,
+     "pTrade": 0.58458,
+     "q": 0.9435,
      "regimeDependent": false,
      "marketDependent": null,
      "approved": false,
      "reasons": [
-      "q 0.83 > 0.10 - could be luck among 12 tested",
-      "-1.0 bps a trade out of sample (needs >= 0.5)",
+      "q 0.94 > 0.10 - could be luck among 11 tested",
+      "-0.9 bps a trade out of sample (needs >= 0.5)",
       "one session carries it - without its best day it loses"
      ],
      "params": {
@@ -101,434 +101,434 @@
    "overall": {
     "sr:max_hold=15-vol_spike_max=None-z_in=2.0": {
      "train": {
-      "n": 136215,
-      "meanBps": -6.106,
-      "t": -66.94,
+      "n": 135805,
+      "meanBps": -6.062,
+      "t": -65.6,
       "sessions": 40,
-      "tCl": -25.03,
+      "tCl": -25.51,
       "df": 39,
-      "nEff": 19048,
+      "nEff": 20530,
       "posSessions": 0,
-      "dropBestBps": -6.212
+      "dropBestBps": -6.168
      },
      "test": {
-      "n": 64843,
-      "meanBps": -6.443,
-      "t": -26.06,
+      "n": 63193,
+      "meanBps": -6.416,
+      "t": -25.51,
       "sessions": 20,
-      "tCl": -16.16,
+      "tCl": -15.67,
       "df": 19,
-      "nEff": 24927,
+      "nEff": 23845,
       "posSessions": 0,
-      "dropBestBps": -6.684
+      "dropBestBps": -6.662
      }
     },
     "sr:max_hold=15-vol_spike_max=3.0-z_in=2.0": {
      "train": {
-      "n": 120971,
-      "meanBps": -5.885,
-      "t": -64.24,
+      "n": 120555,
+      "meanBps": -5.838,
+      "t": -63.07,
       "sessions": 40,
-      "tCl": -24.85,
+      "tCl": -25.54,
       "df": 39,
-      "nEff": 18102,
+      "nEff": 19764,
       "posSessions": 0,
-      "dropBestBps": -5.986
+      "dropBestBps": -5.939
      },
      "test": {
-      "n": 57906,
-      "meanBps": -6.207,
-      "t": -28.27,
+      "n": 56428,
+      "meanBps": -6.177,
+      "t": -27.65,
       "sessions": 20,
-      "tCl": -14.06,
+      "tCl": -13.64,
       "df": 19,
-      "nEff": 14320,
+      "nEff": 13729,
       "posSessions": 0,
-      "dropBestBps": -6.447
+      "dropBestBps": -6.422
      }
     },
     "sr:max_hold=30-vol_spike_max=None-z_in=2.0": {
      "train": {
-      "n": 136215,
-      "meanBps": -6.094,
-      "t": -66.43,
+      "n": 135805,
+      "meanBps": -6.049,
+      "t": -65.09,
       "sessions": 40,
-      "tCl": -25.25,
+      "tCl": -25.77,
       "df": 39,
-      "nEff": 19673,
+      "nEff": 21282,
       "posSessions": 0,
-      "dropBestBps": -6.199
+      "dropBestBps": -6.153
      },
      "test": {
-      "n": 64843,
-      "meanBps": -6.428,
-      "t": -25.99,
+      "n": 63193,
+      "meanBps": -6.403,
+      "t": -25.46,
       "sessions": 20,
-      "tCl": -15.83,
+      "tCl": -15.36,
       "df": 19,
-      "nEff": 24054,
+      "nEff": 23011,
       "posSessions": 0,
-      "dropBestBps": -6.674
+      "dropBestBps": -6.654
      }
     },
     "sr:max_hold=30-vol_spike_max=3.0-z_in=2.0": {
      "train": {
-      "n": 120971,
-      "meanBps": -5.878,
-      "t": -63.84,
+      "n": 120555,
+      "meanBps": -5.829,
+      "t": -62.65,
       "sessions": 40,
-      "tCl": -24.94,
+      "tCl": -25.69,
       "df": 39,
-      "nEff": 18470,
+      "nEff": 20271,
       "posSessions": 0,
-      "dropBestBps": -5.976
+      "dropBestBps": -5.927
      },
      "test": {
-      "n": 57906,
-      "meanBps": -6.208,
-      "t": -28.24,
+      "n": 56428,
+      "meanBps": -6.18,
+      "t": -27.64,
       "sessions": 20,
-      "tCl": -13.82,
+      "tCl": -13.42,
       "df": 19,
-      "nEff": 13875,
+      "nEff": 13300,
       "posSessions": 0,
-      "dropBestBps": -6.45
+      "dropBestBps": -6.428
      }
     },
     "sr:max_hold=60-vol_spike_max=None-z_in=2.0": {
      "train": {
-      "n": 136215,
-      "meanBps": -6.094,
-      "t": -66.43,
+      "n": 135805,
+      "meanBps": -6.049,
+      "t": -65.09,
       "sessions": 40,
-      "tCl": -25.24,
+      "tCl": -25.76,
       "df": 39,
-      "nEff": 19667,
+      "nEff": 21275,
       "posSessions": 0,
-      "dropBestBps": -6.199
+      "dropBestBps": -6.153
      },
      "test": {
-      "n": 64843,
-      "meanBps": -6.428,
-      "t": -25.99,
+      "n": 63193,
+      "meanBps": -6.403,
+      "t": -25.46,
       "sessions": 20,
-      "tCl": -15.83,
+      "tCl": -15.36,
       "df": 19,
-      "nEff": 24054,
+      "nEff": 23011,
       "posSessions": 0,
-      "dropBestBps": -6.674
+      "dropBestBps": -6.654
      }
     },
     "sr:max_hold=60-vol_spike_max=3.0-z_in=2.0": {
      "train": {
-      "n": 120971,
-      "meanBps": -5.878,
-      "t": -63.84,
+      "n": 120555,
+      "meanBps": -5.829,
+      "t": -62.65,
       "sessions": 40,
-      "tCl": -24.94,
+      "tCl": -25.69,
       "df": 39,
-      "nEff": 18464,
+      "nEff": 20264,
       "posSessions": 0,
-      "dropBestBps": -5.976
+      "dropBestBps": -5.927
      },
      "test": {
-      "n": 57906,
-      "meanBps": -6.208,
-      "t": -28.24,
+      "n": 56428,
+      "meanBps": -6.18,
+      "t": -27.64,
       "sessions": 20,
-      "tCl": -13.82,
+      "tCl": -13.42,
       "df": 19,
-      "nEff": 13875,
+      "nEff": 13300,
       "posSessions": 0,
-      "dropBestBps": -6.45
+      "dropBestBps": -6.428
      }
     },
     "sr:max_hold=15-vol_spike_max=None-z_in=2.5": {
      "train": {
-      "n": 51563,
-      "meanBps": -6.657,
-      "t": -39.5,
+      "n": 51296,
+      "meanBps": -6.558,
+      "t": -38.57,
       "sessions": 40,
-      "tCl": -21.44,
+      "tCl": -21.61,
       "df": 39,
-      "nEff": 15195,
+      "nEff": 16109,
       "posSessions": 0,
-      "dropBestBps": -6.815
+      "dropBestBps": -6.714
      },
      "test": {
-      "n": 23150,
-      "meanBps": -7.243,
-      "t": -15.86,
+      "n": 22483,
+      "meanBps": -7.31,
+      "t": -15.64,
       "sessions": 20,
-      "tCl": -12.29,
+      "tCl": -12.2,
       "df": 19,
-      "nEff": 13897,
+      "nEff": 13677,
       "posSessions": 1,
-      "dropBestBps": -7.565
+      "dropBestBps": -7.645
      }
     },
     "sr:max_hold=15-vol_spike_max=3.0-z_in=2.5": {
      "train": {
-      "n": 42605,
-      "meanBps": -6.21,
-      "t": -36.82,
+      "n": 42361,
+      "meanBps": -6.146,
+      "t": -36.19,
       "sessions": 40,
-      "tCl": -21.14,
+      "tCl": -21.15,
       "df": 39,
-      "nEff": 14047,
+      "nEff": 14468,
       "posSessions": 0,
-      "dropBestBps": -6.354
+      "dropBestBps": -6.29
      },
      "test": {
-      "n": 19306,
-      "meanBps": -6.711,
-      "t": -15.66,
+      "n": 18741,
+      "meanBps": -6.734,
+      "t": -15.31,
       "sessions": 20,
-      "tCl": -10.15,
+      "tCl": -9.92,
       "df": 19,
-      "nEff": 8113,
+      "nEff": 7857,
       "posSessions": 1,
-      "dropBestBps": -7.057
+      "dropBestBps": -7.09
      }
     },
     "sr:max_hold=30-vol_spike_max=None-z_in=2.5": {
      "train": {
-      "n": 51563,
-      "meanBps": -6.654,
-      "t": -39.32,
+      "n": 51296,
+      "meanBps": -6.551,
+      "t": -38.38,
       "sessions": 40,
-      "tCl": -21.45,
+      "tCl": -21.6,
       "df": 39,
-      "nEff": 15345,
+      "nEff": 16255,
       "posSessions": 0,
-      "dropBestBps": -6.813
+      "dropBestBps": -6.708
      },
      "test": {
-      "n": 23150,
-      "meanBps": -7.266,
-      "t": -15.89,
+      "n": 22483,
+      "meanBps": -7.342,
+      "t": -15.69,
       "sessions": 20,
-      "tCl": -12.18,
+      "tCl": -12.14,
       "df": 19,
-      "nEff": 13606,
+      "nEff": 13461,
       "posSessions": 1,
-      "dropBestBps": -7.589
+      "dropBestBps": -7.679
      }
     },
     "sr:max_hold=30-vol_spike_max=3.0-z_in=2.5": {
      "train": {
-      "n": 42605,
-      "meanBps": -6.215,
-      "t": -36.69,
+      "n": 42361,
+      "meanBps": -6.147,
+      "t": -36.04,
       "sessions": 40,
-      "tCl": -21.38,
+      "tCl": -21.42,
       "df": 39,
-      "nEff": 14469,
+      "nEff": 14956,
       "posSessions": 0,
-      "dropBestBps": -6.361
+      "dropBestBps": -6.292
      },
      "test": {
-      "n": 19306,
-      "meanBps": -6.75,
-      "t": -15.72,
+      "n": 18741,
+      "meanBps": -6.78,
+      "t": -15.39,
       "sessions": 20,
-      "tCl": -10.21,
+      "tCl": -9.99,
       "df": 19,
-      "nEff": 8137,
+      "nEff": 7902,
       "posSessions": 1,
-      "dropBestBps": -7.105
+      "dropBestBps": -7.148
      }
     },
     "sr:max_hold=60-vol_spike_max=None-z_in=2.5": {
      "train": {
-      "n": 51563,
-      "meanBps": -6.654,
-      "t": -39.32,
+      "n": 51296,
+      "meanBps": -6.551,
+      "t": -38.38,
       "sessions": 40,
-      "tCl": -21.45,
+      "tCl": -21.6,
       "df": 39,
-      "nEff": 15345,
+      "nEff": 16255,
       "posSessions": 0,
-      "dropBestBps": -6.813
+      "dropBestBps": -6.708
      },
      "test": {
-      "n": 23150,
-      "meanBps": -7.266,
-      "t": -15.89,
+      "n": 22483,
+      "meanBps": -7.343,
+      "t": -15.69,
       "sessions": 20,
-      "tCl": -12.17,
+      "tCl": -12.13,
       "df": 19,
-      "nEff": 13586,
+      "nEff": 13442,
       "posSessions": 1,
-      "dropBestBps": -7.59
+      "dropBestBps": -7.679
      }
     },
     "sr:max_hold=60-vol_spike_max=3.0-z_in=2.5": {
      "train": {
-      "n": 42605,
-      "meanBps": -6.215,
-      "t": -36.69,
+      "n": 42361,
+      "meanBps": -6.147,
+      "t": -36.04,
       "sessions": 40,
-      "tCl": -21.38,
+      "tCl": -21.42,
       "df": 39,
-      "nEff": 14469,
+      "nEff": 14956,
       "posSessions": 0,
-      "dropBestBps": -6.361
+      "dropBestBps": -6.292
      },
      "test": {
-      "n": 19306,
-      "meanBps": -6.751,
-      "t": -15.72,
+      "n": 18741,
+      "meanBps": -6.781,
+      "t": -15.39,
       "sessions": 20,
-      "tCl": -10.2,
+      "tCl": -9.99,
       "df": 19,
-      "nEff": 8126,
+      "nEff": 7891,
       "posSessions": 1,
-      "dropBestBps": -7.106
+      "dropBestBps": -7.149
      }
     },
     "sr:max_hold=15-vol_spike_max=None-z_in=3.0": {
      "train": {
-      "n": 17435,
-      "meanBps": -6.599,
-      "t": -19.86,
+      "n": 17280,
+      "meanBps": -6.486,
+      "t": -19.23,
       "sessions": 40,
-      "tCl": -14.13,
+      "tCl": -13.75,
       "df": 39,
-      "nEff": 8831,
+      "nEff": 8827,
       "posSessions": 1,
-      "dropBestBps": -6.844
+      "dropBestBps": -6.73
      },
      "test": {
-      "n": 7302,
-      "meanBps": -7.845,
-      "t": -7.3,
+      "n": 7111,
+      "meanBps": -8.079,
+      "t": -7.35,
       "sessions": 20,
-      "tCl": -7.98,
+      "tCl": -8.23,
       "df": 19,
-      "nEff": 7302,
+      "nEff": 7111,
       "posSessions": 1,
-      "dropBestBps": -8.176
+      "dropBestBps": -8.426
      }
     },
     "sr:max_hold=15-vol_spike_max=3.0-z_in=3.0": {
      "train": {
-      "n": 12925,
-      "meanBps": -5.952,
-      "t": -17.41,
+      "n": 12776,
+      "meanBps": -5.834,
+      "t": -16.87,
       "sessions": 40,
-      "tCl": -12.49,
+      "tCl": -12.23,
       "df": 39,
-      "nEff": 6648,
+      "nEff": 6718,
       "posSessions": 2,
-      "dropBestBps": -6.207
+      "dropBestBps": -6.089
      },
      "test": {
-      "n": 5509,
-      "meanBps": -6.918,
-      "t": -9.08,
+      "n": 5379,
+      "meanBps": -7.139,
+      "t": -9.15,
       "sessions": 20,
-      "tCl": -8.05,
+      "tCl": -8.24,
       "df": 19,
-      "nEff": 4334,
+      "nEff": 4368,
       "posSessions": 1,
-      "dropBestBps": -7.275
+      "dropBestBps": -7.512
      }
     },
     "sr:max_hold=30-vol_spike_max=None-z_in=3.0": {
      "train": {
-      "n": 17435,
-      "meanBps": -6.522,
-      "t": -19.59,
+      "n": 17280,
+      "meanBps": -6.414,
+      "t": -18.98,
       "sessions": 40,
-      "tCl": -13.97,
+      "tCl": -13.6,
       "df": 39,
-      "nEff": 8867,
+      "nEff": 8870,
       "posSessions": 1,
-      "dropBestBps": -6.77
+      "dropBestBps": -6.662
      },
      "test": {
-      "n": 7302,
-      "meanBps": -7.814,
-      "t": -7.23,
+      "n": 7111,
+      "meanBps": -8.041,
+      "t": -7.28,
       "sessions": 20,
-      "tCl": -7.8,
+      "tCl": -8.02,
       "df": 19,
-      "nEff": 7302,
+      "nEff": 7111,
       "posSessions": 1,
-      "dropBestBps": -8.151
+      "dropBestBps": -8.395
      }
     },
     "sr:max_hold=30-vol_spike_max=3.0-z_in=3.0": {
      "train": {
-      "n": 12925,
-      "meanBps": -5.842,
-      "t": -17.08,
+      "n": 12776,
+      "meanBps": -5.732,
+      "t": -16.56,
       "sessions": 40,
-      "tCl": -12.29,
+      "tCl": -12.05,
       "df": 39,
-      "nEff": 6690,
+      "nEff": 6763,
       "posSessions": 2,
-      "dropBestBps": -6.101
+      "dropBestBps": -5.992
      },
      "test": {
-      "n": 5509,
-      "meanBps": -6.923,
-      "t": -8.93,
+      "n": 5379,
+      "meanBps": -7.134,
+      "t": -8.98,
       "sessions": 20,
-      "tCl": -7.82,
+      "tCl": -7.97,
       "df": 19,
-      "nEff": 4224,
+      "nEff": 4239,
       "posSessions": 1,
-      "dropBestBps": -7.283
+      "dropBestBps": -7.509
      }
     },
     "sr:max_hold=60-vol_spike_max=None-z_in=3.0": {
      "train": {
-      "n": 17435,
-      "meanBps": -6.521,
-      "t": -19.58,
+      "n": 17280,
+      "meanBps": -6.413,
+      "t": -18.98,
       "sessions": 40,
-      "tCl": -13.97,
+      "tCl": -13.6,
       "df": 39,
-      "nEff": 8867,
+      "nEff": 8870,
       "posSessions": 1,
-      "dropBestBps": -6.77
+      "dropBestBps": -6.661
      },
      "test": {
-      "n": 7302,
-      "meanBps": -7.815,
-      "t": -7.23,
+      "n": 7111,
+      "meanBps": -8.042,
+      "t": -7.28,
       "sessions": 20,
-      "tCl": -7.8,
+      "tCl": -8.02,
       "df": 19,
-      "nEff": 7302,
+      "nEff": 7111,
       "posSessions": 1,
-      "dropBestBps": -8.152
+      "dropBestBps": -8.395
      }
     },
     "sr:max_hold=60-vol_spike_max=3.0-z_in=3.0": {
      "train": {
-      "n": 12925,
-      "meanBps": -5.841,
-      "t": -17.08,
+      "n": 12776,
+      "meanBps": -5.731,
+      "t": -16.56,
       "sessions": 40,
-      "tCl": -12.29,
+      "tCl": -12.05,
       "df": 39,
-      "nEff": 6693,
+      "nEff": 6766,
       "posSessions": 2,
-      "dropBestBps": -6.1
+      "dropBestBps": -5.991
      },
      "test": {
-      "n": 5509,
-      "meanBps": -6.924,
-      "t": -8.93,
+      "n": 5379,
+      "meanBps": -7.135,
+      "t": -8.98,
       "sessions": 20,
-      "tCl": -7.82,
+      "tCl": -7.97,
       "df": 19,
-      "nEff": 4223,
+      "nEff": 4238,
       "posSessions": 1,
-      "dropBestBps": -7.284
+      "dropBestBps": -7.51
      }
     }
    }
@@ -541,290 +541,290 @@
    "overall": {
     "ea:max_hold=5-persist=False-thr_mult=1.5": {
      "train": {
-      "n": 563,
-      "meanBps": -3.575,
-      "t": -8.75,
+      "n": 566,
+      "meanBps": -3.429,
+      "t": -8.36,
       "sessions": 40,
-      "tCl": -10.43,
+      "tCl": -9.94,
       "df": 39,
-      "nEff": 563,
+      "nEff": 566,
       "posSessions": 3,
-      "dropBestBps": -3.69
+      "dropBestBps": -3.541
      },
      "test": {
-      "n": 243,
-      "meanBps": -3.364,
-      "t": -4.21,
+      "n": 230,
+      "meanBps": -3.812,
+      "t": -4.56,
       "sessions": 20,
-      "tCl": -5.64,
+      "tCl": -5.85,
       "df": 19,
-      "nEff": 243,
+      "nEff": 230,
       "posSessions": 1,
-      "dropBestBps": -3.701
+      "dropBestBps": -4.194
      }
     },
     "ea:max_hold=5-persist=True-thr_mult=1.5": {
      "train": {
-      "n": 307,
-      "meanBps": -3.508,
-      "t": -6.43,
+      "n": 305,
+      "meanBps": -3.294,
+      "t": -6.01,
       "sessions": 40,
-      "tCl": -7.3,
+      "tCl": -6.87,
       "df": 39,
-      "nEff": 307,
-      "posSessions": 6,
-      "dropBestBps": -3.711
+      "nEff": 305,
+      "posSessions": 7,
+      "dropBestBps": -3.49
      },
      "test": {
-      "n": 106,
-      "meanBps": -4.602,
-      "t": -3.51,
+      "n": 101,
+      "meanBps": -5.359,
+      "t": -3.85,
       "sessions": 20,
-      "tCl": -5.95,
+      "tCl": -6.69,
       "df": 19,
-      "nEff": 106,
-      "posSessions": 2,
-      "dropBestBps": -4.824
+      "nEff": 101,
+      "posSessions": 1,
+      "dropBestBps": -5.615
      }
     },
     "ea:max_hold=10-persist=False-thr_mult=1.5": {
      "train": {
-      "n": 563,
-      "meanBps": -3.512,
-      "t": -8.58,
+      "n": 566,
+      "meanBps": -3.367,
+      "t": -8.19,
       "sessions": 40,
-      "tCl": -10.38,
+      "tCl": -9.91,
       "df": 39,
-      "nEff": 563,
+      "nEff": 566,
       "posSessions": 3,
-      "dropBestBps": -3.627
+      "dropBestBps": -3.478
      },
      "test": {
-      "n": 243,
-      "meanBps": -3.376,
-      "t": -4.22,
+      "n": 230,
+      "meanBps": -3.825,
+      "t": -4.57,
       "sessions": 20,
-      "tCl": -5.62,
+      "tCl": -5.84,
       "df": 19,
-      "nEff": 243,
+      "nEff": 230,
       "posSessions": 1,
-      "dropBestBps": -3.714
+      "dropBestBps": -4.207
      }
     },
     "ea:max_hold=10-persist=True-thr_mult=1.5": {
      "train": {
-      "n": 307,
-      "meanBps": -3.486,
-      "t": -6.36,
+      "n": 305,
+      "meanBps": -3.272,
+      "t": -5.93,
       "sessions": 40,
-      "tCl": -7.26,
+      "tCl": -6.84,
       "df": 39,
-      "nEff": 307,
-      "posSessions": 6,
-      "dropBestBps": -3.688
+      "nEff": 305,
+      "posSessions": 7,
+      "dropBestBps": -3.467
      },
      "test": {
-      "n": 106,
-      "meanBps": -4.602,
-      "t": -3.51,
+      "n": 101,
+      "meanBps": -5.359,
+      "t": -3.85,
       "sessions": 20,
-      "tCl": -5.95,
+      "tCl": -6.69,
       "df": 19,
-      "nEff": 106,
-      "posSessions": 2,
-      "dropBestBps": -4.824
+      "nEff": 101,
+      "posSessions": 1,
+      "dropBestBps": -5.615
      }
     },
     "ea:max_hold=20-persist=False-thr_mult=1.5": {
      "train": {
-      "n": 563,
-      "meanBps": -3.512,
-      "t": -8.58,
+      "n": 566,
+      "meanBps": -3.367,
+      "t": -8.19,
       "sessions": 40,
-      "tCl": -10.38,
+      "tCl": -9.91,
       "df": 39,
-      "nEff": 563,
+      "nEff": 566,
       "posSessions": 3,
-      "dropBestBps": -3.627
+      "dropBestBps": -3.478
      },
      "test": {
-      "n": 243,
-      "meanBps": -3.376,
-      "t": -4.22,
+      "n": 230,
+      "meanBps": -3.825,
+      "t": -4.57,
       "sessions": 20,
-      "tCl": -5.62,
+      "tCl": -5.84,
       "df": 19,
-      "nEff": 243,
+      "nEff": 230,
       "posSessions": 1,
-      "dropBestBps": -3.714
+      "dropBestBps": -4.207
      }
     },
     "ea:max_hold=20-persist=True-thr_mult=1.5": {
      "train": {
-      "n": 307,
-      "meanBps": -3.486,
-      "t": -6.36,
+      "n": 305,
+      "meanBps": -3.272,
+      "t": -5.93,
       "sessions": 40,
-      "tCl": -7.26,
+      "tCl": -6.84,
       "df": 39,
-      "nEff": 307,
-      "posSessions": 6,
-      "dropBestBps": -3.688
+      "nEff": 305,
+      "posSessions": 7,
+      "dropBestBps": -3.467
      },
      "test": {
-      "n": 106,
-      "meanBps": -4.602,
-      "t": -3.51,
+      "n": 101,
+      "meanBps": -5.359,
+      "t": -3.85,
       "sessions": 20,
-      "tCl": -5.95,
+      "tCl": -6.69,
       "df": 19,
-      "nEff": 106,
-      "posSessions": 2,
-      "dropBestBps": -4.824
+      "nEff": 101,
+      "posSessions": 1,
+      "dropBestBps": -5.615
      }
     },
     "ea:max_hold=5-persist=False-thr_mult=2.5": {
      "train": {
-      "n": 55,
-      "meanBps": -5.105,
-      "t": -3.16,
+      "n": 53,
+      "meanBps": -4.446,
+      "t": -2.75,
       "sessions": 32,
-      "tCl": -2.56,
+      "tCl": -2.21,
       "df": 31,
-      "nEff": 36,
-      "posSessions": 13,
-      "dropBestBps": -5.89
+      "nEff": 34,
+      "posSessions": 14,
+      "dropBestBps": -5.235
      },
      "test": {
-      "n": 17,
-      "meanBps": -1.955,
-      "t": -0.52,
-      "sessions": 11,
-      "tCl": -0.66,
-      "df": 10,
-      "nEff": 17,
-      "posSessions": 5,
-      "dropBestBps": -3.328
+      "n": 16,
+      "meanBps": -2.438,
+      "t": -0.62,
+      "sessions": 10,
+      "tCl": -0.79,
+      "df": 9,
+      "nEff": 16,
+      "posSessions": 4,
+      "dropBestBps": -3.935
      }
     },
     "ea:max_hold=5-persist=True-thr_mult=2.5": {
      "train": {
-      "n": 40,
-      "meanBps": -5.259,
-      "t": -2.92,
+      "n": 39,
+      "meanBps": -4.123,
+      "t": -2.35,
       "sessions": 30,
-      "tCl": -3.3,
+      "tCl": -2.95,
       "df": 29,
-      "nEff": 40,
-      "posSessions": 11,
-      "dropBestBps": -5.736
+      "nEff": 39,
+      "posSessions": 12,
+      "dropBestBps": -4.582
      },
      "test": {
-      "n": 12,
-      "meanBps": -3.143,
-      "t": -0.61,
-      "sessions": 7,
-      "tCl": -0.68,
-      "df": 6,
-      "nEff": 12,
-      "posSessions": 4,
-      "dropBestBps": -5.247
+      "n": 11,
+      "meanBps": -3.953,
+      "t": -0.71,
+      "sessions": 6,
+      "tCl": -0.8,
+      "df": 5,
+      "nEff": 11,
+      "posSessions": 3,
+      "dropBestBps": -6.349
      }
     },
     "ea:max_hold=10-persist=False-thr_mult=2.5": {
      "train": {
-      "n": 55,
-      "meanBps": -5.166,
-      "t": -3.17,
+      "n": 53,
+      "meanBps": -4.509,
+      "t": -2.76,
       "sessions": 32,
-      "tCl": -2.57,
+      "tCl": -2.21,
       "df": 31,
-      "nEff": 36,
-      "posSessions": 13,
-      "dropBestBps": -5.953
+      "nEff": 34,
+      "posSessions": 14,
+      "dropBestBps": -5.301
      },
      "test": {
-      "n": 17,
-      "meanBps": -1.955,
-      "t": -0.52,
-      "sessions": 11,
-      "tCl": -0.66,
-      "df": 10,
-      "nEff": 17,
-      "posSessions": 5,
-      "dropBestBps": -3.328
+      "n": 16,
+      "meanBps": -2.438,
+      "t": -0.62,
+      "sessions": 10,
+      "tCl": -0.79,
+      "df": 9,
+      "nEff": 16,
+      "posSessions": 4,
+      "dropBestBps": -3.935
      }
     },
     "ea:max_hold=10-persist=True-thr_mult=2.5": {
      "train": {
-      "n": 40,
-      "meanBps": -5.825,
-      "t": -3.07,
+      "n": 39,
+      "meanBps": -4.703,
+      "t": -2.51,
       "sessions": 30,
-      "tCl": -3.59,
+      "tCl": -3.21,
       "df": 29,
-      "nEff": 40,
-      "posSessions": 11,
-      "dropBestBps": -6.316
+      "nEff": 39,
+      "posSessions": 12,
+      "dropBestBps": -5.177
      },
      "test": {
-      "n": 12,
-      "meanBps": -3.143,
-      "t": -0.61,
-      "sessions": 7,
-      "tCl": -0.68,
-      "df": 6,
-      "nEff": 12,
-      "posSessions": 4,
-      "dropBestBps": -5.247
+      "n": 11,
+      "meanBps": -3.953,
+      "t": -0.71,
+      "sessions": 6,
+      "tCl": -0.8,
+      "df": 5,
+      "nEff": 11,
+      "posSessions": 3,
+      "dropBestBps": -6.349
      }
     },
     "ea:max_hold=20-persist=False-thr_mult=2.5": {
      "train": {
-      "n": 55,
-      "meanBps": -5.166,
-      "t": -3.17,
+      "n": 53,
+      "meanBps": -4.509,
+      "t": -2.76,
       "sessions": 32,
-      "tCl": -2.57,
+      "tCl": -2.21,
       "df": 31,
-      "nEff": 36,
-      "posSessions": 13,
-      "dropBestBps": -5.953
+      "nEff": 34,
+      "posSessions": 14,
+      "dropBestBps": -5.301
      },
      "test": {
-      "n": 17,
-      "meanBps": -1.955,
-      "t": -0.52,
-      "sessions": 11,
-      "tCl": -0.66,
-      "df": 10,
-      "nEff": 17,
-      "posSessions": 5,
-      "dropBestBps": -3.328
+      "n": 16,
+      "meanBps": -2.438,
+      "t": -0.62,
+      "sessions": 10,
+      "tCl": -0.79,
+      "df": 9,
+      "nEff": 16,
+      "posSessions": 4,
+      "dropBestBps": -3.935
      }
     },
     "ea:max_hold=20-persist=True-thr_mult=2.5": {
      "train": {
-      "n": 40,
-      "meanBps": -5.825,
-      "t": -3.07,
+      "n": 39,
+      "meanBps": -4.703,
+      "t": -2.51,
       "sessions": 30,
-      "tCl": -3.59,
+      "tCl": -3.21,
       "df": 29,
-      "nEff": 40,
-      "posSessions": 11,
-      "dropBestBps": -6.316
+      "nEff": 39,
+      "posSessions": 12,
+      "dropBestBps": -5.177
      },
      "test": {
-      "n": 12,
-      "meanBps": -3.143,
-      "t": -0.61,
-      "sessions": 7,
-      "tCl": -0.68,
-      "df": 6,
-      "nEff": 12,
-      "posSessions": 4,
-      "dropBestBps": -5.247
+      "n": 11,
+      "meanBps": -3.953,
+      "t": -0.71,
+      "sessions": 6,
+      "tCl": -0.8,
+      "df": 5,
+      "nEff": 11,
+      "posSessions": 3,
+      "dropBestBps": -6.349
      }
     },
     "ea:max_hold=5-persist=False-thr_mult=3.5": {
@@ -922,170 +922,40 @@
      "segment": "side:short|sector:XLE",
      "variant": "or:last_entry=630-range_min=30-target_mult=1.5",
      "train": {
-      "n": 667,
-      "meanBps": 16.787,
-      "t": 3.47,
+      "n": 666,
+      "meanBps": 17.78,
+      "t": 3.67,
       "sessions": 39,
-      "tCl": 1.28,
+      "tCl": 1.36,
       "df": 38,
-      "nEff": 91,
-      "posSessions": 18,
-      "dropBestBps": 10.205
+      "nEff": 92,
+      "posSessions": 19,
+      "dropBestBps": 11.238
      },
      "test": {
-      "n": 280,
-      "meanBps": 38.639,
-      "t": 4.55,
+      "n": 292,
+      "meanBps": 34.523,
+      "t": 4.19,
       "sessions": 19,
-      "tCl": 1.88,
+      "tCl": 1.71,
       "df": 18,
-      "nEff": 48,
-      "posSessions": 12,
-      "dropBestBps": 28.164
-     },
-     "p": 0.03792,
-     "pTrade": 0.0,
-     "q": 0.455,
-     "regimeDependent": false,
-     "marketDependent": null,
-     "approved": false,
-     "reasons": [
-      "q 0.46 > 0.10 - could be luck among 12 tested"
-     ],
-     "params": {
-      "range_min": 30,
-      "target_mult": 1.5,
-      "last_entry": 630
-     }
-    },
-    {
-     "strategy": "opening_range",
-     "segment": "liq:mega|sector:XLE",
-     "variant": "or:last_entry=630-range_min=5-target_mult=1.5",
-     "train": {
-      "n": 61,
-      "meanBps": 20.117,
-      "t": 1.68,
-      "sessions": 28,
-      "tCl": 1.84,
-      "df": 27,
-      "nEff": 61,
-      "posSessions": 17,
-      "dropBestBps": 16.162
-     },
-     "test": {
-      "n": 35,
-      "meanBps": 2.351,
-      "t": 0.15,
-      "sessions": 15,
-      "tCl": 0.12,
-      "df": 14,
-      "nEff": 24,
-      "posSessions": 8,
-      "dropBestBps": -7.563
-     },
-     "p": 0.4519,
-     "pTrade": 0.44055,
-     "q": 0.8265,
-     "regimeDependent": false,
-     "marketDependent": null,
-     "approved": false,
-     "reasons": [
-      "q 0.83 > 0.10 - could be luck among 12 tested",
-      "one session carries it - without its best day it loses"
-     ],
-     "params": {
-      "range_min": 5,
-      "target_mult": 1.5,
-      "last_entry": 630
-     }
-    },
-    {
-     "strategy": "opening_range",
-     "segment": "liq:large|sector:XLK",
-     "variant": "or:last_entry=630-range_min=30-target_mult=3.0",
-     "train": {
-      "n": 873,
-      "meanBps": 14.028,
-      "t": 2.28,
-      "sessions": 40,
-      "tCl": 1.49,
-      "df": 39,
-      "nEff": 374,
-      "posSessions": 23,
-      "dropBestBps": 11.036
-     },
-     "test": {
-      "n": 471,
-      "meanBps": -3.467,
-      "t": -0.37,
-      "sessions": 20,
-      "tCl": -0.2,
-      "df": 19,
-      "nEff": 140,
-      "posSessions": 8,
-      "dropBestBps": -11.324
-     },
-     "p": 0.57932,
-     "pTrade": 0.6451,
-     "q": 0.8265,
-     "regimeDependent": false,
-     "marketDependent": null,
-     "approved": false,
-     "reasons": [
-      "q 0.83 > 0.10 - could be luck among 12 tested",
-      "-3.5 bps a trade out of sample (needs >= 0.5)",
-      "one session carries it - without its best day it loses"
-     ],
-     "params": {
-      "range_min": 30,
-      "target_mult": 3.0,
-      "last_entry": 630
-     }
-    },
-    {
-     "strategy": "opening_range",
-     "segment": "sector:XLK|mkt:calm",
-     "variant": "or:last_entry=690-range_min=30-target_mult=3.0",
-     "train": {
-      "n": 2042,
-      "meanBps": 15.09,
-      "t": 3.82,
-      "sessions": 25,
-      "tCl": 1.35,
-      "df": 24,
-      "nEff": 256,
+      "nEff": 49,
       "posSessions": 11,
-      "dropBestBps": 9.383
+      "dropBestBps": 24.072
      },
-     "test": {
-      "n": 154,
-      "meanBps": -17.857,
-      "t": -1.3,
-      "sessions": 2,
-      "tCl": -0.35,
-      "df": 1,
-      "nEff": 11,
-      "posSessions": 1,
-      "dropBestBps": -69.303
-     },
-     "p": 0.60634,
-     "pTrade": 0.90251,
-     "q": 0.8265,
+     "p": 0.05198,
+     "pTrade": 1e-05,
+     "q": 0.5718,
      "regimeDependent": false,
-     "marketDependent": "calm",
+     "marketDependent": null,
      "approved": false,
      "reasons": [
-      "q 0.83 > 0.10 - could be luck among 12 tested",
-      "-17.9 bps a trade out of sample (needs >= 0.5)",
-      "traded on 2 of 20 test sessions (needs >= 8)",
-      "one session carries it - without its best day it loses",
-      "the market read is the calendar here: calm on 2 of 20 test sessions"
+      "q 0.57 > 0.10 - could be luck among 11 tested"
      ],
      "params": {
       "range_min": 30,
-      "target_mult": 3.0,
-      "last_entry": 690
+      "target_mult": 1.5,
+      "last_entry": 630
      }
     },
     {
@@ -1093,127 +963,39 @@
      "segment": "liq:mega|sector:XLY",
      "variant": "or:last_entry=690-range_min=5-target_mult=1.5",
      "train": {
-      "n": 181,
-      "meanBps": 9.257,
-      "t": 1.41,
+      "n": 179,
+      "meanBps": 9.213,
+      "t": 1.39,
       "sessions": 40,
-      "tCl": 1.32,
+      "tCl": 1.3,
       "df": 39,
-      "nEff": 159,
+      "nEff": 157,
       "posSessions": 23,
-      "dropBestBps": 6.621
+      "dropBestBps": 6.545
      },
      "test": {
-      "n": 68,
-      "meanBps": 14.587,
-      "t": 1.12,
+      "n": 70,
+      "meanBps": 11.989,
+      "t": 0.94,
       "sessions": 20,
-      "tCl": 0.94,
+      "tCl": 0.76,
       "df": 19,
       "nEff": 47,
       "posSessions": 10,
-      "dropBestBps": 5.734
+      "dropBestBps": 3.208
      },
-     "p": 0.18073,
-     "pTrade": 0.13064,
-     "q": 0.8265,
+     "p": 0.22694,
+     "pTrade": 0.17416,
+     "q": 0.8783,
      "regimeDependent": false,
      "marketDependent": null,
      "approved": false,
      "reasons": [
-      "q 0.83 > 0.10 - could be luck among 12 tested"
+      "q 0.88 > 0.10 - could be luck among 11 tested"
      ],
      "params": {
       "range_min": 5,
       "target_mult": 1.5,
-      "last_entry": 690
-     }
-    },
-    {
-     "strategy": "opening_range",
-     "segment": "liq:small|sector:XLK",
-     "variant": "or:last_entry=690-range_min=30-target_mult=2.0",
-     "train": {
-      "n": 229,
-      "meanBps": 24.671,
-      "t": 2.01,
-      "sessions": 40,
-      "tCl": 1.32,
-      "df": 39,
-      "nEff": 98,
-      "posSessions": 21,
-      "dropBestBps": 15.107
-     },
-     "test": {
-      "n": 106,
-      "meanBps": -2.753,
-      "t": -0.13,
-      "sessions": 20,
-      "tCl": -0.13,
-      "df": 19,
-      "nEff": 106,
-      "posSessions": 9,
-      "dropBestBps": -10.228
-     },
-     "p": 0.55039,
-     "pTrade": 0.55107,
-     "q": 0.8265,
-     "regimeDependent": false,
-     "marketDependent": null,
-     "approved": false,
-     "reasons": [
-      "q 0.83 > 0.10 - could be luck among 12 tested",
-      "-2.8 bps a trade out of sample (needs >= 0.5)",
-      "one session carries it - without its best day it loses"
-     ],
-     "params": {
-      "range_min": 30,
-      "target_mult": 2.0,
-      "last_entry": 690
-     }
-    },
-    {
-     "strategy": "opening_range",
-     "segment": "liq:mega|mkt:calm",
-     "variant": "or:last_entry=690-range_min=30-target_mult=2.0",
-     "train": {
-      "n": 1774,
-      "meanBps": 7.737,
-      "t": 2.67,
-      "sessions": 25,
-      "tCl": 1.27,
-      "df": 24,
-      "nEff": 398,
-      "posSessions": 13,
-      "dropBestBps": 4.595
-     },
-     "test": {
-      "n": 137,
-      "meanBps": -10.126,
-      "t": -0.9,
-      "sessions": 2,
-      "tCl": -0.4,
-      "df": 1,
-      "nEff": 27,
-      "posSessions": 1,
-      "dropBestBps": -34.495
-     },
-     "p": 0.61984,
-     "pTrade": 0.81503,
-     "q": 0.8265,
-     "regimeDependent": false,
-     "marketDependent": "calm",
-     "approved": false,
-     "reasons": [
-      "q 0.83 > 0.10 - could be luck among 12 tested",
-      "-10.1 bps a trade out of sample (needs >= 0.5)",
-      "traded on 2 of 20 test sessions (needs >= 8)",
-      "one session carries it - without its best day it loses",
-      "the market read is the calendar here: calm on 2 of 20 test sessions"
-     ],
-     "params": {
-      "range_min": 30,
-      "target_mult": 2.0,
       "last_entry": 690
      }
     },
@@ -1222,36 +1004,35 @@
      "segment": "liq:mid|sector:none",
      "variant": "or:last_entry=630-range_min=30-target_mult=3.0",
      "train": {
-      "n": 147,
-      "meanBps": 10.413,
-      "t": 0.94,
+      "n": 149,
+      "meanBps": 10.404,
+      "t": 0.95,
       "sessions": 40,
-      "tCl": 1.03,
+      "tCl": 1.04,
       "df": 39,
-      "nEff": 147,
+      "nEff": 149,
       "posSessions": 19,
-      "dropBestBps": 4.026
+      "dropBestBps": 4.106
      },
      "test": {
       "n": 82,
-      "meanBps": 12.827,
-      "t": 0.74,
+      "meanBps": 15.375,
+      "t": 0.88,
       "sessions": 20,
-      "tCl": 0.6,
+      "tCl": 0.72,
       "df": 19,
-      "nEff": 54,
-      "posSessions": 9,
-      "dropBestBps": -2.696
+      "nEff": 55,
+      "posSessions": 10,
+      "dropBestBps": 0.053
      },
-     "p": 0.27833,
-     "pTrade": 0.22976,
-     "q": 0.8265,
+     "p": 0.23954,
+     "pTrade": 0.18855,
+     "q": 0.8783,
      "regimeDependent": false,
      "marketDependent": null,
      "approved": false,
      "reasons": [
-      "q 0.83 > 0.10 - could be luck among 12 tested",
-      "one session carries it - without its best day it loses"
+      "q 0.88 > 0.10 - could be luck among 11 tested"
      ],
      "params": {
       "range_min": 30,
@@ -1261,39 +1042,82 @@
     },
     {
      "strategy": "opening_range",
-     "segment": "tod:mid|sector:XLK",
-     "variant": "or:last_entry=690-range_min=30-target_mult=3.0",
+     "segment": "liq:small|sector:XLK",
+     "variant": "or:last_entry=690-range_min=30-target_mult=2.0",
      "train": {
-      "n": 1006,
-      "meanBps": 14.171,
-      "t": 2.78,
+      "n": 228,
+      "meanBps": 25.636,
+      "t": 2.1,
       "sessions": 40,
-      "tCl": 1.26,
+      "tCl": 1.37,
       "df": 39,
-      "nEff": 206,
-      "posSessions": 20,
-      "dropBestBps": 9.228
+      "nEff": 98,
+      "posSessions": 21,
+      "dropBestBps": 16.068
      },
      "test": {
-      "n": 457,
-      "meanBps": -11.651,
-      "t": -1.36,
+      "n": 105,
+      "meanBps": -4.535,
+      "t": -0.21,
       "sessions": 20,
-      "tCl": -0.74,
+      "tCl": -0.21,
       "df": 19,
-      "nEff": 135,
-      "posSessions": 7,
-      "dropBestBps": -18.485
+      "nEff": 105,
+      "posSessions": 9,
+      "dropBestBps": -12.193
      },
-     "p": 0.76589,
-     "pTrade": 0.91349,
-     "q": 0.9191,
+     "p": 0.58098,
+     "pTrade": 0.58173,
+     "q": 0.9435,
      "regimeDependent": false,
      "marketDependent": null,
      "approved": false,
      "reasons": [
-      "q 0.92 > 0.10 - could be luck among 12 tested",
-      "-11.7 bps a trade out of sample (needs >= 0.5)",
+      "q 0.94 > 0.10 - could be luck among 11 tested",
+      "-4.5 bps a trade out of sample (needs >= 0.5)",
+      "one session carries it - without its best day it loses"
+     ],
+     "params": {
+      "range_min": 30,
+      "target_mult": 2.0,
+      "last_entry": 690
+     }
+    },
+    {
+     "strategy": "opening_range",
+     "segment": "tod:mid|sector:XLK",
+     "variant": "or:last_entry=690-range_min=30-target_mult=3.0",
+     "train": {
+      "n": 1001,
+      "meanBps": 14.278,
+      "t": 2.79,
+      "sessions": 40,
+      "tCl": 1.26,
+      "df": 39,
+      "nEff": 205,
+      "posSessions": 20,
+      "dropBestBps": 9.312
+     },
+     "test": {
+      "n": 465,
+      "meanBps": -4.297,
+      "t": -0.51,
+      "sessions": 20,
+      "tCl": -0.26,
+      "df": 19,
+      "nEff": 121,
+      "posSessions": 8,
+      "dropBestBps": -10.85
+     },
+     "p": 0.60038,
+     "pTrade": 0.69373,
+     "q": 0.9435,
+     "regimeDependent": false,
+     "marketDependent": null,
+     "approved": false,
+     "reasons": [
+      "q 0.94 > 0.10 - could be luck among 11 tested",
+      "-4.3 bps a trade out of sample (needs >= 0.5)",
       "one session carries it - without its best day it loses"
      ],
      "params": {
@@ -1304,39 +1128,125 @@
     },
     {
      "strategy": "opening_range",
-     "segment": "side:long|sector:XLK",
+     "segment": "liq:large|sector:XLK",
      "variant": "or:last_entry=690-range_min=30-target_mult=3.0",
      "train": {
-      "n": 1640,
-      "meanBps": 20.039,
-      "t": 4.61,
+      "n": 1246,
+      "meanBps": 11.084,
+      "t": 2.22,
       "sessions": 40,
-      "tCl": 1.68,
+      "tCl": 1.1,
       "df": 39,
-      "nEff": 218,
-      "posSessions": 22,
-      "dropBestBps": 11.973
+      "nEff": 304,
+      "posSessions": 19,
+      "dropBestBps": 7.521
      },
      "test": {
-      "n": 835,
-      "meanBps": -40.008,
-      "t": -6.49,
+      "n": 633,
+      "meanBps": -2.066,
+      "t": -0.27,
       "sessions": 20,
-      "tCl": -2.26,
+      "tCl": -0.17,
       "df": 19,
-      "nEff": 101,
-      "posSessions": 5,
-      "dropBestBps": -49.383
+      "nEff": 267,
+      "posSessions": 10,
+      "dropBestBps": -8.093
      },
-     "p": 0.98196,
-     "pTrade": 1.0,
-     "q": 0.9977,
+     "p": 0.56753,
+     "pTrade": 0.60458,
+     "q": 0.9435,
      "regimeDependent": false,
      "marketDependent": null,
      "approved": false,
      "reasons": [
-      "q 1.00 > 0.10 - could be luck among 12 tested",
-      "-40.0 bps a trade out of sample (needs >= 0.5)",
+      "q 0.94 > 0.10 - could be luck among 11 tested",
+      "-2.1 bps a trade out of sample (needs >= 0.5)",
+      "one session carries it - without its best day it loses"
+     ],
+     "params": {
+      "range_min": 30,
+      "target_mult": 3.0,
+      "last_entry": 690
+     }
+    },
+    {
+     "strategy": "opening_range",
+     "segment": "liq:mega|sector:XLE",
+     "variant": "or:last_entry=630-range_min=15-target_mult=1.5",
+     "train": {
+      "n": 115,
+      "meanBps": 15.64,
+      "t": 1.64,
+      "sessions": 38,
+      "tCl": 1.38,
+      "df": 37,
+      "nEff": 81,
+      "posSessions": 19,
+      "dropBestBps": 10.952
+     },
+     "test": {
+      "n": 51,
+      "meanBps": -9.234,
+      "t": -0.71,
+      "sessions": 18,
+      "tCl": -0.51,
+      "df": 17,
+      "nEff": 26,
+      "posSessions": 8,
+      "dropBestBps": -17.971
+     },
+     "p": 0.69051,
+     "pTrade": 0.76063,
+     "q": 0.9495,
+     "regimeDependent": false,
+     "marketDependent": null,
+     "approved": false,
+     "reasons": [
+      "q 0.95 > 0.10 - could be luck among 11 tested",
+      "-9.2 bps a trade out of sample (needs >= 0.5)",
+      "one session carries it - without its best day it loses"
+     ],
+     "params": {
+      "range_min": 15,
+      "target_mult": 1.5,
+      "last_entry": 630
+     }
+    },
+    {
+     "strategy": "opening_range",
+     "segment": "side:long|sector:XLK",
+     "variant": "or:last_entry=690-range_min=30-target_mult=3.0",
+     "train": {
+      "n": 1658,
+      "meanBps": 17.636,
+      "t": 4.07,
+      "sessions": 40,
+      "tCl": 1.43,
+      "df": 39,
+      "nEff": 205,
+      "posSessions": 22,
+      "dropBestBps": 9.527
+     },
+     "test": {
+      "n": 837,
+      "meanBps": -27.827,
+      "t": -4.41,
+      "sessions": 20,
+      "tCl": -1.41,
+      "df": 19,
+      "nEff": 86,
+      "posSessions": 6,
+      "dropBestBps": -37.628
+     },
+     "p": 0.91294,
+     "pTrade": 0.99999,
+     "q": 1.0,
+     "regimeDependent": false,
+     "marketDependent": null,
+     "approved": false,
+     "reasons": [
+      "q 1.00 > 0.10 - could be luck among 11 tested",
+      "-27.8 bps a trade out of sample (needs >= 0.5)",
       "one session carries it - without its best day it loses"
      ],
      "params": {
@@ -1351,35 +1261,35 @@
      "variant": "or:last_entry=630-range_min=30-target_mult=3.0",
      "train": {
       "n": 115,
-      "meanBps": 10.262,
-      "t": 1.53,
+      "meanBps": 10.136,
+      "t": 1.51,
       "sessions": 39,
-      "tCl": 1.28,
+      "tCl": 1.26,
       "df": 38,
       "nEff": 80,
       "posSessions": 21,
-      "dropBestBps": 6.305
+      "dropBestBps": 6.173
      },
      "test": {
       "n": 57,
-      "meanBps": -35.381,
-      "t": -4.45,
+      "meanBps": -31.209,
+      "t": -3.78,
       "sessions": 20,
-      "tCl": -3.2,
+      "tCl": -2.8,
       "df": 19,
-      "nEff": 30,
-      "posSessions": 3,
-      "dropBestBps": -40.701
+      "nEff": 31,
+      "posSessions": 4,
+      "dropBestBps": -36.214
      },
-     "p": 0.99765,
-     "pTrade": 1.0,
-     "q": 0.9977,
+     "p": 0.99424,
+     "pTrade": 0.99992,
+     "q": 1.0,
      "regimeDependent": false,
      "marketDependent": null,
      "approved": false,
      "reasons": [
-      "q 1.00 > 0.10 - could be luck among 12 tested",
-      "-35.4 bps a trade out of sample (needs >= 0.5)",
+      "q 1.00 > 0.10 - could be luck among 11 tested",
+      "-31.2 bps a trade out of sample (needs >= 0.5)",
       "one session carries it - without its best day it loses"
      ],
      "params": {
@@ -1387,440 +1297,484 @@
       "target_mult": 3.0,
       "last_entry": 630
      }
+    },
+    {
+     "strategy": "opening_range",
+     "segment": "sector:XLK|mkt:calm",
+     "variant": "or:last_entry=690-range_min=30-target_mult=3.0",
+     "train": {
+      "n": 2119,
+      "meanBps": 12.023,
+      "t": 3.11,
+      "sessions": 26,
+      "tCl": 1.07,
+      "df": 25,
+      "nEff": 253,
+      "posSessions": 11,
+      "dropBestBps": 6.381
+     },
+     "test": {
+      "n": 77,
+      "meanBps": 33.589,
+      "t": 1.65,
+      "sessions": 1,
+      "tCl": 0.0,
+      "df": 0,
+      "nEff": null,
+      "posSessions": 1,
+      "dropBestBps": null
+     },
+     "p": 1.0,
+     "pTrade": 0.04995,
+     "q": 1.0,
+     "regimeDependent": false,
+     "marketDependent": "calm",
+     "approved": false,
+     "reasons": [
+      "q 1.00 > 0.10 - could be luck among 11 tested",
+      "traded on 1 of 20 test sessions (needs >= 8)",
+      "one session carries it - without its best day it loses",
+      "the market read is the calendar here: calm on 1 of 20 test sessions"
+     ],
+     "params": {
+      "range_min": 30,
+      "target_mult": 3.0,
+      "last_entry": 690
+     }
     }
    ],
-   "tested": 11,
+   "tested": 10,
    "overall": {
     "or:last_entry=630-range_min=5-target_mult=1.5": {
      "train": {
-      "n": 20068,
-      "meanBps": -14.321,
-      "t": -19.13,
+      "n": 20092,
+      "meanBps": -13.952,
+      "t": -18.58,
       "sessions": 40,
-      "tCl": -6.84,
+      "tCl": -6.68,
       "df": 39,
-      "nEff": 2567,
+      "nEff": 2595,
       "posSessions": 5,
-      "dropBestBps": -15.472
+      "dropBestBps": -15.091
      },
      "test": {
-      "n": 9721,
-      "meanBps": -6.922,
-      "t": -5.24,
+      "n": 9751,
+      "meanBps": -8.246,
+      "t": -6.32,
       "sessions": 20,
-      "tCl": -1.08,
+      "tCl": -1.27,
       "df": 19,
-      "nEff": 416,
+      "nEff": 394,
       "posSessions": 5,
-      "dropBestBps": -11.478
+      "dropBestBps": -12.864
      }
     },
     "or:last_entry=690-range_min=5-target_mult=1.5": {
      "train": {
-      "n": 21972,
-      "meanBps": -13.803,
-      "t": -19.41,
+      "n": 22035,
+      "meanBps": -13.507,
+      "t": -18.94,
       "sessions": 40,
-      "tCl": -6.99,
+      "tCl": -6.87,
       "df": 39,
-      "nEff": 2853,
+      "nEff": 2901,
       "posSessions": 5,
-      "dropBestBps": -14.845
+      "dropBestBps": -14.538
      },
      "test": {
-      "n": 10647,
-      "meanBps": -5.049,
-      "t": -4.02,
+      "n": 10665,
+      "meanBps": -6.164,
+      "t": -4.97,
       "sessions": 20,
-      "tCl": -0.81,
+      "tCl": -0.97,
       "df": 19,
-      "nEff": 435,
+      "nEff": 409,
       "posSessions": 6,
-      "dropBestBps": -9.532
+      "dropBestBps": -10.705
      }
     },
     "or:last_entry=630-range_min=5-target_mult=2.0": {
      "train": {
-      "n": 20068,
-      "meanBps": -14.938,
-      "t": -18.61,
+      "n": 20092,
+      "meanBps": -14.572,
+      "t": -18.09,
       "sessions": 40,
-      "tCl": -5.88,
+      "tCl": -5.77,
       "df": 39,
-      "nEff": 2007,
+      "nEff": 2048,
       "posSessions": 6,
-      "dropBestBps": -16.396
+      "dropBestBps": -16.018
      },
      "test": {
-      "n": 9721,
-      "meanBps": -6.155,
-      "t": -4.28,
+      "n": 9751,
+      "meanBps": -7.276,
+      "t": -5.11,
       "sessions": 20,
-      "tCl": -0.85,
+      "tCl": -0.99,
       "df": 19,
-      "nEff": 386,
+      "nEff": 369,
       "posSessions": 6,
-      "dropBestBps": -11.534
+      "dropBestBps": -12.703
      }
     },
     "or:last_entry=690-range_min=5-target_mult=2.0": {
      "train": {
-      "n": 21972,
-      "meanBps": -14.375,
-      "t": -18.88,
+      "n": 22035,
+      "meanBps": -14.082,
+      "t": -18.45,
       "sessions": 40,
-      "tCl": -5.97,
+      "tCl": -5.9,
       "df": 39,
-      "nEff": 2198,
+      "nEff": 2251,
       "posSessions": 5,
-      "dropBestBps": -15.695
+      "dropBestBps": -15.39
      },
      "test": {
-      "n": 10647,
-      "meanBps": -4.357,
-      "t": -3.19,
+      "n": 10665,
+      "meanBps": -5.28,
+      "t": -3.91,
       "sessions": 20,
-      "tCl": -0.63,
+      "tCl": -0.75,
       "df": 19,
-      "nEff": 412,
+      "nEff": 392,
       "posSessions": 6,
-      "dropBestBps": -9.558
+      "dropBestBps": -10.525
      }
     },
     "or:last_entry=630-range_min=5-target_mult=3.0": {
      "train": {
-      "n": 20068,
-      "meanBps": -15.6,
-      "t": -17.98,
+      "n": 20092,
+      "meanBps": -15.284,
+      "t": -17.53,
       "sessions": 40,
-      "tCl": -5.29,
+      "tCl": -5.2,
       "df": 39,
-      "nEff": 1735,
+      "nEff": 1768,
       "posSessions": 6,
-      "dropBestBps": -17.505
+      "dropBestBps": -17.178
      },
      "test": {
-      "n": 9721,
-      "meanBps": -3.892,
-      "t": -2.43,
+      "n": 9751,
+      "meanBps": -4.973,
+      "t": -3.15,
       "sessions": 20,
-      "tCl": -0.43,
+      "tCl": -0.54,
       "df": 19,
-      "nEff": 304,
+      "nEff": 291,
       "posSessions": 7,
-      "dropBestBps": -11.158
+      "dropBestBps": -12.279
      }
     },
     "or:last_entry=690-range_min=5-target_mult=3.0": {
      "train": {
-      "n": 21972,
-      "meanBps": -15.048,
-      "t": -18.34,
+      "n": 22035,
+      "meanBps": -14.811,
+      "t": -17.99,
       "sessions": 40,
-      "tCl": -5.41,
+      "tCl": -5.35,
       "df": 39,
-      "nEff": 1909,
+      "nEff": 1951,
       "posSessions": 5,
-      "dropBestBps": -16.787
+      "dropBestBps": -16.539
      },
      "test": {
-      "n": 10647,
-      "meanBps": -2.363,
-      "t": -1.57,
+      "n": 10665,
+      "meanBps": -3.216,
+      "t": -2.16,
       "sessions": 20,
-      "tCl": -0.28,
+      "tCl": -0.37,
       "df": 19,
-      "nEff": 333,
+      "nEff": 319,
       "posSessions": 6,
-      "dropBestBps": -9.274
+      "dropBestBps": -10.164
      }
     },
     "or:last_entry=630-range_min=15-target_mult=1.5": {
      "train": {
-      "n": 27798,
-      "meanBps": -12.17,
-      "t": -17.38,
+      "n": 27756,
+      "meanBps": -12.118,
+      "t": -17.26,
       "sessions": 40,
-      "tCl": -4.46,
+      "tCl": -4.43,
       "df": 39,
-      "nEff": 1827,
+      "nEff": 1831,
       "posSessions": 6,
-      "dropBestBps": -13.674
+      "dropBestBps": -13.623
      },
      "test": {
-      "n": 14166,
-      "meanBps": -3.233,
-      "t": -2.71,
+      "n": 14153,
+      "meanBps": -4.329,
+      "t": -3.64,
       "sessions": 20,
-      "tCl": -0.47,
+      "tCl": -0.61,
       "df": 19,
-      "nEff": 418,
+      "nEff": 393,
       "posSessions": 6,
-      "dropBestBps": -8.364
+      "dropBestBps": -9.528
      }
     },
     "or:last_entry=690-range_min=15-target_mult=1.5": {
      "train": {
-      "n": 31940,
-      "meanBps": -11.798,
-      "t": -18.26,
+      "n": 31917,
+      "meanBps": -11.796,
+      "t": -18.22,
       "sessions": 40,
-      "tCl": -4.74,
+      "tCl": -4.73,
       "df": 39,
-      "nEff": 2149,
+      "nEff": 2153,
       "posSessions": 7,
-      "dropBestBps": -13.141
+      "dropBestBps": -13.139
      },
      "test": {
-      "n": 16193,
-      "meanBps": -1.753,
-      "t": -1.59,
+      "n": 16163,
+      "meanBps": -2.484,
+      "t": -2.26,
       "sessions": 20,
-      "tCl": -0.27,
+      "tCl": -0.37,
       "df": 19,
-      "nEff": 455,
+      "nEff": 433,
       "posSessions": 7,
-      "dropBestBps": -6.564
+      "dropBestBps": -7.348
      }
     },
     "or:last_entry=630-range_min=15-target_mult=2.0": {
      "train": {
-      "n": 27798,
-      "meanBps": -12.718,
-      "t": -17.02,
+      "n": 27756,
+      "meanBps": -12.592,
+      "t": -16.8,
       "sessions": 40,
-      "tCl": -4.14,
+      "tCl": -4.09,
       "df": 39,
-      "nEff": 1642,
+      "nEff": 1650,
       "posSessions": 6,
-      "dropBestBps": -14.551
+      "dropBestBps": -14.423
      },
      "test": {
-      "n": 14166,
-      "meanBps": -1.852,
-      "t": -1.42,
+      "n": 14153,
+      "meanBps": -2.978,
+      "t": -2.3,
       "sessions": 20,
-      "tCl": -0.23,
+      "tCl": -0.36,
       "df": 19,
-      "nEff": 363,
+      "nEff": 345,
       "posSessions": 5,
-      "dropBestBps": -8.162
+      "dropBestBps": -9.36
      }
     },
     "or:last_entry=690-range_min=15-target_mult=2.0": {
      "train": {
-      "n": 31940,
-      "meanBps": -12.277,
-      "t": -17.83,
+      "n": 31917,
+      "meanBps": -12.212,
+      "t": -17.69,
       "sessions": 40,
-      "tCl": -4.34,
+      "tCl": -4.32,
       "df": 39,
-      "nEff": 1894,
+      "nEff": 1902,
       "posSessions": 7,
-      "dropBestBps": -13.908
+      "dropBestBps": -13.842
      },
      "test": {
-      "n": 16193,
-      "meanBps": -0.411,
-      "t": -0.34,
+      "n": 16163,
+      "meanBps": -1.145,
+      "t": -0.96,
       "sessions": 20,
-      "tCl": -0.05,
+      "tCl": -0.15,
       "df": 19,
-      "nEff": 400,
+      "nEff": 383,
       "posSessions": 6,
-      "dropBestBps": -6.315
+      "dropBestBps": -7.103
      }
     },
     "or:last_entry=630-range_min=15-target_mult=3.0": {
      "train": {
-      "n": 27798,
-      "meanBps": -13.331,
-      "t": -16.79,
+      "n": 27756,
+      "meanBps": -13.13,
+      "t": -16.47,
       "sessions": 40,
-      "tCl": -3.94,
+      "tCl": -3.89,
       "df": 39,
-      "nEff": 1533,
+      "nEff": 1545,
       "posSessions": 6,
-      "dropBestBps": -15.528
+      "dropBestBps": -15.324
      },
      "test": {
-      "n": 14166,
-      "meanBps": -0.47,
-      "t": -0.33,
+      "n": 14153,
+      "meanBps": -1.525,
+      "t": -1.09,
       "sessions": 20,
-      "tCl": -0.05,
+      "tCl": -0.16,
       "df": 19,
-      "nEff": 319,
+      "nEff": 306,
       "posSessions": 5,
-      "dropBestBps": -8.152
+      "dropBestBps": -9.275
      }
     },
     "or:last_entry=690-range_min=15-target_mult=3.0": {
      "train": {
-      "n": 31940,
-      "meanBps": -12.824,
-      "t": -17.54,
+      "n": 31917,
+      "meanBps": -12.706,
+      "t": -17.33,
       "sessions": 40,
-      "tCl": -4.05,
+      "tCl": -4.02,
       "df": 39,
-      "nEff": 1703,
+      "nEff": 1715,
       "posSessions": 8,
-      "dropBestBps": -14.811
+      "dropBestBps": -14.691
      },
      "test": {
-      "n": 16193,
-      "meanBps": 0.918,
-      "t": 0.71,
+      "n": 16163,
+      "meanBps": 0.297,
+      "t": 0.23,
       "sessions": 20,
-      "tCl": 0.11,
+      "tCl": 0.03,
       "df": 19,
-      "nEff": 355,
+      "nEff": 344,
       "posSessions": 6,
-      "dropBestBps": -6.209
+      "dropBestBps": -6.88
      }
     },
     "or:last_entry=630-range_min=30-target_mult=1.5": {
      "train": {
-      "n": 17180,
-      "meanBps": -9.514,
-      "t": -10.43,
+      "n": 17166,
+      "meanBps": -9.729,
+      "t": -10.64,
       "sessions": 40,
-      "tCl": -2.67,
+      "tCl": -2.72,
       "df": 39,
       "nEff": 1127,
       "posSessions": 12,
-      "dropBestBps": -11.15
+      "dropBestBps": -11.373
      },
      "test": {
-      "n": 8756,
-      "meanBps": -1.169,
-      "t": -0.77,
+      "n": 8721,
+      "meanBps": -1.187,
+      "t": -0.78,
       "sessions": 20,
       "tCl": -0.15,
       "df": 19,
-      "nEff": 332,
+      "nEff": 327,
       "posSessions": 6,
-      "dropBestBps": -6.275
+      "dropBestBps": -6.315
      }
     },
     "or:last_entry=690-range_min=30-target_mult=1.5": {
      "train": {
-      "n": 23474,
-      "meanBps": -9.063,
-      "t": -11.93,
+      "n": 23505,
+      "meanBps": -9.253,
+      "t": -12.17,
       "sessions": 40,
-      "tCl": -2.92,
+      "tCl": -2.98,
       "df": 39,
-      "nEff": 1406,
+      "nEff": 1407,
       "posSessions": 9,
-      "dropBestBps": -10.609
+      "dropBestBps": -10.802
      },
      "test": {
-      "n": 12082,
-      "meanBps": 1.634,
-      "t": 1.3,
+      "n": 12001,
+      "meanBps": 1.997,
+      "t": 1.58,
       "sessions": 20,
-      "tCl": 0.26,
+      "tCl": 0.31,
       "df": 19,
-      "nEff": 469,
+      "nEff": 468,
       "posSessions": 9,
-      "dropBestBps": -2.522
+      "dropBestBps": -2.166
      }
     },
     "or:last_entry=630-range_min=30-target_mult=2.0": {
      "train": {
-      "n": 17180,
-      "meanBps": -9.89,
-      "t": -10.24,
+      "n": 17166,
+      "meanBps": -10.175,
+      "t": -10.52,
       "sessions": 40,
-      "tCl": -2.64,
+      "tCl": -2.71,
       "df": 39,
-      "nEff": 1142,
+      "nEff": 1140,
       "posSessions": 12,
-      "dropBestBps": -11.771
+      "dropBestBps": -12.067
      },
      "test": {
-      "n": 8756,
-      "meanBps": 0.359,
-      "t": 0.22,
+      "n": 8721,
+      "meanBps": 0.476,
+      "t": 0.29,
       "sessions": 20,
-      "tCl": 0.04,
+      "tCl": 0.05,
       "df": 19,
-      "nEff": 298,
+      "nEff": 295,
       "posSessions": 8,
-      "dropBestBps": -5.281
+      "dropBestBps": -5.18
      }
     },
     "or:last_entry=690-range_min=30-target_mult=2.0": {
      "train": {
-      "n": 23474,
-      "meanBps": -9.26,
-      "t": -11.54,
+      "n": 23505,
+      "meanBps": -9.478,
+      "t": -11.81,
       "sessions": 40,
-      "tCl": -2.73,
+      "tCl": -2.79,
       "df": 39,
       "nEff": 1316,
       "posSessions": 9,
-      "dropBestBps": -11.071
+      "dropBestBps": -11.293
      },
      "test": {
-      "n": 12082,
-      "meanBps": 3.234,
-      "t": 2.39,
+      "n": 12001,
+      "meanBps": 3.715,
+      "t": 2.75,
       "sessions": 20,
-      "tCl": 0.44,
+      "tCl": 0.51,
       "df": 19,
       "nEff": 406,
       "posSessions": 9,
-      "dropBestBps": -1.434
+      "dropBestBps": -0.956
      }
     },
     "or:last_entry=630-range_min=30-target_mult=3.0": {
      "train": {
-      "n": 17180,
-      "meanBps": -10.984,
-      "t": -10.85,
+      "n": 17166,
+      "meanBps": -11.261,
+      "t": -11.12,
       "sessions": 40,
-      "tCl": -2.69,
+      "tCl": -2.75,
       "df": 39,
-      "nEff": 1055,
+      "nEff": 1051,
       "posSessions": 12,
-      "dropBestBps": -12.978
+      "dropBestBps": -13.264
      },
      "test": {
-      "n": 8756,
-      "meanBps": 3.561,
-      "t": 2.02,
+      "n": 8721,
+      "meanBps": 3.774,
+      "t": 2.14,
       "sessions": 20,
-      "tCl": 0.36,
+      "tCl": 0.38,
       "df": 19,
-      "nEff": 274,
+      "nEff": 272,
       "posSessions": 9,
-      "dropBestBps": -2.591
+      "dropBestBps": -2.39
      }
     },
     "or:last_entry=690-range_min=30-target_mult=3.0": {
      "train": {
-      "n": 23474,
-      "meanBps": -10.046,
-      "t": -11.94,
+      "n": 23505,
+      "meanBps": -10.293,
+      "t": -12.25,
       "sessions": 40,
-      "tCl": -2.64,
+      "tCl": -2.7,
       "df": 39,
-      "nEff": 1145,
+      "nEff": 1142,
       "posSessions": 6,
-      "dropBestBps": -12.22
+      "dropBestBps": -12.471
      },
      "test": {
-      "n": 12082,
-      "meanBps": 6.168,
-      "t": 4.23,
+      "n": 12001,
+      "meanBps": 6.809,
+      "t": 4.66,
       "sessions": 20,
-      "tCl": 0.72,
+      "tCl": 0.8,
       "df": 19,
-      "nEff": 352,
+      "nEff": 354,
       "posSessions": 9,
-      "dropBestBps": 1.092
+      "dropBestBps": 1.737
      }
     }
    }
